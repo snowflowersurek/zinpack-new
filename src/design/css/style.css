@@ -71,6 +71,7 @@
 }
 body {
   background-color: #ffffff;
+  font-family: '맑은 고딕', 'Malgun Gothic', "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 body,
 h1,
@@ -98,11 +99,13 @@ button, button:focus, input, input:focus, textarea {outline:none !important}
   background-color: #f2f2f2;
   border: 1px solid #ccc;
   border-width: 0 1px 0 0;
+  width: 100%;
+  /* float: left; */ /* 전체 너비 차지를 위해 제거 */
 }
 @media (min-width: 992px) {
   .sidebar {
     width: 190px;
-    float: left;
+    /* float: left; */ /* 전체 너비 차지를 위해 제거 */
   }
   .sidebar:before {
     content: "";
@@ -112,7 +115,7 @@ button, button:focus, input, input:focus, textarea {outline:none !important}
     bottom: 0;
     top: 0;
     z-index: -1;
-    background-color: #f2f2f2;
+    background-color: #fff;
     border: 1px solid #ccc;
     border-width: 0 1px 0 0;
   }
@@ -129,6 +132,10 @@ button, button:focus, input, input:focus, textarea {outline:none !important}
   max-height: 41px;
   margin-bottom: 0;
   padding-bottom: 4px;
+}
+.nav-list {
+  display: flex;
+  flex-wrap: wrap; /* 화면이 작아지면 줄바꿈 허용 */
 }
 .nav-list > li {
   display: block;
@@ -149,15 +156,6 @@ button, button:focus, input, input:focus, textarea {outline:none !important}
   text-shadow: none !important;
   font-size: 13px;
   text-decoration: none;
-}
-.nav-list > li > a > [class*="fa-"]:first-child {
-  display: inline-block;
-  vertical-align: middle;
-  min-width: 30px;
-  text-align: center;
-  font-size: 18px;
-  font-weight: normal;
-  margin-right: 2px;
 }
 .nav-list > li > a:hover {
   background-color: #fff;
@@ -182,7 +180,7 @@ button, button:focus, input, input:focus, textarea {outline:none !important}
   line-height: 14px;
   text-shadow: none;
   font-size: 18px;
-  position: absolute;
+  /* position: absolute; */ /* Flexbox 정렬을 위해 제거 */
   right: 11px;
   top: 11px;
   padding: 0;
@@ -256,6 +254,7 @@ button, button:focus, input, input:focus, textarea {outline:none !important}
   margin-top: 0;
   min-height: 100%;
   padding: 0;
+  margin-left: 0; /* 사이드바 아래에 위치하도록 마진 제거 */
 }
 @media (min-width: 992px) {
   .main-content {

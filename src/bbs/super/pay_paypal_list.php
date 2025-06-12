@@ -40,73 +40,68 @@ if($searchs) {
 }
 ?>
 <div class="breadcrumbs" id="breadcrumbs">
-	<ul class="breadcrumb">
-		<li>
-			<i class="fa fa-credit-card"></i>
-			결제내역
-		</li>
-		<li class="active">PAYPAL결제내역</li>
-	</ul><!-- .breadcrumb -->
-
-	<!--<div class="nav-search" id="nav-search">
-		<form class="form-search">
-			<span class="input-icon">
-				<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off">
-				<i class="fa fa-search"></i>
-			</span>
-		</form>
-	</div>--><!-- #nav-search -->
+	<nav aria-label="breadcrumb">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><i class="fas fa-credit-card"></i> 결제내역</li>
+			<li class="breadcrumb-item active" aria-current="page">PAYPAL결제내역</li>
+		</ol>
+	</nav>
 </div>
 <div class="page-content">
 	<div class="page-header">
 		<h1>
 			PAYPAL결제내역
 			<small>
-				<i class="fa fa-angle-double-right"></i>
+				<i class="fas fa-angle-double-right"></i>
 				목록
 			</small>
 		</h1>
 	</div>
 	<div class="container">
 		<div class="row">
-			<div class="col-xs-12">
+			<div class="col-12">
 			<!-- PAGE CONTENT BEGINS -->
 				<div class="row">
-					<div class="col-xs-12">
+					<div class="col-12">
 						<h4 class="lighter"><!--제목--></h4>
 						<section class="content-box">
 							<div class="table-header">
 								<!--게시판설명-->
 							</div>
 							<div class="table-set-mobile dataTable-wrapper">
+								<form name="fsearch" id="fsearch" action="<?=$PHP_SELF?>" method="get">
+								<input type="hidden" name="type" value="<?=$iw[type]?>">
+								<input type="hidden" name="ep" value="<?=$iw[store]?>">
+								<input type="hidden" name="gp" value="<?=$iw[group]?>">
 								<div class="row">
 									<div class="col-sm-6">
-										<div class="dataTable-option">
-											<label>상태<select size="1" onchange="javascript:select_search('<?=$PHP_SELF?>?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&start_date=<?=$start_date?>&end_date=<?=$end_date?>&search=d&searchs=',this.value)">
-												<option value="">전체</option>
-												<option value="shop" <?if($searchs == "shop"){?>selected="selected"<?}?>>쇼핑몰</option>
-												<option value="point" <?if($searchs == "point"){?>selected="selected"<?}?>>포인트</option>
-											</select></label>
+										<div class="input-group">
+											<label class="input-group-text">상태</label>
+											<select class="form-select" onchange="location.href=this.value">
+												<option value="<?=$PHP_SELF?>?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&start_date=<?=$start_date?>&end_date=<?=$end_date?>&search=d&searchs=">전체</option>
+												<option value="<?=$PHP_SELF?>?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&start_date=<?=$start_date?>&end_date=<?=$end_date?>&search=d&searchs=shop" <?if($searchs == "shop"){?>selected="selected"<?}?>>쇼핑몰</option>
+												<option value="<?=$PHP_SELF?>?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&start_date=<?=$start_date?>&end_date=<?=$end_date?>&search=d&searchs=point" <?if($searchs == "point"){?>selected="selected"<?}?>>포인트</option>
+											</select>
+											<input type="text" name="start_date" class="form-control" maxlength="8" value="<?=$start_date?>">
+											<span class="input-group-text">~</span>
+											<input type="text" name="end_date" class="form-control" maxlength="8" value="<?=$end_date?>">
+											<button class="btn btn-primary" type="submit">조회</button>
 										</div>
-										<form name="date_form" id="date_form" action="<?=$PHP_SELF?>?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&search=<?=$search?>&searchs=<?=$searchs?>" method="post">
-											<input type="text" name="start_date" maxlength="8" value="<?=$start_date?>">~
-											<input type="text" name="end_date" maxlength="8" value="<?=$end_date?>">
-											<input type="button" onclick="javascript:check_date();" value="조회">
-										</form>
 									</div>
 									<div class="col-sm-6">
-										<div class="dataTable-option-right">
-											<form name="search_form" id="search_form" action="<?=$PHP_SELF?>?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>" method="post">
-											<label>검색: <select name="search">
+										<div class="input-group float-end">
+											<select name="search" class="form-select">
 												<option value="a" <?if($search == "a"){?>selected="selected"<?}?>>업체코드</option>
 												<option value="b" <?if($search == "b"){?>selected="selected"<?}?>>거래번호</option>
 												<option value="c" <?if($search == "c"){?>selected="selected"<?}?>>결제자</option>
-											</select></label><input type="text" name="searchs" value="<?=$searchs?>">
-											</form>
+											</select>
+											<input type="text" name="searchs" class="form-control" value="<?=$searchs?>">
+											<button class="btn btn-primary" type="submit">검색</button>
 										</div>
 									</div>
 								</div>
-								<table class="table table-striped table-bordered table-hover dataTable">
+								</form>
+								<table class="table table-striped table-bordered table-hover dataTable mt-3">
 									<thead>
 										<tr>
 											<th>업체명</th>
@@ -177,7 +172,7 @@ if($searchs) {
 										$i++;
 										}
 										mysqli_stmt_close($stmt);
-										if($i==0) echo "<tr><td colspan='8' align='center'>결제승인내역이 없습니다.</td></tr>";
+										if($i==0) echo "<tr><td colspan='8' class='text-center'>결제승인내역이 없습니다.</td></tr>";
 									?>
 									</tbody>
 								</table>
@@ -185,13 +180,13 @@ if($searchs) {
 									<div class="col-sm-6">
 										<div class="dataTable-info">
 											<button class="btn btn-success" type="button" onclick="location.href='<?=$iw['super_path']?>/pay_paypal_list_excel.php?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&start_date=<?=$start_date?>&end_date=<?=$end_date?>'">
-												<i class="fa fa-check"></i>
+												<i class="fas fa-check"></i>
 												엑셀 출력
 											</button>
 										</div>
 									</div>
 									<div class="col-sm-6">
-										<div class="dataTable-option-right">
+										<div class="d-flex justify-content-center">
 											<ul class="pagination">
 											<?
 												if($total_page!=0){
@@ -203,21 +198,21 @@ if($searchs) {
 												 
 													if($page>$max_page) {
 														$pre = $start_page - 1;
-														echo "<li class='prev'><a href='$PHP_SELF?type=$iw[type]&ep=$iw[store]&gp=$iw[group]&page=$pre&search=$search&searchs=$searchs&start_date=$start_date&end_date=$end_date'><i class='fa fa-angle-double-left'></i></a></li>";
+														echo "<li class='page-item'><a class='page-link' href='$PHP_SELF?type=$iw[type]&ep=$iw[store]&gp=$iw[group]&page=$pre&search=$search&searchs=$searchs&start_date=$start_date&end_date=$end_date'><i class='fas fa-angle-double-left'></i></a></li>";
 													} else {
-														echo "<li class='prev disabled'><a href='#'><i class='fa fa-angle-double-left'></i></a></li>";
+														echo "<li class='page-item disabled'><a class='page-link' href='#'><i class='fas fa-angle-double-left'></i></a></li>";
 													}
 													
 													for($i=$start_page;$i<=$end_page;$i++) {
-														if($i==$page) echo "<li class='active'><a href='#'>$i</a></li>";
-														else          echo "<li><a href='$PHP_SELF?type=$iw[type]&ep=$iw[store]&gp=$iw[group]&page=$i&search=$search&searchs=$searchs&start_date=$start_date&end_date=$end_date'>$i</a></li>";
+														if($i==$page) echo "<li class='page-item active'><a class='page-link' href='#'>$i</a></li>";
+														else          echo "<li class='page-item'><a class='page-link' href='$PHP_SELF?type=$iw[type]&ep=$iw[store]&gp=$iw[group]&page=$i&search=$search&searchs=$searchs&start_date=$start_date&end_date=$end_date'>$i</a></li>";
 													}
 												 
 													if($end_page<$total_page) {
 														$next = $end_page + 1;
-														echo "<li class='next'><a href='$PHP_SELF?type=$iw[type]&ep=$iw[store]&gp=$iw[group]&page=$next&search=$search&searchs=$searchs&start_date=$start_date&end_date=$end_date'><i class='fa fa-angle-double-right'></i></a></li>";
+														echo "<li class='page-item'><a class='page-link' href='$PHP_SELF?type=$iw[type]&ep=$iw[store]&gp=$iw[group]&page=$next&search=$search&searchs=$searchs&start_date=$start_date&end_date=$end_date'><i class='fas fa-angle-double-right'></i></a></li>";
 													} else {
-														echo "<li class='next disabled'><a href='#'><i class='fa fa-angle-double-right'></i></a></li>";
+														echo "<li class='page-item disabled'><a class='page-link' href='#'><i class='fas fa-angle-double-right'></i></a></li>";
 													}
 												}
 											?>
@@ -237,45 +232,45 @@ if($searchs) {
 
 
 <script type="text/javascript">
-	function select_search(url,search){
-		location.href=url+search;
-	}
-	function check_date(){
-		if (date_form.start_date.value.length < 8){
-			alert("날짜를 20130703 형식으로 입력하여 주십시오.");
-			date_form.start_date.focus();
-			return;
-		}
-		var e1 = date_form.start_date;
-		var num ="0123456789";
-		event.returnValue = true;
-		for (var i=0;i<e1.value.length;i++){
-			if(-1 == num.indexOf(e1.value.charAt(i)))
-			event.returnValue = false;
-		}
-		if (!event.returnValue){
-			alert('숫자로만 입력가능한 항목입니다.');
-			date_form.start_date.focus();
-			return;
-		}
-		if (date_form.end_date.value.length < 8){
-			alert("날짜를 20130703 형식으로 입력하여 주십시오.");
-			date_form.end_date.focus();
-			return;
-		}
-		e1 = date_form.end_date;
-		event.returnValue = true;
-		for (var i=0;i<e1.value.length;i++){
-			if(-1 == num.indexOf(e1.value.charAt(i)))
-			event.returnValue = false;
-		}
-		if (!event.returnValue){
-			alert('숫자로만 입력가능한 항목입니다.');
-			date_form.end_date.focus();
-			return;
-		}
-		date_form.submit();
-	}
+document.addEventListener("DOMContentLoaded", function() {
+    const fsearch = document.getElementById('fsearch');
+    if (fsearch) {
+        fsearch.addEventListener('submit', function(e) {
+            const startDate = document.querySelector('input[name="start_date"]');
+            const endDate = document.querySelector('input[name="end_date"]');
+            const num ="0123456789";
+
+            if (startDate.value.length < 8) {
+                alert("날짜를 YYYYMMDD 형식으로 입력하여 주십시오.");
+                startDate.focus();
+                e.preventDefault();
+                return;
+            }
+            for (let i = 0; i < startDate.value.length; i++) {
+                if (num.indexOf(startDate.value.charAt(i)) === -1) {
+                    alert('숫자로만 입력가능한 항목입니다.');
+                    startDate.focus();
+                    e.preventDefault();
+                    return;
+                }
+            }
+            if (endDate.value.length < 8) {
+                alert("날짜를 YYYYMMDD 형식으로 입력하여 주십시오.");
+                endDate.focus();
+                e.preventDefault();
+                return;
+            }
+            for (let i = 0; i < endDate.value.length; i++) {
+                if (num.indexOf(endDate.value.charAt(i)) === -1) {
+                    alert('숫자로만 입력가능한 항목입니다.');
+                    endDate.focus();
+                    e.preventDefault();
+                    return;
+                }
+            }
+        });
+    }
+});
 </script>
 
 <?

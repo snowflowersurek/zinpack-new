@@ -54,7 +54,7 @@ include_once("_head.php");
 										</div>-->
 									</div>
 									<div class="col-sm-6">
-										<div class="dataTable-option-right">
+										<div class="dataTable-option-right text-center">
 											<?php
 												$search = $_REQUEST['search'] ?? '';
 												$searchs = $_REQUEST['searchs'] ?? '';
@@ -72,13 +72,13 @@ include_once("_head.php");
 													}
 												}
 											?>
-											<form name="search_form" id="search_form" action="<?php echo $_SERVER['PHP_SELF']; ?>?type=<?php echo $iw['type']; ?>&ep=<?php echo $iw['store']; ?>&gp=<?php echo $iw['group']; ?>" method="post">
-											<label>검색: <select name="search">
+											<form name="search_form" id="search_form" action="<?php echo $_SERVER['PHP_SELF']; ?>?type=<?php echo $iw['type']; ?>&ep=<?php echo $iw['store']; ?>&gp=<?php echo $iw['group']; ?>" method="post" class="text-end" style="margin-bottom:0;">
+											<label style="font-size:1.2rem; font-weight:500;">검색: <select name="search" class="form-select form-select-lg" style="font-size:1.1rem; display:inline-block; width:12rem; min-width:180px; height:120%; min-height:3.2rem; vertical-align:middle;">
 												<option value="a" <?php if($search == "a"){ echo 'selected="selected"'; }?>>사이트코드</option>
 												<option value="b" <?php if($search == "b"){ echo 'selected="selected"'; }?>>업체명</option>
 												<option value="c" <?php if($search == "c"){ echo 'selected="selected"'; }?>>사업자번호</option>
 												<option value="d" <?php if($search == "d"){ echo 'selected="selected"'; }?>>포워딩ID</option>
-											</select></label><input type="text" name="searchs" value="<?php echo htmlspecialchars($searchs, ENT_QUOTES); ?>">
+											</select></label><input type="text" name="searchs" value="<?php echo htmlspecialchars($searchs, ENT_QUOTES); ?>" class="form-control form-control-lg" style="font-size:1.1rem; width:auto; display:inline-block; vertical-align:middle; margin-left:8px; height:120%; min-height:2.5rem;">
 											</form>
 										</div>
 									</div>
@@ -86,15 +86,15 @@ include_once("_head.php");
 								<table class="table table-striped table-bordered table-hover dataTable">
 									<thead>
 										<tr>
-											<th>사이트코드</th>
-											<th>업체명</th>
-											<th>이메일</th>
-											<th>포워딩ID</th>
-											<th>회원수</th>
-											<th>사용현황</th>
-											<th>생성일</th>
-											<th>만료일</th>
-											<th>마스터</th>
+											<th class="text-center">사이트코드</th>
+											<th class="text-center">업체명</th>
+											<th class="text-center">이메일</th>
+											<th class="text-center">포워딩ID</th>
+											<th class="text-center">회원수</th>
+											<th class="text-center">사용현황</th>
+											<th class="text-center">생성일</th>
+											<th class="text-center">만료일</th>
+											<th class="text-center">마스터</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -148,12 +148,12 @@ include_once("_head.php");
 											$ep_total = number_format($row1["cnt"] ?? 0);
 									?>
 										<tr>
-											<td data-title="사이트코드"><a href="<?php echo $iw['super_path']; ?>/enterprise_view.php?type=<?php echo $iw['type']; ?>&ep=<?php echo $iw['store']; ?>&gp=<?php echo $iw['group']; ?>&idx=<?php echo $ep_no; ?>"><?php echo $ep_code; ?></a></td>
-											<td data-title="업체명"><a href="<?php echo $iw['m_path']; ?>/main.php?type=main&ep=<?php echo $ep_code; ?>&gp=all" target="_blank"><?php echo $ep_corporate; ?> <i class="fa fa-external-link"></i></a></td>
-											<td data-title="이메일"><?php echo $mb_mail; ?></td>
-											<td data-title="포워딩ID"><?php echo $ep_nick; ?></td>
-											<td data-title="회원수"><?php echo $ep_total; ?></td>
-											<td data-title="사용현황">
+											<td class="text-center" data-title="사이트코드"><a href="<?php echo $iw['super_path']; ?>/enterprise_view.php?type=<?php echo $iw['type']; ?>&ep=<?php echo $iw['store']; ?>&gp=<?php echo $iw['group']; ?>&idx=<?php echo $ep_no; ?>"><?php echo $ep_code; ?></a></td>
+											<td class="text-center" data-title="업체명"><a href="<?php echo $iw['m_path']; ?>/main.php?type=main&ep=<?php echo $ep_code; ?>&gp=all" target="_blank"><?php echo $ep_corporate; ?> <i class="fa fa-external-link"></i></a></td>
+											<td class="text-center" data-title="이메일"><?php echo $mb_mail; ?></td>
+											<td class="text-center" data-title="포워딩ID"><?php echo $ep_nick; ?></td>
+											<td class="text-end" data-title="회원수"><?php echo $ep_total; ?></td>
+											<td class="text-center" data-title="사용현황">
 												<div class="action-icon">
 													<?php if($ep_state_mcb == 1){?><i class="fa fa-clipboard"></i><?php }?>
 													<?php if($ep_state_publishing == 1){?><i class="fa fa-book"></i><?php }?>
@@ -162,9 +162,9 @@ include_once("_head.php");
 													<?php if($ep_state_book == 1){?><i class="fa fa-newspaper-o"></i><?php }?>
 												</div>
 											</td>
-											<td data-title="생성일"><?php echo substr($ep_datetime, 0, 10); ?></td>
-											<td data-title="만료일"><?php echo $ep_expiry; ?></td>
-											<td data-title="마스터">
+											<td class="text-center" data-title="생성일"><?php echo substr($ep_datetime, 0, 10); ?></td>
+											<td class="text-center" data-title="만료일"><?php echo $ep_expiry; ?></td>
+											<td class="text-center" data-title="마스터">
 												<?php
 												if (substr_compare($ep_code, ".del", -strlen(".del")) === 0 || $avail_type==4 || $avail_type==0) {
 												?>
@@ -200,33 +200,35 @@ include_once("_head.php");
 										</div>
 									</div>
 									<div class="col-sm-6">
-										<div class="dataTable-option-right">
-											<ul class="pagination">
+										<div class="dataTable-option-right text-end">
+											<ul class="pagination justify-content-end" style="gap:4px;">
 											<?php
 												if($total_page!=0){
 													if($page>$total_page) { $page=$total_page; }
 													$start_page = ((ceil($page/$max_page)-1)*$max_page)+1;
 													$end_page = $start_page+$max_page-1;
-												 
 													if($end_page>$total_page) {$end_page=$total_page;}
-												 
+
+													// 이전 버튼
 													if($page>$max_page) {
 														$pre = $start_page - 1;
-														echo "<li class='prev'><a href='{$_SERVER['PHP_SELF']}?type={$iw['type']}&ep={$iw['store']}&gp={$iw['group']}&page=$pre&search=$search&searchs=$searchs'><i class='fa fa-angle-double-left'></i></a></li>";
+														echo "<li class='page-item'><a class='btn btn-outline-secondary btn-sm' href='{$_SERVER['PHP_SELF']}?type={$iw['type']}&ep={$iw['store']}&gp={$iw['group']}&page=$pre&search=$search&searchs=$searchs'><i class='fa fa-angle-double-left'></i></a></li>";
 													} else {
-														echo "<li class='prev disabled'><a href='#'><i class='fa fa-angle-double-left'></i></a></li>";
+														echo "<li class='page-item'><a class='btn btn-outline-secondary btn-sm disabled' href='#'><i class='fa fa-angle-double-left'></i></a></li>";
 													}
-													
+
+													// 페이지 번호
 													for($i=$start_page;$i<=$end_page;$i++) {
-														if($i==$page) echo "<li class='active'><a href='#'>$i</a></li>";
-														else          echo "<li><a href='{$_SERVER['PHP_SELF']}?type={$iw['type']}&ep={$iw['store']}&gp={$iw['group']}&page=$i&search=$search&searchs=$searchs'>$i</a></li>";
+														if($i==$page) echo "<li class='page-item'><a class='btn btn-secondary btn-sm active' href='#'>$i</a></li>";
+														else          echo "<li class='page-item'><a class='btn btn-outline-secondary btn-sm' href='{$_SERVER['PHP_SELF']}?type={$iw['type']}&ep={$iw['store']}&gp={$iw['group']}&page=$i&search=$search&searchs=$searchs'>$i</a></li>";
 													}
-												 
+
+													// 다음 버튼
 													if($end_page<$total_page) {
 														$next = $end_page + 1;
-														echo "<li class='next'><a href='{$_SERVER['PHP_SELF']}?type={$iw['type']}&ep={$iw['store']}&gp={$iw['group']}&page=$next&search=$search&searchs=$searchs'><i class='fa fa-angle-double-right'></i></a></li>";
+														echo "<li class='page-item'><a class='btn btn-outline-secondary btn-sm' href='{$_SERVER['PHP_SELF']}?type={$iw['type']}&ep={$iw['store']}&gp={$iw['group']}&page=$next&search=$search&searchs=$searchs'><i class='fa fa-angle-double-right'></i></a></li>";
 													} else {
-														echo "<li class='next disabled'><a href='#'><i class='fa fa-angle-double-right'></i></a></li>";
+														echo "<li class='page-item'><a class='btn btn-outline-secondary btn-sm disabled' href='#'><i class='fa fa-angle-double-right'></i></a></li>";
 													}
 												}
 											?>

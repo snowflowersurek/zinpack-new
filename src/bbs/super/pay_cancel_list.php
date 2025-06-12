@@ -183,7 +183,7 @@ if(!empty($searchs)) {
 													신용카드
 												<?php }else if($lgd_paytype=="SC0030"){?>
 													계좌이체
-												<?php }else if($lg_paytype=="SC0040"){?>
+												<?php }else if($lgd_paytype=="SC0040"){?>
 													가상계좌
 												<?php }else if($lgd_paytype=="SC0060"){?>
 													휴대폰

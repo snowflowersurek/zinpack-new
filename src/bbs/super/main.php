@@ -35,14 +35,14 @@ $chkexpiry = ($chkcookie=="" || $chkcookie!=date("Y-m-d"))?"1":"0";
 		<h1>
 			데쉬보드
 			<small>
-				<i class="fa fa-angle-double-right"></i>
+				<i class="fas fa-angle-double-right"></i>
 				데쉬보드
 			</small>
 		</h1>
 	</div>
 	<div class="container">
 		<div class="row">
-			<div class="col-xs-12">
+			<div class="col-12">
 			<!-- PAGE CONTENT BEGINS -->
 			<?php
 				//잔여포인트
@@ -161,13 +161,13 @@ $chkexpiry = ($chkcookie=="" || $chkcookie!=date("Y-m-d"))?"1":"0";
 				$book_download = (int)($row["cnt"] ?? 0);
 			?>
 				<div class="row">
-					<div class="col-sm-12">
-						<h4 class="lighter"><i class="fa fa-star"></i>Total Stats</h4>
+					<div class="col-12">
+						<h4 class="lighter"><i class="fas fa-star"></i>Total Stats</h4>
 						<section class="content-box infobox-container">
 						
 							<div class="infobox infobox-blue">
 								<div class="infobox-icon">
-									<i class="fa fa-certificate"></i>
+									<i class="fas fa-certificate"></i>
 								</div>
 								<div class="infobox-data">
 									<span class="infobox-data-number"><?=number_format($mb_point)?></span>
@@ -178,7 +178,7 @@ $chkexpiry = ($chkcookie=="" || $chkcookie!=date("Y-m-d"))?"1":"0";
 							
 							<div class="infobox infobox-blue">
 								<div class="infobox-icon">
-									<i class="fa fa-pencil-square-o"></i>
+									<i class="far fa-pen-to-square"></i>
 								</div>
 								<div class="infobox-data">
 									<span class="infobox-data-number"><?=number_format($mcb_count+$doc_count+$book_count)?></span>
@@ -189,7 +189,7 @@ $chkexpiry = ($chkcookie=="" || $chkcookie!=date("Y-m-d"))?"1":"0";
 							
 							<div class="infobox infobox-blue">
 								<div class="infobox-icon">
-									<i class="fa fa-comments"></i>
+									<i class="fas fa-comments"></i>
 								</div>
 								<div class="infobox-data">
 									<span class="infobox-data-number"><?=number_format($mcb_comment+$doc_comment+$book_comment)?></span>
@@ -202,7 +202,7 @@ $chkexpiry = ($chkcookie=="" || $chkcookie!=date("Y-m-d"))?"1":"0";
 							
 							<div class="infobox infobox-small infobox-dark infobox-blue">
 								<div class="infobox-icon">
-									<i class="fa fa-money"></i>
+									<i class="fas fa-money-bill-wave"></i>
 								</div>
 								<div class="infobox-data">
 									<div class="infobox-content">총매출</div>
@@ -212,7 +212,7 @@ $chkexpiry = ($chkcookie=="" || $chkcookie!=date("Y-m-d"))?"1":"0";
 							
 							<div class="infobox infobox-small infobox-dark infobox-grey">
 								<div class="infobox-icon">
-									<i class="fa fa-download"></i>
+									<i class="fas fa-download"></i>
 								</div>
 								<div class="infobox-data">
 									<div class="infobox-content">총다운로드</div>
@@ -228,11 +228,11 @@ $chkexpiry = ($chkcookie=="" || $chkcookie!=date("Y-m-d"))?"1":"0";
 				
 				<div class="row">
 					<div class="col-sm-4">
-						<h4 class="lighter"><i class="fa fa-star"></i>게시판 Stats</h4>
+						<h4 class="lighter"><i class="fas fa-star"></i>게시판 Stats</h4>
 						<section class="content-box infobox-container">
 							<div class="infobox infobox-green">
 								<div class="infobox-icon">
-									<i class="fa fa-pencil-square-o"></i>
+									<i class="far fa-pen-to-square"></i>
 								</div>
 								<div class="infobox-data">
 									<span class="infobox-data-number"><?=number_format($mcb_count)?></span>
@@ -243,7 +243,7 @@ $chkexpiry = ($chkcookie=="" || $chkcookie!=date("Y-m-d"))?"1":"0";
 							
 							<div class="infobox infobox-green">
 								<div class="infobox-icon">
-									<i class="fa fa-comments"></i>
+									<i class="fas fa-comments"></i>
 								</div>
 								<div class="infobox-data">
 									<span class="infobox-data-number"><?=number_format($mcb_comment)?></span>
@@ -256,7 +256,7 @@ $chkexpiry = ($chkcookie=="" || $chkcookie!=date("Y-m-d"))?"1":"0";
 							
 							<div class="infobox infobox-small infobox-dark infobox-blue">
 								<div class="infobox-icon">
-									<i class="fa fa-money"></i>
+									<i class="fas fa-money-bill-wave"></i>
 								</div>
 								<div class="infobox-data">
 									<div class="infobox-content">매출</div>
@@ -268,12 +268,12 @@ $chkexpiry = ($chkcookie=="" || $chkcookie!=date("Y-m-d"))?"1":"0";
 					</div><!-- / .col -->
 					
 					<div class="col-sm-4">
-						<h4 class="lighter"><i class="fa fa-star"></i>컨텐츠 Stats</h4>
+						<h4 class="lighter"><i class="fas fa-star"></i>컨텐츠 Stats</h4>
 						<section class="content-box infobox-container">
 						
 							<div class="infobox infobox-yellow">
 								<div class="infobox-icon">
-									<i class="fa fa-pencil-square-o"></i>
+									<i class="far fa-pen-to-square"></i>
 								</div>
 								<div class="infobox-data">
 									<span class="infobox-data-number"><?=number_format($doc_count)?></span>
@@ -284,7 +284,7 @@ $chkexpiry = ($chkcookie=="" || $chkcookie!=date("Y-m-d"))?"1":"0";
 							
 							<div class="infobox infobox-yellow">
 								<div class="infobox-icon">
-									<i class="fa fa-comments"></i>
+									<i class="fas fa-comments"></i>
 								</div>
 								<div class="infobox-data">
 									<span class="infobox-data-number"><?=number_format($doc_comment)?></span>
@@ -297,7 +297,7 @@ $chkexpiry = ($chkcookie=="" || $chkcookie!=date("Y-m-d"))?"1":"0";
 							
 							<div class="infobox infobox-small infobox-dark infobox-blue">
 								<div class="infobox-icon">
-									<i class="fa fa-money"></i>
+									<i class="fas fa-money-bill-wave"></i>
 								</div>
 								<div class="infobox-data">
 									<div class="infobox-content">매출</div>
@@ -307,7 +307,7 @@ $chkexpiry = ($chkcookie=="" || $chkcookie!=date("Y-m-d"))?"1":"0";
 							
 							<div class="infobox infobox-small infobox-dark infobox-grey">
 								<div class="infobox-icon">
-									<i class="fa fa-download"></i>
+									<i class="fas fa-download"></i>
 								</div>
 								<div class="infobox-data">
 									<div class="infobox-content">다운로드</div>
@@ -319,12 +319,12 @@ $chkexpiry = ($chkcookie=="" || $chkcookie!=date("Y-m-d"))?"1":"0";
 					</div><!-- / .col -->
 					
 					<div class="col-sm-4">
-						<h4 class="lighter"><i class="fa fa-star"></i>e북 Stats</h4>
+						<h4 class="lighter"><i class="fas fa-star"></i>e북 Stats</h4>
 						<section class="content-box infobox-container">
 						
 							<div class="infobox infobox-red">
 								<div class="infobox-icon">
-									<i class="fa fa-pencil-square-o"></i>
+									<i class="far fa-pen-to-square"></i>
 								</div>
 								<div class="infobox-data">
 									<span class="infobox-data-number"><?=number_format($book_count)?></span>
@@ -335,7 +335,7 @@ $chkexpiry = ($chkcookie=="" || $chkcookie!=date("Y-m-d"))?"1":"0";
 							
 							<div class="infobox infobox-red">
 								<div class="infobox-icon">
-									<i class="fa fa-comments"></i>
+									<i class="fas fa-comments"></i>
 								</div>
 								<div class="infobox-data">
 									<span class="infobox-data-number"><?=number_format($book_comment)?></span>
@@ -348,7 +348,7 @@ $chkexpiry = ($chkcookie=="" || $chkcookie!=date("Y-m-d"))?"1":"0";
 							
 							<div class="infobox infobox-small infobox-dark infobox-blue">
 								<div class="infobox-icon">
-									<i class="fa fa-money"></i>
+									<i class="fas fa-money-bill-wave"></i>
 								</div>
 								<div class="infobox-data">
 									<div class="infobox-content">매출</div>
@@ -358,7 +358,7 @@ $chkexpiry = ($chkcookie=="" || $chkcookie!=date("Y-m-d"))?"1":"0";
 							
 							<div class="infobox infobox-small infobox-dark infobox-grey">
 								<div class="infobox-icon">
-									<i class="fa fa-download"></i>
+									<i class="fas fa-download"></i>
 								</div>
 								<div class="infobox-data">
 									<div class="infobox-content">다운로드</div>
@@ -378,24 +378,24 @@ $chkexpiry = ($chkcookie=="" || $chkcookie!=date("Y-m-d"))?"1":"0";
 							$day_start = date("Y-m-d H:i:s", strtotime(date("Ymd").' - 1 days'));
 							$day_end = date("Y-m-d H:i:s", strtotime(date("Ymd").' - 1 days + 23 hours + 59 minutes + 59 seconds'));
 						?>
-						<h4 class="lighter"><i class="fa fa-star"></i>오늘의 랭킹 (<?=date("Y년 m월 d일",strtotime($day_start))?>)</h4>
+						<h4 class="lighter"><i class="fas fa-star"></i>오늘의 랭킹 (<?=date("Y년 m월 d일",strtotime($day_start))?>)</h4>
 						<section class="content-box">
 							<div class="dataTable-wrapper">
 								<table class="table table-bordered table-striped table-hover dataTable">
 									<thead>
 										<tr>
 											<th>
-												<i class="fa fa-caret-right"></i>
+												<i class="fas fa-caret-right"></i>
 												순위
 											</th>
 
 											<th>
-												<i class="fa fa-caret-right"></i>
+												<i class="fas fa-caret-right"></i>
 												닉네임
 											</th>
 
-											<th class="hidden-480">
-												<i class="fa fa-caret-right"></i>
+											<th class="d-none d-sm-table-cell">
+												<i class="fas fa-caret-right"></i>
 												판매금액
 											</th>
 										</tr>
@@ -438,24 +438,24 @@ $chkexpiry = ($chkcookie=="" || $chkcookie!=date("Y-m-d"))?"1":"0";
 							$day_start = date("Y-m-01 00:00:00");
 							$day_end = date("Y-m-t 23:59:59");
 						?>
-						<h4 class="lighter"><i class="fa fa-star"></i>이달의 랭킹 (<?php echo date("Y년 m월",strtotime($day_start)); ?>)</h4>
+						<h4 class="lighter"><i class="fas fa-star"></i>이달의 랭킹 (<?php echo date("Y년 m월",strtotime($day_start)); ?>)</h4>
 						<section class="content-box">
 							<div class="dataTable-wrapper">
 								<table class="table table-bordered table-striped table-hover dataTable">
 									<thead>
 										<tr>
 											<th>
-												<i class="fa fa-caret-right"></i>
+												<i class="fas fa-caret-right"></i>
 												순위
 											</th>
 
 											<th>
-												<i class="fa fa-caret-right"></i>
+												<i class="fas fa-caret-right"></i>
 												닉네임
 											</th>
 
-											<th class="hidden-480">
-												<i class="fa fa-caret-right"></i>
+											<th class="d-none d-sm-table-cell">
+												<i class="fas fa-caret-right"></i>
 												판매금액
 											</th>
 										</tr>
@@ -494,19 +494,19 @@ $chkexpiry = ($chkcookie=="" || $chkcookie!=date("Y-m-d"))?"1":"0";
 						</section>
 					</div><!-- / .col -->
 					<div class="col-sm-4">
-						<h4 class="lighter"><i class="fa fa-star"></i>서버 사용현황</h4>
+						<h4 class="lighter"><i class="fas fa-star"></i>서버 사용현황</h4>
 						<section class="content-box">
 							<div class="dataTable-wrapper">
 								<table class="table table-bordered table-striped table-hover dataTable">
 									<thead>
 										<tr>
 											<th>
-												<i class="fa fa-caret-right"></i>
+												<i class="fas fa-caret-right"></i>
 												분류
 											</th>
 
 											<th>
-												<i class="fa fa-caret-right"></i>
+												<i class="fas fa-caret-right"></i>
 												크기
 											</th>
 										</tr>

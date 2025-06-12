@@ -21,30 +21,29 @@ if($monsel){
 //$now_end = date("Y-m-d H:i:s", strtotime($end_date.' + 23 hours + 59 minutes + 59 seconds'));
 ?>
 <div class="breadcrumbs" id="breadcrumbs">
-	<ul class="breadcrumb">
-		<li>
-			<i class="fa fa-credit-card"></i>
-			정산관리
-		</li>
-		<li class="active">업체별 정산내역</li>
-	</ul><!-- .breadcrumb -->
+	<nav aria-label="breadcrumb">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><i class="fas fa-calculator"></i> 정산관리</li>
+			<li class="breadcrumb-item active" aria-current="page">업체별 정산내역</li>
+		</ol>
+	</nav>
 </div>
 <div class="page-content">
 	<div class="page-header">
 		<h1>
 			업체별 정산내역
 			<small>
-				<i class="fa fa-angle-double-right"></i>
+				<i class="fas fa-angle-double-right"></i>
 				목록
 			</small>
 		</h1>
 	</div>
 	<div class="container">
 		<div class="row">
-			<div class="col-xs-12">
+			<div class="col-12">
 			<!-- PAGE CONTENT BEGINS -->
 				<div class="row">
-					<div class="col-xs-12">
+					<div class="col-12">
 						<h4 class="lighter"><!--제목--></h4>
 						<section class="content-box">
 							<div class="table-header">
@@ -53,35 +52,41 @@ if($monsel){
 							<div class="table-set-mobile dataTable-wrapper">
 								<div class="row">
 									<div class="col-sm-6">
-										<form name="date_form" id="date_form" action="<?=$PHP_SELF?>?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&monsel=<?=$monsel?>" method="post">
-											<select name="monsel" onchange="mon_refresh()">
-											<?php
-												$msql = "SELECT DISTINCT(SUBSTRING( lgd_paydate, 1, 6 )) AS mon FROM $iw[lgd_table] WHERE 1 ORDER BY lgd_no DESC";
-												$mresult = sql_query($msql);
-												while($mrow = sql_fetch_array($mresult)){
-													if($mrow['mon']=="") continue;
-													$mval = substr($mrow['mon'],0,4)."-".substr($mrow['mon'],4);
-											?>
-												<option value="<?=$mval?>" <?if($chk_mon == $mval){?>selected="selected"<?}?>><?=$mval?></option>
-											<?php
-												}
-											?>
-											</select>
+										<form name="fsearch" id="fsearch" action="<?=$PHP_SELF?>" method="get">
+										<input type="hidden" name="type" value="<?=$iw[type]?>">
+										<input type="hidden" name="ep" value="<?=$iw[store]?>">
+										<input type="hidden" name="gp" value="<?=$iw[group]?>">
+											<div class="input-group">
+												<label class="input-group-text">정산월</label>
+												<select name="monsel" class="form-select" onchange="this.form.submit()">
+												<?php
+													$msql = "SELECT DISTINCT(SUBSTRING( lgd_paydate, 1, 6 )) AS mon FROM $iw[lgd_table] WHERE 1 ORDER BY lgd_no DESC";
+													$mresult = sql_query($msql);
+													while($mrow = sql_fetch_array($mresult)){
+														if($mrow['mon']=="") continue;
+														$mval = substr($mrow['mon'],0,4)."-".substr($mrow['mon'],4);
+												?>
+													<option value="<?=$mval?>" <?if($chk_mon == $mval){?>selected="selected"<?}?>><?=$mval?></option>
+												<?php
+													}
+												?>
+												</select>
+											</div>
 										</form>
 									</div>
 								</div>
-								<table class="table table-striped table-bordered table-hover dataTable">
+								<table class="table table-striped table-bordered table-hover dataTable mt-3">
 									<thead>
 										<tr>
 											<th>업체명</th>
-											<th>과세 매출액</th>
-											<th>면세 매출액</th>
-											<th>총 매출액</th>
-											<th>정산 입금액</th>
-											<th>수수료</th>
-											<th>이북 매출</th>
-											<th>지급액</th>
-											<th>상세보기</th>
+											<th class="text-end">과세 매출액</th>
+											<th class="text-end">면세 매출액</th>
+											<th class="text-end">총 매출액</th>
+											<th class="text-end">정산 입금액</th>
+											<th class="text-end">수수료</th>
+											<th class="text-end">이북 매출</th>
+											<th class="text-end">지급액</th>
+											<th class="text-center">상세보기</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -163,16 +168,16 @@ if($monsel){
 									?>
 										<tr>
 											<td data-title="업체명"><?=$ep_corporate?></td>
-											<td data-title="과세매출액" style="text-align:right;padding-right:20px;"><?=number_format($tax_amt)?> 원</td>
-											<td data-title="면세매출액" style="text-align:right;padding-right:20px;"><?=number_format($taxfree_amt)?> 원</td>
-											<td data-title="총매출액" style="text-align:right;padding-right:20px;"><?=number_format($tot_amt)?> 원</td>
-											<td data-title="정산입금액" style="text-align:right;padding-right:20px;"><?=number_format($in_amt)?> 원</td>
-											<td data-title="수수료" style="text-align:right;padding-right:20px;"><?=number_format($charge_amt)?> 원</td>
-											<td data-title="이북매출" style="text-align:right;padding-right:20px;"><?=number_format($tp_amt)?> 원</td>
-											<td data-title="지급액" style="text-align:right;padding-right:20px;"><?=number_format($pay_amt)?> 원</td>
-											<td>
-												<button onclick="javascript:view_details('<?=$chk_mon?>','<?=$epcode?>')">상세보기</button>
-												<button onclick="javascript:show_receipt('<?=$chk_mon?>','<?=$epcode?>','<?=$tax_amt?>','<?=$taxfree_amt?>','<?=$tp_amt?>')">정산서</button>
+											<td data-title="과세매출액" class="text-end pe-3"><?=number_format($tax_amt)?> 원</td>
+											<td data-title="면세매출액" class="text-end pe-3"><?=number_format($taxfree_amt)?> 원</td>
+											<td data-title="총매출액" class="text-end pe-3"><?=number_format($tot_amt)?> 원</td>
+											<td data-title="정산입금액" class="text-end pe-3"><?=number_format($in_amt)?> 원</td>
+											<td data-title="수수료" class="text-end pe-3"><?=number_format($charge_amt)?> 원</td>
+											<td data-title="이북매출" class="text-end pe-3"><?=number_format($tp_amt)?> 원</td>
+											<td data-title="지급액" class="text-end pe-3"><?=number_format($pay_amt)?> 원</td>
+											<td class="text-center">
+												<button class="btn btn-primary btn-sm" onclick="javascript:view_details('<?=$chk_mon?>','<?=$epcode?>')">상세보기</button>
+												<button class="btn btn-info btn-sm" onclick="javascript:show_receipt('<?=$chk_mon?>','<?=$epcode?>','<?=$tax_amt?>','<?=$taxfree_amt?>','<?=$tp_amt?>')">정산서</button>
 											</td>
 										</tr>
 									<?php
@@ -182,8 +187,11 @@ if($monsel){
 									</tbody>
 								</table>
 								<div class="row">
-									<div class="col-sm-6">
-										총 매출 금액 : <?=number_format($sum_amt)?>원 - 총 수수료 : <?=number_format($sum_charge)?>원 = 총 지급액 : <?=number_format($sum_pay)?>원
+									<div class="col-12">
+										<div class="alert alert-info" role="alert">
+											총 매출 금액 : <strong><?=number_format($sum_amt)?></strong>원 - 총 수수료 : <strong><?=number_format($sum_charge)?></strong>원 = 총 지급액 : <strong><?=number_format($sum_pay)?></strong>원
+										</div>
+									</div>
 								</div>
 							</div><!-- /.table-responsive -->
 						</section>
@@ -197,9 +205,6 @@ if($monsel){
 
 
 <script type="text/javascript">
-function mon_refresh(){
-	document.date_form.submit();
-}
 function view_details(mon,epcorp){
 	document.location.href="shop_sale_details.php?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&mon=" + mon + "&epcorp=" + epcorp;
 }
