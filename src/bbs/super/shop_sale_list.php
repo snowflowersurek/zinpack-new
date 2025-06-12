@@ -3,16 +3,13 @@ include_once("_common.php");
 include_once("_head.php");
 
 $ndate = date("Y-m-d");
-if($_POST['monsel']){
-	$chk_mon = $_POST['monsel'];
-	$start_date = $_POST['monsel']."-01 00:00:00";
+$monsel = $_REQUEST['monsel'] ?? '';
+
+if($monsel){
+	$chk_mon = $monsel;
+	$start_date = $monsel."-01 00:00:00";
 	$end_day = date('t', strtotime($start_date));
-	$end_date = $_POST['monsel']."-".$end_day." 23:59:59";
-}else if($_GET['monsel']){
-	$chk_mon = $_POST['monsel'];
-	$start_date = $_POST['monsel']."-01 00:00:00";
-	$end_day = date('t', strtotime($start_date));
-	$end_date = $_POST['monsel']."-".$end_day." 23:59:59";
+	$end_date = $monsel."-".$end_day." 23:59:59";
 }else{
 	$start_mon = date("Y-m", strtotime($ndate.' -1 month'));
 	$start_date = $start_mon."-01 00:00:00";

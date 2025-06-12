@@ -7,10 +7,16 @@ if (!$db_conn) {
 	$db_conn = $connect_db;
 }
 
-$search = $_REQUEST['search'];
-$searchs = $_REQUEST['searchs'];
-$start_date = $_REQUEST['start_date'] ?: date("Ymd", strtotime(date("Ymd").' -2 months'));
-$end_date = $_REQUEST['end_date'] ?: date("Ymd");
+$search = $_REQUEST['search'] ?? '';
+$searchs = $_REQUEST['searchs'] ?? '';
+$start_date = $_REQUEST['start_date'] ?? date("Ymd", strtotime(date("Ymd").' -2 months'));
+if (!$start_date) {
+	$start_date = date("Ymd", strtotime(date("Ymd").' -2 months'));
+}
+$end_date = $_REQUEST['end_date'] ?? date("Ymd");
+if (!$end_date) {
+	$end_date = date("Ymd");
+}
 
 $now_start = date("Y-m-d H:i:s", strtotime($start_date));
 $now_end = date("Y-m-d H:i:s", strtotime($end_date.' + 23 hours + 59 minutes + 59 seconds'));

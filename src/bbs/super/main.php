@@ -435,8 +435,8 @@ $chkexpiry = ($chkcookie=="" || $chkcookie!=date("Y-m-d"))?"1":"0";
 					</div><!-- / .col -->
 					<div class="col-sm-4">
 						<?php
-							$day_start = date("Y-m-d H:i:s", strtotime(date("Ymd")-date("day").'+ 1 day'));
-							$day_end = date("Y-m-d H:i:s", strtotime(date("Ymd").'+ 23 hours + 59 minutes + 59 seconds'));
+							$day_start = date("Y-m-01 00:00:00");
+							$day_end = date("Y-m-t 23:59:59");
 						?>
 						<h4 class="lighter"><i class="fa fa-star"></i>이달의 랭킹 (<?php echo date("Y년 m월",strtotime($day_start)); ?>)</h4>
 						<section class="content-box">
