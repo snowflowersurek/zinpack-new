@@ -62,23 +62,30 @@ $now_end = date("Y-m-d H:i:s", strtotime($end_date.' + 23 hours + 59 minutes + 5
 							<div class="table-set-mobile dataTable-wrapper">
 								<div class="row">
 									<div class="col-sm-6">
-										<form name="date_form" id="date_form" action="<?php echo $_SERVER['PHP_SELF']; ?>?type=<?php echo $iw['type']; ?>&ep=<?php echo $iw['store']; ?>&gp=<?php echo $iw['group']; ?>&search=<?php echo $search; ?>&searchs=<?php echo $searchs_encoded; ?>" method="post">
-											<input type="text" name="start_date" maxlength="8" value="<?php echo $start_date; ?>">~
-											<input type="text" name="end_date" maxlength="8" value="<?php echo $end_date; ?>">
-											<input type="button" onclick="javascript:check_date();" value="조회">
+										<form name="date_form" id="date_form" action="<?php echo $_SERVER['PHP_SELF']; ?>?type=<?php echo $iw['type']; ?>&ep=<?php echo $iw['store']; ?>&gp=<?php echo $iw['group']; ?>&search=<?php echo $search; ?>&searchs=<?php echo $searchs_encoded; ?>" method="post" style="display:inline-block;">
+											<div class="datepicker-wrapper">
+												<input type="text" name="start_date" maxlength="10" value="<?php echo date('Y-m-d', strtotime($start_date)); ?>" class="form-control form-control-lg form-control-custom datepicker" style="width:9.5rem; display:inline-block; vertical-align:middle; cursor:pointer;" placeholder="시작일" readonly>
+												<i class="fas fa-calendar datepicker-icon"></i>
+											</div>
+											<span style="font-size:1.1rem; font-weight:500; margin:0 6px;">~</span>
+											<div class="datepicker-wrapper">
+												<input type="text" name="end_date" maxlength="10" value="<?php echo date('Y-m-d', strtotime($end_date)); ?>" class="form-control form-control-lg form-control-custom datepicker" style="width:9.5rem; display:inline-block; vertical-align:middle; cursor:pointer;" placeholder="종료일" readonly>
+												<i class="fas fa-calendar datepicker-icon"></i>
+											</div>
+											<input type="button" onclick="javascript:check_date();" value="조회" class="btn btn-success btn-lg btn-custom" style="margin-left:6px;">
 										</form>
 									</div>
 									<div class="col-sm-6">
 										<div class="dataTable-option-right">
 											<form name="search_form" id="search_form" action="<?php echo $_SERVER['PHP_SELF']; ?>?type=<?php echo $iw['type']; ?>&ep=<?php echo $iw['store']; ?>&gp=<?php echo $iw['group']; ?>&start_date=<?php echo $start_date; ?>&end_date=<?php echo $end_date; ?>" method="post">
-											<label>검색: <select name="search">
+											<label>검색: <select name="search" class="form-select form-select-lg" style="font-size:1.1rem; display:inline-block; width:12rem; min-width:180px; height:120%; min-height:3.2rem; vertical-align:middle;">
 												<option value="a" <?php if($search == "a"){echo "selected";}?>>업체코드</option>
 												<option value="b" <?php if($search == "b"){echo "selected";}?>>그룹코드</option>
 												<option value="c" <?php if($search == "c"){echo "selected";}?>>판매자코드</option>
 												<option value="d" <?php if($search == "d"){echo "selected";}?>>구매자코드</option>
 												<option value="e" <?php if($search == "e"){echo "selected";}?>>이북코드</option>
 												<option value="f" <?php if($search == "f"){echo "selected";}?>>제목</option>
-											</select></label><input type="text" name="searchs" value="<?php echo htmlspecialchars($searchs, ENT_QUOTES); ?>">
+											</select></label><input type="text" name="searchs" value="<?php echo htmlspecialchars($searchs, ENT_QUOTES); ?>" class="form-control form-control-lg" style="font-size:1.1rem; width:auto; display:inline-block; vertical-align:middle; margin-left:8px; height:120%; min-height:2.5rem;">
 											</form>
 										</div>
 									</div>
@@ -86,16 +93,16 @@ $now_end = date("Y-m-d H:i:s", strtotime($end_date.' + 23 hours + 59 minutes + 5
 								<table class="table table-striped table-bordered table-hover dataTable">
 									<thead>
 										<tr>
-											<th>판매일자</th>
-											<th>사이트</th>
-											<th>그룹</th>
-											<th>판매자</th>
-											<th>구매자</th>
-											<th>이북</th>
-											<th>판매(point)</th>
-											<th>위즈윈디지털(point)</th>
-											<th>사이트(point)</th>
-											<th>판매자(point)</th>
+											<th class="text-center">판매일자</th>
+											<th class="text-center">사이트</th>
+											<th class="text-center">그룹</th>
+											<th class="text-center">판매자</th>
+											<th class="text-center">구매자</th>
+											<th class="text-center">이북</th>
+											<th class="text-center">판매</th>
+											<th class="text-center">위즈윈디지털</th>
+											<th class="text-center">사이트</th>
+											<th class="text-center">판매자</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -142,21 +149,21 @@ $now_end = date("Y-m-d H:i:s", strtotime($end_date.' + 23 hours + 59 minutes + 5
 											$member_name = $row['member'] ?? '';
 									?>
 										<tr>
-											<td data-title="판매일자"><?php echo $bb_datetime;?></td>
-											<td data-title="사이트"><?php echo $ep_corporate;?><br><?php echo $ep_code;?></td>
-											<td data-title="그룹"><?php echo $gp_subject;?><br><?php echo $gp_code;?></td>
-											<td data-title="판매자"><?php echo $mb_name;?><br><?php echo $seller_mb_code;?></td>
-											<td data-title="구매자"><?php echo $member_name;?><br><?php echo $mb_code;?></td>
-											<td data-title="이북"><?php echo $bb_subject;?><br><?php echo $bd_code;?></td>
-											<td data-title="판매(point)"><?php echo number_format($bb_price); ?></td>
-											<td data-title="위즈윈디지털(point)"><?php echo $bb_price_super; ?></td>
-											<td data-title="사이트(point)"><?php echo $bb_price_site; ?></td>
-											<td data-title="판매자(point)"><?php echo $bb_price_seller; ?></td>
+											<td class="text-center" data-title="판매일자" style="white-space:nowrap;"><?php echo $bb_datetime;?></td>
+											<td class="text-center" data-title="사이트"><?php echo $ep_corporate; ?> <?php echo $ep_code;?></td>
+											<td class="text-center" data-title="그룹"><?php echo $gp_subject; ?> <?php echo $gp_code;?></td>
+											<td class="text-center" data-title="판매자"><?php echo $mb_name; ?> <?php echo $seller_mb_code;?></td>
+											<td class="text-center" data-title="구매자"><?php echo $member_name; ?> <?php echo $mb_code;?></td>
+											<td class="text-center" data-title="이북"><?php echo $bb_subject;?><br><?php echo $bd_code;?></td>
+											<td class="text-end" data-title="판매(point)"><?php echo number_format($bb_price); ?></td>
+											<td class="text-end" data-title="위즈윈디지털(point)"><?php echo $bb_price_super; ?></td>
+											<td class="text-end" data-title="사이트(point)"><?php echo $bb_price_site; ?></td>
+											<td class="text-end" data-title="판매자(point)"><?php echo $bb_price_seller; ?></td>
 										</tr>
 									<?php
 										$i ++;
 										}
-										if($i == 0) echo "<tr><td colspan=\"10\" align=\"center\">판매내역이 없습니다.</td></tr>";
+										if($i == 0) echo "<tr><td colspan='10' class='text-center'>판매내역이 없습니다.</td></tr>";
 									?>
 									</tbody>
 								</table>
@@ -170,8 +177,8 @@ $now_end = date("Y-m-d H:i:s", strtotime($end_date.' + 23 hours + 59 minutes + 5
 										</div>
 									</div>
 									<div class="col-sm-6">
-										<div class="dataTable-option-right">
-											<ul class="pagination">
+										<div class="dataTable-option-right text-end">
+											<ul class="pagination justify-content-end" style="gap:4px;">
 											<?php
 												if($total_page != 0){
 													if($page > $total_page) { $page = $total_page; }
@@ -182,21 +189,21 @@ $now_end = date("Y-m-d H:i:s", strtotime($end_date.' + 23 hours + 59 minutes + 5
 												 
 													if($page > $max_page) {
 														$pre = $start_page - 1;
-														echo "<li class='prev'><a href='{$_SERVER['PHP_SELF']}?type={$iw['type']}&ep={$iw['store']}&gp={$iw['group']}&start_date={$start_date}&end_date={$end_date}&search={$search}&searchs={$searchs_encoded}&page={$pre}'><i class='fa fa-angle-double-left'></i></a></li>";
+														echo "<li class='page-item'><a class='btn btn-outline-secondary btn-sm' href='{$_SERVER['PHP_SELF']}?type={$iw['type']}&ep={$iw['store']}&gp={$iw['group']}&start_date={$start_date}&end_date={$end_date}&search={$search}&searchs={$searchs_encoded}&page={$pre}'><i class='fa fa-angle-double-left'></i></a></li>";
 													} else {
-														echo "<li class='prev disabled'><a href='#'><i class='fa fa-angle-double-left'></i></a></li>";
+														echo "<li class='page-item'><a class='btn btn-outline-secondary btn-sm disabled' href='#'><i class='fa fa-angle-double-left'></i></a></li>";
 													}
 													
 													for($i=$start_page;$i<=$end_page;$i++) {
-														if($i==$page) echo "<li class='active'><a href='#'>".$i."</a></li>";
-														else          echo "<li><a href='{$_SERVER['PHP_SELF']}?type={$iw['type']}&ep={$iw['store']}&gp={$iw['group']}&start_date={$start_date}&end_date={$end_date}&search={$search}&searchs={$searchs_encoded}&page={$i}'>$i</a></li>";
+														if($i==$page) echo "<li class='page-item'><a class='btn btn-secondary btn-sm active' href='#'>$i</a></li>";
+														else          echo "<li class='page-item'><a class='btn btn-outline-secondary btn-sm' href='{$_SERVER['PHP_SELF']}?type={$iw['type']}&ep={$iw['store']}&gp={$iw['group']}&start_date={$start_date}&end_date={$end_date}&search={$search}&searchs={$searchs_encoded}&page={$i}'>$i</a></li>";
 													}
 												 
 													if($end_page<$total_page) {
 														$next = $end_page + 1;
-														echo "<li class='next'><a href='{$_SERVER['PHP_SELF']}?type={$iw['type']}&ep={$iw['store']}&gp={$iw['group']}&start_date={$start_date}&end_date={$end_date}&search={$search}&searchs={$searchs_encoded}&page={$next}'><i class='fa fa-angle-double-right'></i></a></li>";
+														echo "<li class='page-item'><a class='btn btn-outline-secondary btn-sm' href='{$_SERVER['PHP_SELF']}?type={$iw['type']}&ep={$iw['store']}&gp={$iw['group']}&start_date={$start_date}&end_date={$end_date}&search={$search}&searchs={$searchs_encoded}&page={$next}'><i class='fa fa-angle-double-right'></i></a></li>";
 													} else {
-														echo "<li class='next disabled'><a href='#'><i class='fa fa-angle-double-right'></i></a></li>";
+														echo "<li class='page-item'><a class='btn btn-outline-secondary btn-sm disabled' href='#'><i class='fa fa-angle-double-right'></i></a></li>";
 													}
 												}
 											?>
