@@ -1,0 +1,11 @@
+User-agent: Googlebot
+Disallow: /_payment/
+Disallow: /bbs/admin/
+Disallow: /bbs/super/
+Disallow: /book/
+Disallow: /doc/
+Disallow: /include/
+Disallow: /super/
+
+User-agent: *
+Allow: /

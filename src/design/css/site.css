@@ -1,0 +1,28 @@
+@charset "UTF-8";
+body,h1,h2,h3,h4,h5,h6,p{font-family:"맑은 고딕","Malgun Gothic","Helvetica Neue",Helvetica,Arial,sans-serif}
+@media (min-width:992px){
+	#main-navbar{float:left}
+	#sub-navbar,.searchbox{float:right}
+	.searchbox{display:table;width:400px}
+}
+.searchbox{margin:10px 0}
+.stick{background-color:#fff;top:0;left:0;width:100%;z-index:10;margin:0}
+.stick>.container{padding:10px 5px}
+#logo-navbar.navbar-default{background-color:transparent;border-color:transparent}
+.breadcrumb-box{width:100%}
+.breadcrumb-box .breadcrumb+.input-group-btn .btn{padding:7px 12px;margin-left:5px}
+.btn-list{margin:20px 0}
+.fa-5x+.text-icon{font-size:1.3em;top:18px!important}
+#site-link{margin-left:5px}
+.video-container iframe{width:100%}
+.form-group .row>div{margin-bottom:10px}
+footer{font-size:12px;padding-top:32px}
+.text-color-white{color:#fff!important}
+.bordered{border:1px solid #ccc}
+.fixed-width{width:180px}
+.navbar-mobile#main-navbar, .zp-top-nav#main-navbar{float:none;display:block!important;padding:5px;margin:0;border:0;background-color:transparent}
+.navbar-mobile .navbar-brand, .zp-top-nav .navbar-brand{height:50px;margin-top:0;float:left;padding:0}
+@media (min-width:768px){
+	.stick{position:fixed}
+	.zp-top-nav .navbar-collapse{display:block!important}
+}

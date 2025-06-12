@@ -1,0 +1,326 @@
+﻿a0001 
+a0002 
+a0003 Sign In Please
+a0004 Members Only
+a0005 Purchased
+a0006 My Points
+a0007 Charge Points
+a0008 My Order
+a0009 My Cart
+a0010 Search
+a0011 Enter Keyword
+a0012 Notice
+a0013 Categories
+a0014 Sign Out
+a0015 My Account
+a0016 Sign In
+a0017 Sign Up
+a0018 Settings
+a0019 Join Group
+a0020 Secret
+a0021 
+a0022 
+a0023 
+a0024 E-Mail Address
+a0025 Tax Number
+a0026 License Number
+a0027 Terms And Conditions
+a0028 Privacy Policy
+a0029 Verification Of Your Bank Account
+a0030 Your Bank Account Has Been Verified
+a0031 Already Registered Or Invalid Bank Account Number
+a0032 Sign In Please
+a0033 Not Found
+a0034 Posted
+a0035 Not Found
+a0036 Comment Deleted
+a0037 E-Mail Confirmed
+a0038 You can log in after registration is confirmed by your e-mail
+a0039 Confirmed
+a0040 Already Confirmed or Invalid Email Address
+a0041 Register The Website
+a0042 Name Of Website
+a0043 Introducing
+a0044 Website Url
+a0045 Type Of Registration
+a0046 Not Register More
+a0047 Approval of Adminisrator
+a0048 Automatic Approval
+a0049 With Invitation
+a0050 Entering Code
+a0051 Register
+a0052 Automatic Approval
+a0053 With Invitation
+a0054 Send Code
+a0055 Enter Code
+a0056 Code
+a0057 Already A Member Or Under Registering Process
+a0058 Cannot Register
+a0059 Requested Website Registration
+a0060 Successfully Registered
+a0061 Expired
+a0062 You Name Is Not On The Invitaion List
+a0063 Check Invitation Code Please
+a0064 Unable To Register
+a0065 Your email Address
+a0066 Id - email Address
+a0067 Password
+a0068 Password - Must be more than 8 Chracters
+a0069 Please re-enter your password
+a0070 Your name
+a0071 Name - Real
+a0072 Nickname Or Handle
+a0073 Your nickname / handle - Alphabet, Numbers Available (No Spaces) 
+a0074 Secondary email address
+a0075 Secondary email address - Using when  you forgot your email address
+a0076 Phone Number
+a0077 Address
+a0078 Auto Complete
+a0079 Agree With Terms & Conditions
+a0080 Agree With Privacy Policy
+a0081 Sign Up
+a0082 Please enter your email address
+a0083 Invalid email address
+a0084 Password - Must be more than 8 Chracters
+a0085 Please re-enter your password
+a0086 Name
+a0087 Your nickname / handle - Alphabet, Numbers Available (No Spaces) 
+a0088 Please enter your phone number
+a0089 Please enter ZIP or postal code
+a0090 Please enter youraddress
+a0091 Please enter secondary email address
+a0092 Invalid email address
+a0093 Please Agree With Site Policies
+a0094 Please Agree with The Terms & Conditions and Privacy Policy
+a0095 Unable To Register
+a0096 Check Invitation Code Please
+a0097 Your Registraion Process Has Been Expired
+a0098 Your name is not on the invitation list
+a0099 email address already exits
+a0100 This Nickname Already Exits
+a0101 Confirm Your Registration
+a0102 Welcome, Click The Confirm Message And Complete
+a0103 Confirm 
+a0104 Confirmed
+a0105 Please check your email accout for confirmation email from us then you need to open this email and follow the instruction to complete your registration.(This link is valid for 48 hours.)
+a0106 Forgot my email address / password
+a0107 Please enter your password
+a0108 Can Login After You Have Recieved Your E-Mail
+a0109 Unable To  Log in Without Approval of Administrator
+a0110 Check Your Information
+a0111 Edit My Profile
+a0112 New Password
+a0113 Current Password
+a0114 Current Password
+a0115 Saved
+a0116 Please check your password
+a0117 Temporary password has been sent to This email address
+a0118 Send
+a0119 Check you email address and name
+a0120 Temporary Password
+a0121 Temporary Password
+a0122 Service Information
+a0123 Log in With Temporary Password And Then Chage It Please
+a0124 Temporary password has been sent to This email address
+a0125 Number
+a0126 Title
+a0127 Date 
+a0128 Empty List
+a0129 Date 
+a0130 Views
+a0131 My Points
+a0132 Currency Rate
+a0133 Amounts To Pay? Charge?
+a0134 Total Costs
+a0135 Payment Method
+a0136 add to cart
+a0137 Available Points
+a0138 Buy Points  Charge Points
+a0139 Stack
+a0140 Used
+a0141 Balance
+a0142 No History
+a0143 KRW
+a0144 Expiration Date 
+a0145 Download
+a0146 No Contents
+a0147 No Expiration
+a0148 Not Found
+a0149 Download
+a0150 Title
+a0151 Price 
+a0152 Donation 
+a0153 Used Points
+a0154 File Name
+a0155 File Size
+a0156 Download Available By
+a0157 No Expiration
+a0158 Days
+a0159 Download
+a0160 Download?
+a0161 Not Found
+a0162 Not Enough Points
+a0163 File Not Found
+a0164 Donate
+a0165 Category Not Found
+a0166 Vendor
+a0167 Pages
+a0168 Minutes
+a0169 No Permission
+a0170 Donate
+a0171 Registrant
+a0172 Registration Date
+a0173 Downloads
+a0174 File Size
+a0175 Comment
+a0176 Delete?
+a0177 Comment
+a0178 Searching Results
+a0179 HOT
+a0180 NEW
+a0181 Deleted
+a0182 Edit
+a0183 Root
+a0184 Middle
+a0185 Sub
+a0186 Select
+a0187 Youtube Url
+a0188 EA Only Available
+a0189 Choose A Category
+a0190 Upload Image
+a0191 Only Image File Available
+a0192 Not Authorized To This Category
+a0193 Image Attachment Error
+a0194 Edited
+a0195 Saved
+a0196 Delete?
+a0197 Delete?
+a0198 Write
+a0199 Donate Points
+a0200 Receiver
+a0201 Donation Amounts
+a0202 Messages
+a0203 Donated By
+a0204 How Much To Donate
+a0205 Messages
+a0206 Not Found
+a0207 Not Enough Points
+a0208 Completed
+a0209 Unable To Cancel
+a0210 Order Details
+a0211 Shipping Number
+a0212 Combined Shipping
+a0213 Delivery
+a0214 Cash On Delivery
+a0215 EA
+a0216 Purchasing Date
+a0217 Destination
+a0218 Order Costs
+a0219 Net Costs
+a0220 Track Your Order
+a0221 Available Quantity Per Person Is :
+a0222 Not Found. Your Choice Has Not Enough Stock
+a0223 There Is Not Enough Stock To Complete Your Order - If You Are Happy For Smaller Quantity, Please Carry On Or If Not Please Contact Us
+a0224 Total Cost
+a0225 Total Shipping Cost
+a0226 Continue
+a0227 Checkout
+a0228 You Save
+a0229 Pay With Order
+a0230 Pay (Cash) On Delivery
+a0231 Stock Detail And Options - 1 Order Max
+a0232 Select Product
+a0233 Sold Out
+a0234 Ea Available
+a0235 Sold Out
+a0236 Product information
+a0237 Manufacturer
+a0238 Origin
+a0239 Brand
+a0240 Product Code
+a0241 Seller
+a0242 ( ) Ea Availaber Per Person
+a0243 Already On The List
+a0244 Choose Options
+a0245 Order / Payment
+a0246 Delivery Message(Optional)
+a0247 Contact Number
+a0248 Points To Pay (Max
+a0249 Points Used
+a0250 Payment Method
+a0251 Checkout
+a0252 Check You Have Enough Points
+a0253 Home
+a0254 Copy URL?
+a0255 To Copy, Press Ctrl+C.
+a0256 Modify
+a0257 Delete
+a0258 Write
+a0259 Save
+a0260 List
+a0261 History
+a0262 Point History
+a0263 Payment Failed.
+a0264 Point Charged.
+a0265 FREE
+a0266 Comment
+a0267 Write Type
+a0268 Easy Mode
+a0269 Web Editor
+a0270 Content
+a0271 Images
+a0272 Check Title
+a0273 Check Content
+a0274 Canceld
+a0275 Cancel Failed
+a0276 Error Code
+a0277 Error Message
+a0278 Payment Complete
+a0279 Ready For Shipment
+a0280 Under The Delevery
+a0281 Delevered
+a0282 Cancel
+a0283 Return
+a0284 Paymanet Canceled
+a0285 Order List
+a0286 Product Name
+a0287 Option
+a0288 Ea
+a0289 Status
+a0290 Shipping Number
+a0291 To Cancel Your Payment, Press Cancel Button
+a0292 Point
+a0293 Shipping Cost
+a0294 Total
+a0295 possible
+a0296 impossible
+a0297 Buyer information
+a0298 Delivery address
+a0299 Payment info
+a0300 Payment Success.
+a0301 Copy URL
+a0302 Add To Cart
+a0303 KakaoTalk
+a0304 KakaoStory
+a0305 Facebook
+a0306 Twitter
+a0307 This country we can shipping by premium EMS only. 
+a0308 Sorry. This country we can not shipping.
+a0309 Recommend
+a0310 Written by
+a0311 Translated by
+a0312 Illustrated by
+a0313 Directed by
+a0314 Price
+a0315 Product Dimensions
+a0316 Publication Date
+a0317 KDC
+a0318 About Author
+a0319 Book Information & Summary
+a0320 Table of Contents
+a0321 Editor’s Note
+a0322 pages
+a0323 Original title
+a0324 Publisher
+a0325 Deposit Canceled
+a0326 Track of Delivery

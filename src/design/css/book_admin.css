@@ -1,0 +1,150 @@
+.book_main_wrap {
+	position: relative;
+	margin-top: 10px;
+	width: 100%;
+	height: 0;
+	overflow: hidden;
+	padding-bottom: 130%;
+	border:1px solid #e8e8e8;
+}
+.book_main_wrap .wrap {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.book_main_wrap .top_logo{
+	float:left;
+	position: relative;
+	margin-top: 2.6%;
+	margin-left: 2.6%;
+	width: 65.1%;
+	height: 14.94%;
+}
+.book_main_wrap .top_logo img{
+	width: 100%;
+	height: 100%;
+}
+
+.book_main_wrap .main_list_btn{
+	float:left;
+	position: relative;
+	margin-top: 2.6%;
+	margin-left: 18.88%;
+	width: 10.47%;
+	height: 2.99%;
+}
+.book_main_wrap .main_list_btn img{
+	width: 100%;
+	height: 100%;
+}
+
+.book_main_wrap .main_sub_title{
+	float:left;
+	position: relative;
+	margin-top: 2.6%;
+	margin-left: 47.71%;
+	width: 49.95%;
+	height: 2.99%;
+	text-align:right;
+	font-weight:bold;
+}
+
+.book_thum_wrap{
+	float:left;
+	position: relative;
+	margin-top: 0.7%;
+	margin-left: 1.6%;
+	width: 96.09%;
+	height: 73.51%;
+}
+.book_thum_wrap .thum_image{
+	float:left;
+	position: relative;
+	margin-top: 0.68%;
+	margin-left: 0.68%;
+	width: 32.52%;
+	height: 32.52%;
+}
+.book_thum_wrap .thum_image img{
+	width: 100%;
+	height: 100%;
+}
+
+.book_list_wrap{
+	float:left;
+	position: relative;
+	overflow:auto;
+	margin-top: 0.7%;
+	margin-left: 1.6%;
+	width: 96.09%;
+	height: 73.51%;
+	border-top:3px solid #e8e8e8;
+	border-bottom:3px solid #e8e8e8;
+}
+.book_list_wrap ul, p{
+	margin: 0px;
+	padding: 0px;
+}
+
+.book_list_wrap li{
+	list-style:none;
+	margin: 0px;
+	padding: 10px 5px;
+	border-bottom:1px solid #e8e8e8;
+}
+.book_list_wrap .title_kr{
+	font-size:15px;
+}
+.book_list_wrap .title_us{
+	font-size:12px;
+}
+.book_list_wrap .person{
+	font-size:13px;
+}
+
+@media (max-width: 992px) {
+	.book_main_wrap .main_sub_title {
+		font-size:12px;
+	}
+
+	.book_list_wrap .title_kr{
+		font-size:15px;
+	}
+	.book_list_wrap .title_us{
+		font-size:12px;
+	}
+	.book_list_wrap .person{
+		font-size:13px;
+	}
+}
+@media (max-width: 1024px) {
+	.book_main_wrap .main_sub_title {
+		font-size:8px;
+	}
+	.book_list_wrap .title_kr{
+		font-size:10px;
+	}
+	.book_list_wrap .title_us{
+		font-size:8px;
+	}
+	.book_list_wrap .person{
+		font-size:8px;
+	}
+}
+@media (max-width: 400px) {
+	.book_main_wrap .main_sub_title {
+		font-size:5px;
+	}
+	.book_list_wrap .title_kr{
+		font-size:7px;
+	}
+	.book_list_wrap .title_us{
+		font-size:6px;
+	}
+	.book_list_wrap .person{
+		font-size:6px;
+	}
+}

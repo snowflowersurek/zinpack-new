@@ -1,0 +1,23 @@
+<?php
+include_once("_common.php");
+if (($iw[group] == "all" && $iw[level] != "admin") || ($iw[group] != "all" && $iw[gp_level] != "gp_admin")) alert("잘못된 접근입니다!","");
+?>
+<meta http-equiv="content-type" content="text/html; charset=<?=$iw['charset']?>" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<?
+$ad_code = trim(mysql_real_escape_string($_POST[ad_code]));
+$ad_navigation = trim(mysql_real_escape_string($_POST[ad_navigation]));
+$ad_subject = trim(mysql_real_escape_string($_POST[ad_subject]));
+$ad_content = mysql_real_escape_string($_POST[contents1]);
+
+$sql = "update $iw[about_data_table] set
+		ad_navigation = '$ad_navigation',
+		ad_subject = '$ad_subject',
+		ad_content = '$ad_content'
+		where ad_code = '$ad_code' and ep_code = '$iw[store]' and gp_code = '$iw[group]' and mb_code = '$iw[member]' 
+		";
+
+sql_query($sql);
+
+alert("페이지가 변경되었습니다.","$iw[admin_path]/about_data_list.php?type=$iw[type]&ep=$iw[store]&gp=$iw[group]");
+?>
