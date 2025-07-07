@@ -1,4 +1,4 @@
-<?
+<?php
 if (!defined("_INFOWAY_")) exit; // 개별 페이지 접근 불가
 ?>
 <style type="text/css">
@@ -22,7 +22,7 @@ if (!defined("_INFOWAY_")) exit; // 개별 페이지 접근 불가
 			</div>
 		</h3>
 		<ul class="media-list">
-			<?
+			<?php
 				$hs_limit = ($hs_size_height-1) * 3;
 				if($hs_size_height == 2){
 					$topic_paragraph_1000 = 3;
@@ -140,3 +140,6 @@ if (!defined("_INFOWAY_")) exit; // 개별 페이지 접근 불가
 		</ul>
 	</div>
 </div>
+
+
+

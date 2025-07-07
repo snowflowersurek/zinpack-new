@@ -4,11 +4,11 @@ if ($iw[type] != "group" || $iw[level] != "admin" || $iw[group] != "all") alert(
 ?>
 <meta http-equiv="content-type" content="text/html; charset=<?=$iw['charset']?>" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-<?
-$ep_exposed = trim(mysql_real_escape_string($_POST[ep_exposed]));
-$ep_autocode = trim(mysql_real_escape_string($_POST[ep_autocode]));
-$ep_jointype = trim(mysql_real_escape_string($_POST[ep_jointype]));
-$ep_anonymity = trim(mysql_real_escape_string($_POST[ep_anonymity]));
+<?php
+$ep_exposed = trim(mysqli_real_escape_string($iw['connect'], $_POST['ep_exposed']));
+$ep_autocode = trim(mysqli_real_escape_string($iw['connect'], $_POST['ep_autocode']));
+$ep_jointype = trim(mysqli_real_escape_string($iw['connect'], $_POST['ep_jointype']));
+$ep_anonymity = trim(mysqli_real_escape_string($iw['connect'], $_POST['ep_anonymity']));
 
 $sql = "update $iw[enterprise_table] set
 		ep_exposed = '$ep_exposed',
@@ -22,3 +22,6 @@ sql_query($sql);
 
 alert("회원가입 설정이 수정되었습니다.","$iw[admin_path]/member_join_setting.php?type=$iw[type]&ep=$iw[store]&gp=$iw[group]");
 ?>
+
+
+

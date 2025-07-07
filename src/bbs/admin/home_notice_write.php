@@ -16,7 +16,8 @@ set_cookie("iw_upload",$upload_path,time()+36000);
 
 include_once("_head.php");
 ?>
-<script language="Javascript" src="/include/ckeditor/ckeditor.js"></script>
+<script src="/include/ckeditor/ckeditor5.js"></script>
+<script src="/include/ckeditor/ckeditor5-adapter.js"></script>
 
 <div class="breadcrumbs" id="breadcrumbs">
 	<ul class="breadcrumb">
@@ -106,6 +107,9 @@ include_once("_head.php");
 	}
 </script>
  
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

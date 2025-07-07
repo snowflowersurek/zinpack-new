@@ -406,3 +406,7 @@ class PMA_ExportPdf extends PMA_PDF
 
 } // end of PMA_Export_PDF class
 ?>
+
+
+
+

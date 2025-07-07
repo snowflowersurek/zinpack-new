@@ -5,16 +5,16 @@ if (($iw[group] == "all" && $iw[level] != "admin")) alert("잘못된 접근입�
 ?>
 <meta http-equiv="content-type" content="text/html; charset=<?=$iw['charset']?>" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-<?
+<?php
 $upload_path = $_POST[upload_path];
-$contest_code = trim(mysql_real_escape_string($_POST[contest_code]));
-$ep_upload_size = trim(mysql_real_escape_string($_POST[ep_upload_size]));
-$cg_code = trim(mysql_real_escape_string($_POST[cg_code]));
-$subject = trim(mysql_real_escape_string($_POST[subject]));
-$start_date = trim(mysql_real_escape_string($_POST[start_date]))." 00:00:00";
-$end_date = trim(mysql_real_escape_string($_POST[end_date]))." 23:59:59";
-$content = trim(mysql_real_escape_string($_POST[content]));
-$display = trim(mysql_real_escape_string($_POST[display]));
+$contest_code = trim(mysqli_real_escape_string($iw['connect'], $_POST['contest_code']));
+$ep_upload_size = trim(mysqli_real_escape_string($iw['connect'], $_POST['ep_upload_size']));
+$cg_code = trim(mysqli_real_escape_string($iw['connect'], $_POST['cg_code']));
+$subject = trim(mysqli_real_escape_string($iw['connect'], $_POST['subject']));
+$start_date = trim(mysqli_real_escape_string($iw['connect'], $_POST['start_date']))." 00:00:00";
+$end_date = trim(mysqli_real_escape_string($iw['connect'], $_POST['end_date']))." 23:59:59";
+$content = trim(mysqli_real_escape_string($iw['connect'], $_POST['content']));
+$display = trim(mysqli_real_escape_string($iw['connect'], $_POST['display']));
 $reg_date = date("Y-m-d H:i:s");
 
 if($_FILES["attach_file"]["name"] && $_FILES["attach_file"]["size"] > 1024*1024*$ep_upload_size){
@@ -70,3 +70,6 @@ if($_FILES["attach_file"]["name"] && $_FILES["attach_file"]["size"] > 1024*1024*
 	alert("등록되었습니다.","$iw[admin_path]/publishing_contest_list.php?type=$iw[type]&ep=$iw[store]&gp=$iw[group]");
 }
 ?>
+
+
+

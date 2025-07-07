@@ -57,7 +57,7 @@ include_once("_head.php");
 									</div>
 									<div class="col-sm-6">
 										<div class="dataTable-option-right">
-											<?
+											<?php
 												if($_POST['search']){
 													$search = $_POST['search'];
 													$searchs = $_POST['searchs'];
@@ -75,9 +75,9 @@ include_once("_head.php");
 											?>
 											<form name="search_form" id="search_form" action="<?=$PHP_SELF?>?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>" method="post">
 											<label>검색: <select name="search">
-												<option value="a" <?if($search == "a"){?>selected="selected"<?}?>>컨텐츠코드</option>
-												<option value="b" <?if($search == "b"){?>selected="selected"<?}?>>판매자코드</option>
-												<option value="c" <?if($search == "c"){?>selected="selected"<?}?>>컨텐츠명</option>
+												<option value="a" <?php if{?>selected="selected"<?php }?>>컨텐츠코드</option>
+												<option value="b" <?php if{?>selected="selected"<?php }?>>판매자코드</option>
+												<option value="c" <?php if{?>selected="selected"<?php }?>>컨텐츠명</option>
 											</select></label><input type="text" name="searchs" value="<?=$searchs?>">
 											</form>
 										</div>
@@ -96,10 +96,10 @@ include_once("_head.php");
 										</tr>
 									</thead>
 									<tbody>
-									<?
+									<?php
 										$sql = "select * from $iw[doc_data_table] where ep_code = '$iw[store]' $search_sql";
 										$result = sql_query($sql);
-										$total_line = mysql_num_rows($result);
+										$total_line = mysqli_num_rows($result);
 
 										$max_line = 10;
 										$max_page = 10;
@@ -165,7 +165,7 @@ include_once("_head.php");
 											<td data-title="형식"><?=$dd_file[1]?></td>
 											<td data-title="크기"><?=$dd_file_size?> M</td>
 										</tr>
-									<?
+									<?php
 										$i++;
 										}
 										if($i==0) echo "<tr><td colspan='7' align='center'>검색된 컨텐츠가 없습니다.</td></tr>";
@@ -179,7 +179,7 @@ include_once("_head.php");
 									<div class="col-sm-6">
 										<div class="dataTable-option-right">
 											<ul class="pagination">
-											<?
+											<?php
 												if($total_page!=0){
 													if($page>$total_page) { $page=$total_page; }
 													$start_page = ((ceil($page/$max_page)-1)*$max_page)+1;
@@ -221,6 +221,9 @@ include_once("_head.php");
 	</div><!-- /container -->
 </div><!-- /end .page-content -->
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

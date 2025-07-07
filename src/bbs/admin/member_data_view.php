@@ -82,15 +82,12 @@ if (!$row["mb_no"]) alert("잘못된 접근입니다!","");
 						<label class="col-sm-1 control-label">주소</label>
 						<div class="col-sm-11">
 							<p class="col-xs-12 col-sm-8 form-control-static">
-							<?if($iw[language]=="ko"){?>
-								[<?=$row["mb_zip_code"]?>] <?=$row["mb_address"]?> <?=$row["mb_address_sub"]?>
-							<?}else if($iw[language]=="en"){?>
-								<?
+							<?php if($iw[language]=="ko"){?>
+								[<?=$row["mb_zip_code"]?>] <?=$row["mb_address"]?> <?=$row["mb_address_sub"] }else if($iw[language]=="en"){
 									$sql2 = "select ct_name from $iw[country_table] where ct_code = '$row[mb_address_country]'";
 									$row2 = sql_fetch($sql2);
 								?>
-								[<?=$row["mb_zip_code"]?>] <?=$row["mb_address_sub"]?>, <?=$row["mb_address"]?>, <?=$row['mb_address_city']?>, <?=$row['mb_address_state']?>, <?=$row2["ct_name"]?>
-							<?}?>
+								[<?=$row["mb_zip_code"]?>] <?=$row["mb_address_sub"]?>, <?=$row["mb_address"]?>, <?=$row['mb_address_city']?>, <?=$row['mb_address_state']?>, <?=$row2["ct_name"] }?>
 							</p>
 						</div>
 					</div>
@@ -141,6 +138,9 @@ if (!$row["mb_no"]) alert("잘못된 접근입니다!","");
 	</div><!-- /container -->
 </div><!-- /end .page-content -->
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

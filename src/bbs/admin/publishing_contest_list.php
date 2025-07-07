@@ -43,7 +43,7 @@ include_once("_head.php");
 									</div>
 									<div class="col-sm-8">
 										<div class="dataTable-option-right">
-											<?
+											<?php
 												if($_POST['searchby']){
 													$searchby = $_POST['searchby'];
 													$keyword = $_POST['keyword'];
@@ -57,7 +57,7 @@ include_once("_head.php");
 											?>
 											<form name="search_form" id="search_form" action="<?=$PHP_SELF?>?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>" method="post">
 											<label>검색: <select name="searchby">
-												<option value="subject" <?if($searchby == "subject"){?>selected="selected"<?}?>>제목</option>
+												<option value="subject" <?php if{?>selected="selected"<?php }?>>제목</option>
 											</select></label><input type="text" name="keyword" value="<?=$keyword?>">
 											</form>
 										</div>
@@ -78,7 +78,7 @@ include_once("_head.php");
 										</tr>
 									</thead>
 									<tbody>
-									<?
+									<?php
 										$sql = "select * from iw_publishing_contest where ep_code = '$iw[store]' and gp_code = '$iw[group]' $search_sql";
 										$result = sql_query($sql);
 										$total_line = mysql_num_rows($result);
@@ -128,11 +128,11 @@ include_once("_head.php");
 											<td data-title="제목"><a href="<?=$iw['admin_path']?>/publishing_contest_edit.php?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&contest_code=<?=$contest_code?>"><?=$subject?></a></td>
 											<td data-title="공모기간"><?=$start_date." ~ ".$end_date?></td>
 											<td data-title="공모상태">
-												<?if(strtotime($end_date) - strtotime(date("Y-m-d")) > -1){?>
+												<?php if(strtotime($end_date) - strtotime(date("Y-m-d")) > -1){?>
 													<span class="label label-sm label-success">진행 중</span>
-												<?}else{?>
+												<?php }else{?>
 													<span class="label label-sm label-default">마감</span>
-												<?}?>
+												<?php }?>
 											</td>
 											<td data-title="등록일"><?=$reg_date?></td>
 											<td data-title="접수 작품수"><?=$contestant_cnt?></td>
@@ -140,14 +140,14 @@ include_once("_head.php");
 												<a href="<?=$iw['admin_path']?>/publishing_contestant_list.php?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$gp_code?>&contest_code=<?=$contest_code?>"><span class="label label-sm label-default">바로가기</span></a>
 											</td>
 											<td data-title="게시상태">
-												<?if($display==1){?>
+												<?php if($display==1){?>
 													<span class="label label-sm label-success">노출</span>
-												<?}else{?>
+												<?php }else{?>
 													<span class="label label-sm label-warning">숨김</span>
-												<?}?>	
+												<?php }?>	
 											</td>
 										</tr>
-									<?
+									<?php
 										$i++;
 										}
 										if($i==0) echo "<tr><td colspan='9' align='center'>데이터가 없습니다.</td></tr>";
@@ -166,7 +166,7 @@ include_once("_head.php");
 									<div class="col-sm-8">
 										<div class="dataTable-option-right">
 											<ul class="pagination">
-											<?
+											<?php
 												if($total_page!=0){
 													if($page>$total_page) { $page=$total_page; }
 													$start_page = ((ceil($page/$max_page)-1)*$max_page)+1;
@@ -208,6 +208,9 @@ include_once("_head.php");
 	</div><!-- /container -->
 </div><!-- /end .page-content -->
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

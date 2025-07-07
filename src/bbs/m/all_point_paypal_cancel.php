@@ -5,3 +5,6 @@ if ($iw[level]=="guest") alert(national_language($iw[language],"a0003","로그�
 alert(national_language($iw[language],"a0263","결제요청이 실패하였습니다."),"$iw[m_path]/all_point_charge.php?type=$iw[type]&ep=$iw[store]&gp=$iw[group]");
 ?>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+
+

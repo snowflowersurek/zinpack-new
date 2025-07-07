@@ -76,13 +76,13 @@ $cg_line = $row[cg_line];
 						<label class="col-sm-1 control-label">글쓰기 권한</label>
 						<div class="col-sm-11">
 							<select class="col-xs-12 col-sm-8" name="cg_level_write">
-								<?
+								<?php
 									$sql = "select * from $iw[group_level_table] where ep_code = '$iw[store]' and gp_code = '$iw[group]' and gl_display=1 order by gl_no asc";
 									$result = sql_query($sql);
 									while($row = @sql_fetch_array($result)){
 								?>
-									<option value="<?=$row["gl_level"]?>" <?if($cg_level_write == $row["gl_level"]){?>selected<?}?>><?=$row["gl_name"]?></option>
-								<?
+									<option value="<?=$row["gl_level"]?>" <?php if{?>selected<?php }?>><?=$row["gl_name"]?></option>
+								<?php
 									}
 								?>
 							</select> 이상
@@ -94,13 +94,13 @@ $cg_line = $row[cg_line];
 						<label class="col-sm-1 control-label">덧글쓰기 권한</label>
 						<div class="col-sm-11">
 							<select class="col-xs-12 col-sm-8" name="cg_level_comment">
-								<?
+								<?php
 									$sql = "select * from $iw[group_level_table] where ep_code = '$iw[store]' and gp_code = '$iw[group]' and gl_display=1 order by gl_no asc";
 									$result = sql_query($sql);
 									while($row = @sql_fetch_array($result)){
 								?>
-									<option value="<?=$row["gl_level"]?>" <?if($cg_level_comment == $row["gl_level"]){?>selected<?}?>><?=$row["gl_name"]?></option>
-								<?
+									<option value="<?=$row["gl_level"]?>" <?php if{?>selected<?php }?>><?=$row["gl_name"]?></option>
+								<?php
 									}
 								?>
 							</select> 이상
@@ -112,14 +112,14 @@ $cg_line = $row[cg_line];
 						<label class="col-sm-1 control-label">읽기 권한</label>
 						<div class="col-sm-11">
 							<select class="col-xs-12 col-sm-8" name="cg_level_read">
-									<option value="10" <?if($cg_level_read == 10){?>selected<?}?>>비회원</option>
-								<?
+									<option value="10" <?php if{?>selected<?php }?>>비회원</option>
+								<?php
 									$sql = "select * from $iw[group_level_table] where ep_code = '$iw[store]' and gp_code = '$iw[group]' and gl_display=1 order by gl_no asc";
 									$result = sql_query($sql);
 									while($row = @sql_fetch_array($result)){
 								?>
-									<option value="<?=$row["gl_level"]?>" <?if($cg_level_read == $row["gl_level"]){?>selected<?}?>><?=$row["gl_name"]?></option>
-								<?
+									<option value="<?=$row["gl_level"]?>" <?php if{?>selected<?php }?>><?=$row["gl_name"]?></option>
+								<?php
 									}
 								?>
 							</select> 이상
@@ -131,13 +131,13 @@ $cg_line = $row[cg_line];
 						<label class="col-sm-1 control-label">업로드 권한</label>
 						<div class="col-sm-11">
 							<select class="col-xs-12 col-sm-8" name="cg_level_upload">
-								<?
+								<?php
 									$sql = "select * from $iw[group_level_table] where ep_code = '$iw[store]' and gp_code = '$iw[group]' and gl_display=1 order by gl_no asc";
 									$result = sql_query($sql);
 									while($row = @sql_fetch_array($result)){
 								?>
-									<option value="<?=$row["gl_level"]?>" <?if($cg_level_upload == $row["gl_level"]){?>selected<?}?>><?=$row["gl_name"]?></option>
-								<?
+									<option value="<?=$row["gl_level"]?>" <?php if{?>selected<?php }?>><?=$row["gl_name"]?></option>
+								<?php
 									}
 								?>
 							</select> 이상
@@ -149,14 +149,14 @@ $cg_line = $row[cg_line];
 						<label class="col-sm-1 control-label">다운로드 권한</label>
 						<div class="col-sm-11">
 							<select class="col-xs-12 col-sm-8" name="cg_level_download">
-									<option value="10" <?if($cg_level_download == 10){?>selected<?}?>>비회원</option>
-								<?
+									<option value="10" <?php if{?>selected<?php }?>>비회원</option>
+								<?php
 									$sql = "select * from $iw[group_level_table] where ep_code = '$iw[store]' and gp_code = '$iw[group]' and gl_display=1 order by gl_no asc";
 									$result = sql_query($sql);
 									while($row = @sql_fetch_array($result)){
 								?>
-									<option value="<?=$row["gl_level"]?>" <?if($cg_level_download == $row["gl_level"]){?>selected<?}?>><?=$row["gl_name"]?></option>
-								<?
+									<option value="<?=$row["gl_level"]?>" <?php if{?>selected<?php }?>><?=$row["gl_name"]?></option>
+								<?php
 									}
 								?>
 							</select> 이상
@@ -167,23 +167,23 @@ $cg_line = $row[cg_line];
 						<label class="col-sm-1 control-label">기본 정보</label>
 						<div class="col-sm-11">
 							<label class="middle">
-								<input type="checkbox" name="cg_date" value="1" <?if($cg_date==1){?>checked<?}?>>
+								<input type="checkbox" name="cg_date" value="1" <?php if{?>checked<?php }?>>
 								<span class="lbl"> 날짜</span>
 							</label>
 							<label class="middle">
-								<input type="checkbox" name="cg_writer" value="1" <?if($cg_writer==1){?>checked<?}?>>
+								<input type="checkbox" name="cg_writer" value="1" <?php if{?>checked<?php }?>>
 								<span class="lbl"> 글쓴이</span>
 							</label>
 							<label class="middle">
-								<input type="checkbox" name="cg_hit" value="1" <?if($cg_hit==1){?>checked<?}?>>
+								<input type="checkbox" name="cg_hit" value="1" <?php if{?>checked<?php }?>>
 								<span class="lbl"> 조회수</span>
 							</label>
 							<label class="middle">
-								<input type="checkbox" name="cg_comment" value="1" <?if($cg_comment==1){?>checked<?}?>>
+								<input type="checkbox" name="cg_comment" value="1" <?php if{?>checked<?php }?>>
 								<span class="lbl"> 댓글수</span>
 							</label>
 							<label class="middle">
-								<input type="checkbox" name="cg_recommend" value="1" <?if($cg_recommend==1){?>checked<?}?>>
+								<input type="checkbox" name="cg_recommend" value="1" <?php if{?>checked<?php }?>>
 								<span class="lbl"> 추천수</span>
 							</label>
 						</div>
@@ -194,15 +194,15 @@ $cg_line = $row[cg_line];
 						<label class="col-sm-1 control-label">부가 기능</label>
 						<div class="col-sm-11">
 							<label class="middle">
-								<input type="checkbox" name="cg_point_btn" value="1" <?if($cg_point_btn==1){?>checked<?}?>>
+								<input type="checkbox" name="cg_point_btn" value="1" <?php if{?>checked<?php }?>>
 								<span class="lbl"> 포인트 선물하기</span>
 							</label>
 							<label class="middle">
-								<input type="checkbox" name="cg_comment_view" value="1" <?if($cg_comment_view==1){?>checked<?}?>>
+								<input type="checkbox" name="cg_comment_view" value="1" <?php if{?>checked<?php }?>>
 								<span class="lbl"> 댓글</span>
 							</label>
 							<label class="middle">
-								<input type="checkbox" name="cg_recommend_view" value="1" <?if($cg_recommend_view==1){?>checked<?}?>>
+								<input type="checkbox" name="cg_recommend_view" value="1" <?php if{?>checked<?php }?>>
 								<span class="lbl">추천</span>
 							</label>
 						</div>
@@ -213,71 +213,71 @@ $cg_line = $row[cg_line];
 						<label class="col-sm-1 control-label">SNS 공유</label>
 						<div class="col-sm-11">
 							<label class="middle">
-								<input type="checkbox" name="cg_url" value="1" <?if($cg_url==1){?>checked<?}?>>
+								<input type="checkbox" name="cg_url" value="1" <?php if{?>checked<?php }?>>
 								<span class="lbl"> URL복사</span>
 							</label>
 							<label class="middle">
-								<input type="checkbox" name="cg_facebook" value="1" <?if($cg_facebook==1){?>checked<?}?>>
+								<input type="checkbox" name="cg_facebook" value="1" <?php if{?>checked<?php }?>>
 								<span class="lbl"> 페이스북</span>
 							</label>
 							<label class="middle">
-								<input type="checkbox" name="cg_twitter" value="1" <?if($cg_twitter==1){?>checked<?}?>>
+								<input type="checkbox" name="cg_twitter" value="1" <?php if{?>checked<?php }?>>
 								<span class="lbl"> 트위터</span>
 							</label>
 							<label class="middle">
-								<input type="checkbox" name="cg_googleplus" value="1" <?if($cg_googleplus==1){?>checked<?}?>>
+								<input type="checkbox" name="cg_googleplus" value="1" <?php if{?>checked<?php }?>>
 								<span class="lbl"> Google+</span>
 							</label>
 							<label class="middle">
-								<input type="checkbox" name="cg_pinterest" value="1" <?if($cg_pinterest==1){?>checked<?}?>>
+								<input type="checkbox" name="cg_pinterest" value="1" <?php if{?>checked<?php }?>>
 								<span class="lbl"> Pinterest</span>
 							</label>
 							<label class="middle">
-								<input type="checkbox" name="cg_linkedin" value="1" <?if($cg_linkedin==1){?>checked<?}?>>
+								<input type="checkbox" name="cg_linkedin" value="1" <?php if{?>checked<?php }?>>
 								<span class="lbl"> Linkedin</span>
 							</label>
 							<label class="middle">
-								<input type="checkbox" name="cg_delicious" value="1" <?if($cg_delicious==1){?>checked<?}?>>
+								<input type="checkbox" name="cg_delicious" value="1" <?php if{?>checked<?php }?>>
 								<span class="lbl"> Delicious</span>
 							</label>
 							<label class="middle">
-								<input type="checkbox" name="cg_tumblr" value="1" <?if($cg_tumblr==1){?>checked<?}?>>
+								<input type="checkbox" name="cg_tumblr" value="1" <?php if{?>checked<?php }?>>
 								<span class="lbl"> Tumblr</span>
 							</label>
 							<label class="middle">
-								<input type="checkbox" name="cg_digg" value="1" <?if($cg_digg==1){?>checked<?}?>>
+								<input type="checkbox" name="cg_digg" value="1" <?php if{?>checked<?php }?>>
 								<span class="lbl"> Digg</span>
 							</label>
 							<label class="middle">
-								<input type="checkbox" name="cg_stumbleupon" value="1" <?if($cg_stumbleupon==1){?>checked<?}?>>
+								<input type="checkbox" name="cg_stumbleupon" value="1" <?php if{?>checked<?php }?>>
 								<span class="lbl"> StumbleUpon</span>
 							</label>
 							<label class="middle">
-								<input type="checkbox" name="cg_reddit" value="1" <?if($cg_reddit==1){?>checked<?}?>>
+								<input type="checkbox" name="cg_reddit" value="1" <?php if{?>checked<?php }?>>
 								<span class="lbl"> Reddit</span>
 							</label>
 							<label class="middle">
-								<input type="checkbox" name="cg_sinaweibo" value="1" <?if($cg_sinaweibo==1){?>checked<?}?>>
+								<input type="checkbox" name="cg_sinaweibo" value="1" <?php if{?>checked<?php }?>>
 								<span class="lbl"> 新浪微博</span>
 							</label>
 							<label class="middle">
-								<input type="checkbox" name="cg_qzone" value="1" <?if($cg_qzone==1){?>checked<?}?>>
+								<input type="checkbox" name="cg_qzone" value="1" <?php if{?>checked<?php }?>>
 								<span class="lbl"> QQ 空间</span>
 							</label>
 							<label class="middle">
-								<input type="checkbox" name="cg_renren" value="1" <?if($cg_renren==1){?>checked<?}?>>
+								<input type="checkbox" name="cg_renren" value="1" <?php if{?>checked<?php }?>>
 								<span class="lbl"> 人人网</span>
 							</label>
 							<label class="middle">
-								<input type="checkbox" name="cg_tencentweibo" value="1" <?if($cg_tencentweibo==1){?>checked<?}?>>
+								<input type="checkbox" name="cg_tencentweibo" value="1" <?php if{?>checked<?php }?>>
 								<span class="lbl"> 腾讯微博</span>
 							</label>
 							<label class="middle">
-								<input type="checkbox" name="cg_kakaotalk" value="1" <?if($cg_kakaotalk==1){?>checked<?}?>>
+								<input type="checkbox" name="cg_kakaotalk" value="1" <?php if{?>checked<?php }?>>
 								<span class="lbl"> 카카오톡</span>
 							</label>
 							<label class="middle">
-								<input type="checkbox" name="cg_line" value="1" <?if($cg_line==1){?>checked<?}?>>
+								<input type="checkbox" name="cg_line" value="1" <?php if{?>checked<?php }?>>
 								<span class="lbl"> 라인</span>
 							</label>
 						</div>
@@ -304,6 +304,9 @@ $cg_line = $row[cg_line];
 	}
 </script>
  
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

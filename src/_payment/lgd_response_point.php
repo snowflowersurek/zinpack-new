@@ -184,7 +184,7 @@ $return_time = get_cookie("payment_time");
 
 </head>
 <body>
-<?if($payment_success){?>
+<?php if($payment_success){?>
 <form method="post" name ="LGD_PAYINFO" id="LGD_PAYINFO" action="http://<?=$return_domain?>/bbs/m/all_point_res.php?type=<?=$payment[type]?>&ep=<?=$payment[store]?>&gp=<?=$payment[group]?>">
 <input type="hidden" name="LGD_RESPCODE"                id="LGD_RESPCODE"		value="<?= $LGD_RESPCODE ?>">
 <input type="hidden" name="LGD_RESPMSG"                     id="LGD_RESPMSG"			value="<?= $LGD_RESPMSG ?>">
@@ -223,6 +223,9 @@ $return_time = get_cookie("payment_time");
 <script language = 'javascript'>
 	document.getElementById('LGD_PAYINFO').submit();
 </script>
-<?}?>
+<?php }?>
 </body>
 </html>
+
+
+

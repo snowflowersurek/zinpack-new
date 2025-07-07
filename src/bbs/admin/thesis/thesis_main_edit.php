@@ -41,7 +41,7 @@ $bn_sub_title = str_replace('\"', '&quot;', $bn_sub_title);
 							<input type="file" class="col-xs-12 col-sm-12" name="bn_file">
 							<span class="help-block col-xs-12">
 								최대 파일크기는 200M byte 이하로 제한되어 있습니다.
-								<?if($row["bn_file"]){?><br/><a href="<?=$upload_path?>/<?=$row["bn_file"]?>" target="_blank">PDF파일 보기</a><?}?>
+								<?php if($row["bn_file"]){?><br/><a href="<?=$upload_path?>/<?=$row["bn_file"]?>" target="_blank">PDF파일 보기</a><?php }?>
 							</span>
 						</div>
 					</div>
@@ -53,7 +53,7 @@ $bn_sub_title = str_replace('\"', '&quot;', $bn_sub_title);
 							<input type="file" class="col-xs-12 col-sm-12" name="bn_logo">
 							<span class="help-block col-xs-12">
 								사이즈(pixel) 500 X 150
-								<?if($row["bn_logo"]){?><br/><a href="<?=$iw["path"].$upload_path."/".$row["bn_logo"]?>" target="_blank">기존 이미지</a><?}?>
+								<?php if($row["bn_logo"]){?><br/><a href="<?=$iw["path"].$upload_path."/".$row["bn_logo"]?>" target="_blank">기존 이미지</a><?php }?>
 							</span>
 						</div>
 					</div>
@@ -100,7 +100,7 @@ $bn_sub_title = str_replace('\"', '&quot;', $bn_sub_title);
 
 <script type="text/javascript">
 	function check_form() {
-		<?if($row['bn_display']!=1){?>
+		<?php if($row['bn_display']!=1){?>
 			if (bn_form.bn_file.value == ""){
 				alert("PDF 파일을 입력하여 주십시오.");
 				bn_form.bn_file.focus();
@@ -111,7 +111,7 @@ $bn_sub_title = str_replace('\"', '&quot;', $bn_sub_title);
 				bn_form.bn_logo.focus();
 				return;
 			}
-		<?}?>
+		<?php }?>
 		if (bn_form.bn_file.value && !bn_form.bn_file.value.match(/(.pdf|.PDF)/)) { 
 			alert('PDF 파일만 업로드 가능합니다.');
 			bn_form.bn_file.focus();
@@ -163,6 +163,9 @@ $bn_sub_title = str_replace('\"', '&quot;', $bn_sub_title);
 	}
 </script>
 
-<?
+<?php
 include_once($iw['admin_path']."/_cg_tail.php");
 ?>
+
+
+

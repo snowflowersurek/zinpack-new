@@ -180,3 +180,7 @@ function PMA_GIS_saveToFile($data, $visualizationSettings, $format, $fileName)
     }
 }
 ?>
+
+
+
+

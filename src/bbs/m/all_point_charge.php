@@ -31,8 +31,7 @@ if ($_SERVER["HTTP_HOST"] == "www.aviation.co.kr" || $_SERVER["HTTP_HOST"] == "w
 
 $URLTORETURN		= $protocol.$_SERVER["SERVER_NAME"]."/bbs/m/all_point_res.php?type=".$iw[type]."&ep=".$iw[store]."&gp=".$iw[group];
 $REQURL		= $protocol.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
-?>
-<?if($iw[language]=="ko"){?><div id="LGD_ACTIVEX_DIV"></div><?}?> <!-- ActiveX 설치 안내 Layer 입니다. 수정하지 마세요. -->
+ if($iw['language']=="ko"){?><div id="LGD_ACTIVEX_DIV"></div><?php }?> <!-- ActiveX 설치 안내 Layer 입니다. 수정하지 마세요. -->
 <div class="content">
 	<div class="breadcrumb-box input-group">
 		<ol class="breadcrumb">
@@ -57,11 +56,10 @@ $REQURL		= $protocol.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
 					<li><strong><?=national_language($iw[language],"a0131","보유 포인트");?>:</strong> <?=$mb_point?> Point</li>
 					<li>
 						<strong><?=national_language($iw[language],"a0132","현재 Point 환율");?>:</strong> 
-						<?if($iw[language]=="ko"){?>
+						<?php if($iw[language]=="ko"){?>
 							1 Point = <?=$iw['buy_rate']?> 원
-						<?}else if($iw[language]=="en"){?>
-							1000 Point = US$ <?=$iw['buy_rate']?>
-						<?}?>
+						<?php }else if($iw[language]=="en"){?>
+							1000 Point = US$ <?=$iw['buy_rate'] }?>
 					</li>
 				</ul>
 			</div> <!-- /.box -->
@@ -105,21 +103,21 @@ $REQURL		= $protocol.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
 				<h4 class="media-heading"><?=national_language($iw[language],"a0135","결제방법");?></h4>
 				<div class="clearfix"></div>
 				<div class="well well-sm">
-					<?if($iw[language]=="ko"){?>
+					<?php if($iw[language]=="ko"){?>
 						<div class="radio">
 							<label for="신용카드"><input type="radio" name="LGD_CUSTOM_FIRSTPAY" value="SC0010" id="신용카드" checked/> 신용카드</label>
 						</div>
 						<div class="radio">
 							<label for="가상계좌"><input type="radio" name="LGD_CUSTOM_FIRSTPAY" value="SC0040" id="가상계좌" /> 무통장(가상계좌)</label>
 						</label>
-					<?}else if($iw[language]=="en"){?>
+					<?php }else if($iw[language]=="en"){?>
 						<div class="radio">
 							<label for="PAYPAL"><input type="radio" name="LGD_CUSTOM_FIRSTPAY" value="PAYPAL" id="PAYPAL" checked /> Paypal <img src="<?=$iw[design_path]?>/img/pay_paypal.jpg"></label>
 						</div>
 						<div class="radio">
 							<label for="ALIPAY"><input type="radio" name="LGD_CUSTOM_FIRSTPAY" value="ALIPAY" id="ALIPAY" /> Alipay <img src="<?=$iw[design_path]?>/img/pay_alipay.jpg"></label>
 						</label>
-					<?}?>
+					<?php }?>
 				</div>
 				<a href="javascript:LGD_PAYINFO.submit();" class="btn btn-theme"><?=national_language($iw[language],"a0136","결제하기");?></a>
 			</div> <!-- /.box -->
@@ -137,6 +135,9 @@ $REQURL		= $protocol.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
 <!--  UTF-8 인코딩 사용 시는 xpay.js 대신 xpay_utf-8.js 을  호출하시기 바랍니다.-->
 <script language="javascript" src="<?= $_SERVER['SERVER_PORT']!=443?"http":"https" ?>://xpay.uplus.co.kr<?=($CST_PLATFORM == "test")?($_SERVER['SERVER_PORT']!=443?":7080":":7443"):""?>/xpay/js/xpay_utf-8.js" type="text/javascript"></script>
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

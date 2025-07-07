@@ -69,3 +69,7 @@ if (! $cfgRelation['userconfigwork']) {
     );
     PMA_Message::notice($msg)->display();
 }
+
+
+
+

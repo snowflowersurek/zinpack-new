@@ -1,22 +1,22 @@
 <?php
 include_once("_common.php");
-if ($iw[type] != "book" || ($iw[level] != "seller" && $iw[level] != "member")) alert("잘못된 접근입니다!","");
+if ($iw['type'] != "book" || ($iw['level'] != "seller" && $iw['level'] != "member")) alert("잘못된 접근입니다!","");
 ?>
 <meta http-equiv="content-type" content="text/html; charset=<?=$iw['charset']?>" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-<?
-	$upload_path = $_POST[upload_path];
-	$bd_code = trim(mysql_real_escape_string($_POST[bd_code]));
-	$bn_sub_title = trim(mysql_real_escape_string($_POST[bn_sub_title]));
-	$bn_color = trim(mysql_real_escape_string($_POST[bn_color]));
-	$bn_font = trim(mysql_real_escape_string($_POST[bn_font]));
-	$bn_logo_old = trim(mysql_real_escape_string($_POST[bn_logo_old]));
-	$bn_thum_old = trim(mysql_real_escape_string($_POST[bn_thum_old]));
-	$bn_display = trim(mysql_real_escape_string($_POST[bn_display]));
+<?php
+	$upload_path = $_POST['upload_path'];
+	$bd_code = trim(mysqli_real_escape_string($iw['connect'], $_POST['bd_code']));
+	$bn_sub_title = trim(mysqli_real_escape_string($iw['connect'], $_POST['bn_sub_title']));
+	$bn_color = trim(mysqli_real_escape_string($iw['connect'], $_POST['bn_color']));
+	$bn_font = trim(mysqli_real_escape_string($iw['connect'], $_POST['bn_font']));
+	$bn_logo_old = trim(mysqli_real_escape_string($iw['connect'], $_POST['bn_logo_old']));
+	$bn_thum_old = trim(mysqli_real_escape_string($iw['connect'], $_POST['bn_thum_old']));
+	$bn_display = trim(mysqli_real_escape_string($iw['connect'], $_POST['bn_display']));
 
-	$return_url = $iw['admin_path']."/blog/blog_main_edit.php?type=".$iw[type]."&ep=".$iw[store]."&gp=".$iw[group]."&idx=".$bd_code;
+	$return_url = $iw['admin_path']."/blog/blog_main_edit.php?type=".$iw['type']."&ep=".$iw['store']."&gp=".$iw['group']."&idx=".$bd_code;
 
-	$abs_dir = $iw[path].$upload_path;
+	$abs_dir = $iw['path'].$upload_path;
 	
 	if($_FILES["bn_file"]["name"] && $_FILES["bn_file"]["size"]>209715200){
 		alert("PDF 최대용량은 200MB 이하입니다.", $return_url);
@@ -26,9 +26,9 @@ if ($iw[type] != "book" || ($iw[level] != "seller" && $iw[level] != "member")) a
 		$result = move_uploaded_file($_FILES["bn_file"]["tmp_name"], "{$abs_dir}/{$bn_file}");
 		
 		if($result){
-			$sql = "update $iw[book_main_table] set
+			$sql = "update $iw['book_main_table'] set
 					bn_file = '$bn_file'
-					where bd_code = '$bd_code' and ep_code = '$iw[store]' and gp_code = '$iw[group]' and mb_code = '$iw[member]' 
+					where bd_code = '$bd_code' and ep_code = '$iw['store']' and gp_code = '$iw['group']' and mb_code = '$iw['member']' 
 					";
 			sql_query($sql);
 
@@ -44,9 +44,9 @@ if ($iw[type] != "book" || ($iw[level] != "seller" && $iw[level] != "member")) a
 		$result = move_uploaded_file($_FILES["bn_logo"]["tmp_name"], "{$abs_dir}/{$bn_logo}");
 		
 		if($result){
-			$sql = "update $iw[book_main_table] set
+			$sql = "update $iw['book_main_table'] set
 					bn_logo = '$bn_logo'
-					where bd_code = '$bd_code' and ep_code = '$iw[store]' and gp_code = '$iw[group]' and mb_code = '$iw[member]' 
+					where bd_code = '$bd_code' and ep_code = '$iw['store']' and gp_code = '$iw['group']' and mb_code = '$iw['member']' 
 					";
 			sql_query($sql);
 			
@@ -65,9 +65,9 @@ if ($iw[type] != "book" || ($iw[level] != "seller" && $iw[level] != "member")) a
 		$result = move_uploaded_file($_FILES["bn_thum"]["tmp_name"], "{$abs_dir}/{$bn_thum}");
 		
 		if($result){
-			$sql = "update $iw[book_main_table] set
+			$sql = "update $iw['book_main_table'] set
 					bn_thum = '$bn_thum'
-					where bd_code = '$bd_code' and ep_code = '$iw[store]' and gp_code = '$iw[group]' and mb_code = '$iw[member]' 
+					where bd_code = '$bd_code' and ep_code = '$iw['store']' and gp_code = '$iw['group']' and mb_code = '$iw['member']' 
 					";
 			sql_query($sql);
 			
@@ -79,14 +79,17 @@ if ($iw[type] != "book" || ($iw[level] != "seller" && $iw[level] != "member")) a
 		}
 	}
 
-	$sql = "update $iw[book_main_table] set
+	$sql = "update $iw['book_main_table'] set
 			bn_sub_title = '$bn_sub_title',
 			bn_color = '$bn_color',
 			bn_font = '$bn_font',
 			bn_display = 1
-			where bd_code = '$bd_code' and ep_code = '$iw[store]' and gp_code = '$iw[group]' and mb_code = '$iw[member]' 
+			where bd_code = '$bd_code' and ep_code = '$iw['store']' and gp_code = '$iw['group']' and mb_code = '$iw['member']' 
 			";
 	sql_query($sql);
 
-	echo "<script>window.parent.location.href='$iw[admin_path]/blog/blog_main_list.php?type=$iw[type]&ep=$iw[store]&gp=$iw[group]&idx=$bd_code';</script>";
+	echo "<script>window.parent.location.href='$iw['admin_path']/blog/blog_main_list.php?type=$iw['type']&ep=$iw['store']&gp=$iw['group']&idx=$bd_code';</script>";
 ?>
+
+
+

@@ -71,19 +71,19 @@ if($gp_type == 0){
 				<label for=""><?=national_language($iw[language],"a0045","가입방식");?></label>
 				<input type="text" class="form-control" value="<?=$gp_type_name?>" readonly />
 			</div>
-			<?if($gp_type == 1){?>
+			<?php if($gp_type == 1){?>
 				<div class="btn-list">
 					<a class="btn btn-theme" href="javascript:check_form();"><?=national_language($iw[language],"a0051","가입신청");?></a>
 				</div>
-			<?}else if($gp_type == 2){?>
+			<?php }else if($gp_type == 2){?>
 				<div class="btn-list">
 					<a class="btn btn-theme" href="javascript:check_form();"><?=national_language($iw[language],"a0052","자동가입");?></a>
 				</div>
-			<?}else if($gp_type == 4){?>
+			<?php }else if($gp_type == 4){?>
 				<div class="btn-list">
 					<a class="btn btn-theme" href="javascript:check_form();"><?=national_language($iw[language],"a0053","초대자 가입");?></a>
 				</div>
-			<?}else if($gp_type == 5){?>
+			<?php }else if($gp_type == 5){?>
 				<div class="form-group">
 					<label for=""><?=national_language($iw[language],"a0056","가입코드");?></label>
 					<input type="text" class="form-control" name="gp_autocode" placeholder="<?=national_language($iw[language],"a0055","가입코드 입력");?>" />
@@ -91,7 +91,7 @@ if($gp_type == 0){
 				<div class="btn-list">
 					<a class="btn btn-theme" href="javascript:check_form();"><?=national_language($iw[language],"a0054","가입코드 전송");?></a>
 				</div>
-			<?}?>
+			<?php }?>
 		</form>
 	</div> <!-- /.box -->
 </div>
@@ -102,6 +102,9 @@ if($gp_type == 0){
 	}
 </script>
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

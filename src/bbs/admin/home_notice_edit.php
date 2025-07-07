@@ -29,7 +29,8 @@ $nt_subject = $row["nt_subject"];
 $nt_subject = str_replace("\'", '&#039;', $nt_subject);
 $nt_subject = str_replace('\"', '&quot;', $nt_subject);
 ?>
-<script language="Javascript" src="/include/ckeditor/ckeditor.js"></script>
+<script src="/include/ckeditor/ckeditor5.js"></script>
+<script src="/include/ckeditor/ckeditor5-adapter.js"></script>
 
 <div class="breadcrumbs" id="breadcrumbs">
 	<ul class="breadcrumb">
@@ -71,7 +72,7 @@ $nt_subject = str_replace('\"', '&quot;', $nt_subject);
 							<input type="text" placeholder="입력" class="col-xs-12 col-sm-8" name="nt_subject" maxlength="100" value="<?=$nt_subject?>">
 							<span class="help-inline col-xs-12 col-sm-4">
 								<label class="middle">
-									<input type="checkbox" name="nt_type" value="1" <?if($row["nt_type"]==1){?>checked<?}?>>
+									<input type="checkbox" name="nt_type" value="1" <?php if{?>checked<?php }?>>
 									<span class="lbl"> 상단노출</span>
 								</label>
 							</span>
@@ -120,6 +121,9 @@ $nt_subject = str_replace('\"', '&quot;', $nt_subject);
 	}
 </script>
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

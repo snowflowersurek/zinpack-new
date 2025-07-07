@@ -904,3 +904,7 @@ $html .= '<div id="popup_background"></div>';
 
 PMA_Response::getInstance()->addHTML($html);
 ?>
+
+
+
+

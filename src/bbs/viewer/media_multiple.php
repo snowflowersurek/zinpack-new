@@ -45,7 +45,7 @@ $content = str_replace("\r\n", "<br/>", stripslashes($row["bmd_content"]));
 		<div class="multiple_slide">
 			<div class="flicking">
 				<ul>
-				<?
+				<?php
 					$totalthum = 0;
 					$sql = "select * from $iw[book_media_detail_table] where ep_code = '$iw[store]' and gp_code = '$iw[group]' and bd_code = '$bd_code' and bm_order = '$bm_order' and bmd_order <> 0 order by bmd_order asc";
 					$result = sql_query($sql);
@@ -70,20 +70,19 @@ $content = str_replace("\r\n", "<br/>", stripslashes($row["bmd_content"]));
 										</div>
 									</div>
 								</div>
-								<?if($bmd_type == 1 || $bmd_type == 3){?>
+								<?php if($bmd_type == 1 || $bmd_type == 3){?>
 									<a class="multiple_expand" href="<?=$iw['viewer_path']?>/media_expand.php?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&idx=<?=$bd_code?>&no=<?=$bm_no?>&order=<?=$bmd_no?>">
 										<img src="<?=$iw["bbs_img_path"]."/book_expand.png"?>" />
 									</a>
-								<?}?>
-								<?if($bmd_type == 1){?>
+								<?php } ?><?php if($bmd_type == 1){?>
 									<div class="multiple_caption" id="caption<?=$totalthum?>">
 										<?=str_replace("\r\n", "<br/>", stripslashes($bmd_content))?>
 									</div>
-								<?}else if($bmd_type == 2){?>
+								<?php }else if($bmd_type == 2){?>
 									<iframe class="multiple_youtube" style="display:none;" id="youtube<?=$totalthum?>" type="text/html" width="100%" height="100%" src="http://www.youtube.com/embed/<?=$bmd_content?>" frameborder="0"></iframe>
-								<?}?>
+								<?php }?>
 							</li>
-							<?
+							<?php
 							$totalthum++;
 						}
 					}
@@ -92,9 +91,9 @@ $content = str_replace("\r\n", "<br/>", stripslashes($row["bmd_content"]));
 				</ul>
 			</div>
 			<div class="flickPaging">
-				<?for ($i=1; $i<=$totalthum; $i++) {?>
+				<?php for($i=1; $i<=$totalthum; $i++) {?>
 				<a href="#" style="color:<?=$bn_font?>;">&#8226;</a>
-				<?}?>
+				<?php }?>
 			</div>
 		</div>
 		<div class="multiple_text" style="border-top:1px solid <?=$bn_font?>;border-bottom:1px solid <?=$bn_font?>;">
@@ -139,6 +138,9 @@ $content = str_replace("\r\n", "<br/>", stripslashes($row["bmd_content"]));
 		}
 	}
 </script>
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

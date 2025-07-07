@@ -138,6 +138,9 @@ $bt_person = str_replace('\"', '&quot;', $bt_person);
 	}
 </script>
 
-<?
+<?php
 include_once($iw['admin_path']."/_cg_tail.php");
 ?>
+
+
+

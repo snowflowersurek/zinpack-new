@@ -487,3 +487,7 @@ class PMA_DbSearch
         return $html_output;
     }
 }
+
+
+
+

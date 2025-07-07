@@ -59,6 +59,9 @@ if (!defined("_PAYMENT_")) exit; // 개별 페이지 접근 불가
 		mb_form.submit();
 	}
 </script>
-<?
+<?php
 include_once("_tail_sub.php");
 ?>
+
+
+

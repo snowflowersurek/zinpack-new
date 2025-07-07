@@ -295,3 +295,6 @@ if(!empty($searchs)) {
 <?php
 include_once("_tail.php");
 ?>
+
+
+

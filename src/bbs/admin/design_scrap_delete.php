@@ -4,7 +4,7 @@ if (($iw[group] == "all" && $iw[level] != "admin") || ($iw[group] != "all" && $i
 ?>
 <meta http-equiv="content-type" content="text/html; charset=<?=$iw['charset']?>" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-<?
+<?php
 if (!$_GET['menu']) exit;
 $hs_no = $_GET[menu];
 
@@ -97,3 +97,6 @@ if (!$row2[hs_no]) {
 	echo "<script>window.parent.location.href='$iw[admin_path]/design_scrap_list.php?type=$iw[type]&ep=$iw[store]&gp=$iw[group]&menu=$hm_code&scrap=$hs_scrap';</script>";
 }
 ?>
+
+
+

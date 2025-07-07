@@ -289,3 +289,7 @@ foreach ($tables as $table) {
 echo PMA_Util::getButton();
 
 ?>
+
+
+
+

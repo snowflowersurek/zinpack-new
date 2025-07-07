@@ -5,3 +5,6 @@ if ($iw[level]=="guest") alert(national_language($iw[language],"a0003","로그�
 alert(national_language($iw[language],"a0300","결제가 정상적으로 처리되었습니다."),"$iw[m_path]/shop_buy_list.php?type=$iw[type]&ep=$iw[store]&gp=$iw[group]");
 ?>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+
+

@@ -25,3 +25,7 @@ $PHPMAILER_LANG['smtp_connect_failed']  = 'SMTP Connect() gagal.';
 $PHPMAILER_LANG['smtp_error']           = 'Kesalahan pada pelayan SMTP : ';
 $PHPMAILER_LANG['variable_set']         = 'Tidak dapat mengatur atau mengatur ulang variable : ';
 $PHPMAILER_LANG['extension_missing']    = 'Ekstensi hilang: ';
+
+
+
+

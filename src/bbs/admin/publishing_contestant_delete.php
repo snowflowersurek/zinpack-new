@@ -5,7 +5,7 @@ if (($iw[group] == "all" && $iw[level] != "admin") || ($iw[group] != "all" && $i
 ?>
 <meta http-equiv="content-type" content="text/html; charset=<?=$iw['charset']?>" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-<?
+<?php
 $contest_code = $_GET["contest_code"];
 $idx = $_GET["idx"];
 
@@ -28,3 +28,6 @@ sql_query($sql);
 
 alert("응모한 작품이 삭제되었습니다.","$iw[admin_path]/publishing_contestant_list.php?type=$iw[type]&ep=$iw[store]&gp=$iw[group]&contest_code=$contest_code");
 ?>
+
+
+

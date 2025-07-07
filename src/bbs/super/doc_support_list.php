@@ -54,7 +54,7 @@ include_once("_head.php");
 										</div>-->
 									</div>
 									<div class="col-sm-6">
-										<div class="dataTable-option-right">
+										<div class="dataTable-option-right text-end">
 											<?php
 												$search = $_REQUEST['search'] ?? '';
 												$searchs = $_REQUEST['searchs'] ?? '';
@@ -73,28 +73,32 @@ include_once("_head.php");
 													}
 												}
 											?>
-											<form name="search_form" id="search_form" action="<?php echo $_SERVER['PHP_SELF']; ?>?type=<?php echo $iw['type']; ?>&ep=<?php echo $iw['store']; ?>&gp=<?php echo $iw['group']; ?>" method="post">
-											<label>검색: <select name="search">
-												<option value="a" <?php if($search == "a"){ echo 'selected="selected"'; }?>>업체코드</option>
-												<option value="b" <?php if($search == "b"){ echo 'selected="selected"'; }?>>판매자코드</option>
-												<option value="c" <?php if($search == "c"){ echo 'selected="selected"'; }?>>컨텐츠코드</option>
-												<option value="d" <?php if($search == "d"){ echo 'selected="selected"'; }?>>후원회원코드</option>
-												<option value="e" <?php if($search == "e"){ echo 'selected="selected"'; }?>>컨텐츠명</option>
-											</select></label><input type="text" name="searchs" value="<?php echo htmlspecialchars($searchs, ENT_QUOTES); ?>">
+											<form name="search_form" id="search_form" action="<?php echo $_SERVER['PHP_SELF']; ?>?type=<?php echo $iw['type']; ?>&ep=<?php echo $iw['store']; ?>&gp=<?php echo $iw['group']; ?>" method="post" class="text-end mb-3" style="margin-bottom:0;">
+											<label style="font-size:1.2rem; font-weight:500;">검색:
+												<select name="search" class="form-select form-select-lg d-inline-block" style="font-size:1.1rem; width:12rem; min-width:180px; height:120%; min-height:3.2rem; vertical-align:middle;">
+													<option value="a" <?php if($search == "a"){ echo 'selected="selected"'; }?>>업체코드</option>
+													<option value="b" <?php if($search == "b"){ echo 'selected="selected"'; }?>>판매자코드</option>
+													<option value="c" <?php if($search == "c"){ echo 'selected="selected"'; }?>>컨텐츠코드</option>
+													<option value="d" <?php if($search == "d"){ echo 'selected="selected"'; }?>>후원회원코드</option>
+													<option value="e" <?php if($search == "e"){ echo 'selected="selected"'; }?>>컨텐츠명</option>
+												</select>
+											</label>
+											<input type="text" name="searchs" value="<?php echo htmlspecialchars($searchs, ENT_QUOTES); ?>" class="form-control form-control-lg d-inline-block" style="font-size:1.1rem; width:auto; min-width:180px; margin-left:8px; height:120%; min-height:2.5rem; vertical-align:middle;">
+											<button type="submit" class="btn btn-lg btn-primary ms-2">검색</button>
 											</form>
 										</div>
 									</div>
 								</div>
-								<table class="table table-striped table-bordered table-hover dataTable">
+								<table class="table table-striped table-bordered table-hover dataTable align-middle">
 									<thead>
 										<tr>
-											<th>업체명</th>
-											<th>판매자코드</th>
-											<th>컨텐츠코드</th>
-											<th>후원회원코드</th>
-											<th>컨텐츠명</th>
-											<th>후원금액</th>
-											<th>날짜</th>
+											<th class="text-center">업체명</th>
+											<th class="text-center">판매자코드</th>
+											<th class="text-center">컨텐츠코드</th>
+											<th class="text-center">후원회원코드</th>
+											<th class="text-center">컨텐츠명</th>
+											<th class="text-end">후원금액</th>
+											<th class="text-center">날짜</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -136,13 +140,13 @@ include_once("_head.php");
 											$ep_corporate = $row2["ep_corporate"] ?? '';
 									?>
 										<tr>
-											<td data-title="업체명"><?php echo $ep_corporate; ?></td>
-											<td data-title="판매자코드"><?php echo $seller_mb_code; ?></td>
-											<td data-title="컨텐츠코드"><?php echo $dd_code; ?></td>
-											<td data-title="후원회원코드"><?php echo $mb_code; ?></td>
-											<td data-title="컨텐츠명"><?php echo $ds_subject; ?></td>
-											<td data-title="후원금액"><?php echo number_format($ds_price); ?> Point</td>
-											<td data-title="판매일"><?php echo $ds_datetime; ?></td>
+											<td class="text-center align-middle" data-title="업체명"><?php echo $ep_corporate; ?></td>
+											<td class="text-center align-middle" data-title="판매자코드"><?php echo $seller_mb_code; ?></td>
+											<td class="text-center align-middle" data-title="컨텐츠코드"><?php echo $dd_code; ?></td>
+											<td class="text-center align-middle" data-title="후원회원코드"><?php echo $mb_code; ?></td>
+											<td class="text-center align-middle" data-title="컨텐츠명"><?php echo $ds_subject; ?></td>
+											<td class="text-end align-middle" data-title="후원금액"><?php echo number_format($ds_price); ?> Point</td>
+											<td class="text-center align-middle" data-title="판매일"><?php echo $ds_datetime; ?></td>
 										</tr>
 									<?php
 										$i++;
@@ -156,8 +160,8 @@ include_once("_head.php");
 										<div class="dataTable-info"><!--페이지/전체--></div>
 									</div>
 									<div class="col-sm-6">
-										<div class="dataTable-option-right">
-											<ul class="pagination">
+										<div class="d-flex justify-content-end">
+											<ul class="pagination justify-content-end" style="gap:4px;">
 											<?php
 												if($total_page!=0){
 													if($page>$total_page) { $page=$total_page; }
@@ -168,21 +172,21 @@ include_once("_head.php");
 												 
 													if($page>$max_page) {
 														$pre = $start_page - 1;
-														echo "<li class='prev'><a href='{$_SERVER['PHP_SELF']}?type={$iw['type']}&ep={$iw['store']}&gp={$iw['group']}&page=$pre&search=$search&searchs=$searchs'><i class='fa fa-angle-double-left'></i></a></li>";
+														echo "<li class='page-item'><a class='btn btn-outline-secondary btn-sm' href='{$_SERVER['PHP_SELF']}?type={$iw['type']}&ep={$iw['store']}&gp={$iw['group']}&page=$pre&search=$search&searchs=$searchs'><i class='fa fa-angle-double-left'></i></a></li>";
 													} else {
-														echo "<li class='prev disabled'><a href='#'><i class='fa fa-angle-double-left'></i></a></li>";
+														echo "<li class='page-item'><a class='btn btn-outline-secondary btn-sm disabled' href='#'><i class='fa fa-angle-double-left'></i></a></li>";
 													}
 													
 													for($i=$start_page;$i<=$end_page;$i++) {
-														if($i==$page) echo "<li class='active'><a href='#'>$i</a></li>";
-														else          echo "<li><a href='{$_SERVER['PHP_SELF']}?type={$iw['type']}&ep={$iw['store']}&gp={$iw['group']}&page=$i&search=$search&searchs=$searchs'>$i</a></li>";
+														if($i==$page) echo "<li class='page-item'><a class='btn btn-secondary btn-sm active' href='#'>$i</a></li>";
+														else          echo "<li class='page-item'><a class='btn btn-outline-secondary btn-sm' href='{$_SERVER['PHP_SELF']}?type={$iw['type']}&ep={$iw['store']}&gp={$iw['group']}&page=$i&search=$search&searchs=$searchs'>$i</a></li>";
 													}
 												 
 													if($end_page<$total_page) {
 														$next = $end_page + 1;
-														echo "<li class='next'><a href='{$_SERVER['PHP_SELF']}?type={$iw['type']}&ep={$iw['store']}&gp={$iw['group']}&page=$next&search=$search&searchs=$searchs'><i class='fa fa-angle-double-right'></i></a></li>";
+														echo "<li class='page-item'><a class='btn btn-outline-secondary btn-sm' href='{$_SERVER['PHP_SELF']}?type={$iw['type']}&ep={$iw['store']}&gp={$iw['group']}&page=$next&search=$search&searchs=$searchs'><i class='fa fa-angle-double-right'></i></a></li>";
 													} else {
-														echo "<li class='next disabled'><a href='#'><i class='fa fa-angle-double-right'></i></a></li>";
+														echo "<li class='page-item'><a class='btn btn-outline-secondary btn-sm disabled' href='#'><i class='fa fa-angle-double-right'></i></a></li>";
 													}
 												}
 											?>
@@ -203,3 +207,6 @@ include_once("_head.php");
 <?php
 include_once("_tail.php");
 ?>
+
+
+

@@ -121,42 +121,42 @@ $mb_tel = $row["mb_tel"];
 					<div class="form-group">
 						<label class="col-sm-1 control-label">언어설정</label>
 						<div class="col-sm-11">
-							<p class="col-xs-12 col-sm-8 form-control-static"><?if($ep_language=="ko"){?>한글 / LG U+<?}else if($ep_language=="en"){?>영문 / PAYPAL & ALIPAY<?}?></p>
+							<p class="col-xs-12 col-sm-8 form-control-static"><?php if{?>한글 / LG U+<?php }else if($ep_language=="en"){?>영문 / PAYPAL & ALIPAY<?php }?></p>
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label class="col-sm-1 control-label">게시판</label>
 						<div class="col-sm-11">
-							<p class="col-xs-12 col-sm-8 form-control-static"><?if($ep_state_mcb==1){?>사용<?}else{?>미사용<?}?></p>
+							<p class="col-xs-12 col-sm-8 form-control-static"><?php if{?>사용<?php }else{?>미사용<?php }?></p>
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label class="col-sm-1 control-label">출판도서</label>
 						<div class="col-sm-11">
-							<p class="col-xs-12 col-sm-8 form-control-static"><?if($ep_state_publishing==1){?>사용<?}else{?>미사용<?}?></p>
+							<p class="col-xs-12 col-sm-8 form-control-static"><?php if{?>사용<?php }else{?>미사용<?php }?></p>
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label class="col-sm-1 control-label">쇼핑몰</label>
 						<div class="col-sm-11">
-							<p class="col-xs-12 col-sm-8 form-control-static"><?if($ep_state_shop==1){?>사용<?}else{?>미사용<?}?></p>
+							<p class="col-xs-12 col-sm-8 form-control-static"><?php if{?>사용<?php }else{?>미사용<?php }?></p>
 						</div>
 					</div>
 					
 					<div class="form-group">
 						<label class="col-sm-1 control-label">컨텐츠몰</label>
 						<div class="col-sm-11">
-							<p class="col-xs-12 col-sm-8 form-control-static"><?if($ep_state_doc==1){?>사용<?}else{?>미사용<?}?></p>
+							<p class="col-xs-12 col-sm-8 form-control-static"><?php if{?>사용<?php }else{?>미사용<?php }?></p>
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label class="col-sm-1 control-label">이북몰</label>
 						<div class="col-sm-11">
-							<p class="col-xs-12 col-sm-8 form-control-static"><?if($ep_state_book==1){?>사용<?}else{?>미사용<?}?></p>
+							<p class="col-xs-12 col-sm-8 form-control-static"><?php if{?>사용<?php }else{?>미사용<?php }?></p>
 						</div>
 					</div>
 
@@ -170,14 +170,14 @@ $mb_tel = $row["mb_tel"];
 					<div class="form-group">
 						<label class="col-sm-1 control-label">복제 방지</label>
 						<div class="col-sm-11">
-							<p class="col-xs-12 col-sm-8 form-control-static"><?if($ep_copy_off==1){?>ON<?}else{?>OFF<?}?></p>
+							<p class="col-xs-12 col-sm-8 form-control-static"><?php if{?>ON<?php }else{?>OFF<?php }?></p>
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label class="col-sm-1 control-label">파일업로드</label>
 						<div class="col-sm-11">
-							<p class="col-xs-12 col-sm-8 form-control-static"><?if($ep_upload==1){?>가능 (<?=$ep_upload_size?> MB)<?}else{?>불가능<?}?></p>
+							<p class="col-xs-12 col-sm-8 form-control-static"><?php if{?>가능 (<?=$ep_upload_size?> MB)<?php }else{?>불가능<?php }?></p>
 						</div>
 					</div>
 					
@@ -185,7 +185,7 @@ $mb_tel = $row["mb_tel"];
 						<label class="col-sm-1 control-label">노출설정</label>
 						<div class="col-sm-11">
 							<p class="col-xs-12 col-sm-8 form-control-static">
-								<?if($ep_exposed==1){?>회원에게만 노출<?}else{?>비회원에게도 노출<?}?>
+								<?php if($ep_exposed==1){?>회원에게만 노출<?php }else{?>비회원에게도 노출<?php }?>
 							</p>
 						</div>
 					</div>
@@ -194,12 +194,12 @@ $mb_tel = $row["mb_tel"];
 						<label class="col-sm-1 control-label">가입방식</label>
 						<div class="col-sm-11">
 							<p class="col-xs-12 col-sm-8 form-control-static">
-								<?if($ep_jointype==0){?>가입불가
-								<?}else if($ep_jointype==1){?>가입신청 > 관리자승인
-								<?}else if($ep_jointype==2){?>무조건 가입
-								<?}else if($ep_jointype==4){?>초대후 가입
-								<?}else if($ep_jointype==5){?>가입코드 입력후 자동승인 (<?=$ep_autocode;?>)
-								<?}?>
+								<?php if($ep_jointype==0){?>가입불가
+								<?php }else if($ep_jointype==1){?>가입신청 > 관리자승인
+								<?php }else if($ep_jointype==2){?>무조건 가입
+								<?php }else if($ep_jointype==4){?>초대후 가입
+								<?php }else if($ep_jointype==5){?>가입코드 입력후 자동승인 (<?=$ep_autocode;?>)
+								<?php }?>
 							</p>
 						</div>
 					</div>
@@ -208,9 +208,9 @@ $mb_tel = $row["mb_tel"];
 						<label class="col-sm-1 control-label">닉네임 공개</label>
 						<div class="col-sm-11">
 							<p class="col-xs-12 col-sm-8 form-control-static">
-								<?if($ep_anonymity==0){?>공개
-								<?}else if($ep_anonymity==1){?>비공개
-								<?}?>
+								<?php if($ep_anonymity==0){?>공개
+								<?php }else if($ep_anonymity==1){?>비공개
+								<?php }?>
 							</p>
 						</div>
 					</div>
@@ -311,6 +311,9 @@ function getDirectorySize(element, ep_nick) {
 	}, 500);
 }
 </script>
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

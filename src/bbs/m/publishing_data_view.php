@@ -166,7 +166,7 @@ include_once("_head_share.php");
 	<div class="row">
 		<div class="breadcrumb-box input-group">
 			<ol class="breadcrumb ">
-				<?
+				<?php
 					$row2 = sql_fetch(" select * from $iw[home_menu_table] where ep_code = '$iw[store]' and gp_code='$iw[group]' and state_sort = '$iw[type]' and cg_code = '$default_cg_code'");
 					$hm_code = $row2[hm_code];
 					$hm_view_scrap = $row2[hm_view_scrap];
@@ -201,13 +201,11 @@ include_once("_head_share.php");
 			<div class="masonry-item w-9 h-full">
 				<div class="box br-theme">
 					<h3 class="media-heading" style="font-weight:bold;">
-						<?=$BookName?> <?php if ($sub_title) echo " <span class='small'>(".$sub_title.")</span>"; ?>
+						<?=$BookName if ($sub_title) echo " <span class='small'>(".$sub_title.")</span>"; ?>
 					</h3>
 					<div class="content-info">
 						<ul class="list-inline">
-							<?if($cg_hit==1){?><li><i class="fa fa-eye"></i> <?=$Hit?></li><?}?>
-							<?if($cg_comment_view==1){?><li><i class="fa fa-comment"></i> <?=$reply_count?></li><?}?>
-							<?if($cg_recommend_view==1){?><li><i class="fa fa-thumbs-up"></i> <span id="recommend_board_1"><?=$book_recommend?></span></li><?}?>
+							<?php if($cg_hit==1){?><li><i class="fa fa-eye"></i> <?=$Hit?></li><?php } ?><?php if($cg_comment_view==1){?><li><i class="fa fa-comment"></i> <?=$reply_count?></li><?php } ?><?php if($cg_recommend_view==1){?><li><i class="fa fa-thumbs-up"></i> <span id="recommend_board_1"><?=$book_recommend?></span></li><?php }?>
 						</ul>
 					</div>
 					<?php
@@ -250,7 +248,7 @@ include_once("_head_share.php");
 						?>
 					</div>
 					<div class="content-info"><strong class='content-info-head <?=$iw[language]?>'>&bull; <?=national_language($iw[language],"a0316","펴낸날");?></strong> : <?=$PubDate?></div>
-					<div class="content-info"><strong class='content-info-head <?=$iw[language]?>'>&bull; ISBN</strong> : <?=$Isbn?><?php if ($SIsbn) echo ", ".$SIsbn."(세트)"; ?></div>
+					<div class="content-info"><strong class='content-info-head <?=$iw[language]?>'>&bull; ISBN</strong> : <?=$Isbn if ($SIsbn) echo ", ".$SIsbn."(세트)"; ?></div>
 					<?php
 						if($ddcLargeName){
 							echo"<div class='content-info'><strong class='content-info-head $iw[language]'>&bull; ".national_language($iw[language],"a0317","십진분류")."</strong> : $ddcLargeName > $ddcSmallName ($ddcSmallCode)</div>";
@@ -289,7 +287,7 @@ include_once("_head_share.php");
 			<div class="clearfix"></div>
 
 			<div class="masonry-item w-<?=$hm_view_size?> h-full">
-				<? if ($kyobo_shop_link || $yes24_shop_link || $aladin_shop_link) { ?>
+				<?php if($kyobo_shop_link || $yes24_shop_link || $aladin_shop_link) { ?>
 				<div class="box br-default">
 					<h4 class="box-title">&bull; 도서구매 사이트</h4>
 					<hr/>
@@ -324,9 +322,7 @@ include_once("_head_share.php");
 					</div>
 					<hr/>
 				</div>
-				<? } ?>
-				
-				<? if ($authorName || $translateName || $painterName || $editorName) { ?>
+				<?php } ?><?php if($authorName || $translateName || $painterName || $editorName) { ?>
 				<div class="box br-default">
 					<h3 class="box-title showhide"><i class="fa fa-chevron-circle-down"> </i> <?=national_language($iw[language],"a0318","저자소개");?></h3>
 					<div class="content-info image-container">
@@ -350,31 +346,25 @@ include_once("_head_share.php");
 					?>
 					</div>
 				</div>
-				<? } ?>
-				
-				<? if($Intro){ ?>
+				<?php } ?><?php if($Intro){ ?>
 				<div class="box br-default">
 					<h3 class="box-title showhide"><i class="fa fa-chevron-circle-down"></i> <?=national_language($iw[language],"a0319","책정보 및 내용요약");?></h3>
 					<div class="content-info image-container"><?=$Intro?></div>
 				</div>
-				<? } ?>
-				
-				<? if($BookList){ ?>
+				<?php } ?><?php if($BookList){ ?>
 				<div class="box br-default">
 					<h3 class="box-title showhide"><i class="fa fa-chevron-circle-down"></i> <?=national_language($iw[language],"a0320","목차");?></h3>
 					<div class="content-info image-container"><?=$BookList?></div>
 				</div>
-				<? } ?>
-				
-				<? if($PubReview){ ?>
+				<?php } ?><?php if($PubReview){ ?>
 				<div class="box br-default">
 					<h3 class="box-title showhide"><i class="fa fa-chevron-circle-down"></i> <?=national_language($iw[language],"a0321","편집자 추천글");?></h3>
 					<div class="content-info image-container"><?=$PubReview?></div>
 				</div> <!-- /.box -->
-				<? } ?>
+				<?php }?>
 			</div> <!-- /.masonry-item -->
 
-			<?if($hm_view_scrap_mobile==1){?>
+			<?php if($hm_view_scrap_mobile==1){?>
 			<style>
 				@media (min-width:768px){
 					.scrap-wrap	{display:;}
@@ -383,9 +373,7 @@ include_once("_head_share.php");
 					.scrap-wrap	{display:none;}
 				}
 			</style>
-			<?}?>
-			<?
-			if ($hm_view_scrap==1){
+			<?php } ?><?php if($hm_view_scrap==1){
 				$scrap_type = "view";
 				include_once("all_home_scrap.php");
 			}
@@ -411,7 +399,7 @@ $(document).ready(function() {
 });
 </script>
 
-<?
+<?php
 $sql = "update $iw[publishing_books_table] set
 		Hit = Hit+1
 		where ep_code = '$iw[store]' and BookID = '$BookID'";
@@ -424,3 +412,6 @@ sql_query($sql);
 
 include_once("_tail.php");
 ?>
+
+
+

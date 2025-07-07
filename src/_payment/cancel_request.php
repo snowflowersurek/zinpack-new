@@ -111,7 +111,7 @@ include_once("_check_parameter.php");
 
 </head>
 <body>
-<?if($payment_success){?>
+<?php if($payment_success){?>
 <form method="post" name ="LGD_PAYINFO" id="LGD_PAYINFO" action="<?=$protocol.$PAYMENT_DOMAIN?>/bbs/m/shop_buy_cancel_res.php?type=<?=$payment[type]?>&ep=<?=$payment[store]?>&gp=<?=$payment[group]?>">
 <input type="hidden" name="LGD_RESPCODE"                id="LGD_RESPCODE"		value="<?= $Response_Code ?>">
 <input type="hidden" name="LGD_RESPMSG"                     id="LGD_RESPMSG"	value="<?= $Response_Msg ?>">
@@ -122,6 +122,9 @@ include_once("_check_parameter.php");
 <script language = 'javascript'>
 	document.getElementById('LGD_PAYINFO').submit();
 </script>
-<?}?>
+<?php }?>
 </body>
 </html>
+
+
+

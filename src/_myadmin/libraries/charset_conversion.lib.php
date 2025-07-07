@@ -95,3 +95,7 @@ function PMA_convert_string($src_charset, $dest_charset, $what)
 } //  end of the "PMA_convert_string()" function
 
 ?>
+
+
+
+

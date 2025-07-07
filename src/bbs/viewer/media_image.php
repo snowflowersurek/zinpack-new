@@ -36,7 +36,7 @@ $bm_order = $row['bm_order'];
 		<div class="image_slide">
 			<div class="flicking">
 				<ul>
-				<?
+				<?php
 					$totalthum = 0;
 					$sql = "select * from $iw[book_media_detail_table] where ep_code = '$iw[store]' and gp_code = '$iw[group]' and bd_code = '$bd_code' and bm_order = '$bm_order' order by bmd_order asc";
 					$result = sql_query($sql);
@@ -60,15 +60,15 @@ $bm_order = $row['bm_order'];
 										</div>
 									</div>
 								</div>
-								<?if($bmd_type == 1){?>
+								<?php if($bmd_type == 1){?>
 									<div class="image_caption" id="caption<?=$totalthum?>">
 										<?=str_replace("\r\n", "<br/>", stripslashes($bmd_content))?>
 									</div>
-								<?}else if($bmd_type == 2){?>
+								<?php }else if($bmd_type == 2){?>
 									<iframe class="image_youtube" style="display:none;" id="youtube<?=$totalthum?>" type="text/html" width="100%" height="100%" src="http://www.youtube.com/embed/<?=$bmd_content?>" frameborder="0"></iframe>
-								<?}?>
+								<?php }?>
 							</li>
-							<?
+							<?php
 							$totalthum++;
 						}
 					}
@@ -77,9 +77,9 @@ $bm_order = $row['bm_order'];
 				</ul>
 			</div>
 			<div class="flickPaging">
-				<?for ($i=1; $i<=$totalthum; $i++) {?>
+				<?php for($i=1; $i<=$totalthum; $i++) {?>
 				<a href="#" style="color:<?=$bn_font?>;">&#8226;</a>
-				<?}?>
+				<?php }?>
 			</div>
 		</div>
 	</div>
@@ -121,6 +121,9 @@ $bm_order = $row['bm_order'];
 		}
 	}
 </script>
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

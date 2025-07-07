@@ -538,3 +538,7 @@ function PMA_DBI_getError($link = null)
 {
     return false;
 }
+
+
+
+

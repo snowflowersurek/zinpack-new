@@ -79,8 +79,8 @@ if($searchs) {
 											<label class="input-group-text">상태</label>
 											<select class="form-select" onchange="location.href=this.value">
 												<option value="<?=$PHP_SELF?>?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&start_date=<?=$start_date?>&end_date=<?=$end_date?>&search=d&searchs=">전체</option>
-												<option value="<?=$PHP_SELF?>?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&start_date=<?=$start_date?>&end_date=<?=$end_date?>&search=d&searchs=shop" <?if($searchs == "shop"){?>selected="selected"<?}?>>쇼핑몰</option>
-												<option value="<?=$PHP_SELF?>?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&start_date=<?=$start_date?>&end_date=<?=$end_date?>&search=d&searchs=point" <?if($searchs == "point"){?>selected="selected"<?}?>>포인트</option>
+												<option value="<?=$PHP_SELF?>?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&start_date=<?=$start_date?>&end_date=<?=$end_date?>&search=d&searchs=shop" <?php if{?>selected="selected"<?php }?>>쇼핑몰</option>
+												<option value="<?=$PHP_SELF?>?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&start_date=<?=$start_date?>&end_date=<?=$end_date?>&search=d&searchs=point" <?php if{?>selected="selected"<?php }?>>포인트</option>
 											</select>
 											<input type="text" name="start_date" class="form-control" maxlength="8" value="<?=$start_date?>">
 											<span class="input-group-text">~</span>
@@ -91,9 +91,9 @@ if($searchs) {
 									<div class="col-sm-6">
 										<div class="input-group float-end">
 											<select name="search" class="form-select">
-												<option value="a" <?if($search == "a"){?>selected="selected"<?}?>>업체코드</option>
-												<option value="b" <?if($search == "b"){?>selected="selected"<?}?>>거래번호</option>
-												<option value="c" <?if($search == "c"){?>selected="selected"<?}?>>결제자</option>
+												<option value="a" <?php if{?>selected="selected"<?php }?>>업체코드</option>
+												<option value="b" <?php if{?>selected="selected"<?php }?>>거래번호</option>
+												<option value="c" <?php if{?>selected="selected"<?php }?>>결제자</option>
 											</select>
 											<input type="text" name="searchs" class="form-control" value="<?=$searchs?>">
 											<button class="btn btn-primary" type="submit">검색</button>
@@ -114,7 +114,7 @@ if($searchs) {
 										</tr>
 									</thead>
 									<tbody>
-									<?
+									<?php
 										$sql_count = "SELECT count(*) as cnt FROM {$iw['paypal_table']} a {$search_sql}";
 										$stmt_count = mysqli_prepare($db_conn, $sql_count);
 										mysqli_stmt_bind_param($stmt_count, $types, ...$params);
@@ -168,7 +168,7 @@ if($searchs) {
 											<td data-title="승인일시"><?=$row["pp_datetime"]?></td>
 											<td data-title="결제자"><?=$row["mb_code"]?></td>
 										</tr>
-									<?
+									<?php
 										$i++;
 										}
 										mysqli_stmt_close($stmt);
@@ -188,7 +188,7 @@ if($searchs) {
 									<div class="col-sm-6">
 										<div class="d-flex justify-content-center">
 											<ul class="pagination">
-											<?
+											<?php
 												if($total_page!=0){
 													if($page>$total_page) { $page=$total_page; }
 													$start_page = ((ceil($page/$max_page)-1)*$max_page)+1;
@@ -273,6 +273,9 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

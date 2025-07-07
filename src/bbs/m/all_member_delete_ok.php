@@ -9,7 +9,7 @@ if (!$db_conn) {
 ?>
 <meta http-equiv="content-type" content="text/html; charset=<?=$iw['charset']?>" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-<?
+<?php
 function removeDir($dir) {
 	$dirs = dir($dir);
 	
@@ -123,3 +123,6 @@ if ($row_member && password_verify($confirm_password, $row_member['mb_password']
 	alert(national_language($iw['language'],"a0116","비밀번호를 확인하여 주십시오."),"");
 }
 ?>
+
+
+

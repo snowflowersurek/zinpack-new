@@ -42,7 +42,7 @@ $is_error_item = false;
 									</div>
 									<div class="col-sm-6">
 										<div class="dataTable-option-right">
-											<?
+											<?php
 												if($_POST['search']){
 													$search = $_POST['search'];
 													$searchs = $_POST['searchs'];
@@ -58,8 +58,8 @@ $is_error_item = false;
 											?>
 											<form name="search_form" id="search_form" action="<?=$PHP_SELF?>" method="post">
 											<label>검색: <select name="search">
-												<option value="a" <?if($search == "a"){?>selected="selected"<?}?>>도메인</option>
-												<option value="b" <?if($search == "b"){?>selected="selected"<?}?>>주문코드</option>
+												<option value="a" <?php if{?>selected="selected"<?php }?>>도메인</option>
+												<option value="b" <?php if{?>selected="selected"<?php }?>>주문코드</option>
 											</select></label><input type="text" name="searchs" value="<?=$searchs?>">
 											</form>
 										</div>
@@ -83,7 +83,7 @@ $is_error_item = false;
 										</tr>
 									</thead>
 									<tbody>
-									<?
+									<?php
 										$sql = "select * from $payment[lgd_response_table] $search_sql";
 										$result = sql_query($sql);
 										$total_line = mysqli_num_rows($result);
@@ -135,17 +135,17 @@ $is_error_item = false;
 											<td data-title="회원명"><?=$lgd_buyer?></td>
 											<td data-title="주문상품"><?=$lgd_productinfo?></td>
 											<td data-title="가격"><?=$lgd_amount?></td>
-											<td data-title="입금"><?if($lgd_custom_firstpay=="SC0040"){?><?=number_format($lgd_castamount)?><?}?>&nbsp;</td>
+											<td data-title="입금"><?php if{?><?=number_format($lgd_castamount) }?>&nbsp;</td>
 											<td data-title="결제방식">
-												<?if($lgd_custom_firstpay=="SC0010"){?>
+												<?php if($lgd_custom_firstpay=="SC0010"){?>
 													신용카드
-												<?}else if($lgd_custom_firstpay=="SC0030"){?>
+												<?php }else if($lgd_custom_firstpay=="SC0030"){?>
 													계좌이체
-												<?}else if($lgd_custom_firstpay=="SC0060"){?>
+												<?php }else if($lgd_custom_firstpay=="SC0060"){?>
 													휴대폰
-												<?}else if($lgd_custom_firstpay=="SC0040"){?>
+												<?php }else if($lgd_custom_firstpay=="SC0040"){?>
 													가상계좌
-												<?}?>
+												<?php }?>
 											</td>
 											<td data-title="비고">
 												<?php 
@@ -166,7 +166,7 @@ $is_error_item = false;
 												?>
 											</td>
 										</tr>
-									<?
+									<?php
 										$i++;
 										}
 										if($i==0) echo "<tr><td colspan='12' align='center'>결제응답 내역이 없습니다.</td></tr>";
@@ -177,7 +177,7 @@ $is_error_item = false;
 									<div class="col-sm-6">
 										<div class="dataTable-option-right">
 											<ul class="pagination">
-											<?
+											<?php
 												if($total_page!=0){
 													if($page>$total_page) { $page=$total_page; }
 													$start_page = ((ceil($page/$max_page)-1)*$max_page)+1;
@@ -220,7 +220,7 @@ $is_error_item = false;
 </div><!-- /end .page-content -->
 <script type="text/javascript">
 document.addEventListener("DOMContentLoaded", function() {
-	<?
+	<?php
 	if ($is_error_item) {
 		echo "
 			setInterval(function() {
@@ -242,6 +242,10 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+
+

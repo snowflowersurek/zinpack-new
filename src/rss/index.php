@@ -95,8 +95,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 <language>ko</language>
 <generator>ZINPACK</generator>
 <pubDate><?=date("Y-m-d H:i:s")?></pubDate>
-<?
-	if($iw['category'] != "all"){
+<?php if($iw['category'] != "all"){
 		$sql2 = "select * from $iw[total_data_table] where ep_code = '$iw[store]' and gp_code='$iw[group]' and td_display=1 and state_sort = 'mcb' $sql_cg_code order by td_datetime desc limit $start_line, $end_line";
 	}else{
 		$sql2 = "select * from $iw[total_data_table] where ep_code = '$iw[store]' and gp_code='$iw[group]' and td_display=1 and state_sort = 'mcb' order by td_datetime desc limit $start_line, $end_line";
@@ -179,14 +178,17 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 <guid><![CDATA[<?=$rss_guid?>]]></guid>
 <description><![CDATA[<?=$md_content?>]]></description>
 <pubDate><?=$md_datetime?></pubDate>
-<?if($row["md_file_1"]){?>
+<?php if($row["md_file_1"]){?>
 <enclosure url="<?=$upload_path."/".$md_code."/".$md_file_1?>" length="" type="image/jpeg"/>
-<?}else if($row["md_youtube"]){?>
+<?php }else if($row["md_youtube"]){?>
 <enclosure url="http://img.youtube.com/vi/<?=$youtube_code?>/0.jpg" length="" type="image/jpeg"/>
-<?}else if($md_type == 2 && $md_images[1][0]){?>
+<?php }else if($md_type == 2 && $md_images[1][0]){?>
 <enclosure url="http://www<?=$iw[cookie_domain].htmlspecialchars($md_images[1][0]);?>" length="" type="image/jpeg"/>
-<?}?>
+<?php }?>
 </item>
-<?}?>
+<?php }?>
 </channel>
 </rss>
+
+
+

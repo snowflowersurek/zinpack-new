@@ -87,11 +87,11 @@ $bn_font = $row["bn_font"];
 							<div class="wrap">
 								<div class="top_logo">
 									<a href="javascript:bookFrameMain('<?=$iw[type]?>','<?=$iw[store]?>','<?=$iw[group]?>','<?=$bd_code?>');">
-										<?if($bn_logo){?>
+										<?php if($bn_logo){?>
 											<img src="<?=$iw["path"].$upload_path."/".$bn_logo?>" />
-										<?}else{?>
+										<?php }else{?>
 											<img src="<?=$iw["bbs_img_path"]."/book_top_logo.png"?>" />
-										<?}?>
+										<?php }?>
 									</a>
 								</div>
 								<div class="main_list_btn">
@@ -101,7 +101,7 @@ $bn_font = $row["bn_font"];
 									<?=$bn_sub_title?>
 								</div>
 								<div class="book_thum_wrap">
-									<?
+									<?php
 										$sql = "select * from $iw[book_media_table] where ep_code = '$iw[store]' and gp_code = '$iw[group]' and bd_code = '$bd_code' and mb_code = '$iw[member]'";
 										$result = sql_query($sql);
 										$total_line = mysql_num_rows($result);
@@ -153,19 +153,19 @@ $bn_font = $row["bn_font"];
 												<img src="<?=$iw["path"].$upload_path."/".$row["bm_image"]?>" />
 											</a>
 										</div>
-									<?
+									<?php
 											$i++;
 										}
 										for ($a=$i; $a<9; $a++) {
 									?>
 										<div class="thum_image">
-											<?if($bn_logo){?>
+											<?php if($bn_logo){?>
 												<img src="<?=$iw["path"].$upload_path."/".$bn_thum?>" />
-											<?}else{?>
+											<?php }else{?>
 												<img src="<?=$iw["bbs_img_path"]."/book_main_thum.png"?>" />
-											<?}?>
+											<?php }?>
 										</div>
-									<?
+									<?php
 										}
 									?>
 								</div>
@@ -173,7 +173,7 @@ $bn_font = $row["bn_font"];
 						</div>
 						<div class="dataTable-option-right">
 							<ul class="pagination">
-							<?
+							<?php
 								if($total_page!=0){
 									if($page>$total_page) { $page=$total_page; }
 									$start_page = ((ceil($page/$max_page)-1)*$max_page)+1;
@@ -230,6 +230,9 @@ $bn_font = $row["bn_font"];
 	}
 </script>
 
-<?
+<?php
 include_once($iw['admin_path']."/_tail.php");
 ?>
+
+
+

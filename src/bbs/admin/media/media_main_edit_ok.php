@@ -4,16 +4,16 @@ if ($iw[type] != "book" || ($iw[level] != "seller" && $iw[level] != "member")) a
 ?>
 <meta http-equiv="content-type" content="text/html; charset=<?=$iw['charset']?>" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-<?
+<?php
 	$upload_path = $_POST[upload_path];
-	$bd_code = trim(mysql_real_escape_string($_POST[bd_code]));
-	$bn_sub_title = trim(mysql_real_escape_string($_POST[bn_sub_title]));
-	$bn_color = trim(mysql_real_escape_string($_POST[bn_color]));
-	$bn_font = trim(mysql_real_escape_string($_POST[bn_font]));
-	$bn_logo_old = trim(mysql_real_escape_string($_POST[bn_logo_old]));
-	$bn_thum_old = trim(mysql_real_escape_string($_POST[bn_thum_old]));
-	$bn_text_logo_old = trim(mysql_real_escape_string($_POST[bn_text_logo_old]));
-	$bn_display = trim(mysql_real_escape_string($_POST[bn_display]));
+	$bd_code = trim(mysqli_real_escape_string($iw['connect'], $_POST['bd_code']));
+	$bn_sub_title = trim(mysqli_real_escape_string($iw['connect'], $_POST['bn_sub_title']));
+	$bn_color = trim(mysqli_real_escape_string($iw['connect'], $_POST['bn_color']));
+	$bn_font = trim(mysqli_real_escape_string($iw['connect'], $_POST['bn_font']));
+	$bn_logo_old = trim(mysqli_real_escape_string($iw['connect'], $_POST['bn_logo_old']));
+	$bn_thum_old = trim(mysqli_real_escape_string($iw['connect'], $_POST['bn_thum_old']));
+	$bn_text_logo_old = trim(mysqli_real_escape_string($iw['connect'], $_POST['bn_text_logo_old']));
+	$bn_display = trim(mysqli_real_escape_string($iw['connect'], $_POST['bn_display']));
 
 	$return_url = $iw['admin_path']."/media/media_main_edit.php?type=".$iw[type]."&ep=".$iw[store]."&gp=".$iw[group]."&idx=".$bd_code;
 
@@ -93,3 +93,6 @@ if ($iw[type] != "book" || ($iw[level] != "seller" && $iw[level] != "member")) a
 
 	echo "<script>window.parent.location.href='$iw[admin_path]/media/media_main_list.php?type=$iw[type]&ep=$iw[store]&gp=$iw[group]&idx=$bd_code';</script>";
 ?>
+
+
+

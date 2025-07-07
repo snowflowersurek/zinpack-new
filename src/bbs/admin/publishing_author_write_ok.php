@@ -5,7 +5,7 @@ if (($iw[group] == "all" && $iw[level] != "admin")) alert("잘못된 접근입�
 ?>
 <meta http-equiv="content-type" content="text/html; charset=<?=$iw['charset']?>" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-<?
+<?php
 $sql = "select AuthorID from $iw[publishing_author_table] where ep_code = '$iw[store]' order by CAST(SUBSTR(AuthorID, 2) AS UNSIGNED) desc limit 1";
 $row = sql_fetch($sql);
 if ($row["AuthorID"]) {
@@ -16,17 +16,17 @@ if ($row["AuthorID"]) {
 }
 
 $upload_path = $_POST[upload_path];
-$ep_upload_size = trim(mysql_real_escape_string($_POST[ep_upload_size]));
-$Author = trim(mysql_real_escape_string($_POST[Author]));
-$original_name = trim(mysql_real_escape_string($_POST[original_name]));
-$content_type = trim(mysql_real_escape_string($_POST[content_type]));
+$ep_upload_size = trim(mysqli_real_escape_string($iw['connect'], $_POST['ep_upload_size']));
+$Author = trim(mysqli_real_escape_string($iw['connect'], $_POST['Author']));
+$original_name = trim(mysqli_real_escape_string($iw['connect'], $_POST['original_name']));
+$content_type = trim(mysqli_real_escape_string($iw['connect'], $_POST['content_type']));
 if($content_type == 1){
-	$ProFile = mysql_real_escape_string($_POST[ProFile1]);
+	$ProFile = mysqli_real_escape_string($iw['connect'], $_POST['ProFile1']);
 }else{
-	$ProFile = mysql_real_escape_string($_POST[ProFile2]);
+	$ProFile = mysqli_real_escape_string($iw['connect'], $_POST['ProFile2']);
 }
-$phone = trim(mysql_real_escape_string($_POST[phone]));
-$author_display = trim(mysql_real_escape_string($_POST[author_display]));
+$phone = trim(mysqli_real_escape_string($iw['connect'], $_POST['phone']));
+$author_display = trim(mysqli_real_escape_string($iw['connect'], $_POST['author_display']));
 
 $RegDate = date("Y-m-d H:i:s");
 $td_datetime = date("Y-m-d H:i:s");
@@ -89,3 +89,6 @@ if($_FILES["NewPhoto"]["name"] && $_FILES["NewPhoto"]["size"] > 1024*1024*$ep_up
 	alert("작가가 추가되었습니다.","$iw[admin_path]/publishing_author_list.php?type=$iw[type]&ep=$iw[store]&gp=$iw[group]");
 }
 ?>
+
+
+

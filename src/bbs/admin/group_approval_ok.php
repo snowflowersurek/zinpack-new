@@ -4,7 +4,7 @@ if ($iw[type] != "group" || $iw[level] != "admin" || $iw[group] != "all") alert(
 ?>
 <meta http-equiv="content-type" content="text/html; charset=<?=$iw['charset']?>" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-<?
+<?php
 $gp_no = $_GET[idx];
 $gp_display = $_GET[dis];
 
@@ -251,3 +251,6 @@ sql_query($sql);
 alert("신규그룹이 승인되었습니다.","$iw[admin_path]/group_approval_list.php?type=$iw[type]&ep=$iw[store]&gp=$iw[group]");
 
 ?>
+
+
+

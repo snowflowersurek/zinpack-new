@@ -1,4 +1,4 @@
-<?
+<?php
 if (!defined("_INFOWAY_")) exit; // 개별 페이지 접근 불가
 include_once("$iw[include_path]/lib/lib_image_resize.php");
 ?>
@@ -12,12 +12,12 @@ include_once("$iw[include_path]/lib/lib_image_resize.php");
 	}
 </style>
 
-<div class="masonry-item w-<?=$hs_size_width?> <?if($hs_type=="custom"){?>h-full<?}else{?>h-<?=$hs_size_height?>-scrap<?}?> scrap-wrap" style="padding:<?=$hs_box_padding?>px">
+<div class="masonry-item w-<?=$hs_size_width if{?>h-full<?php }else{?>h-<?=$hs_size_height?>-scrap<?php }?> scrap-wrap" style="padding:<?=$hs_box_padding?>px">
 	<div class="box box-img main_banner_<?=$hs_no?>">
 		<div id="carousel-box<?=$hs_no?>" class="carousel image slide" data-ride="carousel">
 			<!-- Wrapper for slides -->
 			<div class="carousel-inner">
-				<?
+				<?php
 					$a = 0;
 					if($hs_type=="menu"){
 						$sql_cg_code_sc = "";
@@ -203,7 +203,7 @@ include_once("$iw[include_path]/lib/lib_image_resize.php");
 				?>
 			</div> <!-- /.carousel-inner -->
 
-			<?if($a > 1){?>
+			<?php if($a > 1){?>
 			<!-- Controls -->
 			<a class="left carousel-control" href="#carousel-box<?=$hs_no?>" data-slide="prev">
 				<span class="glyphicon glyphicon-chevron-left"></span>
@@ -211,7 +211,11 @@ include_once("$iw[include_path]/lib/lib_image_resize.php");
 			<a class="right carousel-control" href="#carousel-box<?=$hs_no?>" data-slide="next">
 				<span class="glyphicon glyphicon-chevron-right"></span>
 			</a>
-			<?}?>
+			<?php }?>
 		</div> <!-- /.carousel image -->
 	</div>
 </div>
+
+
+
+

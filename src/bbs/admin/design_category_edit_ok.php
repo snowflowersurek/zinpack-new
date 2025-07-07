@@ -4,7 +4,7 @@ if (($iw[group] == "all" && $iw[level] != "admin") || ($iw[group] != "all" && $i
 ?>
 <meta http-equiv="content-type" content="text/html; charset=<?=$iw['charset']?>" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-<?
+<?php
 $cg_no = trim(sql_real_escape_string($_POST[cg_no]));
 $cg_level_write = trim(sql_real_escape_string($_POST[cg_level_write]));
 $cg_level_comment = trim(sql_real_escape_string($_POST[cg_level_comment]));
@@ -74,3 +74,6 @@ sql_query($sql);
 
 alert("게시판 기본 설정이 수정되었습니다.","$iw[admin_path]/design_category_edit.php?type=$iw[type]&ep=$iw[store]&gp=$iw[group]");
 ?>
+
+
+

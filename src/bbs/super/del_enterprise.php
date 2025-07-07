@@ -74,3 +74,6 @@ for ($i=0; $i<count($dir_arr); $i++) {
 echo "all done!";
 alert("삭제가 완료되었습니다. ", "$return_url");
 ?>
+
+
+

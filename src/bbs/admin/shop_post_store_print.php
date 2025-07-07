@@ -42,7 +42,7 @@ if ($iw[level] != "seller") alert("잘못된 접근입니다!","");
 </head>
 <body>
 <div><input type="button" onclick="javascript:print_click();" value="인쇄"></div>
-<?
+<?php
 $sr_code = $_GET["idx"];
 
 $sql = "select * from $iw[shop_order_table] where ep_code = '$iw[store]' and sr_code = '$sr_code' and sr_display <> 0";
@@ -113,10 +113,10 @@ $ss_tel = $row["ss_tel"];
 						<td>- 주문자명 :&nbsp;&nbsp;&nbsp;<?=$sr_buy_name?></td>
 					</tr>
 					<tr>
-						<td>- 결제방법 :&nbsp;&nbsp;&nbsp;<?if($lgd_paytype=="SC0010"){?>신용카드<?}else if($lgd_paytype=="SC0030"){?>계좌이체<?}else if($lgd_paytype=="SC0060"){?>휴대폰<?}else if($sr_pay=="paypal"){?>PAYPAL<?}else if($sr_pay=="alipay"){?>ALIPAY<?}?></td>
+						<td>- 결제방법 :&nbsp;&nbsp;&nbsp;<?php if{?>신용카드<?php }else if($lgd_paytype=="SC0030"){?>계좌이체<?php }else if($lgd_paytype=="SC0060"){?>휴대폰<?php }else if($sr_pay=="paypal"){?>PAYPAL<?php }else if($sr_pay=="alipay"){?>ALIPAY<?php }?></td>
 					</tr>
 					<tr>
-						<td>- 결제내용 :&nbsp;&nbsp;&nbsp;<?=$lgd_financename?><?if($lgd_paytype=="SC0010"){?><?=$lgd_cardnum?><?}else if($lgd_paytype=="SC0060"){?><?=$lgd_telno?><?}?></td>
+						<td>- 결제내용 :&nbsp;&nbsp;&nbsp;<?=$lgd_financename if{?><?=$lgd_cardnum }else if($lgd_paytype=="SC0060"){?><?=$lgd_telno }?></td>
 					</tr>
 					<tr>
 						<td>- 주문시간 :&nbsp;&nbsp;&nbsp;<?=$sr_datetime?></td>
@@ -190,7 +190,7 @@ $ss_tel = $row["ss_tel"];
 			<th style="width:100px;">합계</th>
 			<th style="width:80px;">운송비</th>
 		</tr>
-	<?
+	<?php
 		$total_price = 0;
 		$total_delivery = 0;
 		$sd_code_check = "";
@@ -243,19 +243,19 @@ $ss_tel = $row["ss_tel"];
 			<td>
 				<?=national_money($pay_county, $srs_price*$srs_amount);?>
 			</td>
-			<?if($rowspan != 0){?>
+			<?php if($rowspan != 0){?>
 			<td align="center" rowspan="<?=$rowspan?>">
-				<?
+				<?php
 					$total_delivery += $srs_delivery_price;
 					echo national_money($pay_county, $srs_delivery_price);
 				?>
 			</td>
-			<?
+			<?php
 					$rowspan = 0;
 				}
 			?>
 		</tr>
-	<?
+	<?php
 		$i++;
 		}
 	?>
@@ -273,7 +273,7 @@ $ss_tel = $row["ss_tel"];
 </div>
 <div>
 	<b>[판매자 메모]</b><br/>
-	<?
+	<?php
 		$sql = "select * from $iw[shop_order_memo_table] where ep_code = '$iw[store]' and sr_code = '$sr_code' and seller_mb_code = '$iw[member]'";
 		$row = sql_fetch($sql);
 		echo str_replace("\r\n", "<br/>", $row["srm_content"]);
@@ -296,10 +296,10 @@ $ss_tel = $row["ss_tel"];
 						<td>- 주문자명 :&nbsp;&nbsp;&nbsp;<?=$sr_buy_name?></td>
 					</tr>
 					<tr>
-						<td>- 결제방법 :&nbsp;&nbsp;&nbsp;<?if($lgd_paytype=="SC0010"){?>신용카드<?}else if($lgd_paytype=="SC0030"){?>계좌이체<?}else if($lgd_paytype=="SC0060"){?>휴대폰<?}else if($sr_pay=="paypal"){?>PAYPAL<?}else if($sr_pay=="alipay"){?>ALIPAY<?}?></td>
+						<td>- 결제방법 :&nbsp;&nbsp;&nbsp;<?php if{?>신용카드<?php }else if($lgd_paytype=="SC0030"){?>계좌이체<?php }else if($lgd_paytype=="SC0060"){?>휴대폰<?php }else if($sr_pay=="paypal"){?>PAYPAL<?php }else if($sr_pay=="alipay"){?>ALIPAY<?php }?></td>
 					</tr>
 					<tr>
-						<td>- 결제내용 :&nbsp;&nbsp;&nbsp;<?=$lgd_financename?><?if($lgd_paytype=="SC0010"){?><?=$lgd_cardnum?><?}else if($lgd_paytype=="SC0060"){?><?=$lgd_telno?><?}?></td>
+						<td>- 결제내용 :&nbsp;&nbsp;&nbsp;<?=$lgd_financename if{?><?=$lgd_cardnum }else if($lgd_paytype=="SC0060"){?><?=$lgd_telno }?></td>
 					</tr>
 					<tr>
 						<td>- 주문시간 :&nbsp;&nbsp;&nbsp;<?=$sr_datetime?></td>
@@ -373,7 +373,7 @@ $ss_tel = $row["ss_tel"];
 			<th style="width:100px;">합계</th>
 			<th style="width:80px;">운송비</th>
 		</tr>
-	<?
+	<?php
 		$total_price = 0;
 		$total_delivery = 0;
 		$sd_code_check = "";
@@ -426,19 +426,19 @@ $ss_tel = $row["ss_tel"];
 			<td>
 				<?=national_money($pay_county, $srs_price*$srs_amount);?>
 			</td>
-			<?if($rowspan != 0){?>
+			<?php if($rowspan != 0){?>
 			<td align="center" rowspan="<?=$rowspan?>">
-				<?
+				<?php
 					$total_delivery += $srs_delivery_price;
 					echo national_money($pay_county, $srs_delivery_price);
 				?>
 			</td>
-			<?
+			<?php
 					$rowspan = 0;
 				}
 			?>
 		</tr>
-	<?
+	<?php
 		$i++;
 		}
 	?>
@@ -463,3 +463,6 @@ $ss_tel = $row["ss_tel"];
 </div>
 </body>
 </html>
+
+
+

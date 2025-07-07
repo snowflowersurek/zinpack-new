@@ -58,7 +58,7 @@ $upload_path = "/$row[ep_nick]";
 									</div>
 									<div class="col-xs-9">
 										<div class="dataTable-option-right">
-											<?
+											<?php
 												if($_POST['searchyear'] || $_POST['searchby'] || $_POST['keyword']){
 													$searchyear = $_POST['searchyear'];
 													$searchby = $_POST['searchby'];
@@ -97,10 +97,10 @@ $upload_path = "/$row[ep_nick]";
 													?>
 												</select>
 												<select name="searchby" class="form-control" style="display:inline-block; width:90px; height:30px; padding:4px;">
-													<option value="picture_name" <?if($searchby == "picture_name"){?>selected="selected"<?}?>>그림전시명</option>
-													<option value="userName" <?if($searchby == "userName"){?>selected="selected"<?}?>>신청자</option>
-													<option value="strOrgan" <?if($searchby == "strOrgan"){?>selected="selected"<?}?>>기관명</option>
-													<option value="phone" <?if($searchby == "phone"){?>selected="selected"<?}?>>연락처</option>
+													<option value="picture_name" <?php if{?>selected="selected"<?php }?>>그림전시명</option>
+													<option value="userName" <?php if{?>selected="selected"<?php }?>>신청자</option>
+													<option value="strOrgan" <?php if{?>selected="selected"<?php }?>>기관명</option>
+													<option value="phone" <?php if{?>selected="selected"<?php }?>>연락처</option>
 												</select>
 												<input type="text" name="keyword" class="form-control" value="<?=$keyword?>" style="display:inline-block; width:100px; padding:5px;" placeholder="검색어" />
 											</form>
@@ -121,7 +121,7 @@ $upload_path = "/$row[ep_nick]";
 										</tr>
 									</thead>
 									<tbody>
-									<?
+									<?php
 										$sql = "select * from $iw[publishing_exhibit_status_table] where ep_code = '$iw[store]' $search_sql";
 										$result = sql_query($sql);
 										$total_line = mysql_num_rows($result);
@@ -174,18 +174,18 @@ $upload_path = "/$row[ep_nick]";
 											<td data-title="연락처"><?=$userTel?></td>
 											<td data-title="신청일"><?=$md_date?></td>
 											<td data-title="신청현황">
-												<?if($stat == "1"){?>
+												<?php if($stat == "1"){?>
 													<span class="label label-sm label-default">대기 중</span>
-												<?}else if($stat == "2"){?>
+												<?php }else if($stat == "2"){?>
 													<span class="label label-sm label-success">전시확정</span>
-												<?}else if($stat == "3"){?>
+												<?php }else if($stat == "3"){?>
 													<span class="label label-sm label-warning">보류</span>
-												<?}else if($stat == "4"){?>
+												<?php }else if($stat == "4"){?>
 													<span class="label label-sm label-danger">전시연기</span>
-												<?}?>
+												<?php }?>
 											</td>
 										</tr>
-									<?
+									<?php
 										$i++;
 										}
 										if($i==0) echo "<tr><td colspan='8' align='center'>검색된 게시글이 없습니다.</td></tr>";
@@ -201,7 +201,7 @@ $upload_path = "/$row[ep_nick]";
 									<div class="col-sm-8">
 										<div class="dataTable-option-right">
 											<ul class="pagination">
-											<?
+											<?php
 												if($total_page!=0){
 													if($page>$total_page) { $page=$total_page; }
 													$start_page = ((ceil($page/$max_page)-1)*$max_page)+1;
@@ -243,6 +243,9 @@ $upload_path = "/$row[ep_nick]";
 	</div><!-- /container -->
 </div><!-- /end .page-content -->
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

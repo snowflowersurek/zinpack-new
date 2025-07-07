@@ -580,3 +580,7 @@ if (!empty($submit_mult) && !empty($what)) {
     $message = PMA_Message::success(__('No change'));
 }
 ?>
+
+
+
+

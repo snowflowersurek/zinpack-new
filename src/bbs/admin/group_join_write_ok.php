@@ -4,8 +4,8 @@ if ($iw[type] != "group" || $iw[level] == "admin" || $iw[group] != "all") alert(
 ?>
 <meta http-equiv="content-type" content="text/html; charset=<?=$iw['charset']?>" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-<?
-$gp_no = trim(mysql_real_escape_string($_POST[gp_no]));
+<?php
+$gp_no = trim(mysqli_real_escape_string($iw['connect'], $_POST['gp_no']));
 
 $sql = "select * from $iw[group_table] where ep_code = '$iw[store]' and gp_no = '$gp_no'";
 $row = sql_fetch($sql);
@@ -79,7 +79,7 @@ if ($row[cnt]) {
 			alert("초대자 명단에 일치하는 회원정보가 없습니다.","");
 		}
 	}else if ($gp_type == 5){
-		$autocode = trim(mysql_real_escape_string($_POST[gp_autocode]));
+		$autocode = trim(mysqli_real_escape_string($iw['connect'], $_POST['gp_autocode']));
 		if($gp_autocode == $autocode){
 			$sql = "insert into $iw[group_member_table] set
 					ep_code = '$iw[store]',
@@ -98,3 +98,6 @@ if ($row[cnt]) {
 	}
 }
 ?>
+
+
+

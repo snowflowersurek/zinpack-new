@@ -57,15 +57,15 @@ $sy_display = $row["sy_display"];
 					<div class="form-group">
 						<label class="col-sm-1 control-label">배송가격</label>
 						<div class="col-sm-11">
-							<?if($iw[language]=="ko"){?>
+							<?php if($iw[language]=="ko"){?>
 								<input type="text" placeholder="입력" name="sy_price" maxlength="10" value="<?=$row["sy_price"]?>"> 원
-							<?}else if($iw[language]=="en"){
+							<?php }else if($iw[language]=="en"){
 								$price = $row["sy_price"]/1000;
 								$price = sprintf("%1.2f", $price);
 								$price = explode(".", $price);
 							?>
 								US$ <input type="text" placeholder="입력" name="sy_price" maxlength="8" style="text-align:right" value="<?=$price[0]?>"> . <input type="text" placeholder="입력" name="sy_price_2" maxlength="2" size='2' value="<?=$price[1]?>">
-							<?}?>
+							<?php }?>
 						</div>
 					</div>
 					<div class="space-4"></div>
@@ -75,23 +75,23 @@ $sy_display = $row["sy_display"];
 						<div class="col-sm-11">
 							<div class="radio">
 								<label>
-									<input type="radio" name="type" value="1" onclick="javascript:radio_check(this.value);" <?if($sy_display==1){?>checked<?}?>>
+									<input type="radio" name="type" value="1" onclick="javascript:radio_check(this.value);" <?php if{?>checked<?php }?>>
 									<span class="lbl"> 무료배송</span>
-									<?if($iw[language]=="ko"){?>
-										<input type="text" placeholder="입력" name="sy_max" maxlength="10" value="<?if($sy_display==1){?><?=$sy_max?><?}?>"> 원
-									<?}else if($iw[language]=="en"){
+									<?php if($iw[language]=="ko"){?>
+										<input type="text" placeholder="입력" name="sy_max" maxlength="10" value="<?php if{?><?=$sy_max }?>"> 원
+									<?php }else if($iw[language]=="en"){
 										$price_max = $row["sy_max"]/1000;
 										$price_max = sprintf("%1.2f", $price_max);
 										$price_max = explode(".", $price_max);
 									?>
-										US$ <input type="text" placeholder="입력" name="sy_max" maxlength="8" style="text-align:right" value="<?if($sy_display==1){?><?=$price_max[0]?><?}?>"> . <input type="text" placeholder="입력" name="sy_max_2" maxlength="2" size='2' value="<?if($sy_display==1){?><?=$price_max[1]?><?}?>">
-									<?}?> 이상
+										US$ <input type="text" placeholder="입력" name="sy_max" maxlength="8" style="text-align:right" value="<?php if{?><?=$price_max[0] }?>"> . <input type="text" placeholder="입력" name="sy_max_2" maxlength="2" size='2' value="<?php if{?><?=$price_max[1] }?>">
+									<?php }?> 이상
 								</label>
 							</div>
 							<div class="radio">
 								<label>
-									<input type="radio" name="type" value="2" onclick="javascript:radio_check(this.value);" <?if($sy_display==2){?>checked<?}?>>
-									<span class="lbl"> 묶음배송</span> <input type="text" placeholder="입력" name="sy_max_3" maxlength="3" value="<?if($sy_display==2){?><?=$sy_max?><?}?>"> 개 이하
+									<input type="radio" name="type" value="2" onclick="javascript:radio_check(this.value);" <?php if{?>checked<?php }?>>
+									<span class="lbl"> 묶음배송</span> <input type="text" placeholder="입력" name="sy_max_3" maxlength="3" value="<?php if{?><?=$sy_max }?>"> 개 이하
 								</label>
 							</div>
 						</div>
@@ -146,7 +146,7 @@ $sy_display = $row["sy_display"];
 			e1.focus();
 			return;
 		}
-	<?if($iw[language]=="en"){?>
+	<?php if($iw[language]=="en"){?>
 		if (sy_form.sy_price_2.value.length < 2) {
 			alert('소수점이하는 2글자를 입력하여 주십시오.');
 			sy_form.sy_price_2.focus();
@@ -162,7 +162,7 @@ $sy_display = $row["sy_display"];
 			e1.focus();
 			return;
 		}
-	<?}?>
+	<?php }?>
 		if (sy_form.sy_display.value == "1") {
 			if (sy_form.sy_max.value == "") {
 				alert('배송비무료 가격을 입력하여 주십시오.');
@@ -179,7 +179,7 @@ $sy_display = $row["sy_display"];
 				e1.focus();
 				return;
 			}
-			<?if($iw[language]=="en"){?>
+			<?php if($iw[language]=="en"){?>
 				if (sy_form.sy_max_2.value.length < 2) {
 					alert('소수점이하는 2글자를 입력하여 주십시오.');
 					sy_form.sy_max_2.focus();
@@ -195,7 +195,7 @@ $sy_display = $row["sy_display"];
 					e1.focus();
 					return;
 				}
-			<?}?>
+			<?php }?>
 		}
 		if (sy_form.sy_display.value == "2") {
 			if (sy_form.sy_max_3.value == "") {
@@ -232,6 +232,9 @@ $sy_display = $row["sy_display"];
 	}
 </script>
  
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

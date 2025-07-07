@@ -333,3 +333,7 @@ if (empty($db_is_information_schema)) {
 } // end if (Create Table dialog)
 
 ?>
+
+
+
+

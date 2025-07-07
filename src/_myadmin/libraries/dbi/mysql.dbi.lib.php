@@ -550,3 +550,7 @@ function PMA_DBI_store_result()
     return false;
 }
 ?>
+
+
+
+

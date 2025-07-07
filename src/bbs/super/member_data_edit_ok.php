@@ -9,7 +9,7 @@ if (!$db_conn) {
 ?>
 <meta http-equiv="content-type" content="text/html; charset=<?=$iw['charset']?>" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-<?
+<?php
 $mb_mail = trim($_POST['mb_mail']);
 $mb_password = trim($_POST['mb_password']);
 $mb_code = trim($_POST['mb_code']);
@@ -97,3 +97,6 @@ if ($rowmail['cnt']) {
 	alert("회원정보가 수정되었습니다.","{$iw['super_path']}/member_data_view.php?type={$iw['type']}&ep={$iw['store']}&gp={$iw['group']}&idx={$mb_code}");
 }
 ?>
+
+
+

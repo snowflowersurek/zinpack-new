@@ -46,7 +46,7 @@ include_once("_head.php");
 						<button class='btn btn-success' type='button' onclick="javascript:categoryFrameNew('<?=$iw[type]?>','<?=$iw[store]?>','<?=$iw[group]?>','1','new');"><i class="fa fa-plus"></i> 추가</button>
 						<div class="dd" id="sortable">
 							<ol class="dd-list">
-							<?
+							<?php
 								$sql = "select * from $iw[home_menu_table] where ep_code = '$iw[store]' and gp_code = '$iw[group]' and hm_deep = 1 order by hm_order asc,hm_no asc";
 								$result = sql_query($sql);
 								while($row = @sql_fetch_array($result)){
@@ -63,37 +63,19 @@ include_once("_head.php");
 									</div>
 									<div class="dd2-content">
 										<span>
-											<?if($state_sort=="mcb"){?><i class="fa fa-file-text-o"></i><?}?>
-											<?if($state_sort=="publishing"){?><i class="fa fa-book"></i><?}?>
-											<?if($state_sort=="author"){?><i class="fa fa-id-card-o"></i><?}?>
-											<?if($state_sort=="exhibit"){?><i class="fa fa-picture-o"></i><?}?>
-											<?if($state_sort=="exhibit_monthly"){?><i class="fa fa-picture-o"></i><?}?>
-											<?if($state_sort=="exhibit_application"){?><i class="fa fa-picture-o"></i><?}?>
-											<?if($state_sort=="exhibit_status"){?><i class="fa fa-picture-o"></i><?}?>
-											<?if($state_sort=="lecture_application"){?><i class="fa fa-bullhorn"></i><?}?>
-											<?if($state_sort=="lecture_status"){?><i class="fa fa-bullhorn"></i><?}?>
-											<?if($state_sort=="shop"){?><i class="fa fa-shopping-cart"></i><?}?>
-											<?if($state_sort=="doc"){?><i class="fa fa-inbox"></i><?}?>
-											<?if($state_sort=="book"){?><i class="fa fa-newspaper-o"></i><?}?>
-											<?if($state_sort=="about"){?><i class="fa fa-window-maximize"></i><?}?>
-											<?if($state_sort=="open"){?><i class="fa fa-list-alt"></i><?}?>
-											<?if($state_sort=="close"){?><i class="fa fa-level-down"></i><?}?>
-											<?if($state_sort=="link"){?><i class="fa fa-link"></i><?}?>
-											<?if($state_sort=="scrap"){?><i class="fa fa-bookmark-o"></i><?}?>
-											<?if($state_sort=="main"){?><i class="fa fa-home"></i><?}?>
+											<?php if($state_sort=="mcb"){?><i class="fa fa-file-text-o"></i><?php } ?><?php if($state_sort=="publishing"){?><i class="fa fa-book"></i><?php } ?><?php if($state_sort=="author"){?><i class="fa fa-id-card-o"></i><?php } ?><?php if($state_sort=="exhibit"){?><i class="fa fa-picture-o"></i><?php } ?><?php if($state_sort=="exhibit_monthly"){?><i class="fa fa-picture-o"></i><?php } ?><?php if($state_sort=="exhibit_application"){?><i class="fa fa-picture-o"></i><?php } ?><?php if($state_sort=="exhibit_status"){?><i class="fa fa-picture-o"></i><?php } ?><?php if($state_sort=="lecture_application"){?><i class="fa fa-bullhorn"></i><?php } ?><?php if($state_sort=="lecture_status"){?><i class="fa fa-bullhorn"></i><?php } ?><?php if($state_sort=="shop"){?><i class="fa fa-shopping-cart"></i><?php } ?><?php if($state_sort=="doc"){?><i class="fa fa-inbox"></i><?php } ?><?php if($state_sort=="book"){?><i class="fa fa-newspaper-o"></i><?php } ?><?php if($state_sort=="about"){?><i class="fa fa-window-maximize"></i><?php } ?><?php if($state_sort=="open"){?><i class="fa fa-list-alt"></i><?php } ?><?php if($state_sort=="close"){?><i class="fa fa-level-down"></i><?php } ?><?php if($state_sort=="link"){?><i class="fa fa-link"></i><?php } ?><?php if($state_sort=="scrap"){?><i class="fa fa-bookmark-o"></i><?php } ?><?php if($state_sort=="main"){?><i class="fa fa-home"></i><?php }?>
 											<?=$hm_name?>
 										</span>
 										<div class="pull-right action-buttons">
-											<?if($hm_list_scrap==1){?>
+											<?php if($hm_list_scrap==1){?>
 											<a class="grey" href="javascript:scrapListEdit('<?=$iw[type]?>','<?=$iw[store]?>','<?=$iw[group]?>','<?=$hm_code?>');">
 												<i class="fa fa-folder-open-o"></i>
 											</a>
-											<?}?>
-											<?if($hm_view_scrap==1){?>
+											<?php } ?><?php if($hm_view_scrap==1){?>
 											<a class="grey" href="javascript:scrapViewEdit('<?=$iw[type]?>','<?=$iw[store]?>','<?=$iw[group]?>','<?=$hm_code?>');">
 												<i class="fa fa-file-o"></i>
 											</a>
-											<?}?>
+											<?php }?>
 											<a class="blue" href="javascript:categoryFrameEdit('<?=$iw[type]?>','<?=$iw[store]?>','<?=$iw[group]?>','<?=$hm_code?>');">
 												<i class="fa fa-cog"></i>
 											</a>
@@ -102,7 +84,7 @@ include_once("_head.php");
 											</a>
 										</div>
 									</div>
-								<?
+								<?php
 									$sql2 = "select * from $iw[home_menu_table] where hm_upper_code = '$hm_code' and hm_deep = 2 and ep_code = '$iw[store]' and gp_code = '$iw[group]' order by hm_order asc,hm_no asc";
 									$result2 = sql_query($sql2);
 									$middle_num = 0;
@@ -113,47 +95,26 @@ include_once("_head.php");
 										$hm_list_scrap = $row2["hm_list_scrap"];
 										$hm_view_scrap = $row2["hm_view_scrap"];
 										$state_sort = $row2["state_sort"];
-								?>
-								<?if($middle_num==0){?><ol class="dd-list"><?}?>
+								 if($middle_num==0){?><ol class="dd-list"><?php }?>
 									<li class="dd-item dd2-item" data-id="<?=$hm_no?>">
 										<div class="dd-handle dd2-handle">
 											<i class="fa fa-arrows"></i>
 										</div>
 										<div class="dd2-content">
 											<span>
-												<?if($state_sort=="mcb"){?><i class="fa fa-file-text-o"></i><?}?>
-												<?if($state_sort=="publishing"){?><i class="fa fa-book"></i><?}?>
-												<?if($state_sort=="publishing_brand"){?><i class="fa fa-book"></i><?}?>
-												<?if($state_sort=="author"){?><i class="fa fa-id-card-o"></i><?}?>
-												<?if($state_sort=="exhibit"){?><i class="fa fa-picture-o"></i><?}?>
-												<?if($state_sort=="exhibit_monthly"){?><i class="fa fa-picture-o"></i><?}?>
-												<?if($state_sort=="exhibit_application"){?><i class="fa fa-picture-o"></i><?}?>
-												<?if($state_sort=="exhibit_status"){?><i class="fa fa-picture-o"></i><?}?>
-												<?if($state_sort=="lecture_application"){?><i class="fa fa-bullhorn"></i><?}?>
-												<?if($state_sort=="lecture_status"){?><i class="fa fa-bullhorn"></i><?}?>
-												<?if($state_sort=="publishing_contest"){?><i class="fa fa-edit"></i><?}?>
-												<?if($state_sort=="shop"){?><i class="fa fa-shopping-cart"></i><?}?>
-												<?if($state_sort=="doc"){?><i class="fa fa-inbox"></i><?}?>
-												<?if($state_sort=="book"){?><i class="fa fa-newspaper-o"></i><?}?>
-												<?if($state_sort=="about"){?><i class="fa fa-window-maximize"></i><?}?>
-												<?if($state_sort=="open"){?><i class="fa fa-list-alt"></i><?}?>
-												<?if($state_sort=="close"){?><i class="fa fa-level-down"></i><?}?>
-												<?if($state_sort=="link"){?><i class="fa fa-link"></i><?}?>
-												<?if($state_sort=="scrap"){?><i class="fa fa-bookmark-o"></i><?}?>
-												<?if($state_sort=="main"){?><i class="fa fa-home"></i><?}?>
+												<?php if($state_sort=="mcb"){?><i class="fa fa-file-text-o"></i><?php } ?><?php if($state_sort=="publishing"){?><i class="fa fa-book"></i><?php } ?><?php if($state_sort=="publishing_brand"){?><i class="fa fa-book"></i><?php } ?><?php if($state_sort=="author"){?><i class="fa fa-id-card-o"></i><?php } ?><?php if($state_sort=="exhibit"){?><i class="fa fa-picture-o"></i><?php } ?><?php if($state_sort=="exhibit_monthly"){?><i class="fa fa-picture-o"></i><?php } ?><?php if($state_sort=="exhibit_application"){?><i class="fa fa-picture-o"></i><?php } ?><?php if($state_sort=="exhibit_status"){?><i class="fa fa-picture-o"></i><?php } ?><?php if($state_sort=="lecture_application"){?><i class="fa fa-bullhorn"></i><?php } ?><?php if($state_sort=="lecture_status"){?><i class="fa fa-bullhorn"></i><?php } ?><?php if($state_sort=="publishing_contest"){?><i class="fa fa-edit"></i><?php } ?><?php if($state_sort=="shop"){?><i class="fa fa-shopping-cart"></i><?php } ?><?php if($state_sort=="doc"){?><i class="fa fa-inbox"></i><?php } ?><?php if($state_sort=="book"){?><i class="fa fa-newspaper-o"></i><?php } ?><?php if($state_sort=="about"){?><i class="fa fa-window-maximize"></i><?php } ?><?php if($state_sort=="open"){?><i class="fa fa-list-alt"></i><?php } ?><?php if($state_sort=="close"){?><i class="fa fa-level-down"></i><?php } ?><?php if($state_sort=="link"){?><i class="fa fa-link"></i><?php } ?><?php if($state_sort=="scrap"){?><i class="fa fa-bookmark-o"></i><?php } ?><?php if($state_sort=="main"){?><i class="fa fa-home"></i><?php }?>
 												<?=$hm_name?>
 											</span>
 											<div class="pull-right action-buttons">
-												<?if($hm_list_scrap==1){?>
+												<?php if($hm_list_scrap==1){?>
 												<a class="grey" href="javascript:scrapListEdit('<?=$iw[type]?>','<?=$iw[store]?>','<?=$iw[group]?>','<?=$hm_code?>');">
 													<i class="fa fa-folder-open-o"></i>
 												</a>
-												<?}?>
-												<?if($hm_view_scrap==1){?>
+												<?php } ?><?php if($hm_view_scrap==1){?>
 												<a class="grey" href="javascript:scrapViewEdit('<?=$iw[type]?>','<?=$iw[store]?>','<?=$iw[group]?>','<?=$hm_code?>');">
 													<i class="fa fa-file-o"></i>
 												</a>
-												<?}?>
+												<?php }?>
 												<a class="blue" href="javascript:categoryFrameEdit('<?=$iw[type]?>','<?=$iw[store]?>','<?=$iw[group]?>','<?=$hm_code?>');">
 													<i class="fa fa-cog"></i>
 												</a>
@@ -162,7 +123,7 @@ include_once("_head.php");
 												</a>
 											</div>
 										</div>
-									<?
+									<?php
 										$sql3 = "select * from $iw[home_menu_table] where hm_upper_code = '$hm_code' and hm_deep = 3 and ep_code = '$iw[store]' and gp_code = '$iw[group]' order by hm_order asc,hm_no asc";
 										$result3 = sql_query($sql3);
 										$small_num = 0;
@@ -173,47 +134,26 @@ include_once("_head.php");
 											$hm_list_scrap = $row3["hm_list_scrap"];
 											$hm_view_scrap = $row3["hm_view_scrap"];
 											$state_sort = $row3["state_sort"];
-									?>
-									<?if($small_num==0){?><ol class="dd-list"><?}?>
+									 if($small_num==0){?><ol class="dd-list"><?php }?>
 										<li class="dd-item dd2-item" data-id="<?=$hm_no?>">
 											<div class="dd-handle dd2-handle">
 												<i class="fa fa-arrows"></i>
 											</div>
 											<div class="dd2-content">
 												<span>
-													<?if($state_sort=="mcb"){?><i class="fa fa-file-text-o"></i><?}?>
-													<?if($state_sort=="publishing"){?><i class="fa fa-book"></i><?}?>
-													<?if($state_sort=="publishing_brand"){?><i class="fa fa-book"></i><?}?>
-													<?if($state_sort=="author"){?><i class="fa fa-id-card-o"></i><?}?>
-													<?if($state_sort=="exhibit"){?><i class="fa fa-picture-o"></i><?}?>
-													<?if($state_sort=="exhibit_monthly"){?><i class="fa fa-picture-o"></i><?}?>
-													<?if($state_sort=="exhibit_application"){?><i class="fa fa-picture-o"></i><?}?>
-													<?if($state_sort=="exhibit_status"){?><i class="fa fa-picture-o"></i><?}?>
-													<?if($state_sort=="lecture_application"){?><i class="fa fa-bullhorn"></i><?}?>
-													<?if($state_sort=="lecture_status"){?><i class="fa fa-bullhorn"></i><?}?>
-													<?if($state_sort=="publishing_contest"){?><i class="fa fa-edit"></i><?}?>
-													<?if($state_sort=="shop"){?><i class="fa fa-shopping-cart"></i><?}?>
-													<?if($state_sort=="doc"){?><i class="fa fa-inbox"></i><?}?>
-													<?if($state_sort=="book"){?><i class="fa fa-newspaper-o"></i><?}?>
-													<?if($state_sort=="about"){?><i class="fa fa-window-maximize"></i><?}?>
-													<?if($state_sort=="open"){?><i class="fa fa-list-alt"></i><?}?>
-													<?if($state_sort=="close"){?><i class="fa fa-level-down"></i><?}?>
-													<?if($state_sort=="link"){?><i class="fa fa-link"></i><?}?>
-													<?if($state_sort=="scrap"){?><i class="fa fa-bookmark-o"></i><?}?>
-													<?if($state_sort=="main"){?><i class="fa fa-home"></i><?}?>
+													<?php if($state_sort=="mcb"){?><i class="fa fa-file-text-o"></i><?php } ?><?php if($state_sort=="publishing"){?><i class="fa fa-book"></i><?php } ?><?php if($state_sort=="publishing_brand"){?><i class="fa fa-book"></i><?php } ?><?php if($state_sort=="author"){?><i class="fa fa-id-card-o"></i><?php } ?><?php if($state_sort=="exhibit"){?><i class="fa fa-picture-o"></i><?php } ?><?php if($state_sort=="exhibit_monthly"){?><i class="fa fa-picture-o"></i><?php } ?><?php if($state_sort=="exhibit_application"){?><i class="fa fa-picture-o"></i><?php } ?><?php if($state_sort=="exhibit_status"){?><i class="fa fa-picture-o"></i><?php } ?><?php if($state_sort=="lecture_application"){?><i class="fa fa-bullhorn"></i><?php } ?><?php if($state_sort=="lecture_status"){?><i class="fa fa-bullhorn"></i><?php } ?><?php if($state_sort=="publishing_contest"){?><i class="fa fa-edit"></i><?php } ?><?php if($state_sort=="shop"){?><i class="fa fa-shopping-cart"></i><?php } ?><?php if($state_sort=="doc"){?><i class="fa fa-inbox"></i><?php } ?><?php if($state_sort=="book"){?><i class="fa fa-newspaper-o"></i><?php } ?><?php if($state_sort=="about"){?><i class="fa fa-window-maximize"></i><?php } ?><?php if($state_sort=="open"){?><i class="fa fa-list-alt"></i><?php } ?><?php if($state_sort=="close"){?><i class="fa fa-level-down"></i><?php } ?><?php if($state_sort=="link"){?><i class="fa fa-link"></i><?php } ?><?php if($state_sort=="scrap"){?><i class="fa fa-bookmark-o"></i><?php } ?><?php if($state_sort=="main"){?><i class="fa fa-home"></i><?php }?>
 													<?=$hm_name?>
 												</span>
 												<div class="pull-right action-buttons">
-													<?if($hm_list_scrap==1){?>
+													<?php if($hm_list_scrap==1){?>
 													<a class="grey" href="javascript:scrapListEdit('<?=$iw[type]?>','<?=$iw[store]?>','<?=$iw[group]?>','<?=$hm_code?>');">
 														<i class="fa fa-folder-open-o"></i>
 													</a>
-													<?}?>
-													<?if($hm_view_scrap==1){?>
+													<?php } ?><?php if($hm_view_scrap==1){?>
 													<a class="grey" href="javascript:scrapViewEdit('<?=$iw[type]?>','<?=$iw[store]?>','<?=$iw[group]?>','<?=$hm_code?>');">
 														<i class="fa fa-file-o"></i>
 													</a>
-													<?}?>
+													<?php }?>
 													<a class="blue" href="javascript:categoryFrameEdit('<?=$iw[type]?>','<?=$iw[store]?>','<?=$iw[group]?>','<?=$hm_code?>');">
 														<i class="fa fa-cog"></i>
 													</a>
@@ -222,8 +162,7 @@ include_once("_head.php");
 													</a>
 												</div>
 											</div>
-										<?
-
+										<?php
 											$sql4 = "select * from $iw[home_menu_table] where hm_upper_code = '$hm_code' and hm_deep = 4 and ep_code = '$iw[store]' and gp_code = '$iw[group]' order by hm_order asc,hm_no asc";
 											$result4 = sql_query($sql4);
 											$tint_num = 0;
@@ -234,47 +173,26 @@ include_once("_head.php");
 												$hm_list_scrap = $row4["hm_list_scrap"];
 												$hm_view_scrap = $row4["hm_view_scrap"];
 												$state_sort = $row4["state_sort"];
-										?>
-										<?if($tint_num==0){?><ol class="dd-list"><?}?>
+										 if($tint_num==0){?><ol class="dd-list"><?php }?>
 											<li class="dd-item dd2-item" data-id="<?=$hm_no?>">
 												<div class="dd-handle dd2-handle">
 													<i class="fa fa-arrows"></i>
 												</div>
 												<div class="dd2-content">
 													<span>
-														<?if($state_sort=="mcb"){?><i class="fa fa-file-text-o"></i><?}?>
-														<?if($state_sort=="publishing"){?><i class="fa fa-book"></i><?}?>
-														<?if($state_sort=="publishing_brand"){?><i class="fa fa-book"></i><?}?>
-														<?if($state_sort=="author"){?><i class="fa fa-id-card-o"></i><?}?>
-														<?if($state_sort=="exhibit"){?><i class="fa fa-picture-o"></i><?}?>
-														<?if($state_sort=="exhibit_monthly"){?><i class="fa fa-picture-o"></i><?}?>
-														<?if($state_sort=="exhibit_application"){?><i class="fa fa-picture-o"></i><?}?>
-														<?if($state_sort=="exhibit_status"){?><i class="fa fa-picture-o"></i><?}?>
-														<?if($state_sort=="lecture_application"){?><i class="fa fa-bullhorn"></i><?}?>
-														<?if($state_sort=="lecture_status"){?><i class="fa fa-bullhorn"></i><?}?>
-														<?if($state_sort=="publishing_contest"){?><i class="fa fa-edit"></i><?}?>
-														<?if($state_sort=="shop"){?><i class="fa fa-shopping-cart"></i><?}?>
-														<?if($state_sort=="doc"){?><i class="fa fa-inbox"></i><?}?>
-														<?if($state_sort=="book"){?><i class="fa fa-newspaper-o"></i><?}?>
-														<?if($state_sort=="about"){?><i class="fa fa-window-maximize"></i><?}?>
-														<?if($state_sort=="open"){?><i class="fa fa-list-alt"></i><?}?>
-														<?if($state_sort=="close"){?><i class="fa fa-level-down"></i><?}?>
-														<?if($state_sort=="link"){?><i class="fa fa-link"></i><?}?>
-														<?if($state_sort=="scrap"){?><i class="fa fa-bookmark-o"></i><?}?>
-														<?if($state_sort=="main"){?><i class="fa fa-home"></i><?}?>
+														<?php if($state_sort=="mcb"){?><i class="fa fa-file-text-o"></i><?php } ?><?php if($state_sort=="publishing"){?><i class="fa fa-book"></i><?php } ?><?php if($state_sort=="publishing_brand"){?><i class="fa fa-book"></i><?php } ?><?php if($state_sort=="author"){?><i class="fa fa-id-card-o"></i><?php } ?><?php if($state_sort=="exhibit"){?><i class="fa fa-picture-o"></i><?php } ?><?php if($state_sort=="exhibit_monthly"){?><i class="fa fa-picture-o"></i><?php } ?><?php if($state_sort=="exhibit_application"){?><i class="fa fa-picture-o"></i><?php } ?><?php if($state_sort=="exhibit_status"){?><i class="fa fa-picture-o"></i><?php } ?><?php if($state_sort=="lecture_application"){?><i class="fa fa-bullhorn"></i><?php } ?><?php if($state_sort=="lecture_status"){?><i class="fa fa-bullhorn"></i><?php } ?><?php if($state_sort=="publishing_contest"){?><i class="fa fa-edit"></i><?php } ?><?php if($state_sort=="shop"){?><i class="fa fa-shopping-cart"></i><?php } ?><?php if($state_sort=="doc"){?><i class="fa fa-inbox"></i><?php } ?><?php if($state_sort=="book"){?><i class="fa fa-newspaper-o"></i><?php } ?><?php if($state_sort=="about"){?><i class="fa fa-window-maximize"></i><?php } ?><?php if($state_sort=="open"){?><i class="fa fa-list-alt"></i><?php } ?><?php if($state_sort=="close"){?><i class="fa fa-level-down"></i><?php } ?><?php if($state_sort=="link"){?><i class="fa fa-link"></i><?php } ?><?php if($state_sort=="scrap"){?><i class="fa fa-bookmark-o"></i><?php } ?><?php if($state_sort=="main"){?><i class="fa fa-home"></i><?php }?>
 														<?=$hm_name?>
 													</span>
 													<div class="pull-right action-buttons">
-														<?if($hm_list_scrap==1){?>
+														<?php if($hm_list_scrap==1){?>
 														<a class="grey" href="javascript:scrapListEdit('<?=$iw[type]?>','<?=$iw[store]?>','<?=$iw[group]?>','<?=$hm_code?>');">
 															<i class="fa fa-folder-open-o"></i>
 														</a>
-														<?}?>
-														<?if($hm_view_scrap==1){?>
+														<?php } ?><?php if($hm_view_scrap==1){?>
 														<a class="grey" href="javascript:scrapViewEdit('<?=$iw[type]?>','<?=$iw[store]?>','<?=$iw[group]?>','<?=$hm_code?>');">
 															<i class="fa fa-file-o"></i>
 														</a>
-														<?}?>
+														<?php }?>
 														<a class="blue" href="javascript:categoryFrameEdit('<?=$iw[type]?>','<?=$iw[store]?>','<?=$iw[group]?>','<?=$hm_code?>');">
 															<i class="fa fa-cog"></i>
 														</a>
@@ -284,18 +202,16 @@ include_once("_head.php");
 													</div>
 												</div>
 											</li>
-										<?
+										<?php
 												$tint_num++;
 											}
-											if($tint_num!=0){?></ol><?}
+											if($tint_num!=0){?></ol><?php }
 											$small_num++;
-										?></li><?
-										}
-										if($small_num!=0){?></ol><?}
+										?></li><?php }
+										if($small_num!=0){?></ol><?php }
 										$middle_num++;
-									?></li><?
-									}
-									if($middle_num!=0){?></ol><?}
+									?></li><?php }
+									if($middle_num!=0){?></ol><?php }
 								}
 							?>
 								</li>
@@ -358,6 +274,9 @@ include_once("_head.php");
 	});
 </script>
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

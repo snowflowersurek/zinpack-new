@@ -4,53 +4,52 @@ if (($iw[group] == "all" && $iw[level] != "admin") || ($iw[group] != "all" && $i
 ?>
 <meta http-equiv="content-type" content="text/html; charset=<?=$iw['charset']?>" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-<?
-
+<?php
 $upload_path = $_POST[upload_path];
-$hs_no = trim(mysql_real_escape_string($_POST[hs_no]));
-$hs_scrap = trim(mysql_real_escape_string($_POST[hs_scrap]));
-$hm_code = trim(mysql_real_escape_string($_POST[hm_code]));
-$hs_name = trim(mysql_real_escape_string($_POST[hs_name]));
-$hs_style = trim(mysql_real_escape_string($_POST[hs_style]));
-$hs_type = trim(mysql_real_escape_string($_POST[hs_type]));
-$hs_border_width = trim(mysql_real_escape_string($_POST[hs_border_width]));
-$hs_border_color = trim(mysql_real_escape_string($_POST[hs_border_color]));
-$hs_border_radius = trim(mysql_real_escape_string($_POST[hs_border_radius]));
-$hs_topic_type = trim(mysql_real_escape_string($_POST[hs_topic_type]));
-$hs_topic_link = trim(mysql_real_escape_string($_POST[hs_topic_link]));
-$hs_topic_more = trim(mysql_real_escape_string($_POST[hs_topic_more]));
-$hs_topic_bullet = mysql_real_escape_string($_POST[hs_topic_bullet]);
-$hs_bg_alpha = trim(mysql_real_escape_string($_POST[hs_bg_alpha]));
-$hs_title_color = trim(mysql_real_escape_string($_POST[hs_title_color]));
-$hs_font_color = trim(mysql_real_escape_string($_POST[hs_font_color]));
-$hs_font_hover = trim(mysql_real_escape_string($_POST[hs_font_hover]));
-$hs_box_padding = trim(mysql_real_escape_string($_POST[hs_box_padding]));
+$hs_no = trim(mysqli_real_escape_string($iw['connect'], $_POST['hs_no']));
+$hs_scrap = trim(mysqli_real_escape_string($iw['connect'], $_POST['hs_scrap']));
+$hm_code = trim(mysqli_real_escape_string($iw['connect'], $_POST['hm_code']));
+$hs_name = trim(mysqli_real_escape_string($iw['connect'], $_POST['hs_name']));
+$hs_style = trim(mysqli_real_escape_string($iw['connect'], $_POST['hs_style']));
+$hs_type = trim(mysqli_real_escape_string($iw['connect'], $_POST['hs_type']));
+$hs_border_width = trim(mysqli_real_escape_string($iw['connect'], $_POST['hs_border_width']));
+$hs_border_color = trim(mysqli_real_escape_string($iw['connect'], $_POST['hs_border_color']));
+$hs_border_radius = trim(mysqli_real_escape_string($iw['connect'], $_POST['hs_border_radius']));
+$hs_topic_type = trim(mysqli_real_escape_string($iw['connect'], $_POST['hs_topic_type']));
+$hs_topic_link = trim(mysqli_real_escape_string($iw['connect'], $_POST['hs_topic_link']));
+$hs_topic_more = trim(mysqli_real_escape_string($iw['connect'], $_POST['hs_topic_more']));
+$hs_topic_bullet = mysqli_real_escape_string($iw['connect'], $_POST['hs_topic_bullet']);
+$hs_bg_alpha = trim(mysqli_real_escape_string($iw['connect'], $_POST['hs_bg_alpha']));
+$hs_title_color = trim(mysqli_real_escape_string($iw['connect'], $_POST['hs_title_color']));
+$hs_font_color = trim(mysqli_real_escape_string($iw['connect'], $_POST['hs_font_color']));
+$hs_font_hover = trim(mysqli_real_escape_string($iw['connect'], $_POST['hs_font_hover']));
+$hs_box_padding = trim(mysqli_real_escape_string($iw['connect'], $_POST['hs_box_padding']));
 $hs_file_sort = "";
 
 if($hs_style == 1){
 	$hs_size_width = 12;
 	$hs_size_height = 0;
 }else{
-	$hs_size_width = trim(mysql_real_escape_string($_POST[hs_size_width]));
-	$hs_size_height = trim(mysql_real_escape_string($_POST[hs_size_height]));
-	$hs_bg_color = trim(mysql_real_escape_string($_POST[hs_bg_color]));
+	$hs_size_width = trim(mysqli_real_escape_string($iw['connect'], $_POST['hs_size_width']));
+	$hs_size_height = trim(mysqli_real_escape_string($iw['connect'], $_POST['hs_size_height']));
+	$hs_bg_color = trim(mysqli_real_escape_string($iw['connect'], $_POST['hs_bg_color']));
 }
 
 if($hs_type == "menu"){
-	$hs_menu = trim(mysql_real_escape_string($_POST[hs_menu]));
-	$hs_banner_cnt = trim(mysql_real_escape_string($_POST[hs_banner_cnt]));
+	$hs_menu = trim(mysqli_real_escape_string($iw['connect'], $_POST['hs_menu']));
+	$hs_banner_cnt = trim(mysqli_real_escape_string($iw['connect'], $_POST['hs_banner_cnt']));
 }
 if($hs_type != "custom"){
-	$hs_sort = trim(mysql_real_escape_string($_POST[hs_sort]));
+	$hs_sort = trim(mysqli_real_escape_string($iw['connect'], $_POST['hs_sort']));
 }
 
 if($hs_style == 6 && $hs_type == "custom"){
-	$hs_sns_url = trim(mysql_real_escape_string($_POST[hs_sns_url]));
+	$hs_sns_url = trim(mysqli_real_escape_string($iw['connect'], $_POST['hs_sns_url']));
 }else if($hs_style == 3 && $hs_type == "custom"){
 	$abs_dir = $iw[path].$upload_path;
 
 	for ($i=0; $i<count($_POST[hs_link_topic]); $i++) {		
-		$hs_file_old = trim(mysql_real_escape_string($_POST[hs_file_old_topic][$i]));
+		$hs_file_old = trim(mysqli_real_escape_string($iw['connect'], $_POST['hs_file_old_topic'][$i]));
 		if($_POST["hs_file_delete_topic"][$i] == "del"){
 			if(is_file($abs_dir."/".$hs_file_old)==true){
 				unlink($abs_dir."/".$hs_file_old);
@@ -59,11 +58,11 @@ if($hs_style == 6 && $hs_type == "custom"){
 				unlink($abs_dir."/(60)".$hs_file_old);
 			}
 		}else{
-			$hs_title = trim(mysql_real_escape_string($_POST[hs_title_topic][$i]));
+			$hs_title = trim(mysqli_real_escape_string($iw['connect'], $_POST['hs_title_topic'][$i]));
 			$hs_title_total .= ";".$hs_title;
-			$hs_content = trim(mysql_real_escape_string($_POST[hs_content_topic][$i]));
+			$hs_content = trim(mysqli_real_escape_string($iw['connect'], $_POST['hs_content_topic'][$i]));
 			$hs_content_total .= ";".$hs_content;
-			$hs_link = trim(mysql_real_escape_string($_POST[hs_link_topic][$i]));
+			$hs_link = trim(mysqli_real_escape_string($iw['connect'], $_POST['hs_link_topic'][$i]));
 			$hs_link_total .= ";".$hs_link;
 
 			if($_FILES["hs_file_topic"]["name"][$i] && $_FILES["hs_file_topic"]["size"][$i]>0){
@@ -88,7 +87,7 @@ if($hs_style == 6 && $hs_type == "custom"){
 	$abs_dir = $iw[path].$upload_path;
 	
 	for ($i=0; $i<count($_POST[hs_link]); $i++) {
-		$hs_file_old = trim(mysql_real_escape_string($_POST[hs_file_old][$i]));
+		$hs_file_old = trim(mysqli_real_escape_string($iw['connect'], $_POST['hs_file_old'][$i]));
 		
 		if($_POST["hs_file_delete"][$i] == "del"){
 			if(is_file($abs_dir."/".$hs_file_old)==true){
@@ -99,7 +98,7 @@ if($hs_style == 6 && $hs_type == "custom"){
 			}
 		}else{
 			$hs_file_sort .= $_POST[hs_file_sort][$i].",";
-			$hs_link = trim(mysql_real_escape_string($_POST[hs_link][$i]));
+			$hs_link = trim(mysqli_real_escape_string($iw['connect'], $_POST['hs_link'][$i]));
 			$hs_link_total .= ";".$hs_link;
 			if($_FILES["hs_file"]["name"][$i] && $_FILES["hs_file"]["size"][$i]>0){
 				$hs_file_name = uniqid(rand());
@@ -206,3 +205,6 @@ sql_query($sql);
 echo "<script>window.parent.location.href='$iw[admin_path]/design_scrap_list.php?type=$iw[type]&ep=$iw[store]&gp=$iw[group]&menu=$hm_code&scrap=$hs_scrap';</script>";
 
 ?>
+
+
+

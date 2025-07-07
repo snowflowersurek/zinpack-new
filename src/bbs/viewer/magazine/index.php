@@ -15,7 +15,7 @@
 <script type="text/javascript" src="extras/jquery-ui-1.8.20.custom.min.js"></script>
 <script type="text/javascript" src="extras/modernizr.2.5.3.min.js"></script>
 <script type="text/javascript" src="lib/hash.js"></script>
-<?
+<?php
 	$path = $_GET["path"];
 	$page = $_GET["page"];
 ?>
@@ -409,3 +409,6 @@ yepnope({
 
 </body>
 </html>
+
+
+

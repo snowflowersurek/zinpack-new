@@ -19,3 +19,6 @@ PRIMARY KEY (gi_no)
 ) DEFAULT CHARSET=utf8";
 
 ?>
+
+
+

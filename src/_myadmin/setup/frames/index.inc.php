@@ -274,3 +274,7 @@ PMA_displayFormBottom();
     echo "{$separator}token="
     . $_SESSION[' PMA_token '] ?>"><?php echo __('Check for latest version') ?></a>
 </div>
+
+
+
+

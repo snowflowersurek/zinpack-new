@@ -9,7 +9,7 @@ if (!$db_conn) {
 ?>
 <meta http-equiv="content-type" content="text/html; charset=<?=$iw['charset']?>" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-<?
+<?php
 $mb_email = trim($_POST['mb_email']);
 $mb_password = trim($_POST['mb_password']);
 $mb_name = trim($_POST['mb_name']);
@@ -271,3 +271,6 @@ if ($row['cnt']) {
 	alert("신규 사이트가 등록되었습니다.","{$iw['super_path']}/enterprise_list.php?type={$iw['type']}&ep={$iw['store']}&gp={$iw['group']}");
 }
 ?>
+
+
+

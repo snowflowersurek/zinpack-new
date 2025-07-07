@@ -275,3 +275,7 @@ div.jqplot-noData-container {
 	text-align: center;
 	background-color: rgba(96%, 96%, 96%, 0.3);
 }
+
+
+
+

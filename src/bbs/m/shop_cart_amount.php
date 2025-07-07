@@ -9,7 +9,7 @@ if (!$db_conn) {
 ?>
 <meta http-equiv="content-type" content="text/html; charset=<?=$iw['charset']?>" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-<?
+<?php
 $sd_code = trim($_GET['item']);
 $sc_no = (int)$_GET['opt'];
 $sc_amount = (int)$_GET['amount'];
@@ -52,3 +52,6 @@ mysqli_stmt_close($stmt_update);
 
 goto_url("{$iw['m_path']}/shop_cart_form.php?type={$iw['type']}&ep={$iw['store']}&gp={$iw['group']}");
 ?>
+
+
+

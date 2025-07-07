@@ -4,7 +4,7 @@ if ($iw[level] != "seller") alert("잘못된 접근입니다!","");
 ?>
 <meta http-equiv="content-type" content="text/html; charset=<?=$iw['charset']?>" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-<?
+<?php
 $sr_code = trim(mysql_real_escape_string($_POST[memo_sr_code]));
 $srm_content = mysql_real_escape_string($_POST[srm_content]);
 
@@ -26,3 +26,6 @@ if ($row[cnt]) {
 }
 alert("판매자 메모가 저장되었습니다.","$iw[admin_path]/shop_post_store_view.php?type=$iw[type]&ep=$iw[store]&gp=$iw[group]&idx=$sr_code");
 ?>
+
+
+

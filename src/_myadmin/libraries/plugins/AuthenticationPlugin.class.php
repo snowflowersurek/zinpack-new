@@ -49,3 +49,6 @@ abstract class AuthenticationPlugin extends PluginObserver
     abstract public function authFails();
 }
 ?>
+
+
+

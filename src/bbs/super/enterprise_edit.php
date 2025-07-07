@@ -89,8 +89,8 @@ $ep_charge = ($row["ep_charge"]=="0")?"":$row["ep_charge"];
 						<label class="col-sm-1 control-label">언어설정</label>
 						<div class="col-sm-11">
 							<select name="ep_language">
-								<option value="ko" <?if($ep_language == "ko"){?>selected<?}?>>한글 / LG U+</option>
-								<option value="en" <?if($ep_language == "en"){?>selected<?}?>>영문 / PAYPAL & ALIPAY</option>
+								<option value="ko" <?php if{?>selected<?php }?>>한글 / LG U+</option>
+								<option value="en" <?php if{?>selected<?php }?>>영문 / PAYPAL & ALIPAY</option>
 							</select>
 						</div>
 					</div>
@@ -100,23 +100,23 @@ $ep_charge = ($row["ep_charge"]=="0")?"":$row["ep_charge"];
 						<label class="col-sm-1 control-label">몰타입</label>
 						<div class="col-sm-11">
 							<label class="middle">
-								<input type="checkbox" name="ep_state_mcb" value="1" <?if($row["ep_state_mcb"]==1){?>checked<?}?>>
+								<input type="checkbox" name="ep_state_mcb" value="1" <?php if{?>checked<?php }?>>
 								<span class="lbl"> 게시판</span>
 							</label>
 							<label class="middle">
-								<input type="checkbox" name="ep_state_publishing" value="1" <?if($row["ep_state_publishing"]==1){?>checked<?}?>>
+								<input type="checkbox" name="ep_state_publishing" value="1" <?php if{?>checked<?php }?>>
 								<span class="lbl"> 출판도서</span>
 							</label>
 							<label class="middle">
-								<input type="checkbox" name="ep_state_doc" value="1" <?if($row["ep_state_doc"]==1){?>checked<?}?>>
+								<input type="checkbox" name="ep_state_doc" value="1" <?php if{?>checked<?php }?>>
 								<span class="lbl"> 컨텐츠몰</span>
 							</label>
 							<label class="middle">
-								<input type="checkbox" name="ep_state_shop" value="1" <?if($row["ep_state_shop"]==1){?>checked<?}?>>
+								<input type="checkbox" name="ep_state_shop" value="1" <?php if{?>checked<?php }?>>
 								<span class="lbl"> 쇼핑몰</span>
 							</label>
 							<label class="middle">
-								<input type="checkbox" name="ep_state_book" value="1" <?if($row["ep_state_book"]==1){?>checked<?}?>>
+								<input type="checkbox" name="ep_state_book" value="1" <?php if{?>checked<?php }?>>
 								<span class="lbl"> 이북몰</span>
 							</label>
 						</div>
@@ -138,13 +138,13 @@ $ep_charge = ($row["ep_charge"]=="0")?"":$row["ep_charge"];
 						<div class="col-sm-11">
 							<div class="radio">
 								<label>
-									<input type="radio" name="ep_copy_off" value="0" <?if($ep_copy_off==0){?>checked<?}?>>
+									<input type="radio" name="ep_copy_off" value="0" <?php if{?>checked<?php }?>>
 									<span class="lbl"> OFF</span>
 								</label>
 							</div>
 							<div class="radio">
 								<label>
-									<input type="radio" name="ep_copy_off" value="1" <?if($ep_copy_off==1){?>checked<?}?>>
+									<input type="radio" name="ep_copy_off" value="1" <?php if{?>checked<?php }?>>
 									<span class="lbl"> ON</span>
 								</label>
 							</div>
@@ -158,13 +158,13 @@ $ep_charge = ($row["ep_charge"]=="0")?"":$row["ep_charge"];
 						<div class="col-sm-11">
 							<div class="radio">
 								<label>
-									<input type="radio" name="ep_upload" value="0" <?if($row["ep_upload"]==0){?>checked<?}?>>
+									<input type="radio" name="ep_upload" value="0" <?php if{?>checked<?php }?>>
 									<span class="lbl"> 불가능</span>
 								</label>
 							</div>
 							<div class="radio">
 								<label>
-									<input type="radio" name="ep_upload" value="1" <?if($row["ep_upload"]==1){?>checked<?}?>>
+									<input type="radio" name="ep_upload" value="1" <?php if{?>checked<?php }?>>
 									<span class="lbl"> 가능</span>
 									<input type="text" placeholder="입력" name="ep_upload_size" value="<?=$row["ep_upload_size"]?>"> MB
 								</label>
@@ -177,7 +177,7 @@ $ep_charge = ($row["ep_charge"]=="0")?"":$row["ep_charge"];
 						<label class="col-sm-1 control-label">노출설정</label>
 						<div class="col-sm-11">
 							<label class="middle">
-								<input type="checkbox" name="ep_exposed" value="1" <?if($row["ep_exposed"]==1){?>checked<?}?>>
+								<input type="checkbox" name="ep_exposed" value="1" <?php if{?>checked<?php }?>>
 								<span class="lbl"> 회원에게만 노출</span>
 							</label>
 						</div>
@@ -189,31 +189,31 @@ $ep_charge = ($row["ep_charge"]=="0")?"":$row["ep_charge"];
 						<div class="col-sm-11">
 							<div class="radio">
 								<label>
-									<input type="radio" name="type" value="0" onclick="javascript:radio_check(this.value);" <?if($ep_jointype==0){?>checked<?}?>>
+									<input type="radio" name="type" value="0" onclick="javascript:radio_check(this.value);" <?php if{?>checked<?php }?>>
 									<span class="lbl"> 가입불가</span>
 								</label>
 							</div>
 							<div class="radio">
 								<label>
-									<input type="radio" name="type" value="1" onclick="javascript:radio_check(this.value);" <?if($ep_jointype==1){?>checked<?}?>>
+									<input type="radio" name="type" value="1" onclick="javascript:radio_check(this.value);" <?php if{?>checked<?php }?>>
 									<span class="lbl"> 가입신청 > 관리자승인</span>
 								</label>
 							</div>
 							<div class="radio">
 								<label>
-									<input type="radio" name="type" value="2" onclick="javascript:radio_check(this.value);" <?if($ep_jointype==2){?>checked<?}?>>
+									<input type="radio" name="type" value="2" onclick="javascript:radio_check(this.value);" <?php if{?>checked<?php }?>>
 									<span class="lbl"> 무조건 가입</span>
 								</label>
 							</div>
 							<div class="radio">
 								<label>
-									<input type="radio" name="type" value="4" onclick="javascript:radio_check(this.value);" <?if($ep_jointype==4){?>checked<?}?>>
+									<input type="radio" name="type" value="4" onclick="javascript:radio_check(this.value);" <?php if{?>checked<?php }?>>
 									<span class="lbl"> 초대후 가입</span>
 								</label>
 							</div>
 							<div class="radio">
 								<label>
-									<input type="radio" name="type" value="5" onclick="javascript:radio_check(this.value);" <?if($ep_jointype==5){?>checked<?}?>>
+									<input type="radio" name="type" value="5" onclick="javascript:radio_check(this.value);" <?php if{?>checked<?php }?>>
 									<span class="lbl"> 가입코드 입력후 자동승인</span> <input type="text" placeholder="입력" name="ep_autocode" maxlength="20" value="<?=$row[ep_autocode]?>">
 								</label>
 							</div>
@@ -226,13 +226,13 @@ $ep_charge = ($row["ep_charge"]=="0")?"":$row["ep_charge"];
 						<div class="col-sm-11">
 							<div class="radio">
 								<label>
-									<input type="radio" name="ep_anonymity" value="0" <?if($ep_anonymity==0){?>checked<?}?>>
+									<input type="radio" name="ep_anonymity" value="0" <?php if{?>checked<?php }?>>
 									<span class="lbl"> 공개</span>
 								</label>
 							</div>
 							<div class="radio">
 								<label>
-									<input type="radio" name="ep_anonymity" value="1" <?if($ep_anonymity==1){?>checked<?}?>>
+									<input type="radio" name="ep_anonymity" value="1" <?php if{?>checked<?php }?>>
 									<span class="lbl"> 비공개</span>
 								</label>
 							</div>
@@ -320,6 +320,9 @@ $ep_charge = ($row["ep_charge"]=="0")?"":$row["ep_charge"];
 	}
 </script>
  
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

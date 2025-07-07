@@ -59,7 +59,7 @@ include_once("_head.php");
 										<div class="dataTable-option-right">
 											<!--<form name="search_form" id="search_form" action="<?=$PHP_SELF?>?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>" method="post">
 											<label>검색: <select name="search">
-												<option value="a" <?if($search == "a"){?>selected="selected"<?}?>>그룹코드</option>
+												<option value="a" <?php if{?>selected="selected"<?php }?>>그룹코드</option>
 											</select></label><input type="text" name="searchs" value="<?=$searchs?>">
 											</form>-->
 										</div>
@@ -76,7 +76,7 @@ include_once("_head.php");
 										</tr>
 									</thead>
 									<tbody>
-									<?
+									<?php
 										$row = sql_fetch(" select * from $iw[enterprise_table] where ep_code = '$iw[store]' ");
 										$ep_nick = $row["ep_nick"];
 										$ep_state_mcb = $row["ep_state_mcb"];
@@ -125,19 +125,19 @@ include_once("_head.php");
 											<td data-title="그룹이름"><?=$gp_subject?></td>
 											<td data-title="가입일"><?=$gm_datetime?></td>
 											<td data-title="상태">
-												<?if($gm_display == 9){?>
+												<?php if($gm_display == 9){?>
 													<span class="label label-sm label-success">관리자</span>
-												<?}else if($gm_display == 1){?>
+												<?php }else if($gm_display == 1){?>
 													<span class="label label-sm label-success">회원</span>
-												<?}else if($gm_display == 0){?>
+												<?php }else if($gm_display == 0){?>
 													<span class="label label-sm label-warning">가입대기</span>
-												<?}?>
+												<?php }?>
 											</td>
 											<td data-title="링크">
 												<a href="<?=$iw[m_path]?>/main.php?type=main&ep=<?=$iw[store]?>&gp=<?=$gp_code?>" target="_blank">바로가기</a>
 											</td>
 										</tr>
-									<?
+									<?php
 										$i++;
 										}
 										if($i==0) echo "<tr><td colspan='5' align='center'>가입한 그룹이 없습니다.</td></tr>";
@@ -151,7 +151,7 @@ include_once("_head.php");
 									<div class="col-sm-6">
 										<div class="dataTable-option-right">
 											<ul class="pagination">
-											<?
+											<?php
 												if($total_page!=0){
 													if($page>$total_page) { $page=$total_page; }
 													$start_page = ((ceil($page/$max_page)-1)*$max_page)+1;
@@ -193,6 +193,9 @@ include_once("_head.php");
 	</div><!-- /container -->
 </div><!-- /end .page-content -->
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

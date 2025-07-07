@@ -90,3 +90,7 @@ include_once("_common.php");
 		alert("환불요청 등록에 실패하였습니다.\n[오류코드] $Response_Code\n[오류메세지] $Response_Msg","$iw[m_path]/shop_buy_list.php?type=$iw[type]&ep=$iw[store]&gp=$iw[group]");
 	}
 ?>
+
+
+
+

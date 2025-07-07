@@ -101,3 +101,7 @@ function PMA_supportedDecompressions()
 
     return $compressions;
 }
+
+
+
+

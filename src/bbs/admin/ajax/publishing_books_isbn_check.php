@@ -14,3 +14,6 @@ if (!$row["BookID"] || $row["BookID"] == $BookID) {
 	echo "DUP";
 }
 ?>
+
+
+

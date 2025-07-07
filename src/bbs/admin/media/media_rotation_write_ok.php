@@ -4,12 +4,12 @@ if ($iw[type] != "book" || ($iw[level] != "seller" && $iw[level] != "member")) a
 ?>
 <meta http-equiv="content-type" content="text/html; charset=<?=$iw['charset']?>" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-<?
+<?php
 	$upload_path = $_POST[upload_path];
-	$bd_code = trim(mysql_real_escape_string($_POST[bd_code]));
-	$bm_type = trim(mysql_real_escape_string($_POST[bm_type]));
-	$bmd_order = trim(mysql_real_escape_string($_POST[bmd_order]));
-	$bmd_type = trim(mysql_real_escape_string($_POST[bmd_type]));
+	$bd_code = trim(mysqli_real_escape_string($iw['connect'], $_POST['bd_code']));
+	$bm_type = trim(mysqli_real_escape_string($iw['connect'], $_POST['bm_type']));
+	$bmd_order = trim(mysqli_real_escape_string($iw['connect'], $_POST['bmd_order']));
+	$bmd_type = trim(mysqli_real_escape_string($iw['connect'], $_POST['bmd_type']));
 
 	$abs_dir = $iw[path].$upload_path;
 	if($_FILES["bm_image"]["name"] && $_FILES["bm_image"]["size"]>0){
@@ -79,3 +79,6 @@ if ($iw[type] != "book" || ($iw[level] != "seller" && $iw[level] != "member")) a
 
 	echo "<script>window.parent.location.href='$iw[admin_path]/media/media_main_list.php?type=$iw[type]&ep=$iw[store]&gp=$iw[group]&idx=$bd_code';</script>";
 ?>
+
+
+

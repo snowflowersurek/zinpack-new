@@ -126,35 +126,35 @@ $pixel_height_array = array('72px', '144px', '216px', '288px', '360px', '432px',
 						<label class="col-sm-2 control-label">형태</label>
 						<div class="col-sm-8">
 							<label class="middle">
-								<input type="radio" name="hs_style" value="3" onClick="javascript:check_style(this.value);" <?if($hs_style==3){?>checked<?}?>>
+								<input type="radio" name="hs_style" value="3" onClick="javascript:check_style(this.value);" <?php if{?>checked<?php }?>>
 								<span class="lbl"> 토픽</span>
 							</label>
 							<label class="middle">
-								<input type="radio" name="hs_style" value="2" onClick="javascript:check_style(this.value);" <?if($hs_style==2){?>checked<?}?>>
+								<input type="radio" name="hs_style" value="2" onClick="javascript:check_style(this.value);" <?php if{?>checked<?php }?>>
 								<span class="lbl"> 배너</span>
 							</label>
 							<label class="middle">
-								<input type="radio" name="hs_style" value="1" onClick="javascript:check_style(this.value);" <?if($hs_style==1){?>checked<?}?>>
+								<input type="radio" name="hs_style" value="1" onClick="javascript:check_style(this.value);" <?php if{?>checked<?php }?>>
 								<span class="lbl"> 슬라이드</span>
 							</label>
 							<label class="middle">
-								<input type="radio" name="hs_style" value="5" onClick="javascript:check_style(this.value);" <?if($hs_style==5){?>checked<?}?>>
+								<input type="radio" name="hs_style" value="5" onClick="javascript:check_style(this.value);" <?php if{?>checked<?php }?>>
 								<span class="lbl"> 댓글</span>
 							</label>
 							<label class="middle">
-								<input type="radio" name="hs_style" value="6" onClick="javascript:check_style(this.value);" <?if($hs_style==6){?>checked<?}?>>
+								<input type="radio" name="hs_style" value="6" onClick="javascript:check_style(this.value);" <?php if{?>checked<?php }?>>
 								<span class="lbl"> 페이스북</span>
 							</label>
 						</div>
 					</div>
 					<div class="space-4"></div>
 
-					<div id="wrap_size" <?if($hs_style==1){?>style="display:none;"<?}?>>
+					<div id="wrap_size" <?php if{?>style="display:none;"<?php }?>>
 						<div class="form-group">
 							<label class="col-sm-2 control-label">크기</label>
 							<div class="col-sm-3">
 								<select class="col-xs-12" name="hs_size_width" id="hs_size_width">
-									<?
+									<?php
 										for ($i=1; $i<=12; $i++) {
 											if ($i == $hs_size_width) {
 												echo "<option value='".$i."' selected>".$i."칸 (".$pixel_width_array[$i-1].")</option>";
@@ -167,7 +167,7 @@ $pixel_height_array = array('72px', '144px', '216px', '288px', '360px', '432px',
 							</div>
 							<div class="col-sm-3">
 								<select class="col-xs-12" name="hs_size_height" id="hs_size_height" onChange="javascript:topic_custom();">
-									<?
+									<?php
 										for ($i=1; $i<=8; $i++) {
 											if ($i == $hs_size_height) {
 												echo "<option value='".$i."' selected>".$i."줄 (".$pixel_height_array[$i-1].")</option>";
@@ -186,63 +186,60 @@ $pixel_height_array = array('72px', '144px', '216px', '288px', '360px', '432px',
 						<label class="col-sm-2 control-label">자료</label>
 						<div class="col-sm-8">
 							<label class="middle">
-								<input type="radio" name="hs_type" value="menu" onClick="javascript:check_type(this.value);" <?if($hs_type=="menu"){?>checked<?}?> <?if($hs_style==1 || $hs_style==6){?>disabled<?}?>>
+								<input type="radio" name="hs_type" value="menu" onClick="javascript:check_type(this.value);" <?php if{?>checked<?php } if{?>disabled<?php }?>>
 								<span class="lbl"> 분류선택</span>
 							</label>
 							<label class="middle">
-								<input type="radio" name="hs_type" value="custom" onClick="javascript:check_type(this.value);" <?if($hs_type=="custom"){?>checked<?}?> <?if($hs_style==5){?>disabled<?}?>>
+								<input type="radio" name="hs_type" value="custom" onClick="javascript:check_type(this.value);" <?php if{?>checked<?php } if{?>disabled<?php }?>>
 								<span class="lbl"> 직접입력</span>
 							</label>
 							<label class="middle">
-								<input type="radio" name="hs_type" value="notice" onClick="javascript:check_type(this.value);" <?if($hs_type=="notice"){?>checked<?}?> <?if($hs_style==1 || $hs_style==2 || $hs_style==5 || $hs_style==6){?>disabled<?}?>>
+								<input type="radio" name="hs_type" value="notice" onClick="javascript:check_type(this.value);" <?php if{?>checked<?php } if{?>disabled<?php }?>>
 								<span class="lbl"> 공지사항</span>
 							</label>
 						</div>
 					</div>
 					<div class="space-4"></div>
 
-					<div id="wrap_category" <?if($hs_type!="menu"){?>style="display:none;"<?}?>>
+					<div id="wrap_category" <?php if{?>style="display:none;"<?php }?>>
 						<div class="form-group">
 							<label class="col-sm-2 control-label">분류</label>
 							<div class="col-sm-8">
 								<select class="col-xs-12 col-sm-8" name="hs_menu" id="hs_menu">
-									<option value="all" <?if($hs_menu == "all"){echo "selected";}?>>전체</option>
-								<?
+									<option value="all" <?php if($hs_menu == "all"){echo "selected";}?>>전체</option>
+								<?php
 									$sql = "select * from $iw[home_menu_table] where ep_code = '$iw[store]' and gp_code = '$iw[group]' and hm_deep = 1 order by hm_order asc,hm_no asc";
 									$result = sql_query($sql);
 									while($row = @sql_fetch_array($result)){
 										$hm_code = $row["hm_code"];
 										$hm_name = stripslashes($row["hm_name"]);
 								?>
-									<option value="<?=$hm_code?>" <?if($hm_code == $hs_menu){echo "selected";}?>><?=$hm_name?></option>
-									<?
+									<option value="<?=$hm_code?>" <?php if($hm_code == $hs_menu){echo "selected";}?>><?=$hm_name?></option>
+									<?php
 										$sql2 = "select * from $iw[home_menu_table] where hm_upper_code = '$hm_code' and hm_deep = 2 and ep_code = '$iw[store]' and gp_code = '$iw[group]' order by hm_order asc,hm_no asc";
 										$result2 = sql_query($sql2);
 										while($row2 = @sql_fetch_array($result2)){
 											$hm_code = $row2["hm_code"];
 											$hm_name = stripslashes($row2["hm_name"]);
 									?>
-										<option value="<?=$hm_code?>" <?if($hm_code == $hs_menu){echo "selected";}?>>└<?=$hm_name?></option>
-										<?
+										<option value="<?=$hm_code?>" <?php if($hm_code == $hs_menu){echo "selected";}?>>└<?=$hm_name?></option>
+										<?php
 											$sql3 = "select * from $iw[home_menu_table] where hm_upper_code = '$hm_code' and hm_deep = 3 and ep_code = '$iw[store]' and gp_code = '$iw[group]' order by hm_order asc,hm_no asc";
 											$result3 = sql_query($sql3);
 											while($row3 = @sql_fetch_array($result3)){
 												$hm_code = $row3["hm_code"];
 												$hm_name = stripslashes($row3["hm_name"]);
 										?>
-											<option value="<?=$hm_code?>" <?if($hm_code == $hs_menu){echo "selected";}?>>&nbsp;&nbsp;&nbsp;└<?=$hm_name?></option>
-											<?
-	
+											<option value="<?=$hm_code?>" <?php if($hm_code == $hs_menu){echo "selected";}?>>&nbsp;&nbsp;&nbsp;└<?=$hm_name?></option>
+											<?php
 												$sql4 = "select * from $iw[home_menu_table] where hm_upper_code = '$hm_code' and hm_deep = 4 and ep_code = '$iw[store]' and gp_code = '$iw[group]' order by hm_order asc,hm_no asc";
 												$result4 = sql_query($sql4);
 												while($row4 = @sql_fetch_array($result4)){
 													$hm_code = $row4["hm_code"];
 													$hm_name = stripslashes($row4["hm_name"]);
 											?>
-												<option value="<?=$hm_code?>" <?if($hm_code == $hs_menu){echo "selected";}?>>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└<?=$hm_name?></option>
-											<?
-												}
-											}
+												<option value="<?=$hm_code?>" <?php if($hm_code == $hs_menu){echo "selected";}?>>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└<?=$hm_name?></option>
+											<?php } ?><?php }
 										}
 									}
 								?>
@@ -252,12 +249,12 @@ $pixel_height_array = array('72px', '144px', '216px', '288px', '360px', '432px',
 						<div class="space-4"></div>
 					</div>
 
-					<div id="wrap_banner_cnt" <?if($hs_style != 2 || $hs_type != "menu"){?>style="display:none;"<?}?>>
+					<div id="wrap_banner_cnt" <?php if{?>style="display:none;"<?php }?>>
 						<div class="form-group">
 							<label class="col-sm-2 control-label">조회 자료 수</label>
 							<div class="col-sm-8">
 								<select class="col-xs-12 col-sm-8" name="hs_banner_cnt" id="hs_banner_cnt">
-									<?
+									<?php
 										for ($i=1; $i<=10; $i++) {
 											if ($i == $hs_banner_cnt) {
 												echo "<option value='".$i."' selected>".$i."건</option>";
@@ -272,20 +269,20 @@ $pixel_height_array = array('72px', '144px', '216px', '288px', '360px', '432px',
 						<div class="space-4"></div>
 					</div>
 
-					<div id="wrap_sort" <?if($hs_type=="custom"){?>style="display:none;"<?}?>>
+					<div id="wrap_sort" <?php if{?>style="display:none;"<?php }?>>
 						<div class="form-group">
 							<label class="col-sm-2 control-label">정렬</label>
 							<div class="col-sm-8">
 								<label class="middle">
-									<input type="radio" name="hs_sort" value="new" <?if($hs_sort=="new" || !$hs_sort){?>checked<?}?>>
+									<input type="radio" name="hs_sort" value="new" <?php if{?>checked<?php }?>>
 									<span class="lbl"> 최신</span>
 								</label>
 								<label class="middle">
-									<input type="radio" name="hs_sort" value="best" <?if($hs_sort=="best"){?>checked<?}?>>
+									<input type="radio" name="hs_sort" value="best" <?php if{?>checked<?php }?>>
 									<span class="lbl"> 인기</span>
 								</label>
 								<label class="middle">
-									<input type="radio" name="hs_sort" value="random" <?if($hs_sort=="random"){?>checked<?}?>>
+									<input type="radio" name="hs_sort" value="random" <?php if{?>checked<?php }?>>
 									<span class="lbl"> 무작위</span>
 								</label>
 							</div>
@@ -293,14 +290,14 @@ $pixel_height_array = array('72px', '144px', '216px', '288px', '360px', '432px',
 						<div class="space-4"></div>
 					</div>
 
-					<div id="wrap_topic" <?if($hs_style!=3){?>style="display:none;"<?}?>>
+					<div id="wrap_topic" <?php if{?>style="display:none;"<?php }?>>
 						<div class="form-group">
 							<label class="col-sm-2 control-label">양식</label>
 							<div class="col-sm-8">
 								<select class="col-xs-12 col-sm-8" name="hs_topic_type" id="hs_topic_type" onChange="javascript:topic_custom();">
-									<option value="title" <?if($hs_topic_type=="title" || !$hs_topic_type){?>selected<?}?>>제목</option>
-									<option value="content" <?if($hs_topic_type=="content"){?>selected<?}?>>제목 + 내용</option>
-									<option value="image" <?if($hs_topic_type=="image"){?>selected<?}?>>제목 + 내용 + 썸네일</option>
+									<option value="title" <?php if{?>selected<?php }?>>제목</option>
+									<option value="content" <?php if{?>selected<?php }?>>제목 + 내용</option>
+									<option value="image" <?php if{?>selected<?php }?>>제목 + 내용 + 썸네일</option>
 								</select>
 							</div>
 						</div>
@@ -315,7 +312,7 @@ $pixel_height_array = array('72px', '144px', '216px', '288px', '360px', '432px',
 					</div>
 					<div class="space-4"></div>
 
-					<div id="color_top" <?if($hs_style==1){?>style="display:none;"<?}?>>
+					<div id="color_top" <?php if{?>style="display:none;"<?php }?>>
 						<div class="form-group">
 							<label class="col-sm-2 control-label">모서리 둥글게</label>
 							<div class="col-sm-8">
@@ -349,7 +346,7 @@ $pixel_height_array = array('72px', '144px', '216px', '288px', '360px', '432px',
 						<div class="space-4"></div>
 					</div>
 
-					<div id="color_bottom" <?if($hs_style!=3){?>style="display:none;"<?}?>>
+					<div id="color_bottom" <?php if{?>style="display:none;"<?php }?>>
 						<div class="form-group">
 							<label class="col-sm-2 control-label">배경 투명도</label>
 							<div class="col-sm-8">
@@ -382,7 +379,7 @@ $pixel_height_array = array('72px', '144px', '216px', '288px', '360px', '432px',
 						</div>
 					</div>
 
-					<div id="topic_default"<?if($hs_style!=3){?>style="display:none;"<?}?>>
+					<div id="topic_default"<?php if{?>style="display:none;"<?php }?>>
 						<div class="form-group">
 							<label class="col-sm-2 control-label">개요 모양</label>
 							<div class="col-sm-8">
@@ -400,7 +397,7 @@ $pixel_height_array = array('72px', '144px', '216px', '288px', '360px', '432px',
 						<div class="space-4"></div>
 					</div>
 
-					<div id="custom_topic" <?if($hs_style!=3 || $hs_type!="custom"){?>style="display:none;"<?}?>>
+					<div id="custom_topic" <?php if{?>style="display:none;"<?php }?>>
 						<div class="form-group">
 							<label class="col-sm-2 control-label">더보기 링크</label>
 							<div class="col-sm-8">
@@ -424,7 +421,7 @@ $pixel_height_array = array('72px', '144px', '216px', '288px', '360px', '432px',
 							</label>
 							<div class="col-sm-8">
 								<table>
-								<?
+								<?php
 									$file_num_topic=0;
 									for($i=0; $i<21; $i++){
 										if($hs_file[$i] != "" || $hs_link[$i] != "" || $hs_title[$i] != ""){
@@ -437,20 +434,19 @@ $pixel_height_array = array('72px', '144px', '216px', '288px', '360px', '432px',
 												<input type='text' placeholder='입력' class='col-xs-12 col-sm-12' name='hs_link_topic[]' value="<?=$hs_link[$i]?>" maxlength="255">
 												<span class='help-block col-xs-12'>제목</span>
 												<input type='text' placeholder='입력' class='col-xs-12 col-sm-12' name='hs_title_topic[]' maxlength='125' value="<?=$hs_title[$i]?>">
-												<?if($i<7){?>
+												<?php if($i<7){?>
 													<span class='help-block col-xs-12'>내용</span>
 													<input type='text' placeholder='입력' class='col-xs-12 col-sm-12' name='hs_content_topic[]' value="<?=$hs_content[$i]?>">
 													<span class='help-block col-xs-12'>썸네일 (60 x 60 px)</span>
 													<input type='file' class='col-xs-12 col-sm-12' name='hs_file_topic[]'>
-													<?if($hs_file[$i]){?>
+													<?php if($hs_file[$i]){?>
 													<span class='help-block col-xs-12'>
 														<a href="<?=$iw["path"].$upload_path."/".$hs_file[$i]?>" target="_blank">기존 이미지</a>
 													</span>
-													<?}?>
-												<?}?>
+													<?php } ?><?php }?>
 											</td>
 										</tr>
-										<?
+										<?php
 										$file_num_topic++;
 										}
 									}
@@ -461,7 +457,7 @@ $pixel_height_array = array('72px', '144px', '216px', '288px', '360px', '432px',
 						</div>
 					</div>
 
-					<div id="custom_image" <?if($hs_style == 5 || $hs_style == 6 || $hs_type != "custom"){?>style="display:none;"<?}?>>
+					<div id="custom_image" <?php if{?>style="display:none;"<?php }?>>
 						<div class="form-group">
 							<label class="col-sm-2 control-label">
 								<span onclick="add_file();" style="cursor:pointer;"><i class="fa fa-plus-square fa-lg"></i></span> 
@@ -469,7 +465,7 @@ $pixel_height_array = array('72px', '144px', '216px', '288px', '360px', '432px',
 							</label>
 							<div class="col-sm-8">
 								<table>
-								<?
+								<?php
 									$file_num=0;
 									for($i=0; $i<10; $i++){
 										if($hs_file[$i]!=""){
@@ -483,14 +479,14 @@ $pixel_height_array = array('72px', '144px', '216px', '288px', '360px', '432px',
 												<input type='text' placeholder='입력' class='col-xs-12 col-sm-12' name='hs_link[]' value="<?=$hs_link[$i]?>" maxlength="255">
 												<span class='help-block col-xs-12'>이미지</span>
 												<input type='file' class='col-xs-12 col-sm-12' name='hs_file[]'>
-												<?if($hs_file[$i]){?>
+												<?php if($hs_file[$i]){?>
 												<span class='help-block col-xs-12'>
 													<a href="<?=$iw["path"].$upload_path."/".$hs_file[$i]?>" target="_blank">기존 이미지</a>
 												</span>
-												<?}?>
+												<?php }?>
 											</td>
 										</tr>
-										<?
+										<?php
 										$file_num++;
 										}
 									}
@@ -501,7 +497,7 @@ $pixel_height_array = array('72px', '144px', '216px', '288px', '360px', '432px',
 						</div>
 					</div>
 
-					<div id="custom_sns" <?if($hs_style != 6){?>style="display:none;"<?}?>>
+					<div id="custom_sns" <?php if{?>style="display:none;"<?php }?>>
 						<div class="form-group">
 							<label class="col-sm-2 control-label">페이지 URL</label>
 							<div class="col-sm-8">
@@ -893,6 +889,9 @@ $pixel_height_array = array('72px', '144px', '216px', '288px', '360px', '432px',
 	}
 </script>
 
-<?
+<?php
 include_once("_cg_tail.php");
 ?>
+
+
+

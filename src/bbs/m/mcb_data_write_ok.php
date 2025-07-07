@@ -13,7 +13,7 @@ if (!$db_conn) {
 ?>
 <meta http-equiv="content-type" content="text/html; charset=<?=$iw['charset']?>" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-<?
+<?php
 $upload_path = $_POST['upload_path'];
 $md_code = trim($_POST['md_code']);
 $md_datetime2 = trim($_POST['md_datetime2']);
@@ -183,3 +183,6 @@ if (!$row_cat['cg_code']) {
 	alert(national_language($iw['language'],"a0195","글이 등록되었습니다."),"{$iw['m_path']}/mcb_data_view.php?type={$iw['type']}&ep={$iw['store']}&gp={$iw['group']}&item={$md_code}");
 }
 ?>
+
+
+

@@ -30,7 +30,8 @@ $dd_subject = $row["dd_subject"];
 $dd_subject = str_replace("\'", '&#039;', $dd_subject);
 $dd_subject = str_replace('\"', '&quot;', $dd_subject);
 ?>
-<script language="Javascript" src="/include/ckeditor/ckeditor.js"></script>
+<script src="/include/ckeditor/ckeditor5.js"></script>
+<script src="/include/ckeditor/ckeditor5-adapter.js"></script>
 
 <div class="breadcrumbs" id="breadcrumbs">
 	<ul class="breadcrumb">
@@ -74,7 +75,7 @@ $dd_subject = str_replace('\"', '&quot;', $dd_subject);
 						<div class="col-sm-11">
 							<select class="col-xs-12 col-sm-8" name="cg_code">
 								<option value="">선택</option>
-								<?
+								<?php
 									$sql1 = "select * from $iw[home_menu_table] where ep_code = '$iw[store]' and gp_code = '$iw[group]' and hm_deep = 1 order by hm_order asc,hm_no asc";
 									$result1 = sql_query($sql1);
 									while($row1 = @sql_fetch_array($result1)){
@@ -87,8 +88,8 @@ $dd_subject = str_replace('\"', '&quot;', $dd_subject);
 										$rows = sql_fetch("select * from $iw[category_table] where ep_code = '$iw[store]' and gp_code = '$iw[group]' and state_sort = '$iw[type]' and cg_code = '$cg_code'");
 										$cg_level_write = $rows["cg_level_write"];
 								?>
-									<option value="<?=$cg_code?>" <?if($iw[mb_level] < $cg_level_write){?>disabled<?}else if($check_cg_code == $cg_code){?>selected<?}?>><?=$hm_name1?></option>
-									<?
+									<option value="<?=$cg_code?>" <?php if{?>disabled<?php }else if($check_cg_code == $cg_code){?>selected<?php }?>><?=$hm_name1?></option>
+									<?php
 										}
 										$sql2 = "select * from $iw[home_menu_table] where hm_upper_code = '$hm_code' and hm_deep = 2 and ep_code = '$iw[store]' and gp_code = '$iw[group]' order by hm_order asc,hm_no asc";
 										$result2 = sql_query($sql2);
@@ -103,8 +104,8 @@ $dd_subject = str_replace('\"', '&quot;', $dd_subject);
 											$rows = sql_fetch("select * from $iw[category_table] where ep_code = '$iw[store]' and gp_code = '$iw[group]' and state_sort = '$iw[type]' and cg_code = '$cg_code'");
 											$cg_level_write = $rows["cg_level_write"];
 									?>
-										<option value="<?=$cg_code?>" <?if($iw[mb_level] < $cg_level_write){?>disabled<?}else if($check_cg_code == $cg_code){?>selected<?}?>><?=$hm_name1?> > <?=$hm_name2?></option>
-										<?
+										<option value="<?=$cg_code?>" <?php if{?>disabled<?php }else if($check_cg_code == $cg_code){?>selected<?php }?>><?=$hm_name1?> > <?=$hm_name2?></option>
+										<?php
 											}
 											$sql3 = "select * from $iw[home_menu_table] where hm_upper_code = '$hm_code' and hm_deep = 3 and ep_code = '$iw[store]' and gp_code = '$iw[group]' order by hm_order asc,hm_no asc";
 											$result3 = sql_query($sql3);
@@ -119,8 +120,8 @@ $dd_subject = str_replace('\"', '&quot;', $dd_subject);
 												$rows = sql_fetch("select * from $iw[category_table] where ep_code = '$iw[store]' and gp_code = '$iw[group]' and state_sort = '$iw[type]' and cg_code = '$cg_code'");
 												$cg_level_write = $rows["cg_level_write"];
 										?>
-											<option value="<?=$cg_code?>" <?if($iw[mb_level] < $cg_level_write){?>disabled<?}else if($check_cg_code == $cg_code){?>selected<?}?>><?=$hm_name1?> > <?=$hm_name2?> > <?=$hm_name3?></option>
-											<?
+											<option value="<?=$cg_code?>" <?php if{?>disabled<?php }else if($check_cg_code == $cg_code){?>selected<?php }?>><?=$hm_name1?> > <?=$hm_name2?> > <?=$hm_name3?></option>
+											<?php
 												}
 												$sql4 = "select * from $iw[home_menu_table] where hm_upper_code = '$hm_code' and hm_deep = 4 and ep_code = '$iw[store]' and gp_code = '$iw[group]' order by hm_order asc,hm_no asc";
 												$result4 = sql_query($sql4);
@@ -135,10 +136,8 @@ $dd_subject = str_replace('\"', '&quot;', $dd_subject);
 													$rows = sql_fetch("select * from $iw[category_table] where ep_code = '$iw[store]' and gp_code = '$iw[group]' and state_sort = '$iw[type]' and cg_code = '$cg_code'");
 													$cg_level_write = $rows["cg_level_write"];
 											?>
-												<option value="<?=$cg_code?>" <?if($iw[mb_level] < $cg_level_write){?>disabled<?}else if($check_cg_code == $cg_code){?>selected<?}?>><?=$hm_name1?> > <?=$hm_name2?> > <?=$hm_name3?> > <?=$hm_name4?></option>
-											<?
-													}
-												}
+												<option value="<?=$cg_code?>" <?php if{?>disabled<?php }else if($check_cg_code == $cg_code){?>selected<?php }?>><?=$hm_name1?> > <?=$hm_name2?> > <?=$hm_name3?> > <?=$hm_name4?></option>
+											<?php } ?><?php }
 											}
 										}
 									}
@@ -163,7 +162,7 @@ $dd_subject = str_replace('\"', '&quot;', $dd_subject);
 					<div class="form-group">
 						<label class="col-sm-1 control-label">컨텐츠 표지</label>
 						<div class="col-sm-11">
-							<input type="file" class="col-xs-9 col-sm-7" name="dd_image"> <?if($row["dd_image"]){?><a href="<?=$iw["path"].$upload_path."/".$row["dd_image"]?>" target="_blank">기존 이미지</a><?}?>
+							<input type="file" class="col-xs-9 col-sm-7" name="dd_image"> <?php if{?><a href="<?=$iw["path"].$upload_path."/".$row["dd_image"]?>" target="_blank">기존 이미지</a><?php }?>
 							<!--<span class="help-block col-xs-12">이미지사이즈(pixel) 300 X 400</span>-->
 						</div>
 					</div>
@@ -183,8 +182,8 @@ $dd_subject = str_replace('\"', '&quot;', $dd_subject);
 							<input type="text" placeholder="입력" name="dd_amount" maxlength="5" value="<?=$row["dd_amount"]?>">
 							<select name="dd_type">
 								<option value="">선택</option>
-								<option value="1" <?if($row["dd_type"]==1){?>selected<?}?>>쪽</option>
-								<option value="2" <?if($row["dd_type"]==2){?>selected<?}?>>분</option>
+								<option value="1" <?php if{?>selected<?php }?>>쪽</option>
+								<option value="2" <?php if{?>selected<?php }?>>분</option>
 							</select>
 						</div>
 					</div>
@@ -203,10 +202,10 @@ $dd_subject = str_replace('\"', '&quot;', $dd_subject);
 						<label class="col-sm-1 control-label">다운로드 유효기간</label>
 						<div class="col-sm-11">
 							<select name="dd_download">
-								<option value="0" <?if($row["dd_download"]==0){?>selected<?}?>>무제한</option>
-								<?for ($i=1; $i<=100; $i++) {?>
-									<option value="<?=$i?>" <?if($row["dd_download"]==$i){?>selected<?}?>><?=$i?> 일</option>
-								<?}?>
+								<option value="0" <?php if{?>selected<?php }?>>무제한</option>
+								<?php for($i=1; $i<=100; $i++) {?>
+									<option value="<?=$i?>" <?php if{?>selected<?php }?>><?=$i?> 일</option>
+								<?php }?>
 							</select>
 						</div>
 					</div>
@@ -359,6 +358,9 @@ $dd_subject = str_replace('\"', '&quot;', $dd_subject);
 	}
 </script>
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

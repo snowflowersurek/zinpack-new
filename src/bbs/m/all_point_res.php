@@ -2,39 +2,39 @@
 include_once("_common.php");
 if ($iw[level]=="guest") alert("로그인 해주시기 바랍니다. ","$iw[m_path]/all_login.php?type=$iw[type]&ep=$iw[store]&gp=$iw[group]");
     
-    $LGD_RESPCODE = $_POST[LGD_RESPCODE];					//응답코드
-	$LGD_RESPMSG = $_POST[LGD_RESPMSG];					//응답메세지
-	$LGD_MID = $_POST[LGD_MID];							//LG유플러스 발급 아이디
-	$LGD_OID = $_POST[LGD_OID];							//이용업체 거래번호(주문번호)
-	$LGD_AMOUNT = $_POST[LGD_AMOUNT];						//결제금액
-	$LGD_TID = $_POST[LGD_TID];							//LG유플러스 거래번호
-	$LGD_PAYTYPE = $_POST[LGD_PAYTYPE];					//결제수단
-	$LGD_PAYDATE = $_POST[LGD_PAYDATE];					//결제일시
-	$LGD_HASHDATA = $_POST[LGD_HASHDATA];					//해쉬데이타
-	$LGD_TIMESTAMP = $_POST[LGD_TIMESTAMP];				//타임스탬프
-	$LGD_BUYER = $_POST[LGD_BUYER];						//구매자명
-	$LGD_PRODUCTINFO = $_POST[LGD_PRODUCTINFO];			//구매내역
-	$LGD_BUYERID = $_POST[LGD_BUYERID];					//구매자아이디
-	$LGD_BUYEREMAIL = $_POST[LGD_BUYEREMAIL];				//구매자메일
-	$LGD_FINANCENAME = $_POST[LGD_FINANCENAME];			//결제기관명
-	$LGD_FINANCEAUTHNUM = $_POST[LGD_FINANCEAUTHNUM];		//결제기관승인번호
-	$LGD_CASHRECEIPTNUM = $_POST[LGD_CASHRECEIPTNUM];		//현금영수증승인번호
-	$LGD_CASHRECEIPTSELFYN = $_POST[LGD_CASHRECEIPTSELFYN];//현금영수증자진발급제유무
-	$LGD_CASHRECEIPTKIND = $_POST[LGD_CASHRECEIPTKIND];	//현금영수증종류
-	$LGD_CARDNUM = $_POST[LGD_CARDNUM];					//신용카드번호
-	$LGD_CARDINSTALLMONTH = $_POST[LGD_CARDINSTALLMONTH];	//신용카드할부개월
-	$LGD_CARDNOINTYN = $_POST[LGD_CARDNOINTYN];			//신용카드무이자여부
-	$LGD_CARDGUBUN1 = $_POST[LGD_CARDGUBUN1];				//신용카드추가정보1
-	$LGD_CARDGUBUN2 = $_POST[LGD_CARDGUBUN2];				//신용카드추가정보2
-	$LGD_ACCOUNTNUM = $_POST[LGD_ACCOUNTNUM];				//가상계좌발급번호
-	$LGD_ACCOUNTOWNER = $_POST[LGD_ACCOUNTOWNER];			//계좌주명
-	$LGD_PAYER = $_POST[LGD_PAYER];						//가상계좌입금자명
-	$LGD_CASTAMOUNT = $_POST[LGD_CASTAMOUNT];				//입금누적금액
-	$LGD_CASCAMOUNT = $_POST[LGD_CASCAMOUNT];				//현입금금액
-	$LGD_CASFLAG = $_POST[LGD_CASFLAG];					//거래종류(R:할당,I:입금,C:취소)
-	$LGD_CASSEQNO = $_POST[LGD_CASSEQNO];					//가상계좌일련번호
-	$LGD_SAOWNER = $_POST[LGD_SAOWNER];					//가상계좌 입금계좌주명
-	$LGD_TELNO = $_POST[LGD_TELNO];						//결제휴대폰번호
+    $LGD_RESPCODE = $_POST['LGD_RESPCODE'] ?? '';					//응답코드
+	$LGD_RESPMSG = $_POST['LGD_RESPMSG'] ?? '';					//응답메세지
+	$LGD_MID = $_POST['LGD_MID'] ?? '';							//LG유플러스 발급 아이디
+	$LGD_OID = $_POST['LGD_OID'] ?? '';							//이용업체 거래번호(주문번호)
+	$LGD_AMOUNT = $_POST['LGD_AMOUNT'] ?? '';						//결제금액
+	$LGD_TID = $_POST['LGD_TID'] ?? '';							//LG유플러스 거래번호
+	$LGD_PAYTYPE = $_POST['LGD_PAYTYPE'] ?? '';					//결제수단
+	$LGD_PAYDATE = $_POST['LGD_PAYDATE'] ?? '';					//결제일시
+	$LGD_HASHDATA = $_POST['LGD_HASHDATA'] ?? '';					//해쉬데이타
+	$LGD_TIMESTAMP = $_POST['LGD_TIMESTAMP'] ?? '';				//타임스탬프
+	$LGD_BUYER = $_POST['LGD_BUYER'] ?? '';						//구매자명
+	$LGD_PRODUCTINFO = $_POST['LGD_PRODUCTINFO'] ?? '';			//구매내역
+	$LGD_BUYERID = $_POST['LGD_BUYERID'] ?? '';					//구매자아이디
+	$LGD_BUYEREMAIL = $_POST['LGD_BUYEREMAIL'] ?? '';				//구매자메일
+	$LGD_FINANCENAME = $_POST['LGD_FINANCENAME'] ?? '';			//결제기관명
+	$LGD_FINANCEAUTHNUM = $_POST['LGD_FINANCEAUTHNUM'] ?? '';		//결제기관승인번호
+	$LGD_CASHRECEIPTNUM = $_POST['LGD_CASHRECEIPTNUM'] ?? '';		//현금영수증승인번호
+	$LGD_CASHRECEIPTSELFYN = $_POST['LGD_CASHRECEIPTSELFYN'] ?? '';//현금영수증자진발급제유무
+	$LGD_CASHRECEIPTKIND = $_POST['LGD_CASHRECEIPTKIND'] ?? '';	//현금영수증종류
+	$LGD_CARDNUM = $_POST['LGD_CARDNUM'] ?? '';					//신용카드번호
+	$LGD_CARDINSTALLMONTH = $_POST['LGD_CARDINSTALLMONTH'] ?? '';	//신용카드할부개월
+	$LGD_CARDNOINTYN = $_POST['LGD_CARDNOINTYN'] ?? '';			//신용카드무이자여부
+	$LGD_CARDGUBUN1 = $_POST['LGD_CARDGUBUN1'] ?? '';				//신용카드추가정보1
+	$LGD_CARDGUBUN2 = $_POST['LGD_CARDGUBUN2'] ?? '';				//신용카드추가정보2
+	$LGD_ACCOUNTNUM = $_POST['LGD_ACCOUNTNUM'] ?? '';				//가상계좌발급번호
+	$LGD_ACCOUNTOWNER = $_POST['LGD_ACCOUNTOWNER'] ?? '';			//계좌주명
+	$LGD_PAYER = $_POST['LGD_PAYER'] ?? '';						//가상계좌입금자명
+	$LGD_CASTAMOUNT = $_POST['LGD_CASTAMOUNT'] ?? '';				//입금누적금액
+	$LGD_CASCAMOUNT = $_POST['LGD_CASCAMOUNT'] ?? '';				//현입금금액
+	$LGD_CASFLAG = $_POST['LGD_CASFLAG'] ?? '';					//거래종류(R:할당,I:입금,C:취소)
+	$LGD_CASSEQNO = $_POST['LGD_CASSEQNO'] ?? '';					//가상계좌일련번호
+	$LGD_SAOWNER = $_POST['LGD_SAOWNER'] ?? '';					//가상계좌 입금계좌주명
+	$LGD_TELNO = $_POST['LGD_TELNO'] ?? '';						//결제휴대폰번호
 
 	$row = sql_fetch("select count(*) as cnt from $iw[lgd_table] where ep_code = '$iw[store]' and mb_code = '$LGD_BUYERID' and lgd_oid = '$LGD_OID' and lgd_tid = '$LGD_TID' and lgd_timestamp = '$LGD_TIMESTAMP'");
 
@@ -125,3 +125,6 @@ if ($iw[level]=="guest") alert("로그인 해주시기 바랍니다. ","$iw[m_pa
 
 ?>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+
+

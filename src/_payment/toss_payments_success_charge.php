@@ -9,11 +9,11 @@
 <body>
 
 <?php
-$paymentKey = $_GET['paymentKey'];
-$orderId = $_GET['orderId'];
-$amount = $_GET['amount'];
-$method = $_GET['md'];
-$resdomain = $_GET['resd'];
+$paymentKey = $_GET['paymentKey'] ?? '';
+$orderId = $_GET['orderId'] ?? '';
+$amount = $_GET['amount'] ?? '';
+$method = $_GET['md'] ?? '';
+$resdomain = $_GET['resd'] ?? '';
 //var_dump($_GET);
 //var_dump($_POST); exit;
 $payment_config = require_once(__DIR__ . '/../config/payment.php');
@@ -281,3 +281,7 @@ if($isSuccess) {
 </section>
 </body>
 </html>
+
+
+
+

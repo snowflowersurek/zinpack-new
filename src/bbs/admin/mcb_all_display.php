@@ -4,7 +4,7 @@ if (($iw[group] == "all" && $iw[level] != "admin")) alert("잘못된 접근입�
 ?>
 <meta http-equiv="content-type" content="text/html; charset=<?=$iw['charset']?>" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-<?
+<?php
 $md_code = $_GET[idx];
 $md_display = $_GET[dis];
 
@@ -23,3 +23,6 @@ sql_query($sql);
 
 goto_url("$iw[admin_path]/mcb_all_view.php?type=$iw[type]&ep=$iw[store]&gp=$iw[group]&idx=$md_code");
 ?>
+
+
+

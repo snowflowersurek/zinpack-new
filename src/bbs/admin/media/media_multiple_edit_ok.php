@@ -4,16 +4,16 @@ if ($iw[type] != "book" || ($iw[level] != "seller" && $iw[level] != "member")) a
 ?>
 <meta http-equiv="content-type" content="text/html; charset=<?=$iw['charset']?>" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-<?
+<?php
 	$upload_path = $_POST[upload_path];
-	$bd_code = trim(mysql_real_escape_string($_POST[bd_code]));
-	$bm_no = trim(mysql_real_escape_string($_POST[bm_no]));
-	$bm_order = trim(mysql_real_escape_string($_POST[bm_order]));
-	$bmd_no_main = trim(mysql_real_escape_string($_POST[bmd_no_main]));
-	$bmd_image_main = trim(mysql_real_escape_string($_POST[bmd_image_main]));
-	$bmd_type_main = trim(mysql_real_escape_string($_POST[bmd_type_main]));
-	$bmd_content_main = mysql_real_escape_string($_POST[bmd_content_main]);
-	$bm_image_old = trim(mysql_real_escape_string($_POST[bm_image_old]));
+	$bd_code = trim(mysqli_real_escape_string($iw['connect'], $_POST['bd_code']));
+	$bm_no = trim(mysqli_real_escape_string($iw['connect'], $_POST['bm_no']));
+	$bm_order = trim(mysqli_real_escape_string($iw['connect'], $_POST['bm_order']));
+	$bmd_no_main = trim(mysqli_real_escape_string($iw['connect'], $_POST['bmd_no_main']));
+	$bmd_image_main = trim(mysqli_real_escape_string($iw['connect'], $_POST['bmd_image_main']));
+	$bmd_type_main = trim(mysqli_real_escape_string($iw['connect'], $_POST['bmd_type_main']));
+	$bmd_content_main = mysqli_real_escape_string($iw['connect'], $_POST['bmd_content_main']);
+	$bm_image_old = trim(mysqli_real_escape_string($iw['connect'], $_POST['bm_image_old']));
 
 	$sql = "update $iw[book_media_detail_table] set
 			bmd_image = '$bmd_image_main',
@@ -49,8 +49,8 @@ if ($iw[type] != "book" || ($iw[level] != "seller" && $iw[level] != "member")) a
 		$bmd_image_old = $_POST[bmd_image_old][$i];
 		$bmd_big_image_old = $_POST["bmd_big_image_old_".$i];
 		$bmd_no = $_POST[bmd_no][$i];
-		$bmd_type = trim(mysql_real_escape_string($_POST[bmd_type][$i]));
-		$bmd_content = mysql_real_escape_string($_POST[bmd_content][$i]);
+		$bmd_type = trim(mysqli_real_escape_string($iw['connect'], $_POST['bmd_type'][$i]));
+		$bmd_content = mysqli_real_escape_string($iw['connect'], $_POST['bmd_content'][$i]);
 
 		if($_POST["bmd_image_delete"][$i] == "del"){
 			if(is_file($abs_dir."/".$bmd_image_old)==true){
@@ -137,3 +137,6 @@ if ($iw[type] != "book" || ($iw[level] != "seller" && $iw[level] != "member")) a
 
 	echo "<script>window.parent.location.href='$iw[admin_path]/media/media_main_list.php?type=$iw[type]&ep=$iw[store]&gp=$iw[group]&idx=$bd_code';</script>";
 ?>
+
+
+

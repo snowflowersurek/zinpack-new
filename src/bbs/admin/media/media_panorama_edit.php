@@ -59,7 +59,7 @@ $bmd_type = str_replace('\"', '&quot;', $bmd_type);
 							<input type="file" class="col-xs-12 col-sm-12" name="bm_image">
 							<span class="help-block col-xs-12">
 								사이즈(pixel) 240 X 240
-								<?if($bm_image){?><br/><a href="<?=$iw["path"].$upload_path."/".$bm_image?>" target="_blank">기존 이미지</a><?}?>
+								<?php if($bm_image){?><br/><a href="<?=$iw["path"].$upload_path."/".$bm_image?>" target="_blank">기존 이미지</a><?php }?>
 							</span>
 						</div>
 					</div>
@@ -82,7 +82,7 @@ $bmd_type = str_replace('\"', '&quot;', $bmd_type);
 							<input type="file" class="col-xs-12 col-sm-12" name="bmd_image">
 							<span class="help-block col-xs-12">
 								사이즈(pixel) 1024 X 1024 이상
-								<?if($bmd_image){?><br/><a href="<?=$iw["path"].$upload_path."/".$bmd_image?>" target="_blank">기존 이미지</a><?}?>
+								<?php if($bmd_image){?><br/><a href="<?=$iw["path"].$upload_path."/".$bmd_image?>" target="_blank">기존 이미지</a><?php }?>
 							</span>
 						</div>
 					</div>
@@ -158,6 +158,9 @@ $bmd_type = str_replace('\"', '&quot;', $bmd_type);
 	}
 </script>
 
-<?
+<?php
 include_once($iw['admin_path']."/_cg_tail.php");
 ?>
+
+
+

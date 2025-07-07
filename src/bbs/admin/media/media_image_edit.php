@@ -50,7 +50,7 @@ $bm_order = $row['bm_order'];
 							<input type="file" class="col-xs-12 col-sm-12" name="bm_image">
 							<span class="help-block col-xs-12">
 								사이즈(pixel) 240 X 240
-								<?if($bm_image){?><br/><a href="<?=$iw["path"].$upload_path."/".$bm_image?>" target="_blank">기존 이미지</a><?}?>
+								<?php if($bm_image){?><br/><a href="<?=$iw["path"].$upload_path."/".$bm_image?>" target="_blank">기존 이미지</a><?php }?>
 							</span>
 						</div>
 					</div>
@@ -63,7 +63,7 @@ $bm_order = $row['bm_order'];
 						</label>
 						<div class="col-sm-8">
 							<table>
-							<?
+							<?php
 								$file_num=0;
 								$sql = "select * from $iw[book_media_detail_table] where ep_code = '$iw[store]' and gp_code = '$iw[group]' and bd_code = '$bd_code' and mb_code = '$iw[member]' and bm_order = '$bm_order' order by bmd_order asc";
 								$result = sql_query($sql);
@@ -107,20 +107,20 @@ $bm_order = $row['bm_order'];
 												<span class='help-block col-xs-12'><b><?=$file_num+1?>. <?=$type_name?></b> <input type='checkbox' name='bmd_image_delete[]' value="del" /> 삭제</span>
 												<span class='help-block col-xs-12'><?=$file_help?></span>
 												<input type='file' class='col-xs-12 col-sm-12' name='bmd_image[]'>
-												<?if($bmd_image){?>
+												<?php if($bmd_image){?>
 												<span class='help-block col-xs-12'>
-													<a href="<?=$iw["path"].$upload_path."/".$bmd_image?>" target="_blank"><?if($bmd_type == 4){?>오디오 듣기<?}else{?>기존 이미지<?}?></a>
+													<a href="<?=$iw["path"].$upload_path."/".$bmd_image?>" target="_blank"><?php if{?>오디오 듣기<?php }else{?>기존 이미지<?php }?></a>
 												</span>
-												<?}?>
+												<?php }?>
 												<span class='help-block col-xs-12'><?=$text_help?></span>
-												<?if($bmd_type == 1){?>
+												<?php if($bmd_type == 1){?>
 													<textarea name='bmd_content[]' class='col-xs-12 col-sm-12' style='height:50px;resize:none;'><?=$bmd_content?></textarea>
-												<?}else{?>
+												<?php }else{?>
 													<input type='text' placeholder='입력' class='col-xs-12 col-sm-12' name='bmd_content[]' value="<?=$bmd_content?>">
-												<?}?>
+												<?php }?>
 											</td>
 										</tr>
-										<?
+										<?php
 										$file_num++;
 									}
 								}
@@ -278,6 +278,9 @@ $bm_order = $row['bm_order'];
 	}
 </script>
 
-<?
+<?php
 include_once($iw['admin_path']."/_cg_tail.php");
 ?>
+
+
+

@@ -4,7 +4,7 @@ if (($iw[group] == "all" && $iw[level] != "admin") || ($iw[group] != "all" && $i
 ?>
 <meta http-equiv="content-type" content="text/html; charset=<?=$iw['charset']?>" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-<?
+<?php
 if (!$_GET['menu']) exit;
 $cg_code = $_GET[menu];
 
@@ -29,3 +29,6 @@ if ($row[cnt]) {
 	echo "<script>window.parent.location.href='$iw[admin_path]/category_list.php?type=$iw[type]&ep=$iw[store]&gp=$iw[group]';</script>";
 }
 ?>
+
+
+

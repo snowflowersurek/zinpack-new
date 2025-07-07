@@ -97,33 +97,33 @@ if(preg_match('/(iPod|iPhone|Mobile|UP.Browser|Android|BlackBerry|Windows CE|Nok
 					<div class="form-group">
 						<label class="col-sm-1 control-label">글쓰기 방식</label>
 						<div class="col-sm-8">
-						<?
+						<?php
 							if($content_type == 1){
 						?>
 								<input type="radio" name="content_type" value="1" id="간편모드" onclick="javascript:type_change(this.value);" checked/>
 								<label for="간편모드">간편모드</label>
 								&nbsp;&nbsp;&nbsp;
 								<input type="radio" name="content_type" value="2" id="웹에디터" onclick="javascript:type_change(this.value);" />
-								<label for="웹에디터">웹에디터 <?if ($mobile_check == "ok"){?> (모바일 미지원) <?}?></label>
-						<?
+								<label for="웹에디터">웹에디터 <?php if{?> (모바일 미지원) <?php }?></label>
+						<?php
 							}else{
 								echo national_language($iw[language],"a0269","웹에디터");
 						?>
 							<input type="hidden" name="content_type" value="<?=$content_type?>" />
-						<?
+						<?php
 							}
 						?>
 						</div>
 					</div>
 
-					<div class="form-group" id="text_only" <?if($content_type == 2){?>style="display:none;"<?}?>>
+					<div class="form-group" id="text_only" <?php if{?>style="display:none;"<?php }?>>
 						<label class="col-sm-1 control-label">프로필</label>
 						<div class="col-sm-8">
 							<textarea name="ProFile1" class="col-sm-12" style="height:150px;"><?=$ProFile?></textarea>
 						</div>
 					</div>
 
-					<div class="form-group" id="web_editor" <?if($content_type == 1){?>style="display:none;"<?}?>>
+					<div class="form-group" id="web_editor" <?php if{?>style="display:none;"<?php }?>>
 						<label class="col-sm-1 control-label">프로필</label>
 						<div class="col-sm-8">
 							<textarea class="ckeditor" id="ProFile2" name="ProFile2"><?=$ProFile?></textarea>
@@ -141,7 +141,7 @@ if(preg_match('/(iPod|iPhone|Mobile|UP.Browser|Android|BlackBerry|Windows CE|Nok
 						<label class="col-sm-1 control-label">프로필사진</label>
 						<div class="col-sm-8">
 							<input type="file" class="col-sm-12" name="NewPhoto" id="NewPhoto">
-							<?
+							<?php
 								if ($Photo != ""){
 							?>
 							<p class="col-xs-12 col-sm-8 form-control-static">
@@ -149,7 +149,7 @@ if(preg_match('/(iPod|iPhone|Mobile|UP.Browser|Android|BlackBerry|Windows CE|Nok
 								<input type="checkbox" name="delfile" value="Y" /> 삭제
 								<input type="hidden" name="Photo" value="<?=$Photo?>">
 							</p>
-							<?
+							<?php
 								}
 							?>
 						</div>
@@ -158,10 +158,10 @@ if(preg_match('/(iPod|iPhone|Mobile|UP.Browser|Android|BlackBerry|Windows CE|Nok
 					<div class="form-group">
 						<label class="col-sm-1 control-label">상태</label>
 						<div class="col-sm-8">
-							<input type="radio" name="author_display" id="display1" value="1" <?if($author_display==1){?>checked<?}?>>
+							<input type="radio" name="author_display" id="display1" value="1" <?php if{?>checked<?php }?>>
 							<label for="display1"> 노출</label>
 							&nbsp;&nbsp;&nbsp;
-							<input type="radio" name="author_display" id="display2" value="2" <?if($author_display==2){?>checked<?}?>>
+							<input type="radio" name="author_display" id="display2" value="2" <?php if{?>checked<?php }?>>
 							<label for="display2"> 숨김</label>
 						</div>
 					</div>
@@ -230,6 +230,9 @@ function confirm_delete() {
 }
 </script>
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

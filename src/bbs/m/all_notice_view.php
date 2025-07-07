@@ -85,8 +85,7 @@ include_once("_head_share.php");
 					<div class="box br-theme">
 						<h3 class="box-title"><?=$nt_subject?></h3>
 						<ul class="list-inline">
-							<?if($cg_date==1){?><li><i class="fa fa-calendar"></i> <?=$nt_datetime?></li><?}?>
-							<?if($cg_hit==1){?><li><i class="fa fa-eye"></i> <?=$nt_hit?></li><?}?>
+							<?php if($cg_date==1){?><li><i class="fa fa-calendar"></i> <?=$nt_datetime?></li><?php } ?><?php if($cg_hit==1){?><li><i class="fa fa-eye"></i> <?=$nt_hit?></li><?php }?>
 						</ul>
 					</div> <!-- /.box -->
 				</div> <!-- /.masonry-item -->
@@ -100,58 +99,24 @@ include_once("_head_share.php");
 
 			<div class="masonry-item w-full h-full">
 				<div class="box br-theme text-right">
-					<?if($cg_url==1){?><a class="btn btn-theme btn-sm" href="javascript:copy_trackback();" title="<?=national_language($iw[language],"a0301","URL 복사");?>"><i class="fa fa-link fa-lg"></i></a><?}?>
-				<?if($st_sns_share==1){?>
-					<?if($cg_facebook==1){?><a class="btn btn-theme btn-sm" href="javascript:executeFaceBookLink('<?=$fbUrl?>');" title="<?=national_language($iw[language],"a0305","페이스북");?>"><i class="fa fa-facebook fa-lg"></i></a><?}?>
-					<?if($cg_twitter==1){?><a class="btn btn-theme btn-sm" href="javascript:executeTwitterLink('[<?=$fbTitle?>]<?=$kakaoContent?>','<?=$kakaoURL?>');" title="<?=national_language($iw[language],"a0306","트위터");?>"><i class="fa fa-twitter fa-lg"></i></a><?}?>
-					<?if($cg_googleplus==1){?><a class="btn btn-theme btn-sm" href="javascript:executeGooglePlusLink('<?=$fbUrl?>');" title="Google+"><i class="fa fa-google-plus fa-lg"></i></a><?}?>
-					<?if($cg_pinterest==1){?><a class="btn btn-theme btn-sm" href="javascript:executePinterestLink('[<?=$fbTitle?>]<?=$kakaoContent?>','<?=$fbUrl?>','<?=$kakaoImg?>');" title="Pinterest"><i class="fa fa-pinterest fa-lg"></i></a><?}?>
-					<?if($cg_linkedin==1){?><a class="btn btn-theme btn-sm" href="javascript:executeLinkedInLink('<?=$fbTitle?>','<?=$kakaoContent?>','<?=$fbUrl?>');" title="Linkedin"><i class="fa fa-linkedin fa-lg"></i></a><?}?>
-					<?if($cg_delicious==1){?><a class="btn btn-theme btn-sm" href="javascript:executeDeliciousLink('[<?=$fbTitle?>]<?=$kakaoContent?>','<?=$fbUrl?>');" title="Delicious"><i class="fa fa-delicious fa-lg"></i></a><?}?>
-					<?if($cg_tumblr==1){?><a class="btn btn-theme btn-sm" href="javascript:executeTumblrLink('[<?=$fbTitle?>]<?=$kakaoContent?>','<?=$fbUrl?>');" title="Tumblr"><i class="fa fa-tumblr fa-lg"></i></a><?}?>
-					<?if($cg_digg==1){?><a class="btn btn-theme btn-sm" href="javascript:executeDiggLink('[<?=$fbTitle?>]<?=$kakaoContent?>','<?=$fbUrl?>');" title="Digg"><i class="fa fa-digg fa-lg"></i></a><?}?>
-					<?if($cg_stumbleupon==1){?><a class="btn btn-theme btn-sm" href="javascript:executeStumbleUponLink('[<?=$fbTitle?>]<?=$kakaoContent?>','<?=$fbUrl?>');" title="StumbleUpon"><i class="fa fa-stumbleupon fa-lg"></i></a><?}?>
-					<?if($cg_reddit==1){?><a class="btn btn-theme btn-sm" href="javascript:executeRedditLink('[<?=$fbTitle?>]<?=$kakaoContent?>','<?=$fbUrl?>');" title="Reddit"><i class="fa fa-reddit fa-lg"></i></a><?}?>
-					<?if($cg_sinaweibo==1){?><a class="btn btn-theme btn-sm" href="javascript:executeSinaWeiboLink('[<?=$fbTitle?>]<?=$kakaoContent?>','<?=$fbUrl?>');" title="新浪微博"><i class="fa fa-weibo fa-lg"></i></a><?}?>
-					<?if($cg_qzone==1){?><a class="btn btn-theme btn-sm" href="javascript:executeQZoneLink('[<?=$fbTitle?>]<?=$kakaoContent?>','<?=$fbUrl?>');" title="QQ 空间"><i class="fa fa-qq fa-lg"></i></a><?}?>
-					<?if($cg_renren==1){?><a class="btn btn-theme btn-sm" href="javascript:executeRenrenLink('[<?=$fbTitle?>]<?=$kakaoContent?>','<?=$fbUrl?>');" title="人人网"><i class="fa fa-renren fa-lg"></i></a><?}?>
-					<?if($cg_tencentweibo==1){?><a class="btn btn-theme btn-sm" href="javascript:executeTencentWeiboLink('[<?=$fbTitle?>]<?=$kakaoContent?>','<?=$fbUrl?>');" title="腾讯微博"><i class="fa fa-tencent-weibo fa-lg"></i></a><?}?>
-				<?}else{?>
-					<?if($cg_facebook==1){?><a href="javascript:executeFaceBookLink('<?=$fbUrl?>');" title="<?=national_language($iw[language],"a0305","페이스북");?>"><img src="<?=$iw[design_path]?>/img/btn_facebook.png" alt=""></a><?}?>
-					<?if($cg_twitter==1){?><a href="javascript:executeTwitterLink('[<?=$fbTitle?>]<?=$kakaoContent?>','<?=$kakaoURL?>');" title="<?=national_language($iw[language],"a0306","트위터");?>"><img src="<?=$iw[design_path]?>/img/btn_twitter.png" alt=""></a><?}?>
-					<?if($cg_googleplus==1){?><a href="javascript:executeGooglePlusLink('<?=$fbUrl?>');" title="Google+"><img src="<?=$iw[design_path]?>/img/btn_googleplus.png" alt=""></a><?}?>
-					<?if($cg_pinterest==1){?><a href="javascript:executePinterestLink('[<?=$fbTitle?>]<?=$kakaoContent?>','<?=$fbUrl?>','<?=$kakaoImg?>');" title="Pinterest"><img src="<?=$iw[design_path]?>/img/btn_pinterest.png" alt=""></a><?}?>
-					<?if($cg_linkedin==1){?><a href="javascript:executeLinkedInLink('<?=$fbTitle?>','<?=$kakaoContent?>','<?=$fbUrl?>');" title="Linkedin"><img src="<?=$iw[design_path]?>/img/btn_linkedin.png" alt=""></a><?}?>
-					<?if($cg_delicious==1){?><a href="javascript:executeDeliciousLink('[<?=$fbTitle?>]<?=$kakaoContent?>','<?=$fbUrl?>');" title="Delicious"><img src="<?=$iw[design_path]?>/img/btn_delicious.png" alt=""></a><?}?>
-					<?if($cg_tumblr==1){?><a href="javascript:executeTumblrLink('[<?=$fbTitle?>]<?=$kakaoContent?>','<?=$fbUrl?>');" title="Tumblr"><img src="<?=$iw[design_path]?>/img/btn_tumblr.png" alt=""></a><?}?>
-					<?if($cg_digg==1){?><a href="javascript:executeDiggLink('[<?=$fbTitle?>]<?=$kakaoContent?>','<?=$fbUrl?>');" title="Digg"><img src="<?=$iw[design_path]?>/img/btn_digg.png" alt=""></a><?}?>
-					<?if($cg_stumbleupon==1){?><a href="javascript:executeStumbleUponLink('[<?=$fbTitle?>]<?=$kakaoContent?>','<?=$fbUrl?>');" title="StumbleUpon"><img src="<?=$iw[design_path]?>/img/btn_stumbleupon.png" alt=""></a><?}?>
-					<?if($cg_reddit==1){?><a href="javascript:executeRedditLink('[<?=$fbTitle?>]<?=$kakaoContent?>','<?=$fbUrl?>');" title="Reddit"><img src="<?=$iw[design_path]?>/img/btn_reddit.png" alt=""></a><?}?>
-					<?if($cg_sinaweibo==1){?><a href="javascript:executeSinaWeiboLink('[<?=$fbTitle?>]<?=$kakaoContent?>','<?=$fbUrl?>');" title="新浪微博"><img src="<?=$iw[design_path]?>/img/btn_weibo.png" alt=""></a><?}?>
-					<?if($cg_qzone==1){?><a href="javascript:executeQZoneLink('[<?=$fbTitle?>]<?=$kakaoContent?>','<?=$fbUrl?>');" title="QQ 空间"><img src="<?=$iw[design_path]?>/img/btn_qq.png" alt=""></a><?}?>
-					<?if($cg_renren==1){?><a href="javascript:executeRenrenLink('[<?=$fbTitle?>]<?=$kakaoContent?>','<?=$fbUrl?>');" title="人人网"><img src="<?=$iw[design_path]?>/img/btn_renren.png" alt=""></a><?}?>
-					<?if($cg_tencentweibo==1){?><a href="javascript:executeTencentWeiboLink('[<?=$fbTitle?>]<?=$kakaoContent?>','<?=$fbUrl?>');" title="腾讯微博"><img src="<?=$iw[design_path]?>/img/btn_tencentweibo.png" alt=""></a><?}?>
-				<?}?>
-					<?if (preg_match('/iPhone|iPod|iPad|BlackBerry|Android|Windows CE|LG|MOT|SAMSUNG|SonyEricsson|IEMobile|Mobile|lgtelecom|PPC|opera mobi|opera mini|nokia|webos/',$_SERVER['HTTP_USER_AGENT']) ){?>
-						<?if($cg_kakaotalk==1){?>
+					<?php if($cg_url==1){?><a class="btn btn-theme btn-sm" href="javascript:copy_trackback();" title="<?=national_language($iw[language],"a0301","URL 복사");?>"><i class="fa fa-link fa-lg"></i></a><?php } ?><?php if($st_sns_share==1){ if($cg_facebook==1){?><a class="btn btn-theme btn-sm" href="javascript:executeFaceBookLink('<?=$fbUrl?>');" title="<?=national_language($iw[language],"a0305","페이스북");?>"><i class="fa fa-facebook fa-lg"></i></a><?php } ?><?php if($cg_twitter==1){?><a class="btn btn-theme btn-sm" href="javascript:executeTwitterLink('[<?=$fbTitle?>]<?=$kakaoContent?>','<?=$kakaoURL?>');" title="<?=national_language($iw[language],"a0306","트위터");?>"><i class="fa fa-twitter fa-lg"></i></a><?php } ?><?php if($cg_googleplus==1){?><a class="btn btn-theme btn-sm" href="javascript:executeGooglePlusLink('<?=$fbUrl?>');" title="Google+"><i class="fa fa-google-plus fa-lg"></i></a><?php } ?><?php if($cg_pinterest==1){?><a class="btn btn-theme btn-sm" href="javascript:executePinterestLink('[<?=$fbTitle?>]<?=$kakaoContent?>','<?=$fbUrl?>','<?=$kakaoImg?>');" title="Pinterest"><i class="fa fa-pinterest fa-lg"></i></a><?php } ?><?php if($cg_linkedin==1){?><a class="btn btn-theme btn-sm" href="javascript:executeLinkedInLink('<?=$fbTitle?>','<?=$kakaoContent?>','<?=$fbUrl?>');" title="Linkedin"><i class="fa fa-linkedin fa-lg"></i></a><?php } ?><?php if($cg_delicious==1){?><a class="btn btn-theme btn-sm" href="javascript:executeDeliciousLink('[<?=$fbTitle?>]<?=$kakaoContent?>','<?=$fbUrl?>');" title="Delicious"><i class="fa fa-delicious fa-lg"></i></a><?php } ?><?php if($cg_tumblr==1){?><a class="btn btn-theme btn-sm" href="javascript:executeTumblrLink('[<?=$fbTitle?>]<?=$kakaoContent?>','<?=$fbUrl?>');" title="Tumblr"><i class="fa fa-tumblr fa-lg"></i></a><?php } ?><?php if($cg_digg==1){?><a class="btn btn-theme btn-sm" href="javascript:executeDiggLink('[<?=$fbTitle?>]<?=$kakaoContent?>','<?=$fbUrl?>');" title="Digg"><i class="fa fa-digg fa-lg"></i></a><?php } ?><?php if($cg_stumbleupon==1){?><a class="btn btn-theme btn-sm" href="javascript:executeStumbleUponLink('[<?=$fbTitle?>]<?=$kakaoContent?>','<?=$fbUrl?>');" title="StumbleUpon"><i class="fa fa-stumbleupon fa-lg"></i></a><?php } ?><?php if($cg_reddit==1){?><a class="btn btn-theme btn-sm" href="javascript:executeRedditLink('[<?=$fbTitle?>]<?=$kakaoContent?>','<?=$fbUrl?>');" title="Reddit"><i class="fa fa-reddit fa-lg"></i></a><?php } ?><?php if($cg_sinaweibo==1){?><a class="btn btn-theme btn-sm" href="javascript:executeSinaWeiboLink('[<?=$fbTitle?>]<?=$kakaoContent?>','<?=$fbUrl?>');" title="新浪微博"><i class="fa fa-weibo fa-lg"></i></a><?php } ?><?php if($cg_qzone==1){?><a class="btn btn-theme btn-sm" href="javascript:executeQZoneLink('[<?=$fbTitle?>]<?=$kakaoContent?>','<?=$fbUrl?>');" title="QQ 空间"><i class="fa fa-qq fa-lg"></i></a><?php } ?><?php if($cg_renren==1){?><a class="btn btn-theme btn-sm" href="javascript:executeRenrenLink('[<?=$fbTitle?>]<?=$kakaoContent?>','<?=$fbUrl?>');" title="人人网"><i class="fa fa-renren fa-lg"></i></a><?php } ?><?php if($cg_tencentweibo==1){?><a class="btn btn-theme btn-sm" href="javascript:executeTencentWeiboLink('[<?=$fbTitle?>]<?=$kakaoContent?>','<?=$fbUrl?>');" title="腾讯微博"><i class="fa fa-tencent-weibo fa-lg"></i></a><?php }?>
+				<?php }else{ if($cg_facebook==1){?><a href="javascript:executeFaceBookLink('<?=$fbUrl?>');" title="<?=national_language($iw[language],"a0305","페이스북");?>"><img src="<?=$iw[design_path]?>/img/btn_facebook.png" alt=""></a><?php } ?><?php if($cg_twitter==1){?><a href="javascript:executeTwitterLink('[<?=$fbTitle?>]<?=$kakaoContent?>','<?=$kakaoURL?>');" title="<?=national_language($iw[language],"a0306","트위터");?>"><img src="<?=$iw[design_path]?>/img/btn_twitter.png" alt=""></a><?php } ?><?php if($cg_googleplus==1){?><a href="javascript:executeGooglePlusLink('<?=$fbUrl?>');" title="Google+"><img src="<?=$iw[design_path]?>/img/btn_googleplus.png" alt=""></a><?php } ?><?php if($cg_pinterest==1){?><a href="javascript:executePinterestLink('[<?=$fbTitle?>]<?=$kakaoContent?>','<?=$fbUrl?>','<?=$kakaoImg?>');" title="Pinterest"><img src="<?=$iw[design_path]?>/img/btn_pinterest.png" alt=""></a><?php } ?><?php if($cg_linkedin==1){?><a href="javascript:executeLinkedInLink('<?=$fbTitle?>','<?=$kakaoContent?>','<?=$fbUrl?>');" title="Linkedin"><img src="<?=$iw[design_path]?>/img/btn_linkedin.png" alt=""></a><?php } ?><?php if($cg_delicious==1){?><a href="javascript:executeDeliciousLink('[<?=$fbTitle?>]<?=$kakaoContent?>','<?=$fbUrl?>');" title="Delicious"><img src="<?=$iw[design_path]?>/img/btn_delicious.png" alt=""></a><?php } ?><?php if($cg_tumblr==1){?><a href="javascript:executeTumblrLink('[<?=$fbTitle?>]<?=$kakaoContent?>','<?=$fbUrl?>');" title="Tumblr"><img src="<?=$iw[design_path]?>/img/btn_tumblr.png" alt=""></a><?php } ?><?php if($cg_digg==1){?><a href="javascript:executeDiggLink('[<?=$fbTitle?>]<?=$kakaoContent?>','<?=$fbUrl?>');" title="Digg"><img src="<?=$iw[design_path]?>/img/btn_digg.png" alt=""></a><?php } ?><?php if($cg_stumbleupon==1){?><a href="javascript:executeStumbleUponLink('[<?=$fbTitle?>]<?=$kakaoContent?>','<?=$fbUrl?>');" title="StumbleUpon"><img src="<?=$iw[design_path]?>/img/btn_stumbleupon.png" alt=""></a><?php } ?><?php if($cg_reddit==1){?><a href="javascript:executeRedditLink('[<?=$fbTitle?>]<?=$kakaoContent?>','<?=$fbUrl?>');" title="Reddit"><img src="<?=$iw[design_path]?>/img/btn_reddit.png" alt=""></a><?php } ?><?php if($cg_sinaweibo==1){?><a href="javascript:executeSinaWeiboLink('[<?=$fbTitle?>]<?=$kakaoContent?>','<?=$fbUrl?>');" title="新浪微博"><img src="<?=$iw[design_path]?>/img/btn_weibo.png" alt=""></a><?php } ?><?php if($cg_qzone==1){?><a href="javascript:executeQZoneLink('[<?=$fbTitle?>]<?=$kakaoContent?>','<?=$fbUrl?>');" title="QQ 空间"><img src="<?=$iw[design_path]?>/img/btn_qq.png" alt=""></a><?php } ?><?php if($cg_renren==1){?><a href="javascript:executeRenrenLink('[<?=$fbTitle?>]<?=$kakaoContent?>','<?=$fbUrl?>');" title="人人网"><img src="<?=$iw[design_path]?>/img/btn_renren.png" alt=""></a><?php } ?><?php if($cg_tencentweibo==1){?><a href="javascript:executeTencentWeiboLink('[<?=$fbTitle?>]<?=$kakaoContent?>','<?=$fbUrl?>');" title="腾讯微博"><img src="<?=$iw[design_path]?>/img/btn_tencentweibo.png" alt=""></a><?php } ?><?php } if(preg_match('/iPhone|iPod|iPad|BlackBerry|Android|Windows CE|LG|MOT|SAMSUNG|SonyEricsson|IEMobile|Mobile|lgtelecom|PPC|opera mobi|opera mini|nokia|webos/',$_SERVER['HTTP_USER_AGENT']) ){ if($cg_kakaotalk==1){?>
 						<a id="kakao-link-btn" href="javascript:;" title="<?=national_language($iw[language],"a0303","카카오톡");?>"><img src="<?=$iw[design_path]?>/img/btn_kakaotalk.png" alt=""></a>
 						<script type="text/javascript">
-							<?if($kakaoImg){?>
+							<?php if($kakaoImg){?>
 								executeKakaoTalkLinkImg("[<?=$fbTitle?>]\n<?=$kakaoContent?>","<?='http://'.$iw[default_domain].$_SERVER[REQUEST_URI]?>","<?=$kakaoImg?>","<?=$kakaoURL?>");
-							<?}else{?>
+							<?php }else{?>
 								executeKakaoTalkLink("[<?=$fbTitle?>]\n<?=$kakaoContent?>","<?='http://'.$iw[default_domain].$_SERVER[REQUEST_URI]?>","<?=$kakaoURL?>");
-							<?}?>
+							<?php }?>
 						</script>
-						<?}?>
-						<?if($cg_line==1){?>
+						<?php } ?><?php if($cg_line==1){?>
 						<span class="btn" style="padding:0; height:30px;">
 							<script type="text/javascript" src="//media.line.me/js/line-button.js?v=20140411" ></script>
 							<script type="text/javascript">
 								new media_line_me.LineButton({"pc":false,"lang":"en","type":"c","text":"[<?=$fbTitle?>]<?=$kakaoContent?>","withUrl":true});
 							</script>
 						</span>
-						<?}?>
-					<?}?>
+						<?php } ?><?php }?>
 				</div> <!-- /.box -->
 			</div> <!-- /.masonry-item -->
 
@@ -164,7 +129,7 @@ include_once("_head_share.php");
 </div>
 
 <script type="text/javascript" src="<?=$iw[include_path]?>/js/kakao.link.js"></script>
-<?
+<?php
 $sql = "update $iw[notice_table] set
 		nt_hit = nt_hit+1
 		where ep_code = '$iw[store]' and gp_code = '$iw[group]' and nt_display = 1 and nt_no = '$nt_no'";
@@ -172,3 +137,6 @@ sql_query($sql);
 
 include_once("_tail.php");
 ?>
+
+
+

@@ -1,4 +1,4 @@
-<?
+<?php
 if (!defined("_INFOWAY_")) exit; // 개별 페이지 접근 불가
 include_once("$iw[include_path]/lib/lib_image_resize.php");
 
@@ -161,3 +161,7 @@ if (w >= 768 && w < 992) {
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 </script>
+
+
+
+

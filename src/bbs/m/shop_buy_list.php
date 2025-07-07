@@ -22,7 +22,7 @@ if (!$db_conn) {
             </div>
 			<div class="masonry">
 				<div class="grid-sizer"></div>
-				<?
+				<?php
                     $sql_count = "select count(*) as cnt from {$iw['shop_order_table']} where ep_code = ? and mb_code = ? and sr_display <> 0";
                     $stmt_count = mysqli_prepare($db_conn, $sql_count);
                     mysqli_stmt_bind_param($stmt_count, "ss", $iw['store'], $iw['member']);
@@ -140,8 +140,7 @@ if (!$db_conn) {
 							}else if($srs_display==5){
 								$qa_display = "입금대기";
 							}
-				?>
-							<?if($k==0){?>
+				 if($k==0){?>
 					<div class="masonry-item w-full h-full">
 						<div class="box br-theme">
 							<div class="row" style="position:relative;">
@@ -155,19 +154,19 @@ if (!$db_conn) {
 								<div class="col-sm-3">
 									<ul class="list-inline text-right">
 										<li><a href="<?=$iw['m_path']?>/shop_buy_view.php?type=<?=$iw['type']?>&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>&idx=<?=$sr_code?>" class="btn btn-theme btn-sm"><?=national_language($iw['language'],"a0285","상세내역");?></a></li>
-										<?
+										<?php
 										$date1 = date_create_from_format('Y-m-d', $sr_datetime);
 										$date2 = date_create_from_format('Y-m-d', date('Y-m-d'));
 										$sr_date_diff = (array) date_diff($date1, $date2);
 										
 										if(!$cancel_confirm && $sr_pay == "lguplus" && $lgd_paytype != "SC0040" && $sr_date_diff['days'] < 15){?>
 											<li><a href="javascript:all_cancel('<?=$iw['type']?>','<?=$iw['store']?>','<?=$iw['group']?>','<?=$sr_code?>');"" class="btn btn-theme btn-sm"><?=national_language($iw['language'],"a0284","결제취소");?></a></li>
-										<?
+										<?php
 										}
 										else if(!$cancel_confirm && $sr_pay=="lguplus" && $lgd_paytype=="SC0040" && $sr_date_diff['days'] < 15){
 										//else if($lgd_paytype=="SC0040"){?>
 											<li><a href="javascript:virtual_cancel('<?=$i?>');"" class="btn btn-theme btn-sm"><?=national_language($iw['language'],"a0325","입금취소");?></a></li>
-										<?
+										<?php
 										}
 										?>
 									</ul>
@@ -207,27 +206,27 @@ if (!$db_conn) {
 									</tr>
 								</thead>
 								<tbody>
-							<?}?>
+							<?php }?>
 									<tr>
 										<td data-th="<?=national_language($iw['language'],"a0286","상품명");?>"><?=$srs_subject?></td>
 										<td data-th="<?=national_language($iw['language'],"a0287","옵션");?>"><?=$srs_name?></td>
 										<td data-th="<?=national_language($iw['language'],"a0288","갯수");?>" style="text-align:center;"><?=$srs_amount?>개</td>
 										<td data-th="<?=national_language($iw['language'],"a0289","상태");?>" style="text-align:center;">
-											<span class="label <?if($srs_display==7){?>label-danger<?}else if($srs_display==5){?>label-warning<?}else{?>label-success<?}?>"><?=$qa_display?></span>
-											<?if($srs_delivery_num != "" && ($srs_display==3 || $srs_display==4)){?>
+											<span class="label <?php if{?>label-danger<?php }else if($srs_display==5){?>label-warning<?php }else{?>label-success<?php }?>"><?=$qa_display?></span>
+											<?php if($srs_delivery_num != "" && ($srs_display==3 || $srs_display==4)){?>
 												<a href="javascript:delivery_check('<?=$srs_delivery_num?>','<?=$de_url?>');" title="<?=national_language($iw['language'],"a0326","배송확인");?>:<?=$srs_delivery_num?>">
 													<?=national_language($iw['language'],"a0326","배송확인");?>
 												</a>
-											<?}?>
+											<?php }?>
 										</td>
 									</tr>
-							<?if($rowspan_count == $k+1){?>
+							<?php if($rowspan_count == $k+1){?>
 								</tbody>
 							</table>
 						</div> <!-- /.box -->
 					</div> <!-- /.masonry-item -->
-							<?}?>
-				<?			$k++;
+							<?php }?>
+				<?php $k++;
 						}
                         mysqli_stmt_close($stmts);
 						$i++;
@@ -237,7 +236,7 @@ if (!$db_conn) {
 			</div> <!-- /.masonry -->
 			<div class="pagContainer text-center">
 				<ul class="pagination">
-					<?
+					<?php
 						if($total_page!=0){
 							if($page>$total_page) { $page=$total_page; }
 							$start_page = ((ceil($page/$max_page)-1)*$max_page)+1;
@@ -329,6 +328,9 @@ if (!$db_conn) {
 	}
 </script>
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

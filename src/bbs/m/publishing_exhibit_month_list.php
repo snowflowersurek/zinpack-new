@@ -24,3 +24,6 @@ for ($i=$current_month; $i<=12; $i++) {
 
 echo json_encode($month_array);
 ?>
+
+
+

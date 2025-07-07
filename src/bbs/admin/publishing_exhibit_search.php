@@ -23,7 +23,7 @@ include_once("$iw[admin_path]/_head_sub.php");
 								<div class="row">
 									<div class="col-sm-12">
 										<div class="dataTable-option-right">
-											<?
+											<?php
 												if($_POST['searchby']){
 													$searchby = $_POST['searchby'];
 													$keyword = $_POST['keyword'];
@@ -37,7 +37,7 @@ include_once("$iw[admin_path]/_head_sub.php");
 											?>
 											<form name="search_form" id="search_form" action="<?=$PHP_SELF?>?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>" method="post">
 											<label>검색: <select name="searchby">
-												<option value="name" <?if($searchby == "name"){?>selected="selected"<?}?>>그림전시명</option>
+												<option value="name" <?php if{?>selected="selected"<?php }?>>그림전시명</option>
 											</select></label><input type="text" name="keyword" value="<?=$keyword?>">
 											</form>
 										</div>
@@ -53,7 +53,7 @@ include_once("$iw[admin_path]/_head_sub.php");
 										</tr>
 									</thead>
 									<tbody>
-									<?
+									<?php
 										$sql = "select * from $iw[publishing_exhibit_table] where ep_code = '$iw[store]' and can_rent = 'Y' $search_sql";
 										$result = sql_query($sql);
 										$total_line = mysql_num_rows($result);
@@ -93,14 +93,14 @@ include_once("$iw[admin_path]/_head_sub.php");
 											<td data-title="액자수(점)"><?=$how_many?></td>
 											<td data-title="액자크기"><?=$size?></td>
 											<td data-title="도서정보">
-												<?if($book_id != ""){?>
+												<?php if($book_id != ""){?>
 													<a href="<?=$iw['m_path']?>/publishing_data_view.php?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$gp_code?>&item=<?=$book_id?>" target="_blank"><span class="label label-sm label-default">바로가기</span></a>
-												<?}else{?>
+												<?php }else{?>
 													&nbsp;
-												<?}?>
+												<?php }?>
 											</td>
 										</tr>
-									<?
+									<?php
 										$i++;
 										}
 										if($i==0) echo "<tr><td colspan='4' align='center'>검색된 그림전시가 없습니다.</td></tr>";
@@ -111,7 +111,7 @@ include_once("$iw[admin_path]/_head_sub.php");
 									<div class="col-sm-12">
 										<div class="dataTable-option-right" style="text-align: center;">
 											<ul class="pagination">
-											<?
+											<?php
 												if($total_page!=0){
 													if($page>$total_page) { $page=$total_page; }
 													$start_page = ((ceil($page/$max_page)-1)*$max_page)+1;
@@ -165,3 +165,6 @@ include_once("$iw[admin_path]/_head_sub.php");
 
 </body>
 </html>
+
+
+

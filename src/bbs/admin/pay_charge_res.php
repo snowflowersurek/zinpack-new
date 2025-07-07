@@ -103,7 +103,7 @@ include_once "../../include/mailer.php";
 				ch_result		= '1'
 				";
 		sql_query($sql);
-		$last_chuid = mysql_insert_id();
+		$last_chuid = mysqli_insert_id($iw['connect']);
 
 		if($LGD_PAYTYPE == "SC0040"){
 			$sql = "update $iw[charge_table] set 
@@ -189,3 +189,7 @@ include_once "../../include/mailer.php";
 		alert("결제정보 등록을 실패하였습니다.","$iw[admin_path]/main.php?type=$iw[type]&ep=$iw[store]&gp=$iw[group]");          	            
 	}
 ?>
+
+
+
+

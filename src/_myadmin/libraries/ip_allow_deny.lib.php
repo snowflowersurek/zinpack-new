@@ -325,3 +325,7 @@ function PMA_allowDeny($type)
 } // end of the "PMA_AllowDeny()" function
 
 ?>
+
+
+
+

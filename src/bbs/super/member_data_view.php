@@ -136,6 +136,9 @@ if (!$row["mb_no"]) alert("잘못된 접근입니다!","");
 	</div><!-- /container -->
 </div><!-- /end .page-content -->
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

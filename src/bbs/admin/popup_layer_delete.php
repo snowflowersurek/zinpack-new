@@ -15,3 +15,6 @@ sql_query($sql);
 
 alert("팝업창이 삭제되었습니다.","$iw[admin_path]/popup_layer_list.php?type=$iw[type]&ep=$iw[store]&gp=$iw[group]");
 ?>
+
+
+

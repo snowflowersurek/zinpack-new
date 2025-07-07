@@ -65,6 +65,9 @@ for ($i=1; $i<count($bmd_image); $i++) {
 <script type="text/javascript" src="media_rotation/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="media_rotation/jquery.reel.js"></script>
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

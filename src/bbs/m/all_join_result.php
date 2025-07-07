@@ -16,6 +16,9 @@ include_once("_head.php");
 		<p class="text-danger">48시간 내 미인증 시 가입정보는 자동삭제됩니다.</p>
 	</div>
 </div>
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

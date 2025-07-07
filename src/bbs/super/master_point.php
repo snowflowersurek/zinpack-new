@@ -166,6 +166,9 @@ $mb_point = $row["mb_point"];
 
 </script>
  
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

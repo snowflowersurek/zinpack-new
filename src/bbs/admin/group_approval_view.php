@@ -157,6 +157,9 @@ $mb_address_sub = $row["mb_address_sub"];
 		}
 	}
 </script>
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

@@ -687,3 +687,7 @@ function PMA_getSQLToCreateForeignKey($table, $field, $foreignDb, $foreignTable,
     return $sql_query;
 }
 ?>
+
+
+
+

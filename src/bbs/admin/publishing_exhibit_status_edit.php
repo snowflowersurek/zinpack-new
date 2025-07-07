@@ -115,10 +115,10 @@ if ($year != "" && $month != "") {
 						<label class="col-sm-1 control-label">신청현황 상태</label>
 						<div class="col-sm-8">
 							<select name="stat">
-								<option value="1" <?if($stat == "1"){?>selected="selected"<?}?>>대기 중</option>
-								<option value="2" <?if($stat == "2"){?>selected="selected"<?}?>>전시확정</option>
-								<option value="3" <?if($stat == "3"){?>selected="selected"<?}?>>보류</option>
-								<option value="4" <?if($stat == "4"){?>selected="selected"<?}?>>전시연기</option>
+								<option value="1" <?php if{?>selected="selected"<?php }?>>대기 중</option>
+								<option value="2" <?php if{?>selected="selected"<?php }?>>전시확정</option>
+								<option value="3" <?php if{?>selected="selected"<?php }?>>보류</option>
+								<option value="4" <?php if{?>selected="selected"<?php }?>>전시연기</option>
 							</select>
 						</div>
 					</div>
@@ -140,19 +140,19 @@ if ($year != "" && $month != "") {
 					<div class="form-group">
 						<label class="col-sm-1 control-label">신청기관</label>
 						<div class="col-sm-8">
-							<input type="radio" name="strgubun" id="strgubun1" value="일반 도서관" <?if($strgubun == "일반 도서관"){?>checked<?}?> onclick = "setGubunTxt('N');">
+							<input type="radio" name="strgubun" id="strgubun1" value="일반 도서관" <?php if{?>checked<?php }?> onclick = "setGubunTxt('N');">
 							<label for="strgubun1">일반 도서관</label>
 							&nbsp;
-							<input type="radio" name="strgubun" id="strgubun2" value="어린이 도서관" <?if($strgubun == "어린이 도서관"){?>checked<?}?> onclick = "setGubunTxt('N');">
+							<input type="radio" name="strgubun" id="strgubun2" value="어린이 도서관" <?php if{?>checked<?php }?> onclick = "setGubunTxt('N');">
 							<label for="strgubun2">어린이 도서관</label>
 							&nbsp;
-							<input type="radio" name="strgubun" id="strgubun3" value="초등학교" <?if($strgubun == "초등학교"){?>checked<?}?> onclick = "setGubunTxt('N');">
+							<input type="radio" name="strgubun" id="strgubun3" value="초등학교" <?php if{?>checked<?php }?> onclick = "setGubunTxt('N');">
 							<label for="strgubun3">초등학교</label>
 							&nbsp;
-							<input type="radio" name="strgubun" id="strgubun4" value="중/고등학교" <?if($strgubun == "중/고등학교"){?>checked<?}?> onclick = "setGubunTxt('N');">
+							<input type="radio" name="strgubun" id="strgubun4" value="중/고등학교" <?php if{?>checked<?php }?> onclick = "setGubunTxt('N');">
 							<label for="strgubun4">중/고등학교</label>
 							&nbsp;
-							<input type="radio" name="strgubun" id="strgubun5" value="기타" <?if($strgubun == "기타"){?>checked<?}?> onclick = "setGubunTxt('Y');">
+							<input type="radio" name="strgubun" id="strgubun5" value="기타" <?php if{?>checked<?php }?> onclick = "setGubunTxt('Y');">
 							<label for="strgubun5">기타</label>
 							<input type="text" name="strgubunTxt" id="strgubunTxt" value="<?=$strgubunTxt?>" maxlength="100" style="display:none;">
 						</div>
@@ -486,6 +486,9 @@ if ($strgubun == "기타") {
     }
 </script>
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

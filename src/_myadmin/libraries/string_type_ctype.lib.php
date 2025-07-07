@@ -102,3 +102,7 @@ function PMA_STR_isHexDigit($c)
 } // end of the "PMA_STR_isHexDigit()" function
 
 ?>
+
+
+
+

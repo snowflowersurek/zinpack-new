@@ -50,6 +50,9 @@ $bmd_image = $row["bmd_image"];
 
 <script type="text/javascript" src="http://github.com/malsup/media/raw/master/jquery.media.js?v0.92"></script> 
 <script type="text/javascript" src="jquery.metadata.js"></script> 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

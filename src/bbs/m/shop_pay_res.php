@@ -279,3 +279,7 @@ if (!$db_conn) {
 		alert("결제정보 등록을 실패하였습니다.","$iw[m_path]/shop_cart_form.php?type=$iw[type]&ep=$iw[store]&gp=$iw[group]");          	            
 	}
 ?>
+
+
+
+

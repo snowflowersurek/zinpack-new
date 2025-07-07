@@ -51,3 +51,6 @@ if ($iw[level]=="guest") alert(national_language($iw[language],"a0003","로그�
 	document.getElementById('LGD_PAYINFO').submit();
 </script>
 </html>
+
+
+

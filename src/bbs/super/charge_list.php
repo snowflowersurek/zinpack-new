@@ -82,8 +82,8 @@ if($searchs) {
 									<div class="col-sm-6">
 										<div class="input-group float-end">
 											<select name="search" class="form-select">
-												<option value="a" <?if($search == "a"){?>selected="selected"<?}?>>업체코드</option>
-												<option value="b" <?if($search == "b"){?>selected="selected"<?}?>>거래번호</option>
+												<option value="a" <?php if($search=="a"){?>selected="selected"<?php }?>>업체코드</option>
+												<option value="b" <?php if($search=="b"){?>selected="selected"<?php }?>>거래번호</option>
 											</select>
 											<input type="text" name="searchs" class="form-control" value="<?=$searchs?>">
 											<button class="btn btn-primary" type="submit">검색</button>
@@ -106,7 +106,7 @@ if($searchs) {
 										</tr>
 									</thead>
 									<tbody>
-									<?
+									<?php
 										$sql_count = "SELECT count(*) as cnt FROM {$iw['charge_table']} a {$search_sql}";
 										$stmt_count = mysqli_prepare($db_conn, $sql_count);
 										mysqli_stmt_bind_param($stmt_count, $types, ...$params);
@@ -172,25 +172,25 @@ if($searchs) {
 										<tr>
 											<td data-title="업체명"><?=$ep_corporate?></td>
 											<td data-title="승인금액"><?=$ch_amount?>원</td>
-											<td data-title="입금액"><?if($ch_paytype=="SC0040"){?><?=$lgd_castamount?>원<?}?></td>
+											<td data-title="입금액"><?php if($lgd_castamount){?><?=number_format($lgd_castamount)?>원<?php }?></td>
 											<td data-title="거래번호"><?=$ogd_oid?></td>
 											<td data-title="승인결과"><?=$lgd_respmsg?></td>
 											<td data-title="승인일시"><?=$lgd_paydate?></td>
 											<td data-title="결제방식">
-												<?if($ch_paytype=="SC0010"){?>
+												<?php if($ch_paytype=="SC0010"){?>
 													신용카드
-												<?}else if($ch_paytype=="SC0030"){?>
+												<?php }else if($ch_paytype=="SC0030"){?>
 													계좌이체
-												<?}else if($ch_paytype=="SC0060"){?>
+												<?php }else if($ch_paytype=="SC0060"){?>
 													휴대폰
-												<?}else if($ch_paytype=="SC0040"){?>
+												<?php }else if($ch_paytype=="SC0040"){?>
 													가상계좌
-												<?}?>
+												<?php }?>
 											</td>
 											<td data-title="결제자"><?=$lgd_buyer?></td>
 											<td data-title="만료일자"><?=$ep_expiry?></td>
 										</tr>
-									<?
+									<?php
 										$i++;
 										}
 										mysqli_stmt_close($stmt);
@@ -210,7 +210,7 @@ if($searchs) {
 									<div class="col-sm-12">
 										<div class="d-flex justify-content-center">
 											<ul class="pagination">
-											<?
+											<?php
 												if($total_page!=0){
 													if($page>$total_page) { $page=$total_page; }
 													$start_page = ((ceil($page/$max_page)-1)*$max_page)+1;
@@ -295,6 +295,9 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

@@ -5,50 +5,50 @@ if (($iw[group] == "all" && $iw[level] != "admin") || ($iw[group] != "all" && $i
 ?>
 <meta http-equiv="content-type" content="text/html; charset=<?=$iw['charset']?>" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-<?
+<?php
 $upload_path = $_POST[upload_path];
-$ep_upload_size = trim(mysql_real_escape_string($_POST[ep_upload_size]));
-$BookID = trim(mysql_real_escape_string($_POST[BookID]));
-$cg_code = trim(mysql_real_escape_string($_POST[cg_code]));
-$sub_cg_code = trim(mysql_real_escape_string($_POST[sub_cg_code]));
-$brand_cg_code = trim(mysql_real_escape_string($_POST[brand_cg_code]));
-$origin_sub_cg_code = trim(mysql_real_escape_string($_POST[origin_sub_cg_code]));
-$origin_brand_cg_code = trim(mysql_real_escape_string($_POST[origin_brand_cg_code]));
-$stock_status = trim(mysql_real_escape_string($_POST[stock_status]));
-$BookName = trim(mysql_real_escape_string($_POST[BookName]));
-$sub_title = trim(mysql_real_escape_string($_POST[sub_title]));
-$original_title = trim(mysql_real_escape_string($_POST[original_title]));
+$ep_upload_size = trim(mysqli_real_escape_string($iw['connect'], $_POST['ep_upload_size']));
+$BookID = trim(mysqli_real_escape_string($iw['connect'], $_POST['BookID']));
+$cg_code = trim(mysqli_real_escape_string($iw['connect'], $_POST['cg_code']));
+$sub_cg_code = trim(mysqli_real_escape_string($iw['connect'], $_POST['sub_cg_code']));
+$brand_cg_code = trim(mysqli_real_escape_string($iw['connect'], $_POST['brand_cg_code']));
+$origin_sub_cg_code = trim(mysqli_real_escape_string($iw['connect'], $_POST['origin_sub_cg_code']));
+$origin_brand_cg_code = trim(mysqli_real_escape_string($iw['connect'], $_POST['origin_brand_cg_code']));
+$stock_status = trim(mysqli_real_escape_string($iw['connect'], $_POST['stock_status']));
+$BookName = trim(mysqli_real_escape_string($iw['connect'], $_POST['BookName']));
+$sub_title = trim(mysqli_real_escape_string($iw['connect'], $_POST['sub_title']));
+$original_title = trim(mysqli_real_escape_string($iw['connect'], $_POST['original_title']));
 $authorID = $_POST[authorID];
-$translateID = trim(mysql_real_escape_string($_POST[translateID]));
-$painterID = trim(mysql_real_escape_string($_POST[painterID]));
-$editorID = trim(mysql_real_escape_string($_POST[editorID]));
-$Price = trim(mysql_real_escape_string($_POST[Price]));
-$BookSize = trim(mysql_real_escape_string($_POST[BookSize]));
-$pages = trim(mysql_real_escape_string($_POST[pages]));
-$PubDate = trim(mysql_real_escape_string($_POST[PubDate]));
-$Isbn = trim(mysql_real_escape_string($_POST[Isbn]));
-$SIsbn = trim(mysql_real_escape_string($_POST[SIsbn]));
-$bookGubun1 = trim(mysql_real_escape_string($_POST[bookGubun1]));
-$bookGubun2 = trim(mysql_real_escape_string($_POST[bookGubun2]));
+$translateID = trim(mysqli_real_escape_string($iw['connect'], $_POST['translateID']));
+$painterID = trim(mysqli_real_escape_string($iw['connect'], $_POST['painterID']));
+$editorID = trim(mysqli_real_escape_string($iw['connect'], $_POST['editorID']));
+$Price = trim(mysqli_real_escape_string($iw['connect'], $_POST['Price']));
+$BookSize = trim(mysqli_real_escape_string($iw['connect'], $_POST['BookSize']));
+$pages = trim(mysqli_real_escape_string($iw['connect'], $_POST['pages']));
+$PubDate = trim(mysqli_real_escape_string($iw['connect'], $_POST['PubDate']));
+$Isbn = trim(mysqli_real_escape_string($iw['connect'], $_POST['Isbn']));
+$SIsbn = trim(mysqli_real_escape_string($iw['connect'], $_POST['SIsbn']));
+$bookGubun1 = trim(mysqli_real_escape_string($iw['connect'], $_POST['bookGubun1']));
+$bookGubun2 = trim(mysqli_real_escape_string($iw['connect'], $_POST['bookGubun2']));
 $bookGubun = $bookGubun1."-".$bookGubun2;
-$organ = mysql_real_escape_string($_POST[organ]);
-$Intro = mysql_real_escape_string($_POST[Intro]);
-$BookList = mysql_real_escape_string($_POST[BookList]);
-$PubReview = mysql_real_escape_string($_POST[PubReview]);
-$readmore = trim(mysql_real_escape_string($_POST[readmore]));
-$themabook = trim(mysql_real_escape_string($_POST[themabook]));
-$strPoint = trim(mysql_real_escape_string($_POST[strPoint]));
-$soldout = trim(mysql_real_escape_string($_POST[soldout]));
-$award = trim(mysql_real_escape_string($_POST[award]));
-$BookImage = trim(mysql_real_escape_string($_POST[BookImage]));
-$delfile = trim(mysql_real_escape_string($_POST[delfile]));
-$Tag = trim(mysql_real_escape_string($_POST[Tag]));
-$kyobo_shop_link = trim(mysql_real_escape_string($_POST[kyobo_shop_link]));
-$yes24_shop_link = trim(mysql_real_escape_string($_POST[yes24_shop_link]));
-$aladin_shop_link = trim(mysql_real_escape_string($_POST[aladin_shop_link]));
-$ebook_yn = trim(mysql_real_escape_string($_POST[ebook_yn]));
-$audiobook_yn = trim(mysql_real_escape_string($_POST[audiobook_yn]));
-$book_display = trim(mysql_real_escape_string($_POST[book_display]));
+$organ = mysqli_real_escape_string($iw['connect'], $_POST['organ']);
+$Intro = mysqli_real_escape_string($iw['connect'], $_POST['Intro']);
+$BookList = mysqli_real_escape_string($iw['connect'], $_POST['BookList']);
+$PubReview = mysqli_real_escape_string($iw['connect'], $_POST['PubReview']);
+$readmore = trim(mysqli_real_escape_string($iw['connect'], $_POST['readmore']));
+$themabook = trim(mysqli_real_escape_string($iw['connect'], $_POST['themabook']));
+$strPoint = trim(mysqli_real_escape_string($iw['connect'], $_POST['strPoint']));
+$soldout = trim(mysqli_real_escape_string($iw['connect'], $_POST['soldout']));
+$award = trim(mysqli_real_escape_string($iw['connect'], $_POST['award']));
+$BookImage = trim(mysqli_real_escape_string($iw['connect'], $_POST['BookImage']));
+$delfile = trim(mysqli_real_escape_string($iw['connect'], $_POST['delfile']));
+$Tag = trim(mysqli_real_escape_string($iw['connect'], $_POST['Tag']));
+$kyobo_shop_link = trim(mysqli_real_escape_string($iw['connect'], $_POST['kyobo_shop_link']));
+$yes24_shop_link = trim(mysqli_real_escape_string($iw['connect'], $_POST['yes24_shop_link']));
+$aladin_shop_link = trim(mysqli_real_escape_string($iw['connect'], $_POST['aladin_shop_link']));
+$ebook_yn = trim(mysqli_real_escape_string($iw['connect'], $_POST['ebook_yn']));
+$audiobook_yn = trim(mysqli_real_escape_string($iw['connect'], $_POST['audiobook_yn']));
+$book_display = trim(mysqli_real_escape_string($iw['connect'], $_POST['book_display']));
 
 $abs_dir = $iw[path].$upload_path;
 
@@ -206,3 +206,6 @@ if($_FILES["NewBookImage"]["name"] && $_FILES["NewBookImage"]["size"] > 1024*102
 	alert("도서정보가 수정되었습니다.","$iw[admin_path]/publishing_books_list.php?type=$iw[type]&ep=$iw[store]&gp=$iw[group]");
 }
 ?>
+
+
+

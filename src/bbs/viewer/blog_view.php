@@ -41,6 +41,9 @@ $bg_page = $row["bg_page"];
 	</div>
 </div>
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

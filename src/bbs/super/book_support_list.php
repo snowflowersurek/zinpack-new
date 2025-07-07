@@ -10,15 +10,6 @@ include_once("_head.php");
 		</li>
 		<li class="active">이북몰 후원내역</li>
 	</ul><!-- .breadcrumb -->
-
-	<!--<div class="nav-search" id="nav-search">
-		<form class="form-search">
-			<span class="input-icon">
-				<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off">
-				<i class="fa fa-search"></i>
-			</span>
-		</form>
-	</div>--><!-- #nav-search -->
 </div>
 <div class="page-content">
 	<div class="page-header">
@@ -43,58 +34,67 @@ include_once("_head.php");
 							</div>
 							<div class="table-set-mobile dataTable-wrapper">
 								<div class="row">
+									<?php
+										$search = $_REQUEST['search'] ?? '';
+										$searchs = $_REQUEST['searchs'] ?? '';
+										$search_sql = '';
+										if(!empty($searchs)) {
+											if($search =="a"){
+												$search_sql = "where ep_code like '%$searchs%'";
+											}else if($search =="b"){
+												$search_sql = "where seller_mb_code like '%$searchs%'";
+											}else if($search =="c"){
+												$search_sql = "where bd_code like '%$searchs%'";
+											}else if($search =="d"){
+												$search_sql = "where mb_code like '%$searchs%'";
+											}else if($search =="e"){
+												$search_sql = "where bs_subject like '%$searchs%'";
+											}
+										}
+										
+										// 통계 정보 추가
+										$row = sql_fetch(" select count(*) as cnt from {$iw['book_support_table']} $search_sql ");
+										$total_count = $row['cnt'] ?? 0;
+										$row = sql_fetch(" select sum(bs_price) as total_price from {$iw['book_support_table']} $search_sql ");
+										$total_price = $row['total_price'] ?? 0;
+									?>
 									<div class="col-sm-6">
-										<!--<div class="dataTable-option">
-											<label>Display <select size="1">
-												<option value="10" selected="selected">10</option>
-												<option value="25">25</option>
-												<option value="50">50</option>
-												<option value="100">100</option>
-											</select> records</label>
-										</div>-->
+										(건수 : <?php echo number_format($total_count); ?>) (총 후원금액 : <?php echo number_format($total_price); ?> Point)
 									</div>
 									<div class="col-sm-6">
-										<div class="dataTable-option-right">
-											<?php
-												$search = $_REQUEST['search'] ?? '';
-												$searchs = $_REQUEST['searchs'] ?? '';
-												$search_sql = '';
-												if(!empty($searchs)) {
-													if($search =="a"){
-														$search_sql = "where ep_code like '%$searchs%'";
-													}else if($search =="b"){
-														$search_sql = "where seller_mb_code like '%$searchs%'";
-													}else if($search =="c"){
-														$search_sql = "where bd_code like '%$searchs%'";
-													}else if($search =="d"){
-														$search_sql = "where mb_code like '%$searchs%'";
-													}else if($search =="e"){
-														$search_sql = "where bs_subject like '%$searchs%'";
-													}
-												}
-											?>
-											<form name="search_form" id="search_form" action="<?php echo $_SERVER['PHP_SELF']; ?>?type=<?php echo $iw['type']; ?>&ep=<?php echo $iw['store']; ?>&gp=<?php echo $iw['group']; ?>" method="post">
-											<label>검색: <select name="search">
-												<option value="a" <?php if($search == "a"){ echo 'selected="selected"'; }?>>업체코드</option>
-												<option value="b" <?php if($search == "b"){ echo 'selected="selected"'; }?>>판매자코드</option>
-												<option value="c" <?php if($search == "c"){ echo 'selected="selected"'; }?>>이북코드</option>
-												<option value="d" <?php if($search == "d"){ echo 'selected="selected"'; }?>>후원회원코드</option>
-												<option value="e" <?php if($search == "e"){ echo 'selected="selected"'; }?>>제목</option>
-											</select></label><input type="text" name="searchs" value="<?php echo htmlspecialchars($searchs, ENT_QUOTES); ?>">
+										<div class="dataTable-option-right text-end">
+											<form name="search_form" id="search_form" action="<?php echo $_SERVER['PHP_SELF']; ?>?type=<?php echo $iw['type']; ?>&ep=<?php echo $iw['store']; ?>&gp=<?php echo $iw['group']; ?>" method="post" class="text-end" style="margin-bottom:0;">
+												<label style="font-size:1.2rem; font-weight:500;">검색: 
+													<select name="search" class="form-select form-select-lg" style="font-size:1.1rem; display:inline-block; width:12rem; min-width:180px; height:120%; min-height:3.2rem; vertical-align:middle;">
+														<option value="a" <?php if($search == "a"){ echo 'selected="selected"'; }?>>업체코드</option>
+														<option value="b" <?php if($search == "b"){ echo 'selected="selected"'; }?>>판매자코드</option>
+														<option value="c" <?php if($search == "c"){ echo 'selected="selected"'; }?>>이북코드</option>
+														<option value="d" <?php if($search == "d"){ echo 'selected="selected"'; }?>>후원회원코드</option>
+														<option value="e" <?php if($search == "e"){ echo 'selected="selected"'; }?>>제목</option>
+													</select>
+												</label>
+												<input type="text" name="searchs" value="<?php echo htmlspecialchars($searchs, ENT_QUOTES); ?>" class="form-control form-control-lg" style="font-size:1.1rem; width:auto; display:inline-block; vertical-align:middle; margin-left:8px; height:120%; min-height:2.5rem;">
 											</form>
 										</div>
 									</div>
 								</div>
+								<style>
+								.table.dataTable th,
+								.table.dataTable td {
+									vertical-align: middle !important;
+									text-align: center !important;
+								}
+								</style>
 								<table class="table table-striped table-bordered table-hover dataTable">
 									<thead>
 										<tr>
-											<th>업체명</th>
-											<th>판매자코드</th>
-											<th>이북코드</th>
-											<th>후원회원코드</th>
-											<th>제목</th>
-											<th>후원금액</th>
-											<th>날짜</th>
+											<th class="text-center">날짜</th>
+											<th class="text-center">업체명</th>
+											<th class="text-center">판매자코드</th>
+											<th class="text-center">이북코드</th>
+											<th class="text-center">후원회원코드</th>
+											<th class="text-center">제목</th>
+											<th class="text-center">후원금액</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -136,18 +136,26 @@ include_once("_head.php");
 											$ep_corporate = $row2["ep_corporate"] ?? '';
 									?>
 										<tr>
-											<td data-title="업체명"><?php echo $ep_corporate; ?></td>
-											<td data-title="판매자코드"><?php echo $seller_mb_code; ?></td>
-											<td data-title="이북코드"><?php echo $bd_code; ?></td>
-											<td data-title="후원회원코드"><?php echo $mb_code; ?></td>
-											<td data-title="제목"><?php echo $bs_subject; ?></td>
-											<td data-title="후원금액"><?php echo number_format($bs_price); ?> Point</td>
-											<td data-title="판매일"><?php echo $bs_datetime; ?></td>
+											<td class="text-center" data-title="날짜" style="white-space:nowrap;"><?php echo $bs_datetime; ?></td>
+											<td class="text-center" data-title="업체명">
+												<a href="<?php echo $_SERVER['PHP_SELF']; ?>?type=<?php echo $iw['type']; ?>&ep=<?php echo $iw['store']; ?>&gp=<?php echo $iw['group']; ?>&search=a&searchs=<?php echo $ep_code; ?>"><?php echo $ep_corporate;  echo $ep_code; ?></a>
+											</td>
+											<td class="text-center" data-title="판매자코드">
+												<a href="<?php echo $_SERVER['PHP_SELF']; ?>?type=<?php echo $iw['type']; ?>&ep=<?php echo $iw['store']; ?>&gp=<?php echo $iw['group']; ?>&search=b&searchs=<?php echo $seller_mb_code; ?>"><?php echo $seller_mb_code; ?></a>
+											</td>
+											<td class="text-center" data-title="이북코드">
+												<a href="<?php echo $_SERVER['PHP_SELF']; ?>?type=<?php echo $iw['type']; ?>&ep=<?php echo $iw['store']; ?>&gp=<?php echo $iw['group']; ?>&search=c&searchs=<?php echo $bd_code; ?>"><?php echo $bd_code; ?></a>
+											</td>
+											<td class="text-center" data-title="후원회원코드">
+												<a href="<?php echo $_SERVER['PHP_SELF']; ?>?type=<?php echo $iw['type']; ?>&ep=<?php echo $iw['store']; ?>&gp=<?php echo $iw['group']; ?>&search=d&searchs=<?php echo $mb_code; ?>"><?php echo $mb_code; ?></a>
+											</td>
+											<td class="text-center" data-title="제목"><?php echo $bs_subject; ?></td>
+											<td class="text-end" data-title="후원금액"><?php echo number_format($bs_price); ?> Point</td>
 										</tr>
 									<?php
 										$i++;
 										}
-										if($i==0) echo "<tr><td colspan='7' align='center'>후원내역이 없습니다.</td></tr>";
+										if($i==0) echo "<tr><td colspan='7' class='text-center'>후원내역이 없습니다.</td></tr>";
 									?>
 									</tbody>
 								</table>
@@ -156,8 +164,8 @@ include_once("_head.php");
 										<div class="dataTable-info"><!--페이지/전체--></div>
 									</div>
 									<div class="col-sm-6">
-										<div class="dataTable-option-right">
-											<ul class="pagination">
+										<div class="dataTable-option-right text-end">
+											<ul class="pagination justify-content-end" style="gap:4px;">
 											<?php
 												if($total_page!=0){
 													if($page>$total_page) { $page=$total_page; }
@@ -168,21 +176,21 @@ include_once("_head.php");
 												 
 													if($page>$max_page) {
 														$pre = $start_page - 1;
-														echo "<li class='prev'><a href='{$_SERVER['PHP_SELF']}?type={$iw['type']}&ep={$iw['store']}&gp={$iw['group']}&page=$pre&search=$search&searchs=$searchs'><i class='fa fa-angle-double-left'></i></a></li>";
+														echo "<li class='page-item'><a class='btn btn-outline-secondary btn-sm' href='{$_SERVER['PHP_SELF']}?type={$iw['type']}&ep={$iw['store']}&gp={$iw['group']}&page=$pre&search=$search&searchs=$searchs'><i class='fa fa-angle-double-left'></i></a></li>";
 													} else {
-														echo "<li class='prev disabled'><a href='#'><i class='fa fa-angle-double-left'></i></a></li>";
+														echo "<li class='page-item'><a class='btn btn-outline-secondary btn-sm disabled' href='#'><i class='fa fa-angle-double-left'></i></a></li>";
 													}
 													
 													for($i=$start_page;$i<=$end_page;$i++) {
-														if($i==$page) echo "<li class='active'><a href='#'>$i</a></li>";
-														else          echo "<li><a href='{$_SERVER['PHP_SELF']}?type={$iw['type']}&ep={$iw['store']}&gp={$iw['group']}&page=$i&search=$search&searchs=$searchs'>$i</a></li>";
+														if($i==$page) echo "<li class='page-item'><a class='btn btn-secondary btn-sm active' href='#'>$i</a></li>";
+														else          echo "<li class='page-item'><a class='btn btn-outline-secondary btn-sm' href='{$_SERVER['PHP_SELF']}?type={$iw['type']}&ep={$iw['store']}&gp={$iw['group']}&page=$i&search=$search&searchs=$searchs'>$i</a></li>";
 													}
 												 
 													if($end_page<$total_page) {
 														$next = $end_page + 1;
-														echo "<li class='next'><a href='{$_SERVER['PHP_SELF']}?type={$iw['type']}&ep={$iw['store']}&gp={$iw['group']}&page=$next&search=$search&searchs=$searchs'><i class='fa fa-angle-double-right'></i></a></li>";
+														echo "<li class='page-item'><a class='btn btn-outline-secondary btn-sm' href='{$_SERVER['PHP_SELF']}?type={$iw['type']}&ep={$iw['store']}&gp={$iw['group']}&page=$next&search=$search&searchs=$searchs'><i class='fa fa-angle-double-right'></i></a></li>";
 													} else {
-														echo "<li class='next disabled'><a href='#'><i class='fa fa-angle-double-right'></i></a></li>";
+														echo "<li class='page-item'><a class='btn btn-outline-secondary btn-sm disabled' href='#'><i class='fa fa-angle-double-right'></i></a></li>";
 													}
 												}
 											?>
@@ -203,3 +211,6 @@ include_once("_head.php");
 <?php
 include_once("_tail.php");
 ?>
+
+
+

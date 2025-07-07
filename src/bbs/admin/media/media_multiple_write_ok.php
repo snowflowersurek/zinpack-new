@@ -4,13 +4,13 @@ if ($iw[type] != "book" || ($iw[level] != "seller" && $iw[level] != "member")) a
 ?>
 <meta http-equiv="content-type" content="text/html; charset=<?=$iw['charset']?>" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-<?
+<?php
 	$upload_path = $_POST[upload_path];
-	$bd_code = trim(mysql_real_escape_string($_POST[bd_code]));
-	$bm_type = trim(mysql_real_escape_string($_POST[bm_type]));
-	$bmd_image_main = trim(mysql_real_escape_string($_POST[bmd_image_main]));
-	$bmd_type_main = trim(mysql_real_escape_string($_POST[bmd_type_main]));
-	$bmd_content_main = mysql_real_escape_string($_POST[bmd_content_main]);
+	$bd_code = trim(mysqli_real_escape_string($iw['connect'], $_POST['bd_code']));
+	$bm_type = trim(mysqli_real_escape_string($iw['connect'], $_POST['bm_type']));
+	$bmd_image_main = trim(mysqli_real_escape_string($iw['connect'], $_POST['bmd_image_main']));
+	$bmd_type_main = trim(mysqli_real_escape_string($iw['connect'], $_POST['bmd_type_main']));
+	$bmd_content_main = mysqli_real_escape_string($iw['connect'], $_POST['bmd_content_main']);
 
 	$row = sql_fetch(" select max(bm_order) as max_order from $iw[book_media_table] where ep_code = '$iw[store]' and gp_code = '$iw[group]' and bd_code = '$bd_code' and mb_code = '$iw[member]'");
 	$bm_order = $row["max_order"]+1;
@@ -29,8 +29,8 @@ if ($iw[type] != "book" || ($iw[level] != "seller" && $iw[level] != "member")) a
 	
 	for ($i=0; $i<count($_POST["bmd_type"]); $i++) {
 		if($_FILES["bmd_image"]["name"][$i] && $_FILES["bmd_image"]["size"][$i]>0){
-			$bmd_type = trim(mysql_real_escape_string($_POST[bmd_type][$i]));
-			$bmd_content = mysql_real_escape_string($_POST[bmd_content][$i]);
+			$bmd_type = trim(mysqli_real_escape_string($iw['connect'], $_POST['bmd_type'][$i]));
+			$bmd_content = mysqli_real_escape_string($iw['connect'], $_POST['bmd_content'][$i]);
 
 			$bmd_image_name = uniqid(rand());
 			$bmd_image = $bmd_image_name.".".preg_replace('/^.*\.([^.]+)$/D', '$1',$_FILES["bmd_image"]["name"][$i]);
@@ -128,3 +128,6 @@ if ($iw[type] != "book" || ($iw[level] != "seller" && $iw[level] != "member")) a
 
 	echo "<script>window.parent.location.href='$iw[admin_path]/media/media_main_list.php?type=$iw[type]&ep=$iw[store]&gp=$iw[group]&idx=$bd_code';</script>";
 ?>
+
+
+

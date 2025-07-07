@@ -37,7 +37,7 @@ include_once("_head.php");
 			<div class="col-xs-12">
 			<!-- PAGE CONTENT BEGINS -->
 				<form class="form-horizontal" id="gl_form" name="gl_form" action="<?=$iw['admin_path']?>/group_level_edit_ok.php?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>" method="post" enctype="multipart/form-data">
-				<?
+				<?php
 					$sql = "select * from $iw[group_level_table] where ep_code = '$iw[store]' and gp_code = '$iw[group]' and gl_display=1 order by gl_no asc";
 					$result = sql_query($sql);
 					while($row = @sql_fetch_array($result)){
@@ -52,7 +52,7 @@ include_once("_head.php");
 						</div>
 					</div>
 					<div class="space-4"></div>
-				<?		
+				<?php
 					}
 				?>
 					<div class="clearfix form-actions">
@@ -83,6 +83,9 @@ include_once("_head.php");
 	}
 </script>
  
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

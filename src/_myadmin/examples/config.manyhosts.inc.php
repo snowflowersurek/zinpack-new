@@ -44,3 +44,7 @@ foreach ($hosts as $host) {
     $cfg['Servers'][$i]['userconfig'] = 'pma__userconfig';
     $cfg['Servers'][$i]['recent'] = 'pma__recent';
 }
+
+
+
+

@@ -1,5 +1,4 @@
-<?
-
+<?php
 // mysqli 전역 변수
 $db_conn = null;
 
@@ -80,7 +79,7 @@ function sql_password($value)
     // mysql 4.0x 이하 버전에서는 password() 함수의 결과가 16bytes
     // mysql 4.1x 이상 버전에서는 password() 함수의 결과가 41bytes
     $row = sql_fetch(" select password('$value') as pass ");
-    return $row[pass];
+    return $row['pass'];
 }
 
 
@@ -184,7 +183,7 @@ function date_select($date, $name="")
 
     $s = "";
     if (substr($date, 0, 4) == "0000") {
-        $date = $iw[time_ymdhis];
+        $date = $iw['time_ymdhis'];
     }
     preg_match("/([0-9]{4})-([0-9]{2})-([0-9]{2})/", $date, $m);
 
@@ -283,7 +282,7 @@ function alert($msg='', $url='')
     if (!$msg) $msg = '올바른 방법으로 이용해 주십시오.';
 
 	//header("Content-Type: text/html; charset=$g4[charset]");
-	echo "<meta http-equiv=\"content-type\" content=\"text/html; charset=$iw[charset]\">";
+	echo "<meta http-equiv=\"content-type\" content=\"text/html; charset={$iw['charset']}\">";
 	echo "<script type='text/javascript'>alert('$msg');";
     if (!$url)
         echo "history.go(-1);";
@@ -437,4 +436,3 @@ function passwordCheck($_str) {
     }
     return array(true);
 }
-?>

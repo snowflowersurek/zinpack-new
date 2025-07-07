@@ -438,3 +438,6 @@ class ImportSql extends ImportPlugin
         PMA_importRunQuery('', '', false, $sql_data);
     }
 }
+
+
+

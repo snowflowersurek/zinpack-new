@@ -16,5 +16,9 @@ ms_display tinyint(4) NOT NULL default '0',
 PRIMARY KEY (ms_no)
 ) DEFAULT CHARSET=utf8";
 
-mysql_query($sql) or die(mysql_error());
+global $db_conn;
+mysqli_query($db_conn, $sql) or die(mysqli_error($db_conn));
 ?>
+
+
+

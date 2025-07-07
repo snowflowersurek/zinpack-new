@@ -29,6 +29,9 @@ include_once("_head.php");
 		</div><!-- / .row -->
 	</div><!-- /container -->
 </div><!-- /end .page-content -->
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

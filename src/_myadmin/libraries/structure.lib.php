@@ -2523,3 +2523,7 @@ function PMA_moveColumns($db, $table)
     exit;
 }
 ?>
+
+
+
+

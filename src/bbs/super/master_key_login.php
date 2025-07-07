@@ -2,24 +2,24 @@
 include_once("_common.php");
 include_once("_head.php");
 
-$sql = "select * from $iw[master_table] where ma_no = 1";
+$sql = "select * from $iw['master_table'] where ma_no = 1";
 $row = sql_fetch($sql);
 if (!$row["ma_no"]) alert("마스터키를 설정하여 주십시오.","");
 
-if (!$_GET['mep']) exit;
+if (!isset($_GET['mep']) || !$_GET['mep']) exit;
 $ep_code = $_GET['mep'];
-if (!$_GET['mgp']) exit;
+if (!isset($_GET['mgp']) || !$_GET['mgp']) exit;
 $gp_code = $_GET['mgp'];
-if (!$_GET['mmb']) exit;
+if (!isset($_GET['mmb']) || !$_GET['mmb']) exit;
 $mb_code = $_GET['mmb'];
 
-$row = sql_fetch("select ep_corporate from $iw[enterprise_table] where ep_code = '$ep_code'");
+$row = sql_fetch("select ep_corporate from $iw['enterprise_table'] where ep_code = '$ep_code'");
 $ep_corporate = $row["ep_corporate"];
 
-$row = sql_fetch("select gp_subject from $iw[group_table] where ep_code = '$ep_code' and gp_code = '$gp_code'");
+$row = sql_fetch("select gp_subject from $iw['group_table'] where ep_code = '$ep_code' and gp_code = '$gp_code'");
 $gp_subject = $row["gp_subject"];
 
-$row = sql_fetch("select mb_mail from $iw[member_table] where mb_code = '$mb_code'");
+$row = sql_fetch("select mb_mail from $iw['member_table'] where mb_code = '$mb_code'");
 $mb_mail = $row["mb_mail"];
 ?>
 <div class="breadcrumbs" id="breadcrumbs">
@@ -54,7 +54,7 @@ $mb_mail = $row["mb_mail"];
 		<div class="row">
 			<div class="col-xs-12">
 			<!-- PAGE CONTENT BEGINS -->
-				<form class="form-horizontal" id="ma_form" name="ma_form" action="<?=$iw['super_path']?>/master_key_login_ok.php?ep=<?=$iw[store]?>&gp=<?=$iw[group]?>" method="post">
+				<form class="form-horizontal" id="ma_form" name="ma_form" action="<?=$iw['super_path']?>/master_key_login_ok.php?ep=<?=$iw['store']?>&gp=<?=$iw['group']?>" method="post">
 					<input type="hidden" name="mb_code" value="<?=$mb_code?>">
 					<input type="hidden" name="ep_code" value="<?=$ep_code?>">
 					<input type="hidden" name="gp_code" value="<?=$gp_code?>">
@@ -129,6 +129,9 @@ $mb_mail = $row["mb_mail"];
 
 </script>
  
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

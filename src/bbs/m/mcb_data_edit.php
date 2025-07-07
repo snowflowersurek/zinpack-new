@@ -41,7 +41,8 @@ $md_subject = str_replace('\"', '&quot;', $md_subject);
 $md_datetime = $row["md_datetime"];
 ?>
 
-<script src="/include/ckeditor/ckeditor.js"></script>
+<script src="/include/ckeditor/ckeditor5.js"></script>
+<script src="/include/ckeditor/ckeditor5-adapter.js"></script>
 <script src="/include/ckeditor/mutilple/jquery.min.js"></script>
 <script src="/include/ckeditor/mutilple/jquery.wallform.js"></script>
 <script>
@@ -87,34 +88,33 @@ $md_datetime = $row["md_datetime"];
 						<input type="hidden" name="md_datetime" value="<?=$md_datetime?>" />
 						<input type="hidden" name="upload_path" value="<?=$upload_path_write?>" />
 						<input type="hidden" name="ep_upload_size" value="<?=$ep_upload_size?>" />
-						<?if(($iw[gp_level] == "gp_admin" && $iw[group] != "all") || ($iw[level] == "admin" && $iw[group] == "all")){?>
+						<?php if(($iw[gp_level] == "gp_admin" && $iw[group] != "all") || ($iw[level] == "admin" && $iw[group] == "all")){?>
 						<div class="form-group">
 							<label for="md_datetime2">등록일</label>
 							<div>
 								<input type="text" class="form-control" name="md_datetime2" value='<?=substr($md_datetime, 0, 16)?>' maxlength="16" style="display: inline-block; width:150px;" />
 							</div>
 						</div>
-						<?}?>
+						<?php }?>
 						<div class="form-group">
 							<label for="md_type"><?=national_language($iw[language],"a0267","글쓰기 방식");?></label>
 							<div>
-							<?
+							<?php
 								if($md_type == 1){
 							?>
 									<input type="radio" name="md_type" value="1" id="간편모드" onclick="javascript:type_change(this.value);" checked/>&nbsp;<label for="간편모드"><?=national_language($iw[language],"a0268","간편모드");?></label>&nbsp;&nbsp;&nbsp;
 									<input type="radio" name="md_type" value="2" id="웹에디터" onclick="javascript:type_change(this.value);" />&nbsp;
 									<label for="웹에디터">
-										<?=national_language($iw[language],"a0269","웹에디터");?> 
-									<?if ($mobile_check == "ok"){?>
+										<?=national_language($iw[language],"a0269","웹에디터"); if($mobile_check == "ok"){?>
 										(모바일 미지원)
-									<?}?>
+									<?php }?>
 									</label>
-							<?
+							<?php
 								}else{
 									echo national_language($iw[language],"a0269","웹에디터");
 							?>
 								<input type="hidden" name="md_type" value="<?=$md_type?>" />
-							<?
+							<?php
 								}
 							?>
 							</div>
@@ -123,7 +123,7 @@ $md_datetime = $row["md_datetime"];
 							<label for="cg_code"><?=national_language($iw[language],"a0013","카테고리");?></label>
 							<select class="form-control" name="cg_code" onchange="javascript:cetegory_change(this.value,'<?=$ep_upload?>');">
 								<option value=""><?=national_language($iw[language],"a0186","선택");?></option>
-								<?
+								<?php
 									$sql1 = "select * from $iw[home_menu_table] where ep_code = '$iw[store]' and gp_code = '$iw[group]' and hm_deep = 1 order by hm_order asc,hm_no asc";
 									$result1 = sql_query($sql1);
 									while($row1 = @sql_fetch_array($result1)){
@@ -141,8 +141,8 @@ $md_datetime = $row["md_datetime"];
 											$cg_level_upload = "y";
 										}
 								?>
-									<option value="<?=$cg_code?>,<?=$cg_level_upload?>" <?if($iw[mb_level] < $cg_level_write){?>disabled<?}else if($check_cg_code == $cg_code){?>selected<?}?>><?=$hm_name1?></option>
-									<?
+									<option value="<?=$cg_code?>,<?=$cg_level_upload?>" <?php if{?>disabled<?php }else if($check_cg_code == $cg_code){?>selected<?php }?>><?=$hm_name1?></option>
+									<?php
 										}
 										$sql2 = "select * from $iw[home_menu_table] where hm_upper_code = '$hm_code' and hm_deep = 2 and ep_code = '$iw[store]' and gp_code = '$iw[group]' order by hm_order asc,hm_no asc";
 										$result2 = sql_query($sql2);
@@ -162,8 +162,8 @@ $md_datetime = $row["md_datetime"];
 												$cg_level_upload = "y";
 											}
 									?>
-										<option value="<?=$cg_code?>,<?=$cg_level_upload?>" <?if($iw[mb_level] < $cg_level_write){?>disabled<?}else if($check_cg_code == $cg_code){?>selected<?}?>><?=$hm_name1?> > <?=$hm_name2?></option>
-										<?
+										<option value="<?=$cg_code?>,<?=$cg_level_upload?>" <?php if{?>disabled<?php }else if($check_cg_code == $cg_code){?>selected<?php }?>><?=$hm_name1?> > <?=$hm_name2?></option>
+										<?php
 											}
 											$sql3 = "select * from $iw[home_menu_table] where hm_upper_code = '$hm_code' and hm_deep = 3 and ep_code = '$iw[store]' and gp_code = '$iw[group]' order by hm_order asc,hm_no asc";
 											$result3 = sql_query($sql3);
@@ -183,8 +183,8 @@ $md_datetime = $row["md_datetime"];
 													$cg_level_upload = "y";
 												}
 										?>
-											<option value="<?=$cg_code?>,<?=$cg_level_upload?>" <?if($iw[mb_level] < $cg_level_write){?>disabled<?}else if($check_cg_code == $cg_code){?>selected<?}?>><?=$hm_name1?> > <?=$hm_name2?> > <?=$hm_name3?></option>
-											<?
+											<option value="<?=$cg_code?>,<?=$cg_level_upload?>" <?php if{?>disabled<?php }else if($check_cg_code == $cg_code){?>selected<?php }?>><?=$hm_name1?> > <?=$hm_name2?> > <?=$hm_name3?></option>
+											<?php
 												}
 												$sql4 = "select * from $iw[home_menu_table] where hm_upper_code = '$hm_code' and hm_deep = 4 and ep_code = '$iw[store]' and gp_code = '$iw[group]' order by hm_order asc,hm_no asc";
 												$result4 = sql_query($sql4);
@@ -204,10 +204,8 @@ $md_datetime = $row["md_datetime"];
 														$cg_level_upload = "y";
 													}
 											?>
-												<option value="<?=$cg_code?>,<?=$cg_level_upload?>" <?if($iw[mb_level] < $cg_level_write){?>disabled<?}else if($check_cg_code == $cg_code){?>selected<?}?>><?=$hm_name1?> > <?=$hm_name2?> > <?=$hm_name3?> > <?=$hm_name4?></option>
-											<?
-													}
-												}
+												<option value="<?=$cg_code?>,<?=$cg_level_upload?>" <?php if{?>disabled<?php }else if($check_cg_code == $cg_code){?>selected<?php }?>><?=$hm_name1?> > <?=$hm_name2?> > <?=$hm_name3?> > <?=$hm_name4?></option>
+											<?php } ?><?php }
 											}
 										}
 									}
@@ -222,11 +220,11 @@ $md_datetime = $row["md_datetime"];
 							<label>옵션</label>
 							<div>
 								<label class="middle">
-									<input type="checkbox" name="md_padding" value="1" <?if($md_padding==1){?>checked<?}?>>
+									<input type="checkbox" name="md_padding" value="1" <?php if{?>checked<?php }?>>
 									<span class="lbl"> 좌우여백</span>
 								</label>
 								<label class="middle">
-									<input type="checkbox" name="md_secret" value="1" <?if($md_secret==1){?>checked<?}?>>
+									<input type="checkbox" name="md_secret" value="1" <?php if{?>checked<?php }?>>
 									<span class="lbl"> 비밀글</span>
 								</label>
 							</div>
@@ -237,14 +235,13 @@ $md_datetime = $row["md_datetime"];
 								<label for="md_attach">파일첨부 (최대 <?=$ep_upload_size?>MB)</label>
 								<input type="hidden" name="md_attach_old[]" value="<?=$row["md_attach"]?>" />
 								<input type='file' name='md_attach'>
-								<?if($row["md_attach"]){?>
+								<?php if($row["md_attach"]){?>
 									<?=$row["md_attach_name"]?>
-									<input type='checkbox' name='md_attach_delete' value="del" /> <?=national_language($iw[language],"a0257","삭제");?>
-								<?}?>
+									<input type='checkbox' name='md_attach_delete' value="del" /> <?=national_language($iw[language],"a0257","삭제"); }?>
 							</div>
 						</div>
 
-						<div id="text_only" <?if($md_type == 2){?>style="display:none;"<?}?>>
+						<div id="text_only" <?php if{?>style="display:none;"<?php }?>>
 							<div class="form-group">
 								<label for="md_youtube"><?=national_language($iw[language],"a0187","유튜브URL");?></label>
 								<input type="text" class="form-control" name="md_youtube" placeholder="<?=national_language($iw[language],"a0187","유튜브URL");?>" value="<?=$md_youtube?>" />
@@ -261,7 +258,7 @@ $md_datetime = $row["md_datetime"];
 								</label>
 								<div>
 									<table>
-									<?
+									<?php
 										if(strstr($md_youtube, "youtu.be")){
 											$youtube = explode("youtu.be/",$md_youtube);
 											if(strstr($youtube[1], "?")){
@@ -292,7 +289,7 @@ $md_datetime = $row["md_datetime"];
 												<?=$i?> - <input type="file" class='form-control' name="md_file[]" /><input type='hidden' name='md_file_count[]'>
 												<a href="<?=$upload_path_write?>/<?=$row["md_file_".$i]?>" target="_blank"><?=$row["md_file_".$i]?></a>
 												<input type='checkbox' name='md_delete[<?=$i-1?>]' value="del" /> <?=national_language($iw[language],"a0257","삭제");?></td></tr>
-												<?
+												<?php
 												$file_num++;
 											}
 										}
@@ -305,7 +302,7 @@ $md_datetime = $row["md_datetime"];
 								</div>
 							</div>
 						</div>
-						<div id="web_editor" <?if($md_type == 1){?>style="display:none;"<?}?>>
+						<div id="web_editor" <?php if{?>style="display:none;"<?php }?>>
 							<div class="form-group">
 								<label><?=national_language($iw[language],"a0270","내용");?></label>
 								<style TYPE="text/css">.cke_source{color:#000;}</style>
@@ -314,7 +311,7 @@ $md_datetime = $row["md_datetime"];
 							</div>
 						</div>
 					</form>
-					<form id="imageform" method="post" enctype="multipart/form-data" action='/include/ckeditor/mutilple/ajaxImageUpload.php' <?if($md_type == 1){?>style="display:none;"<?}?>>
+					<form id="imageform" method="post" enctype="multipart/form-data" action='/include/ckeditor/mutilple/ajaxImageUpload.php' <?php if{?>style="display:none;"<?php }?>>
 						<div class="form-group">
 							<label>이미지 다중 업로드</label>
 							<div id='multiple_image'></div>
@@ -432,6 +429,9 @@ $md_datetime = $row["md_datetime"];
 	}
 </script>
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

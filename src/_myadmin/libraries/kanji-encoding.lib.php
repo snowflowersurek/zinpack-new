@@ -159,3 +159,7 @@ function PMA_set_enc_form($spaces)
 PMA_internal_enc_check();
 
 ?>
+
+
+
+

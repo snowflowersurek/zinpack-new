@@ -66,7 +66,7 @@ if ($file[cnt]){
 							<li><?=national_language($iw[language],"a0153","차감액");?> : <?=number_format($dd_price+$dd_support)?> Point</li>
 							<li><?=national_language($iw[language],"a0154","파일명");?> : <?=$row["dd_file_name"]?></li>
 							<li><?=national_language($iw[language],"a0155","파일크기");?> : <?=number_format($row["dd_file_size"]/1024/1000, 1)?> MB</li>
-							<li><?=national_language($iw[language],"a0156","다운로드 유효기간");?> : <?if($dd_download=="0"){?><?=national_language($iw[language],"a0157","무제한");?><?}else{?><?=$dd_download?> <?=national_language($iw[language],"a0158","일");?><?}?></li>
+							<li><?=national_language($iw[language],"a0156","다운로드 유효기간");?> : <?php if{?><?=national_language($iw[language],"a0157","무제한");?><?php }else{?><?=$dd_download?> <?=national_language($iw[language],"a0158","일"); }?></li>
 						</ul>
 					</div>
 				</div>
@@ -83,6 +83,9 @@ if ($file[cnt]){
 	}
 </script>
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

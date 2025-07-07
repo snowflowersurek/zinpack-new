@@ -77,7 +77,7 @@ if(preg_match('/(iPod|iPhone|Mobile|UP.Browser|Android|BlackBerry|Windows CE|Nok
 							<label for="content_type1">간편모드</label>
 							&nbsp;&nbsp;&nbsp;
 							<input type="radio" name="content_type" value="2" id="content_type2" onclick="javascript:type_change(this.value);" />
-							<label for="content_type2">웹에디터 <?if ($mobile_check == "ok"){?> (모바일 미지원) <?}?></label>
+							<label for="content_type2">웹에디터 <?php if{?> (모바일 미지원) <?php }?></label>
 						</div>
 					</div>
 
@@ -174,6 +174,9 @@ function check_form() {
 }
 </script>
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

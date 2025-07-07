@@ -55,3 +55,7 @@ if ($GLOBALS['is_ajax_request'] == true && empty($_REQUEST['ajax_page_request'])
 // Display the search form
 $response->addHTML($db_search->getSelectionForm($url_params));
 ?>
+
+
+
+

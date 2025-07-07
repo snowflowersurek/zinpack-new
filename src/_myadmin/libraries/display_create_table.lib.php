@@ -65,3 +65,7 @@ echo __('Create table');
     <input type="submit" value="<?php echo __('Go'); ?>" />
 </fieldset>
 </form>
+
+
+
+

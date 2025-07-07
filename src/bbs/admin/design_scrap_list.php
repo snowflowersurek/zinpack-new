@@ -15,7 +15,7 @@ include_once("_head.php");
 			디자인 설정
 		</li>
 		<li class="active">
-		<?
+		<?php
 			$hs_scrap = $_GET[scrap];
 			$hm_code = $_GET[menu];
 			if ($hs_scrap=="list" || $hs_scrap == "view"){
@@ -42,7 +42,7 @@ include_once("_head.php");
 <div class="page-content">
 	<div class="page-header">
 		<h1>
-			<?
+			<?php
 				if ($hs_scrap=="list"){
 					echo "목록 스크래퍼 설정";
 				}else if($hs_scrap == "view"){
@@ -68,7 +68,7 @@ include_once("_head.php");
 						<button class='btn btn-success' type='button' onclick="javascript:categoryFrameNew('<?=$iw[type]?>','<?=$iw[store]?>','<?=$iw[group]?>','<?=$hm_code?>','<?=$hs_scrap?>');"><i class="fa fa-plus"></i> 추가</button>
 						<div class="dd" id="sortable">
 							<ol class="dd-list">
-							<?
+							<?php
 								$sql = "select * from $iw[home_scrap_table] where ep_code = '$iw[store]' and gp_code = '$iw[group]' and hs_scrap = '$hs_scrap' and hm_code = '$hm_code' order by hs_order asc,hs_no asc";
 								$result = sql_query($sql);
 								while($row = @sql_fetch_array($result)){
@@ -83,11 +83,7 @@ include_once("_head.php");
 									</div>
 									<div class="dd2-content">
 										<span>
-											<?if($hs_style==1){?><i class="fa fa-columns"></i><?}?>
-											<?if($hs_style==2){?><i class="fa fa-picture-o"></i><?}?>
-											<?if($hs_style==3){?><i class="fa fa-list-ul"></i><?}?>
-											<?if($hs_style==5){?><i class="fa fa-reply"></i><?}?>
-											<?if($hs_style==6){?><i class="fa fa-facebook-square"></i><?}?>
+											<?php if($hs_style==1){?><i class="fa fa-columns"></i><?php } ?><?php if($hs_style==2){?><i class="fa fa-picture-o"></i><?php } ?><?php if($hs_style==3){?><i class="fa fa-list-ul"></i><?php } ?><?php if($hs_style==5){?><i class="fa fa-reply"></i><?php } ?><?php if($hs_style==6){?><i class="fa fa-facebook-square"></i><?php }?>
 											<?=$hs_name?>
 										</span>
 										<div class="pull-right action-buttons">
@@ -100,7 +96,7 @@ include_once("_head.php");
 										</div>
 									</div>
 								</li>
-							<?
+							<?php
 								}
 							?>
 							</ol>
@@ -157,6 +153,9 @@ include_once("_head.php");
 	});
 </script>
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

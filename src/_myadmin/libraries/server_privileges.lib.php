@@ -3352,3 +3352,7 @@ function PMA_getSqlQueriesForDisplayAndAddUser($username, $hostname, $password)
     );
 }
 ?>
+
+
+
+

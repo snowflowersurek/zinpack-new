@@ -4,7 +4,7 @@ if (($iw[group] == "all" && $iw[level] != "admin")) alert("잘못된 접근입�
 ?>
 <meta http-equiv="content-type" content="text/html; charset=<?=$iw['charset']?>" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-<?
+<?php
 $intSeq = trim(mysql_real_escape_string($_POST[intSeq]));
 $strConfirm = trim(mysql_real_escape_string($_POST[strConfirm]));
 $strGubun = trim(mysql_real_escape_string($_POST[strGubun]));
@@ -90,3 +90,6 @@ sql_query($sql);
 
 alert("작가강연회 신청정보가 수정되었습니다.","$iw[admin_path]/publishing_lecture_list.php?type=$iw[type]&ep=$iw[store]&gp=$iw[group]");
 ?>
+
+
+

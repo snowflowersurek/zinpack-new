@@ -8,7 +8,7 @@ include_once("_head.php");
 </div>
 
 <div class="adminView">
-	<?
+	<?php
 		if($_POST['search']){
 			$search = $_POST['search'];
 			$searchs = $_POST['searchs'];
@@ -42,7 +42,7 @@ include_once("_head.php");
 				<td width="70px">적립</td>
 				<td width="70px">사용</td>
 		</tr>
-		<?
+		<?php
 			$sql = "select * from $iw[point_table] $search_sql";
 			$result = sql_query($sql);
 			$total_line = mysql_num_rows($result);
@@ -86,7 +86,7 @@ include_once("_head.php");
 				<td align="right"><?=$pt_deposit?></td>
 				<td align="right"><?=$pt_withdraw?></td>
 			</tr>
-		<?
+		<?php
 			$i++;
 			}
 			if($i==0) echo "<tr><td colspan='6' align='center' height='200px'>포인트 내역이 없습니다.</td></tr>";
@@ -98,7 +98,7 @@ include_once("_head.php");
 	<table align="center">
 		<tr>
 			<td>
-	<?
+	<?php
 		if($total_page!=0){
 			if($page>$total_page) { $page=$total_page; }
 			$start_page = ((ceil($page/$max_page)-1)*$max_page)+1;
@@ -137,9 +137,9 @@ include_once("_head.php");
 		<tr>
 			<td>	
 			<select class="selectBox" name="search">
-				<option value="e" <?if($search == "e"){?>selected<?}?>>업체코드</option>
-				<option value="m" <?if($search == "m"){?>selected<?}?>>회원코드</option>
-				<option value="i" <?if($search == "i"){?>selected<?}?>>내용</option>
+				<option value="e" <?php if{?>selected<?php }?>>업체코드</option>
+				<option value="m" <?php if{?>selected<?php }?>>회원코드</option>
+				<option value="i" <?php if{?>selected<?php }?>>내용</option>
 			</select>
 			<input type="text" class="inputText" name="searchs" size="40" value="<?=$searchs?>" />
 			<a href="javascript:search_form.submit();"><div class="btn">검색</div></a>
@@ -148,6 +148,9 @@ include_once("_head.php");
 	</table>
 	</form>
 </div>
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

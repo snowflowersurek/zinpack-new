@@ -7,9 +7,9 @@ include_once("rank_update.php");
 	<ul class="breadcrumb">
 		<li>
 			<i class="fa fa-dashboard"></i>
-			데쉬보드
+			?�쉬보드
 		</li>
-		<li class="active">데쉬보드</li>
+		<li class="active">?�쉬보드</li>
 	</ul><!-- .breadcrumb -->
 
 	<!--<div class="nav-search" id="nav-search">
@@ -24,10 +24,10 @@ include_once("rank_update.php");
 <div class="page-content">
 	<div class="page-header">
 		<h1>
-			데쉬보드
+			?�쉬보드
 			<small>
 				<i class="fa fa-angle-double-right"></i>
-				데쉬보드
+				?�쉬보드
 			</small>
 		</h1>
 	</div>
@@ -35,13 +35,13 @@ include_once("rank_update.php");
 		<div class="row">
 			<div class="col-xs-12">
 			<!-- PAGE CONTENT BEGINS -->
-			<?
+			<?php
 				$show_pay_button = false;
 				$chkdate = date("Y-m-d");
 				$eprow = sql_fetch("select * from $iw[enterprise_table] where ep_code = '$iw[store]'");
 				$ep_edate = $eprow['ep_expiry_date'];
 				$ep_member = $eprow['mb_code'];
-				if($ep_edate != "0000-00-00" && $ep_member==$iw['member']){	// 사이트관리자만 확인 가능
+				if($ep_edate != "0000-00-00" && $ep_member==$iw['member']){	// ?�이?��?리자�??�인 가??
 					$diff = strtotime($ep_edate) - strtotime($chkdate);
 					$diff_days = $diff / (60*60*24);
 					if($diff_days < 50){
@@ -53,7 +53,7 @@ include_once("rank_update.php");
 				$pt_edate = $eprow['pt_datetime'];
 				$paytype = $eprow['ch_paytype'];
 				$orderid = $eprow['ogd_oid'];
-				if($pt_edate && $paytype=="SC0040" && $ep_member==$iw['member']){	// 사이트관리자만 확인 가능
+				if($pt_edate && $paytype=="SC0040" && $ep_member==$iw['member']){	// ?�이?��?리자�??�인 가??
 					$diff = strtotime($chkdate) - strtotime($pt_edate);
 					$diff_days = $diff / (60*60*24);
 					if($diff_days < 50){
@@ -62,31 +62,31 @@ include_once("rank_update.php");
 					}
 				}
 
-				//잔여포인트
+				//?�여?�인??
 				$row = sql_fetch("select mb_point from $iw[member_table] where mb_code = '$iw[member]' and ep_code = '$iw[store]'");
 				$mb_point = $row["mb_point"];
 				
-				//게시판 게시물
+				//게시??게시�?
 				$row = sql_fetch("select count(md_no) as cnt from $iw[mcb_data_table] where ep_code = '$iw[store]' and md_display = 1 and  mb_code = '$iw[member]'");
 				$mcb_count = $row["cnt"];
 				
-				//컨텐츠 게시물
+				//컨텐�?게시�?
 				$row = sql_fetch("select count(dd_no) as cnt from $iw[doc_data_table] where ep_code = '$iw[store]' and dd_display = 1 and  mb_code = '$iw[member]'");
 				$doc_count = $row["cnt"];
 				
-				//이북 게시물
+				//?�북 게시�?
 				$row = sql_fetch("select count(bd_no) as cnt from $iw[book_data_table] where ep_code = '$iw[store]' and bd_display = 1 and  mb_code = '$iw[member]'");
 				$book_count = $row["cnt"];
 				
-				//게시판 댓글
+				//게시???��?
 				$row = sql_fetch("select count(c.cm_no) as cnt from $iw[comment_table] as c join $iw[mcb_data_table] as m on c.cm_code = m.md_code where m.ep_code = '$iw[store]' and m.mb_code = '$iw[member]' and m.md_display = 1 and c.cm_display = 1");
 				$mcb_comment = $row["cnt"];
 				
-				//컨텐츠 댓글
+				//컨텐�??��?
 				$row = sql_fetch("select count(c.cm_no) as cnt from $iw[comment_table] as c join $iw[doc_data_table] as d on c.cm_code = d.dd_code where d.ep_code = '$iw[store]' and d.mb_code = '$iw[member]' and d.dd_display = 1 and c.cm_display = 1");
 				$doc_comment = $row["cnt"];
 				
-				//이북 댓글
+				//?�북 ?��?
 				$row = sql_fetch("select count(c.cm_no) as cnt from $iw[comment_table] as c join $iw[book_data_table] as b on c.cm_code = b.bd_code where b.ep_code = '$iw[store]' and b.mb_code = '$iw[member]' and b.bd_display = 1 and c.cm_display = 1");
 				$book_comment = $row["cnt"];
 				
@@ -97,27 +97,27 @@ include_once("rank_update.php");
 				$now_start = date("Y-m-d H:i:s", strtotime(date("Ymd", strtotime($ac_calculate))));
 				$now_end = date("Y-m-d H:i:s", strtotime(date("Ymd").' - 1 days + 23 hours + 59 minutes + 59 seconds'));
 				
-				//게시판 매출
+				//게시??매출
 				$row = sql_fetch("select sum(ms_price) as price_total from $iw[mcb_support_table] where ep_code = '$iw[store]' and seller_mb_code='$iw[member]' and (ms_datetime >= '$now_start' and ms_datetime <= '$now_end')");
 				$mcb_sales = $row["price_total"];
 
-				//컨텐츠 매출
+				//컨텐�?매출
 				$row = sql_fetch("select sum(db_price) as price_total from $iw[doc_buy_table] where ep_code = '$iw[store]' and seller_mb_code='$iw[member]' and (db_datetime >= '$now_start' and db_datetime <= '$now_end')");
 				$doc_sales = $row["price_total"];
 				$row = sql_fetch("select sum(ds_price) as price_total from $iw[doc_support_table] where ep_code = '$iw[store]' and seller_mb_code='$iw[member]' and (ds_datetime >= '$now_start' and ds_datetime <= '$now_end')");
 				$doc_sales = $doc_sales + $row["price_total"];
 				
-				//이북 매출
+				//?�북 매출
 				$row = sql_fetch("select sum(bb_price) as price_total from $iw[book_buy_table] where ep_code = '$iw[store]' and seller_mb_code='$iw[member]' and (bb_datetime >= '$now_start' and bb_datetime <= '$now_end')");
 				$book_sales = $row["price_total"];
 				$row = sql_fetch("select sum(bs_price) as price_total from $iw[book_support_table] where ep_code = '$iw[store]' and seller_mb_code='$iw[member]' and (bs_datetime >= '$now_start' and bs_datetime <= '$now_end')");
 				$book_sales = $book_sales + $row["price_total"];
 				
-				//컨텐츠 다운로드
+				//컨텐�??�운로드
 				$row = sql_fetch("select count(db_no) as cnt from $iw[doc_buy_table] where ep_code = '$iw[store]' and seller_mb_code='$iw[member]' and (db_datetime >= '$now_start' and db_datetime <= '$now_end')");
 				$doc_download = $row["cnt"];
 				
-				//이북 다운로드
+				//?�북 ?�운로드
 				$row = sql_fetch("select count(bb_no) as cnt from $iw[book_buy_table] where ep_code = '$iw[store]' and seller_mb_code='$iw[member]' and (bb_datetime >= '$now_start' and bb_datetime <= '$now_end')");
 				$book_download = $row["cnt"];
 			?>
@@ -132,7 +132,7 @@ include_once("rank_update.php");
 								</div>
 								<div class="infobox-data">
 									<span class="infobox-data-number"><?=number_format($mb_point)?></span>
-									<div class="infobox-content">잔여Point</div>
+									<div class="infobox-content">보유Point</div>
 								</div>
 								<!--<div class="stat stat-up">8%</div>-->
 							</div>
@@ -335,11 +335,11 @@ include_once("rank_update.php");
 				
 				<div class="row">
 					<div class="col-sm-4">
-						<?
+						<?php
 							$day_start = date("Y-m-d H:i:s", strtotime(date("Ymd").' - 1 days'));
 							$day_end = date("Y-m-d H:i:s", strtotime(date("Ymd").' - 1 days + 23 hours + 59 minutes + 59 seconds'));
 						?>
-						<h4 class="lighter"><i class="fa fa-star"></i>오늘의 랭킹 (<?=date("Y년 m월 d일",strtotime($day_start))?>)</h4>
+						<h4 class="lighter"><i class="fa fa-star"></i>어제 판매순위 (<?=date("Y년 m월 d일", strtotime($day_start))?>)</h4>
 						<section class="content-box">
 							<div class="dataTable-wrapper">
 								<table class="table table-bordered table-striped table-hover dataTable">
@@ -352,7 +352,7 @@ include_once("rank_update.php");
 
 											<th>
 												<i class="fa fa-caret-right"></i>
-												닉네임
+												유저명
 											</th>
 
 											<th class="hidden-480">
@@ -363,7 +363,7 @@ include_once("rank_update.php");
 									</thead>
 
 									<tbody>
-									<?
+									<?php
 										$sql = "select * from $iw[rank_day_table] where ep_code = '$iw[store]' order by rd_price desc limit 0, 10";
 										$result = sql_query($sql);
 
@@ -381,18 +381,16 @@ include_once("rank_update.php");
 											<td><?=$mb_nick?></td>
 											<td><?=$rd_price?> Point</td>
 										</tr>
-									<?
+									<?php
 										$i++;
 										}
-									?>
-									<?for($i=$i;$i<=10;$i++){?>
+									 for($i=$i;$i<=10;$i++){?>
 										<tr>
 											<td><?=$i?></td>
 											<td>-</td>
 											<td>0 Point</td>
 										</tr>
-									<?}?>
-									<?
+									<?php }
 										$row = sql_fetch("select * from $iw[rank_day_table] where mb_code = '$iw[member]' and ep_code = '$iw[store]'");
 										if($row["rd_no"]){
 											$rd_price = $row["rd_price"];
@@ -416,11 +414,11 @@ include_once("rank_update.php");
 						</section>
 					</div><!-- / .col -->
 					<div class="col-sm-4">
-						<?
+						<?php
 							$day_start = date("Y-m-d H:i:s", strtotime(date("Ymd")-date("day").'+ 1 day'));
 							$day_end = date("Y-m-d H:i:s", strtotime(date("Ymd").'+ 23 hours + 59 minutes + 59 seconds'));
 						?>
-						<h4 class="lighter"><i class="fa fa-star"></i>이달의 랭킹 (<?=date("Y년 m월",strtotime($day_start))?>)</h4>
+						<h4 class="lighter"><i class="fa fa-star"></i>이번달 판매순위 (<?=date("Y년 m월", strtotime($day_start))?>)</h4>
 						<section class="content-box">
 							<div class="dataTable-wrapper">
 								<table class="table table-bordered table-striped table-hover dataTable">
@@ -433,7 +431,7 @@ include_once("rank_update.php");
 
 											<th>
 												<i class="fa fa-caret-right"></i>
-												닉네임
+												유저명
 											</th>
 
 											<th class="hidden-480">
@@ -444,7 +442,7 @@ include_once("rank_update.php");
 									</thead>
 
 									<tbody>
-									<?
+									<?php
 										$sql = "select * from $iw[rank_month_table] where ep_code = '$iw[store]' order by rm_price desc limit 0, 10";
 										$result = sql_query($sql);
 
@@ -462,18 +460,16 @@ include_once("rank_update.php");
 											<td><?=$mb_nick?></td>
 											<td><?=$rm_price?> Point</td>
 										</tr>
-									<?
+									<?php
 										$i++;
 										}
-									?>
-									<?for($i=$i;$i<=10;$i++){?>
+									 for($i=$i;$i<=10;$i++){?>
 										<tr>
 											<td><?=$i?></td>
 											<td>-</td>
 											<td>0 Point</td>
 										</tr>
-									<?}?>
-									<?
+									<?php }
 										$row = sql_fetch("select * from $iw[rank_month_table] where mb_code = '$iw[member]' and ep_code = '$iw[store]'");
 										if($row["rm_no"]){
 											$rm_price = $row["rm_price"];
@@ -540,8 +536,7 @@ include_once("rank_update.php");
 							</div>
 						</section>
 					</div>
-					<?php } ?>
-					<?php if($show_receipt_button){ 
+					<?php } ?><?php if($show_receipt_button){ 
 								$result = get_receipt($orderid, $show_receipt_button);
 					?>
 						<div class="col-sm-4">
@@ -586,6 +581,10 @@ function openwin(url){
 	var win = window.open(url, "PopupWin", "width=500,height=800");
 }
 </script>
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+
+

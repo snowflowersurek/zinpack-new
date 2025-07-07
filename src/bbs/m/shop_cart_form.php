@@ -17,7 +17,7 @@ include_once("_head.php");
                 </span>
             </div>
 			
-			<?
+			<?php
 				$sql = "select * from $iw[shop_cart_table] where ep_code = '$iw[store]' and mb_code = '$iw[member]'";
 				$result = sql_query($sql);
 				while($row = @sql_fetch_array($result)){
@@ -120,8 +120,7 @@ include_once("_head.php");
 						$total_delivery += $now_sy_price; //배송비를 배송비합계에 추가
 					}
 					$total_price += $so_price*$sc_amount;
-			?>
-			<?if($a == 0){?>
+			 if($a == 0){?>
 				<div class="masonry">
 					<div class="grid-sizer"></div>
 
@@ -141,32 +140,31 @@ include_once("_head.php");
 							<h4 class="media-heading"><?=$sd_subject?></h4>
 							<table class="table responsive-table">
 								<tbody>
-			<?}?>
+			<?php }?>
 									<tr>
 										<td data-th="<?=national_language($iw[language],"a0286","상품명");?>"><?=$so_name?></td>
 										<td data-th="<?=national_language($iw[language],"a0151","가격");?>"><?=national_money($iw[language], $so_price);?></td>
 										<td data-th="<?=national_language($iw[language],"a0288","갯수");?>">
 											<select class="form-control" onchange="javascript:changeAmount('<?=$iw[type]?>','<?=$iw[store]?>','<?=$iw[group]?>','<?=$sd_code?>','<?=$sc_no?>',this.value);">
-												<?for($i=1 ; $i <= 100; $i++){?>
-												<option value="<?=$i?>" <?if($sc_amount==$i){?>selected<?}?>><?=$i?> <?=national_language($iw[language],"a0215","개");?></option>
-												<?}?>
+												<?php for($i=1 ; $i <= 100; $i++){?>
+												<option value="<?=$i?>" <?php if{?>selected<?php }?>><?=$i?> <?=national_language($iw[language],"a0215","개");?></option>
+												<?php }?>
 											</select>
 										</td>
 										<td data-th="<?=national_language($iw[language],"a0294","합계");?>" class="text-right"><?=national_money($iw[language], $so_price*$sc_amount);?> <a href="<?=$iw['m_path']?>/shop_cart_delete.php?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&item=<?=$sc_no?>" class="text-danger"><i class="fa fa-times-circle"></i></a></td>
 									</tr>
-			<?if($rowspan == $a+1){?>
+			<?php if($rowspan == $a+1){?>
 								</tbody>
 							</table>
 							<p>
 								[<?=national_language($iw[language],"a0293","배송비");?>] 
 								<?=national_money($iw[language], $now_sy_price);?> (<?=substr($seller_mb_code, 3, 3).substr($seller_mb_code,-3,3);?>-<?=$sy_code?>)
-								<?$now_sy_price=0;?>
+								<?php $now_sy_price=0;?>
 							</p>
 						</div> <!-- /.box -->
 					</div> <!-- /.masonry-item -->
 				</div> <!-- /.masonry -->
-			<?}?>
-			<?
+			<?php }
 				$a++;
 				}
 			?>				
@@ -211,6 +209,9 @@ include_once("_head.php");
 		location.href="shop_cart_amount.php?type="+type+"&ep="+ep+"&gp="+gp+"&item="+item+"&opt="+option+"&amount="+amount+"";
 	}
 </script>
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

@@ -399,3 +399,7 @@ function PMA_replication_gui_master_addslaveuser()
     echo '</div>';
 }
 ?>
+
+
+
+

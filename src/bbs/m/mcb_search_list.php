@@ -29,11 +29,10 @@ if($_POST['search']){
 				<a class="btn btn-theme" href="<?=$iw['m_path']?>/mcb_data_write.php?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&menu=<?=$cg_code?>" title="<?=national_language($iw[language],"a0198","글쓰기");?>"><i class="fa fa-pencil fa-lg"></i></a>
 			</span>
 		</div>
-		<?if($st_mcb_list==4 || $st_mcb_list==7){?>
+		<?php if($st_mcb_list==4 || $st_mcb_list==7){?>
 		<div class="masonry">
 			<div class="grid-sizer"></div>
-		<?}?>
-			<?
+		<?php }
 				$sql = "
 					SELECT 
 						A.* 
@@ -42,7 +41,7 @@ if($_POST['search']){
 					WHERE A.ep_code = '$iw[store]' AND A.gp_code='$iw[group]' AND A.md_display = 1 AND (A.md_subject LIKE '%$search%' OR A.md_content LIKE '%$search%') 
 				";
 				$result = sql_query($sql);
-				$total_line = mysql_num_rows($result);
+				$total_line = mysqli_num_rows($result);
 
 				if($st_mcb_list==5 || $st_mcb_list==8){
 					$max_line = ($st_mcb_list-2)*6;
@@ -142,32 +141,26 @@ if($_POST['search']){
 					$cg_hit = $row2[cg_hit];
 					$cg_comment = $row2[cg_comment];
 					$cg_recommend = $row2[cg_recommend];
-			?>
-			<?if($st_mcb_list==2){?>
+			 if($st_mcb_list==2){?>
 				<div class="masonry-item w-6">
 					<div class="box br-theme box-media">
 						<div class="media">
 							<a href="<?=$iw['m_path']?>/<?=$iw[type]?>_data_view.php?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&item=<?=$md_code?>">
 								<div class="img-frame pull-left <?=$no_image?>">
-								<?if($no_image !="no-img"){?><table style="height:100%;width:100%;background-color:#000000;"><tr><td><?}?>
-								<?if($row["md_file_1"]){?>
+								<?php if($no_image !="no-img"){?><table style="height:100%;width:100%;background-color:#000000;"><tr><td><?php } ?><?php if($row["md_file_1"]){?>
 									<img src="<?=$iw[path]."/".$upload_path."/".$md_code."/".$md_file_1?>" class="media-object img-responsive" alt=""/>
-								<?}else if($row["md_youtube"]){?>
+								<?php }else if($row["md_youtube"]){?>
 									<img src="//img.youtube.com/vi/<?=$youtube_code?>/0.jpg" class="media-object img-responsive" alt=""/>
-								<?}else if($md_type == 2 && $md_images[1][0]){?>
+								<?php }else if($md_type == 2 && $md_images[1][0]){?>
 									<img src="<?=htmlspecialchars($md_images[1][0]);?>" class="media-object img-responsive" alt=""/>
-								<?}?>
-								<?if($no_image !="no-img"){?></td></tr></table><?}?>
+								<?php } ?><?php if($no_image !="no-img"){?></td></tr></table><?php }?>
 								</div>
 								<div class="media-body">
 									<h4 class="media-heading box-title"><?=$md_subject?></h3>
 									<ul class="list-inline">
-										<?if($cg_hit==1){?><li><i class="fa fa-eye"></i> <?=$md_hit?></li><?}?>
-										<?if($cg_comment==1){?><li><i class="fa fa-comment"></i> <?=$reply_count?></li><?}?>
-										<?if($cg_recommend==1){?><li><i class="fa fa-thumbs-up"></i> <?=$md_recommend?></li><?}?>
-										<?if($md_attach){?>
+										<?php if($cg_hit==1){?><li><i class="fa fa-eye"></i> <?=$md_hit?></li><?php } ?><?php if($cg_comment==1){?><li><i class="fa fa-comment"></i> <?=$reply_count?></li><?php } ?><?php if($cg_recommend==1){?><li><i class="fa fa-thumbs-up"></i> <?=$md_recommend?></li><?php } ?><?php if($md_attach){?>
 										<li><i class="fa fa-file"></i> <?=$md_attach?></li>
-										<?}?>
+										<?php }?>
 									</ul>
 									<p><?=cut_str($md_content,$content_size)?></p>
 								</div>
@@ -175,34 +168,30 @@ if($_POST['search']){
 						</div>
 					</div> <!-- /.box -->
 				</div> <!-- /.masonry-item -->
-			<?}else if($st_mcb_list>=3 && $st_mcb_list<=8){?>
-				<?if($st_mcb_list>=3 && $st_mcb_list<=5){?>
-				<div class="<?if($i%3==0){?> clearfix-6<?}?><?if($i%2==0){?> clearfix-4<?}?><?if($i%3!=0&&$i%2!=0&&$i%1==0){?> clearfix-2<?}?>"></div>
-				<?}else if($st_mcb_list>=6 && $st_mcb_list<=8){?>
-				<div class="<?if($i%6==0){?> clearfix-6<?}?><?if($i%4==0){?> clearfix-4<?}?><?if($i%6!=0&&$i%4!=0&&$i%2==0){?> clearfix-2<?}?>"></div>
-				<?}?>
-				<div class="masonry-item <?if($st_mcb_list==5 || $st_mcb_list==8){?>h-4<?}else{?>h-full<?}?>  <?if($st_mcb_list>=3 && $st_mcb_list<=5){?>w-4<?}else{?>w-2<?}?>">
+			<?php }else if($st_mcb_list>=3 && $st_mcb_list<=8){ if($st_mcb_list>=3 && $st_mcb_list<=5){?>
+				<div class="<?php if{?> clearfix-6<?php } if{?> clearfix-4<?php } if{?> clearfix-2<?php }?>"></div>
+				<?php }else if($st_mcb_list>=6 && $st_mcb_list<=8){?>
+				<div class="<?php if{?> clearfix-6<?php } if{?> clearfix-4<?php } if{?> clearfix-2<?php }?>"></div>
+				<?php }?>
+				<div class="masonry-item <?php if{?>h-4<?php }else{?>h-full<?php } if{?>w-4<?php }else{?>w-2<?php }?>">
 					<div class="box br-theme box-media">
 						<div class="media">
 							<a href="<?=$iw['m_path']?>/<?=$iw[type]?>_data_view.php?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&item=<?=$md_code?>">
 								<div>
-									<?if($row["md_file_1"]){?>
+									<?php if($row["md_file_1"]){?>
 										<img src="<?=$iw[path]."/".$upload_path."/".$md_code."/".$md_file_1?>" class="media-object img-responsive" alt=""/>
-									<?}else if($row["md_youtube"]){?>
+									<?php }else if($row["md_youtube"]){?>
 										<img src="//img.youtube.com/vi/<?=$youtube_code?>/0.jpg" class="media-object img-responsive" alt=""/>
-									<?}else if($md_type == 2 && $md_images[1][0]){?>
+									<?php }else if($md_type == 2 && $md_images[1][0]){?>
 										<img src="<?=htmlspecialchars($md_images[1][0]);?>" class="media-object img-responsive" alt=""/>
-									<?}?>
+									<?php }?>
 								</div>
 								<div class="media-body">
 									<h4 class="media-heading"><?=$md_subject?></h4>
 									<ul class="list-inline">
-										<?if($cg_hit==1){?><li><i class="fa fa-eye"></i> <?=$md_hit?></li><?}?>
-										<?if($cg_comment==1){?><li><i class="fa fa-comment"></i> <?=$reply_count?></li><?}?>
-										<?if($cg_recommend==1){?><li><i class="fa fa-thumbs-up"></i> <?=$md_recommend?></li><?}?>
-										<?if($md_attach){?>
+										<?php if($cg_hit==1){?><li><i class="fa fa-eye"></i> <?=$md_hit?></li><?php } ?><?php if($cg_comment==1){?><li><i class="fa fa-comment"></i> <?=$reply_count?></li><?php } ?><?php if($cg_recommend==1){?><li><i class="fa fa-thumbs-up"></i> <?=$md_recommend?></li><?php } ?><?php if($md_attach){?>
 										<li><i class="fa fa-file"></i> <?=$md_attach?></li>
-										<?}?>
+										<?php }?>
 									</ul>
 									<p><?=cut_str($md_content,$content_size)?></p>
 								</div>
@@ -210,19 +199,16 @@ if($_POST['search']){
 						</div>
 					</div> <!-- /.box -->
 				</div> <!-- /.masonry-item -->
-			<?}?>
-			<?
+			<?php }
 				$i++;
 				}
-			?>
-		
-		<?if($st_mcb_list==4 || $st_mcb_list==7){?>
+			 if($st_mcb_list==4 || $st_mcb_list==7){?>
 		</div> <!-- /#grid -->
-		<?}?>
+		<?php }?>
 		<div class="clearfix"></div>
 		<div class="pagContainer text-center">
 			<ul class="pagination">
-				<?
+				<?php
 					$search = urlencode($search);
 					if($total_page!=0){
 						if($page>$total_page) { $page=$total_page; }
@@ -257,6 +243,9 @@ if($_POST['search']){
 	</div> <!-- /.row -->
 </div> <!-- /.content -->
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

@@ -361,3 +361,7 @@ class PMA_SysInfoSunos extends PMA_SysInfo
         return $mem;
     }
 }
+
+
+
+

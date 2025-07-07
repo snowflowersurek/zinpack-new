@@ -1,4 +1,4 @@
-<?
+<?php
 if (!defined("_INFOWAY_")) exit; // 개별 페이지 접근 불가
 
 $pl_now = date("Y-m-d H:i:s");
@@ -41,7 +41,7 @@ while($row = @sql_fetch_array($result)){
 			}
 		});
 	</script>
-<?
+<?php
 	$i ++;
 }
 ?>
@@ -59,3 +59,6 @@ while($row = @sql_fetch_array($result)){
 	});
 </script>
 <script src="<?echo $iw['include_path'];?>/js/jq_cookie.js"></script>
+
+
+

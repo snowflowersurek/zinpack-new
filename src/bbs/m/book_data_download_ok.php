@@ -7,7 +7,7 @@ if (!$db_conn) {
     $db_conn = $connect_db;
 }
 
-$bd_code = $_GET["book"];
+$bd_code = $_GET["book"] ?? '';
 $bd_support = (int)$_GET["support"];
 
 $row = sql_fetch(" select ep_nick from $iw[enterprise_table] where ep_code = '$iw[store]'");
@@ -118,3 +118,6 @@ goto_url("{$iw['m_path']}/book_buy_list.php?type={$iw['type']}&ep={$iw['store']}
 ?>
 <meta http-equiv="content-type" content="text/html; charset=<?=$iw['charset']?>" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+
+
+

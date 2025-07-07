@@ -1,4 +1,4 @@
-<?
+<?php
 if (!defined("_PAYMENT_")) exit; // 개별 페이지 접근 불가
 ?>
 <!DOCTYPE html>
@@ -39,3 +39,6 @@ if (!defined("_PAYMENT_")) exit; // 개별 페이지 접근 불가
 	</style>
 </head>
 <body>
+
+
+

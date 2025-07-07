@@ -205,7 +205,7 @@ function getFormObject() {
 </head>
 <body>
 <form method="post" name="LGD_PAYINFO" id="LGD_PAYINFO" action="">
-<?
+<?php
   foreach ($payReqMap as $key => $value) {
     echo "<input type='hidden' name='$key' id='$key' value='$value'>";
   }
@@ -219,3 +219,6 @@ function getFormObject() {
 
 </body>
 </html>
+
+
+

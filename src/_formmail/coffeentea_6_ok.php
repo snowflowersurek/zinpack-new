@@ -3,7 +3,7 @@ include_once("_common.php");
 ?>
 <meta http-equiv="content-type" content="text/html; charset=<?=$iw['charset']?>" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-<?
+<?php
 $mail_01 = htmlspecialchars(trim($_POST['mail_01']), ENT_QUOTES, 'UTF-8');
 $mail_02 = htmlspecialchars(trim($_POST['mail_02']), ENT_QUOTES, 'UTF-8');
 $mail_03 = htmlspecialchars(trim($_POST['mail_03']), ENT_QUOTES, 'UTF-8');
@@ -108,3 +108,6 @@ else
 
 alert($ma,"");
 ?>
+
+
+

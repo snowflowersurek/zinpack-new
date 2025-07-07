@@ -43,7 +43,7 @@ $bn_sub_title = str_replace('\"', '&quot;', $bn_sub_title);
 							<input type="file" class="col-xs-12 col-sm-12" name="bn_logo">
 							<span class="help-block col-xs-12">
 								사이즈(pixel) 500 X 150
-								<?if($row["bn_logo"]){?><br/><a href="<?=$iw["path"].$upload_path."/".$row["bn_logo"]?>" target="_blank">기존 이미지</a><?}?>
+								<?php if($row["bn_logo"]){?><br/><a href="<?=$iw["path"].$upload_path."/".$row["bn_logo"]?>" target="_blank">기존 이미지</a><?php }?>
 							</span>
 						</div>
 					</div>
@@ -55,7 +55,7 @@ $bn_sub_title = str_replace('\"', '&quot;', $bn_sub_title);
 							<input type="file" class="col-xs-12 col-sm-12" name="bn_thum">
 							<span class="help-block col-xs-12">
 								사이즈(pixel) 240 X 240
-								<?if($row["bn_thum"]){?><br/><a href="<?=$iw["path"].$upload_path."/".$row["bn_thum"]?>" target="_blank">기존 이미지</a><?}?>
+								<?php if($row["bn_thum"]){?><br/><a href="<?=$iw["path"].$upload_path."/".$row["bn_thum"]?>" target="_blank">기존 이미지</a><?php }?>
 							</span>
 						</div>
 					</div>
@@ -67,7 +67,7 @@ $bn_sub_title = str_replace('\"', '&quot;', $bn_sub_title);
 							<input type="file" class="col-xs-12 col-sm-12" name="bn_text_logo">
 							<span class="help-block col-xs-12">
 								사이즈(pixel) 70 X 20
-								<?if($row["bn_text_logo"]){?><br/><a href="<?=$iw["path"].$upload_path."/".$row["bn_text_logo"]?>" target="_blank">기존 이미지</a><?}?>
+								<?php if($row["bn_text_logo"]){?><br/><a href="<?=$iw["path"].$upload_path."/".$row["bn_text_logo"]?>" target="_blank">기존 이미지</a><?php }?>
 							</span>
 						</div>
 					</div>
@@ -114,7 +114,7 @@ $bn_sub_title = str_replace('\"', '&quot;', $bn_sub_title);
 
 <script type="text/javascript">
 	function check_form() {
-		<?if($row['bn_display']!=1){?>
+		<?php if($row['bn_display']!=1){?>
 			if (bn_form.bn_logo.value == ""){
 				alert("상단로고를 입력하여 주십시오.");
 				bn_form.bn_logo.focus();
@@ -130,7 +130,7 @@ $bn_sub_title = str_replace('\"', '&quot;', $bn_sub_title);
 				bn_form.bn_text_logo.focus();
 				return;
 			}
-		<?}?>
+		<?php }?>
 		if (bn_form.bn_logo.value && !bn_form.bn_logo.value.match(/(.png|.PNG|.jpg|.JPG|.jpeg|.JPEG|.gif|.GIF)/)) { 
 			alert('이미지 파일만 업로드 가능합니다.');
 			bn_form.bn_logo.focus();
@@ -187,6 +187,9 @@ $bn_sub_title = str_replace('\"', '&quot;', $bn_sub_title);
 	}
 </script>
 
-<?
+<?php
 include_once($iw['admin_path']."/_cg_tail.php");
 ?>
+
+
+

@@ -46,18 +46,18 @@ $mb_zip_code = $row["mb_zip_code"];
                             <label for="nick"><?=national_language($iw[language],"a0072","닉네임");?></label>
                             <input type="text" class="form-control" name="mb_nick" placeholder="<?=national_language($iw[language],"a0073","닉네임 - 공백없이 한글,영문,숫자");?>" value="<?=$row['mb_nick']?>" />
                         </div>
-						<?if($iw[language]=="ko"){?>
+						<?php if($iw[language]=="ko"){?>
 							<label>휴대폰번호</label>
 							<div class="row form-group">
 								<div class="col-sm-2">
 									<label class="sr-only" for="mb_tel_1">통신사번호</label>
 									<select name="mb_tel_1" class="form-control">
-										<option value="010" <?if($mb_tel[0] == "010"){?>selected<?}?>>010</option>
-										<option value="011" <?if($mb_tel[0] == "011"){?>selected<?}?>>011</option>
-										<option value="016" <?if($mb_tel[0] == "016"){?>selected<?}?>>016</option>
-										<option value="017" <?if($mb_tel[0] == "017"){?>selected<?}?>>017</option>
-										<option value="018" <?if($mb_tel[0] == "018"){?>selected<?}?>>018</option>
-										<option value="019" <?if($mb_tel[0] == "019"){?>selected<?}?>>019</option>
+										<option value="010" <?php if{?>selected<?php }?>>010</option>
+										<option value="011" <?php if{?>selected<?php }?>>011</option>
+										<option value="016" <?php if{?>selected<?php }?>>016</option>
+										<option value="017" <?php if{?>selected<?php }?>>017</option>
+										<option value="018" <?php if{?>selected<?php }?>>018</option>
+										<option value="019" <?php if{?>selected<?php }?>>019</option>
 									</select>
 								</div>
 								<div class="col-sm-2">
@@ -87,7 +87,7 @@ $mb_zip_code = $row["mb_zip_code"];
 								<label class="sr-only" for="mb_address_sub">상세주소</label>
 								<input type="text" class="form-control" name="mb_address_sub" id="mb_address_sub" placeholder="상세주소" value="<?=$row['mb_address_sub']?>" />
 							</div>
-						<?}else if($iw[language]=="en"){?>
+						<?php }else if($iw[language]=="en"){?>
 							<div class="form-group">
 								<label for="id_name">Address Line1</label>
 								<input type="text" class="form-control" name="mb_address" placeholder="Street address, P.O. box, company name, c/o" value="<?=$row['mb_address']?>" />
@@ -111,14 +111,14 @@ $mb_zip_code = $row["mb_zip_code"];
 								<label for="id_name">Country</label>
 								<select name="mb_address_country" class="form-control">
 									<option value="">--</option>
-								<?
+								<?php
 									$sql2 = "select * from $iw[country_table] order by ct_no asc";
 									$result2 = sql_query($sql2);
 
 									while($row2 = @sql_fetch_array($result2)){
 								?>
-									<option value="<?=$row2["ct_code"];?>" <?if($row['mb_address_country']==$row2["ct_code"]){?>selected<?}?>><?=$row2["ct_name"];?></option>
-								<?}?>
+									<option value="<?=$row2["ct_code"];?>" <?php if{?>selected<?php }?>><?=$row2["ct_name"];?></option>
+								<?php }?>
 								</select>
 							</div>
 
@@ -130,7 +130,7 @@ $mb_zip_code = $row["mb_zip_code"];
 								<label for="id_name">Phone Number</label>
 								<input type="text" class="form-control" name="mb_tel" value="<?=$row['mb_tel']?>" />
 							</div>
-						<?}?>
+						<?php }?>
 						<div class="form-group">
                             <label for="password"><?=national_language($iw[language],"a0113","기존 비밀번호 확인");?></label>
                             <input type="password" class="form-control" name="confirm_password" placeholder="" />
@@ -139,7 +139,7 @@ $mb_zip_code = $row["mb_zip_code"];
                         <button type="button" class="btn btn-theme" onclick="javascript:check_form();"><?=national_language($iw[language],"a0259","저장");?></button>
                         <?php if ($iw[level] == "member") {?>
                         <button type="button" class="btn btn-danger pull-right" onclick="javascript:check_withdraw();">회원탈퇴</button>
-						<?}?>
+						<?php }?>
                     </form>
 			    </div>
 			</div>
@@ -169,7 +169,7 @@ $mb_zip_code = $row["mb_zip_code"];
 			mb_form.mb_nick.focus();
 			return;
 		}
-	<?if($iw[language]=="ko"){?>
+	<?php if($iw[language]=="ko"){?>
 		if (mb_form.mb_tel_2.value == ""){
 			alert("휴대폰 번호를 입력하여 주십시오.");
 			mb_form.mb_tel_2.focus();
@@ -190,7 +190,7 @@ $mb_zip_code = $row["mb_zip_code"];
 			mb_form.mb_address_sub.focus();
 			return;
 		}
-	<?}else if($iw[language]=="en"){?>
+	<?php }else if($iw[language]=="en"){?>
 		if (mb_form.mb_address.value == ""){
 			alert("<?=national_language($iw[language],'a0090','주소를 입력하여 주십시오.');?>");
 			mb_form.mb_address.focus();
@@ -226,7 +226,7 @@ $mb_zip_code = $row["mb_zip_code"];
 			mb_form.mb_tel.focus();
 			return;
 		}
-	<?}?>
+	<?php }?>
 		if (mb_form.confirm_password.value == ""){
 			alert("<?=national_language($iw[language],'a0114','기존 비밀번호를 입력하여 주십시오.');?>");
 			mb_form.confirm_password.focus();
@@ -288,6 +288,9 @@ $mb_zip_code = $row["mb_zip_code"];
     }
 </script>
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

@@ -40,7 +40,8 @@ $st_navigation = $row["st_navigation"];
 $st_slide_size = $row["st_slide_size"];
 $st_sns_share = $row["st_sns_share"];
 ?>
-<script language="Javascript" src="/include/ckeditor/ckeditor.js"></script>
+<script src="/include/ckeditor/ckeditor5.js"></script>
+<script src="/include/ckeditor/ckeditor5-adapter.js"></script>
 
 <div class="breadcrumbs" id="breadcrumbs">
 	<ul class="breadcrumb">
@@ -105,7 +106,7 @@ $st_sns_share = $row["st_sns_share"];
 						</div>
 					</div>
 
-					<?if($st_top_img){?>
+					<?php if($st_top_img){?>
 					<div class="form-group">
 						<label class="col-sm-1 control-label">등록된 이미지</label>
 						<div class="col-sm-11">
@@ -116,16 +117,16 @@ $st_sns_share = $row["st_sns_share"];
 							</p>
 						</div>
 					</div>
-					<?}?>
+					<?php }?>
 					<div class="space-4"></div>
 
 					<div class="form-group">
 						<label class="col-sm-1 control-label">상단로고 정렬</label>
 						<div class="col-sm-11">
 							<select name="st_top_align">
-								<option value="left" <?if($st_top_align=="left"){?>selected<?}?>>왼쪽</option>
-								<option value="center" <?if($st_top_align=="center"){?>selected<?}?>>가운데</option>
-								<option value="right" <?if($st_top_align=="right"){?>selected<?}?>>오른쪽</option>
+								<option value="left" <?php if{?>selected<?php }?>>왼쪽</option>
+								<option value="center" <?php if{?>selected<?php }?>>가운데</option>
+								<option value="right" <?php if{?>selected<?php }?>>오른쪽</option>
 							</select>
 						</div>
 					</div>
@@ -139,7 +140,7 @@ $st_sns_share = $row["st_sns_share"];
 						</div>
 					</div>
 
-					<?if($st_favicon){?>
+					<?php if($st_favicon){?>
 					<div class="form-group">
 						<label class="col-sm-1 control-label">등록된 파비콘</label>
 						<div class="col-sm-11">
@@ -148,26 +149,24 @@ $st_sns_share = $row["st_sns_share"];
 							</p>
 						</div>
 					</div>
-					<?}?>
+					<?php }?>
 
 					<div class="space-4"></div>
 
 					<div class="form-group">
 						<label class="col-sm-1 control-label">배경 이미지</label>
 						<div class="col-sm-11">
-							<?
+							<?php
 								for ($i=0; $i<5; $i++) {
 							?>
 								<input type="hidden" name="st_background_before[]" value="<?=$st_background[$i]?>">
 								<input type="file" class="col-xs-12 col-sm-8" name="st_background[]">
-								<?if($st_background[$i]){?>
+								<?php if($st_background[$i]){?>
 								<span class="help-block col-xs-12">
 									<a href="<?=$upload_path?>/<?=$st_background[$i]?>" target="_blank"><?=$st_background[$i]?></a>
 									<input type="checkbox" name="st_background_del[<?=$i?>]" value="del" /> 삭제</td>
 								</span>
-								<?}?>
-							<?
-								}
+								<?php } ?><?php }
 							?>
 						</div>
 					</div>
@@ -177,8 +176,8 @@ $st_sns_share = $row["st_sns_share"];
 						<label class="col-sm-1 control-label">메뉴 위치</label>
 						<div class="col-sm-11">
 							<select name="st_menu_position">
-								<option value="0" <?if($st_menu_position=="0"){?>selected<?}?>>로고 하단</option>
-								<option value="1" <?if($st_menu_position=="1"){?>selected<?}?>>로고 우측</option>
+								<option value="0" <?php if{?>selected<?php }?>>로고 하단</option>
+								<option value="1" <?php if{?>selected<?php }?>>로고 우측</option>
 							</select>
 						</div>
 					</div>
@@ -188,8 +187,8 @@ $st_sns_share = $row["st_sns_share"];
 						<label class="col-sm-1 control-label">모바일 메뉴 스타일</label>
 						<div class="col-sm-11">
 							<select name="st_menu_mobile">
-								<option value="1" <?if($st_menu_mobile=="1"){?>selected<?}?>>고정</option>
-								<option value="0" <?if($st_menu_mobile=="0"){?>selected<?}?>>가변</option>
+								<option value="1" <?php if{?>selected<?php }?>>고정</option>
+								<option value="0" <?php if{?>selected<?php }?>>가변</option>
 							</select>
 						</div>
 					</div>
@@ -199,14 +198,14 @@ $st_sns_share = $row["st_sns_share"];
 						<label class="col-sm-1 control-label">네비게이션</label>
 						<div class="col-sm-11">
 							<select name="st_navigation">
-								<option value="1" <?if($st_navigation=="1"){?>selected<?}?>>노출</option>
-								<option value="0" <?if($st_navigation=="0"){?>selected<?}?>>숨김</option>
+								<option value="1" <?php if{?>selected<?php }?>>노출</option>
+								<option value="0" <?php if{?>selected<?php }?>>숨김</option>
 							</select>
 						</div>
 					</div>
 					<div class="space-4"></div>
 
-				<?if($iw[mcb]==1){?>
+				<?php if($iw[mcb]==1){?>
 					<div class="form-group">
 						<label class="col-sm-1 control-label">네비게이션(게시판)</label>
 						<div class="col-sm-11">
@@ -214,8 +213,7 @@ $st_sns_share = $row["st_sns_share"];
 						</div>
 					</div>
 					<div class="space-4"></div>
-				<?}?>
-				<?if($iw[publishing]==1){?>
+				<?php } ?><?php if($iw[publishing]==1){?>
 					<div class="form-group">
 						<label class="col-sm-1 control-label">네비게이션(출판도서)</label>
 						<div class="col-sm-11">
@@ -223,8 +221,7 @@ $st_sns_share = $row["st_sns_share"];
 						</div>
 					</div>
 					<div class="space-4"></div>
-				<?}?>
-				<?if($iw[shop]==1){?>
+				<?php } ?><?php if($iw[shop]==1){?>
 					<div class="form-group">
 						<label class="col-sm-1 control-label">네비게이션(쇼핑)</label>
 						<div class="col-sm-11">
@@ -232,8 +229,7 @@ $st_sns_share = $row["st_sns_share"];
 						</div>
 					</div>
 					<div class="space-4"></div>
-				<?}?>
-				<?if($iw[doc]==1){?>
+				<?php } ?><?php if($iw[doc]==1){?>
 					<div class="form-group">
 						<label class="col-sm-1 control-label">네비게이션(컨텐츠)</label>
 						<div class="col-sm-11">
@@ -241,8 +237,7 @@ $st_sns_share = $row["st_sns_share"];
 						</div>
 					</div>
 					<div class="space-4"></div>
-				<?}?>
-				<?if($iw[book]==1){?>
+				<?php } ?><?php if($iw[book]==1){?>
 					<div class="form-group">
 						<label class="col-sm-1 control-label">네비게이션(이북)</label>
 						<div class="col-sm-11">
@@ -250,14 +245,14 @@ $st_sns_share = $row["st_sns_share"];
 						</div>
 					</div>
 					<div class="space-4"></div>
-				<?}?>
+				<?php }?>
 					
 					<div class="form-group">
 						<label class="col-sm-1 control-label">소셜공유 버튼</label>
 						<div class="col-sm-11">
 							<select name="st_sns_share">
-								<option value="0" <?if($st_sns_share=="0"){?>selected<?}?>>기본(고유색상)</option>
-								<option value="1" <?if($st_sns_share=="1"){?>selected<?}?>>테마색상</option>
+								<option value="0" <?php if{?>selected<?php }?>>기본(고유색상)</option>
+								<option value="1" <?php if{?>selected<?php }?>>테마색상</option>
 							</select>
 						</div>
 					</div>
@@ -267,8 +262,8 @@ $st_sns_share = $row["st_sns_share"];
 						<label class="col-sm-1 control-label">슬라이드 넓이</label>
 						<div class="col-sm-11">
 							<select name="st_slide_size">
-								<option value="0" <?if($st_slide_size=="0"){?>selected<?}?>>양쪽 맞춤</option>
-								<option value="1" <?if($st_slide_size=="1"){?>selected<?}?>>양쪽 채움(와이드)</option>
+								<option value="0" <?php if{?>selected<?php }?>>양쪽 맞춤</option>
+								<option value="1" <?php if{?>selected<?php }?>>양쪽 채움(와이드)</option>
 							</select>
 						</div>
 					</div>
@@ -278,8 +273,8 @@ $st_sns_share = $row["st_sns_share"];
 						<label class="col-sm-1 control-label">시작페이지</label>
 						<div class="col-sm-11">
 							<select name="hm_code">
-								<option value="main" <?if($hm_code_check == "main"){?>selected<?}?>>메인 랜딩(기본)</option>
-								<?
+								<option value="main" <?php if{?>selected<?php }?>>메인 랜딩(기본)</option>
+								<?php
 									$sql1 = "select * from $iw[home_menu_table] where ep_code = '$iw[store]' and gp_code = '$iw[group]' and hm_deep = 1 order by hm_order asc,hm_no asc";
 									$result1 = sql_query($sql1);
 									while($row1 = @sql_fetch_array($result1)){
@@ -289,8 +284,8 @@ $st_sns_share = $row["st_sns_share"];
 										
 										if($state_sort != "link" && $state_sort != "close" && $state_sort != "main"){
 								?>
-									<option value="<?=$hm_code?>" <?if($hm_code == $hm_code_check){?>selected<?}?>><?=$hm_name1?></option>
-									<?
+									<option value="<?=$hm_code?>" <?php if{?>selected<?php }?>><?=$hm_name1?></option>
+									<?php
 										}
 										$sql2 = "select * from $iw[home_menu_table] where hm_upper_code = '$hm_code' and hm_deep = 2 and ep_code = '$iw[store]' and gp_code = '$iw[group]' order by hm_order asc,hm_no asc";
 										$result2 = sql_query($sql2);
@@ -302,8 +297,8 @@ $st_sns_share = $row["st_sns_share"];
 											
 											if($state_sort != "link" && $state_sort != "close" && $state_sort != "main"){
 									?>
-										<option value="<?=$hm_code?>" <?if($hm_code == $hm_code_check){?>selected<?}?>><?=$hm_name1?> > <?=$hm_name2?></option>
-										<?
+										<option value="<?=$hm_code?>" <?php if{?>selected<?php }?>><?=$hm_name1?> > <?=$hm_name2?></option>
+										<?php
 											}
 											$sql3 = "select * from $iw[home_menu_table] where hm_upper_code = '$hm_code' and hm_deep = 3 and ep_code = '$iw[store]' and gp_code = '$iw[group]' order by hm_order asc,hm_no asc";
 											$result3 = sql_query($sql3);
@@ -315,8 +310,8 @@ $st_sns_share = $row["st_sns_share"];
 												
 												if($state_sort != "link" && $state_sort != "close" && $state_sort != "main"){
 										?>
-											<option value="<?=$hm_code?>" <?if($hm_code == $hm_code_check){?>selected<?}?>><?=$hm_name1?> > <?=$hm_name2?> > <?=$hm_name3?></option>
-											<?
+											<option value="<?=$hm_code?>" <?php if{?>selected<?php }?>><?=$hm_name1?> > <?=$hm_name2?> > <?=$hm_name3?></option>
+											<?php
 												}
 												$sql4 = "select * from $iw[home_menu_table] where hm_upper_code = '$hm_code' and hm_deep = 4 and ep_code = '$iw[store]' and gp_code = '$iw[group]' order by hm_order asc,hm_no asc";
 												$result4 = sql_query($sql4);
@@ -328,10 +323,8 @@ $st_sns_share = $row["st_sns_share"];
 													
 													if($state_sort != "link" && $state_sort != "close" && $state_sort != "main"){
 											?>
-												<option value="<?=$hm_code?>" <?if($hm_code == $hm_code_check){?>selected<?}?>><?=$hm_name1?> > <?=$hm_name2?> > <?=$hm_name3?> > <?=$hm_name4?></option>
-											<?
-													}
-												}
+												<option value="<?=$hm_code?>" <?php if{?>selected<?php }?>><?=$hm_name1?> > <?=$hm_name2?> > <?=$hm_name3?> > <?=$hm_name4?></option>
+											<?php } ?><?php }
 											}
 										}
 									}
@@ -339,7 +332,7 @@ $st_sns_share = $row["st_sns_share"];
 							</select>
 						</div>
 					</div>
-				<?
+				<?php
 					if($iw[group] == "all"){
 						$sql = "select ep_footer,ep_copy_off,ep_terms_display from $iw[enterprise_table] where ep_code = '$iw[store]' and mb_code = '$iw[member]'";
 						$row = sql_fetch($sql);
@@ -352,8 +345,8 @@ $st_sns_share = $row["st_sns_share"];
 						<label class="col-sm-1 control-label">복제 방지</label>
 						<div class="col-sm-11">
 							<select name="ep_copy_off">
-								<option value="0" <?if($ep_copy_off=="0"){?>selected<?}?>>OFF</option>
-								<option value="1" <?if($ep_copy_off=="1"){?>selected<?}?>>ON</option>
+								<option value="0" <?php if{?>selected<?php }?>>OFF</option>
+								<option value="1" <?php if{?>selected<?php }?>>ON</option>
 							</select>
 							<span class="help-block col-xs-12">마우스 드래그, 마우스 오른쪽, ctrl + c 키 방지</span>
 						</div>
@@ -372,12 +365,12 @@ $st_sns_share = $row["st_sns_share"];
 						<label class="col-sm-1 control-label">이용약관 자동표시</label>
 						<div class="col-sm-11">
 							<select name="ep_terms_display">
-								<option value="0" <?if($ep_terms_display=="0"){?>selected<?}?>>OFF</option>
-								<option value="1" <?if($ep_terms_display=="1"){?>selected<?}?>>ON</option>
+								<option value="0" <?php if{?>selected<?php }?>>OFF</option>
+								<option value="1" <?php if{?>selected<?php }?>>ON</option>
 							</select>
 						</div>
 					</div>
-				<?}?>
+				<?php }?>
 
 					<div class="clearfix form-actions">
 						<div class="col-md-offset-3 col-md-9">
@@ -430,6 +423,9 @@ $st_sns_share = $row["st_sns_share"];
 	}
 </script>
  
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

@@ -185,19 +185,13 @@ if ($num_tables == 0) {
                     <td class="right"><?php echo __('Creation') . ': '; ?></td>
                     <td class="right"><?php echo PMA_Util::localisedDate(strtotime($sts_data['Create_time'])); ?></td>
                 </tr>
-                <?php
-            }
-
-            if (! empty($sts_data['Update_time'])) {
+                <?php } ?><?php if(! empty($sts_data['Update_time'])) {
                 ?>
                 <tr>
                     <td class="right"><?php echo __('Last update') . ': '; ?></td>
                     <td class="right"><?php echo PMA_Util::localisedDate(strtotime($sts_data['Update_time'])); ?></td>
                 </tr>
-                <?php
-            }
-
-            if (! empty($sts_data['Check_time'])) {
+                <?php } ?><?php if(! empty($sts_data['Check_time'])) {
                 ?>
                 <tr>
                     <td class="right"><?php echo __('Last check') . ': '; ?></td>
@@ -250,3 +244,7 @@ echo PMA_Util::getButton();
 
 echo "<div id='PMA_disable_floating_menubar'></div>\n";
 ?>
+
+
+
+

@@ -1,4 +1,4 @@
-<?
+<?php
 if (!defined("_INFOWAY_")) exit; // 개별 페이지 접근 불가
 
 $ep_row = sql_fetch("select * from $iw[enterprise_table] where ep_code = '$iw[store]'");
@@ -8,20 +8,18 @@ $ep_jointype = $ep_row["ep_jointype"];
 		<div class="row">
 			<div class="col-sm-12">
 				<div class="btn-list text-center btn-toolbar">
-				<?if($iw['level'] != "guest"){?>
+				<?php if($iw['level'] != "guest"){?>
 					<a class="btn btn-theme btn-sm" href="<?=$iw['m_path']?>/all_logout.php?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>"><?=national_language($iw[language],"a0014","로그아웃");?></a>
 					<a class="btn btn-theme btn-sm" href="<?=$iw['m_path']?>/all_member_edit.php?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>"><?=national_language($iw[language],"a0015","회원정보");?></a>
-				<?}else{?>
+				<?php }else{?>
 					<a class="btn btn-theme btn-sm" href="<?=$iw['m_path']?>/all_login.php?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&re_url=<?=$iw[re_url]?>"><?=national_language($iw[language],"a0016","로그인");?></a>
-					<?if ($ep_jointype != 0) {?>
+					<?php if($ep_jointype != 0) {?>
 					<a class="btn btn-theme btn-sm" href="<?=$iw['m_path']?>/all_join.php?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>"><?=national_language($iw[language],"a0017","회원가입");?></a>
-					<?}?>
-				<?}?>
-				<?if($iw['gp_level'] == "gp_guest" && $iw['group'] != "all"){?>
+					<?php } ?><?php } if($iw['gp_level'] == "gp_guest" && $iw['group'] != "all"){?>
 					<a class="btn btn-theme btn-sm" href="<?=$iw['m_path']?>/all_group_join.php?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>"><?=national_language($iw[language],"a0019","그룹가입");?></a>
-				<?}else if($iw['level'] != "super" && $iw['level'] != "guest"){?>
+				<?php }else if($iw['level'] != "super" && $iw['level'] != "guest"){?>
 					<a class="btn btn-theme btn-sm" href="<?=$iw['admin_path']?>/main.php?type=dashboard&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>"><?=national_language($iw[language],"a0018","관리");?></a>
-				<?}?>
+				<?php }?>
 					<a class="btn btn-theme btn-sm" href="<?=$iw['m_path']?>/all_notice_list.php?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>"><?=national_language($iw[language],"a0012","공지사항");?></a>
 				</div>
 			</div>
@@ -29,7 +27,7 @@ $ep_jointype = $ep_row["ep_jointype"];
 
 		<div class="box br-footer">
 			<ul class="list-inline">
-				<?
+				<?php
 					$row = sql_fetch(" select ep_footer,ep_terms_display from $iw[enterprise_table] where ep_code = '$iw[store]'");
 					$ep_footer = stripslashes($row["ep_footer"]);
 					$ep_terms_display = stripslashes($row["ep_terms_display"]);
@@ -40,9 +38,9 @@ $ep_jointype = $ep_row["ep_jointype"];
 			<ul class="list-inline">
 				<li><a href="<?=$iw['m_path']?>/all_policy_agreement.php?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>"><?=national_language($iw[language],"a0027","이용약관");?></a></li>
 				<li><a href="<?=$iw['m_path']?>/all_policy_private.php?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>"><?=national_language($iw[language],"a0028","개인정보 처리방침");?></a></li>
-				<?if($iw[language]=="ko"){?>
+				<?php if($iw[language]=="ko"){?>
 				<li><a href="<?=$iw['m_path']?>/all_policy_email.php?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">이메일주소 무단수집거부</a></li>
-				<?}?>
+				<?php }?>
 				<li><a href="http://www.wizwindigital.com" target="_blank">© WIZWINDIGITAL Corp.</a></li>
 			</ul>
 			<?php }?>
@@ -60,13 +58,11 @@ $ep_jointype = $ep_row["ep_jointype"];
 	<script type="text/javascript" src="<?=$iw[design_path]?>/js/jquery.scrollbox.js"></script>
 	<script type="text/javascript" src="<?=$iw[design_path]?>/js/ekko-lightbox.min.js"></script>
     <script type="text/javascript" src="<?=$iw[design_path]?>/js/main_site.js"></script>
-	<?if($st_menu_position==0){?>
+	<?php if($st_menu_position==0){?>
 		<script type="text/javascript" src="<?=$iw[design_path]?>/js/search-stick.js?v=20180508"></script>
-	<?}else{?>
+	<?php }else{?>
 		<script type="text/javascript" src="<?=$iw[design_path]?>/js/search-stick-2.js?v=202305231"></script>
-	<?}?>
-	
-	<?if($backstretch_item){?>
+	<?php } ?><?php if($backstretch_item){?>
 		<script language="JavaScript">
 			$.backstretch([
 				<?=$backstretch_item;?>
@@ -74,7 +70,7 @@ $ep_jointype = $ep_row["ep_jointype"];
 				duration: 30000, fade: 750
 			});
 		</script>
-	<?}?>
+	<?php }?>
 	<script language="JavaScript">
 		function copy_trackback() {
 			var trb = document.location.href;
@@ -101,6 +97,9 @@ $ep_jointype = $ep_row["ep_jointype"];
 			cbpHorizontalMenu.init();
 		});
 	</script>
-<?
+<?php
 include_once("_tail_sub.php");
 ?>
+
+
+

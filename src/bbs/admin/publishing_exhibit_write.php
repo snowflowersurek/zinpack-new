@@ -144,6 +144,9 @@ function check_form() {
 }
 </script>
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

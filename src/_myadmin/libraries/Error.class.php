@@ -411,3 +411,7 @@ class PMA_Error extends PMA_Message
     }
 }
 ?>
+
+
+
+

@@ -63,7 +63,7 @@ $REQURL		= $protocol.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
 	<ul class="breadcrumb">
 		<li>
 			<i class='fa fa-shopping-cart'></i> 사이트 관리
-			<?
+			<?php
 				$category_title = "사이트 관리요금";
 			?>
 		</li>
@@ -145,6 +145,9 @@ $REQURL		= $protocol.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
 		</div>
 	</div>
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

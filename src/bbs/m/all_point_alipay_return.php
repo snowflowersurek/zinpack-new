@@ -5,3 +5,6 @@ if ($iw[level]=="guest") alert(national_language($iw[language],"a0003","로그�
 alert(national_language($iw[language],"a0264","포인트가 충전되었습니다."),"$iw[m_path]/all_point_list.php?type=$iw[type]&ep=$iw[store]&gp=$iw[group]");
 ?>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+
+

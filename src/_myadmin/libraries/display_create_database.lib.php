@@ -47,3 +47,7 @@ if ($is_create_db_priv) {
                  . '' . __('No Privileges') .'</span>';
 } // end create db form or message
 ?>
+
+
+
+

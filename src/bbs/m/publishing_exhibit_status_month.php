@@ -39,7 +39,7 @@ $keyword = $_GET["keyword"];
 		<div class="breadcrumb-box input-group">
 			<ol class="breadcrumb ">
 				<li>
-				<?
+				<?php
 					$hm_code = $menu;
 					$hm_row = sql_fetch("select * from $iw[home_menu_table] where ep_code = '$iw[store]' and gp_code='$iw[group]' and hm_code = '$hm_code'");
 					echo stripslashes($hm_row[hm_name])
@@ -135,7 +135,7 @@ $keyword = $_GET["keyword"];
 					</tr>
 				</thead>
 				<tbody>
-				<?
+				<?php
 				if ($search_year <= $current_year) {
 					$search = "";
 					
@@ -164,7 +164,7 @@ $keyword = $_GET["keyword"];
 						ORDER BY E.picture_name ASC
 					";
 					$result = sql_query($sql);
-					$total_rows = mysql_num_rows($result);
+					$total_rows = mysqli_num_rows($result);
 					
 					$page_rows = 10;
 					$start_row = ($page-1) * $page_rows;
@@ -224,7 +224,7 @@ $keyword = $_GET["keyword"];
 						<td data-th="액자수(점)"><?=$how_many?></td>
 						<td data-th="액자크기"><?=$picture_size?></td>
 						<td data-th="전시상태">
-							<?
+							<?php
 							if($strOrgan == ""){
 								if ($search_year > $current_year || ($search_year == $current_year && $search_month >= $current_month)) {
 									echo "<a href='publishing_exhibit_application.php?ep=$iw[store]&gp=$iw[group]&idx=$picture_idx&name=$picture_name&month=$search_month' class='btn btn-theme'>신청하기</a>";
@@ -237,7 +237,7 @@ $keyword = $_GET["keyword"];
 							?>
 						</td>
 					</tr>
-				<?
+				<?php
 					$i++;
 					}
 					
@@ -254,7 +254,7 @@ $keyword = $_GET["keyword"];
 		<div class="clearfix"></div>
 		<div class="pagContainer text-center">
 			<ul class="pagination">
-				<?
+				<?php
 					$max_page_cnt = 10;
 					
 					if ($total_page!=0) {
@@ -297,6 +297,9 @@ $keyword = $_GET["keyword"];
 	</div> <!-- /.row -->
 </div> <!-- /.content -->
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

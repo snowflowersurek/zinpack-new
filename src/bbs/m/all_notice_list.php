@@ -27,7 +27,7 @@ if (!$db_conn) {
 				</tr>
 			</thead>
 			<tbody>
-				<?
+				<?php
                     // 중요 공지 조회
 					$sql_important = "select * from {$iw['notice_table']} where ep_code = ? and gp_code = ? and nt_display = 1 and nt_type = 1 order by nt_no desc";
                     $stmt_important = mysqli_prepare($db_conn, $sql_important);
@@ -46,7 +46,7 @@ if (!$db_conn) {
 						<td data-th="<?=national_language($iw[language],"a0126","제목");?>"><a href="<?=$iw['m_path']?>/all_notice_view.php?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&idx=<?=$nt_no?>"><?=$nt_subject?></a></td>
 						<td data-th="<?=national_language($iw[language],"a0127","날짜");?>"><?=$nt_datetime?></td>
 					</tr>
-				<?
+				<?php
 					}
                     mysqli_stmt_close($stmt_important);
 
@@ -63,7 +63,7 @@ if (!$db_conn) {
 					$max_line = 10;
 					$max_page = 5;
 						
-					$page = $_GET["page"];
+					$page = $_GET["page"] ?? 1;
 					if(!$page) $page=1;
 					$start_line = ($page-1)*$max_line;
 					$total_page = ceil($total_line/$max_line);
@@ -95,7 +95,7 @@ if (!$db_conn) {
 						<td data-th="<?=national_language($iw[language],"a0126","제목");?>"><a href="<?=$iw['m_path']?>/all_notice_view.php?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&idx=<?=$nt_no?>"><?=$nt_subject?></a></td>
 						<td data-th="<?=national_language($iw[language],"a0127","날짜");?>"><?=$nt_datetime?></td>
 					</tr>
-				<?
+				<?php
 					$i++;
 					}
                     mysqli_stmt_close($stmt);
@@ -107,7 +107,7 @@ if (!$db_conn) {
 	</div> <!-- /.box -->
 	<div class="pagContainer text-center">
 		<ul class="pagination">
-			<?
+			<?php
 				if($total_page!=0){
 					if($page>$total_page) { $page=$total_page; }
 					$start_page = ((ceil($page/$max_page)-1)*$max_page)+1;
@@ -139,6 +139,9 @@ if (!$db_conn) {
 	</div>
 </div>
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

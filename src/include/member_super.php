@@ -20,4 +20,4 @@ if (!empty($cookie_member)) {
 		}
 	}
 }
-?>
+

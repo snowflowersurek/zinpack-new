@@ -48,7 +48,7 @@ include_once("_head.php");
 									<div class="col-sm-6">
 										선택 회원을
 										<select onchange="javascript:level_change(this.value);">
-											<?
+											<?php
 												$level_array = array(); 
 												$sql = "select * from $iw[group_level_table] where ep_code = '$iw[store]' and gp_code = '$iw[group]' and gl_display=1 order by gl_no asc";
 												$result = sql_query($sql);
@@ -56,7 +56,7 @@ include_once("_head.php");
 													array_push($level_array, $row["gl_name"]);
 											?>
 												<option value="<?=$row["gl_level"]?>"><?=$row["gl_name"]?></option>
-											<?
+											<?php
 												}
 											?>
 										</select>(으)로
@@ -66,7 +66,7 @@ include_once("_head.php");
 									</div>
 									<div class="col-sm-6">
 										<div class="dataTable-option-right">
-											<?
+											<?php
 												if($_POST['search']){
 													$search = $_POST['search'];
 													$searchs = $_POST['searchs'];
@@ -80,7 +80,7 @@ include_once("_head.php");
 											?>
 											<form name="search_form" id="search_form" action="<?=$PHP_SELF?>?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>" method="post">
 											<label>검색: <select name="search">
-												<option value="a" <?if($search == "a"){?>selected="selected"<?}?>>회원코드</option>
+												<option value="a" <?php if{?>selected="selected"<?php }?>>회원코드</option>
 											</select></label><input type="text" name="searchs" value="<?=$searchs?>">
 											</form>
 										</div>
@@ -101,7 +101,7 @@ include_once("_head.php");
 											</tr>
 										</thead>
 										<tbody>
-										<?	
+										<?php
 											$sql = "select * from $iw[group_member_table] where ep_code = '$iw[store]' and gp_code = '$iw[group]' and gm_display = 1";
 											$result = sql_query($sql);
 											$total_line = mysql_num_rows($result);
@@ -148,12 +148,12 @@ include_once("_head.php");
 												<td data-title="이메일"><?=$mb_mail?></td>
 												<td data-title="가입일"><?=$gm_datetime?></td>
 												<td data-title="상태">
-													<?if($gm_display==1){?>
+													<?php if($gm_display==1){?>
 														<span class="label label-sm label-success">회원</span>
-													<?}?>
+													<?php }?>
 												</td>
 											</tr>
-										<?
+										<?php
 											$i++;
 											}
 											if($i==0) echo "<tr><td colspan='7' align='center'>가입된 회원이 없습니다.</td></tr>";
@@ -171,7 +171,7 @@ include_once("_head.php");
 									<div class="col-sm-6">
 										<div class="dataTable-option-right">
 											<ul class="pagination">
-											<?
+											<?php
 												if($total_page!=0){
 													if($page>$total_page) { $page=$total_page; }
 													$start_page = ((ceil($page/$max_page)-1)*$max_page)+1;
@@ -228,6 +228,9 @@ include_once("_head.php");
 		return;
 	}
 </script>
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

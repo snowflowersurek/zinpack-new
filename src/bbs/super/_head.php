@@ -174,10 +174,10 @@ body {
 						<span class="user-info">
 							<small>Welcome,</small>
 							<?php
-								$mb_name = '';
-								if (isset($iw['member'])) {
+								$mb_name = 'Super Admin';
+								if (isset($iw['member']) && $iw['member']) {
 									$row = sql_fetch("select mb_name from {$iw['member_table']} where ep_code = '{$iw['store']}' and mb_code = '{$iw['member']}'");
-									$mb_name = $row["mb_name"] ?? '';
+									$mb_name = $row["mb_name"] ?? 'Super Admin';
 								}
 								echo $mb_name;
 							?>
@@ -395,24 +395,6 @@ body {
 							</span>
 						</a>
 					</li>
-					<li class="w-100">
-						<a href="<?php echo $iw['super_path']; ?>/pay_paypal_list.php?type=pay&ep=<?php echo $iw['store']; ?>&gp=<?php echo $iw['group']; ?>"
-						   class="d-flex align-items-center w-100 text-decoration-none px-4 py-2">
-							<span class="d-flex align-items-center">
-								<i class="fas fa-caret-right me-2"></i>
-								<span class="menu-text">PAYPAL결제내역</span>
-							</span>
-						</a>
-					</li>
-					<li class="w-100">
-						<a href="<?php echo $iw['super_path']; ?>/pay_alipay_list.php?type=pay&ep=<?php echo $iw['store']; ?>&gp=<?php echo $iw['group']; ?>"
-						   class="d-flex align-items-center w-100 text-decoration-none px-4 py-2">
-							<span class="d-flex align-items-center">
-								<i class="fas fa-caret-right me-2"></i>
-								<span class="menu-text">ALIPAY결제내역</span>
-							</span>
-						</a>
-					</li>
 				</ul>
 			</li>
 
@@ -462,3 +444,6 @@ body {
 	
 	<div class="main-content">
 		<!-- <div class="main-container-inner"> -->
+
+
+

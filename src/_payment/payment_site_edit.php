@@ -58,8 +58,8 @@ $ps_display = $row["ps_display"];
 						<label class="col-sm-1 control-label">사용설정</label>
 						<div class="col-sm-11">
 							<select name="ps_display">
-								<option value="1" <?if($ps_display == "1"){?>selected<?}?>>사용</option>
-								<option value="0" <?if($ps_display == "0"){?>selected<?}?>>정지</option>
+								<option value="1" <?php if{?>selected<?php }?>>사용</option>
+								<option value="0" <?php if{?>selected<?php }?>>정지</option>
 							</select>
 						</div>
 					</div>
@@ -101,6 +101,9 @@ $ps_display = $row["ps_display"];
 	}
 </script>
  
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

@@ -21,3 +21,6 @@ PRIMARY KEY (bb_no)
 
 mysql_query($sql) or die(mysql_error());
 ?>
+
+
+

@@ -9,7 +9,7 @@ if (!$db_conn) {
 ?>
 <meta http-equiv="content-type" content="text/html; charset=<?=$iw['charset']?>" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-<?
+<?php
 $userName = trim($_POST['userName']);
 $strGubun = trim($_POST['strGubun']);
 $strGubunTxt = trim($_POST['strGubunTxt']);
@@ -82,3 +82,6 @@ mysqli_stmt_close($stmt);
 
 alert("작가강연회 신청이 완료되었습니다.","{$iw['m_path']}/publishing_lecture_status.php?ep={$iw['store']}&gp={$iw['group']}");
 ?>
+
+
+

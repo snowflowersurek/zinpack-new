@@ -1,4 +1,4 @@
-<?
+<?php
 if (!defined("_INFOWAY_")) exit; // 개별 페이지 접근 불가
 include_once("_head_sub.php");
 
@@ -18,3 +18,6 @@ if ($iw[level] != "admin" && $iw[gp_level] != "gp_admin" && $book_seller != "YES
 ?>
 
 <div class="container"><!-- Main container -->
+
+
+

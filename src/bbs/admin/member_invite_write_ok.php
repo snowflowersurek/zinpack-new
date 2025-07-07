@@ -4,19 +4,19 @@ if ($iw[type] != "group" || $iw[level] != "admin" || $iw[group] != "all") alert(
 ?>
 <meta http-equiv="content-type" content="text/html; charset=<?=$iw['charset']?>" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-<?
-$gi_name_check = trim(mysql_real_escape_string($_POST[gi_name_check]));
-$gi_mail_check = trim(mysql_real_escape_string($_POST[gi_mail_check]));
-$gi_tel_check = trim(mysql_real_escape_string($_POST[gi_tel_check]));
-$gi_name = trim(mysql_real_escape_string($_POST[gi_name]));
-$gi_mail = trim(mysql_real_escape_string($_POST[gi_mail]));
-$gi_tel_1 = trim(mysql_real_escape_string($_POST[gi_tel_1]));
-$gi_tel_2 = trim(mysql_real_escape_string($_POST[gi_tel_2]));
-$gi_tel_3 = trim(mysql_real_escape_string($_POST[gi_tel_3]));
-$gi_message = mysql_real_escape_string($_POST[gi_message]);
-$gi_datetime_end_1 = trim(mysql_real_escape_string($_POST[gi_datetime_end_1]));
-$gi_datetime_end_2 = trim(mysql_real_escape_string($_POST[gi_datetime_end_2]));
-$gi_datetime_end_3 = trim(mysql_real_escape_string($_POST[gi_datetime_end_3]));
+<?php
+$gi_name_check = trim(mysqli_real_escape_string($iw['connect'], $_POST['gi_name_check']));
+$gi_mail_check = trim(mysqli_real_escape_string($iw['connect'], $_POST['gi_mail_check']));
+$gi_tel_check = trim(mysqli_real_escape_string($iw['connect'], $_POST['gi_tel_check']));
+$gi_name = trim(mysqli_real_escape_string($iw['connect'], $_POST['gi_name']));
+$gi_mail = trim(mysqli_real_escape_string($iw['connect'], $_POST['gi_mail']));
+$gi_tel_1 = trim(mysqli_real_escape_string($iw['connect'], $_POST['gi_tel_1']));
+$gi_tel_2 = trim(mysqli_real_escape_string($iw['connect'], $_POST['gi_tel_2']));
+$gi_tel_3 = trim(mysqli_real_escape_string($iw['connect'], $_POST['gi_tel_3']));
+$gi_message = mysqli_real_escape_string($iw['connect'], $_POST['gi_message']);
+$gi_datetime_end_1 = trim(mysqli_real_escape_string($iw['connect'], $_POST['gi_datetime_end_1']));
+$gi_datetime_end_2 = trim(mysqli_real_escape_string($iw['connect'], $_POST['gi_datetime_end_2']));
+$gi_datetime_end_3 = trim(mysqli_real_escape_string($iw['connect'], $_POST['gi_datetime_end_3']));
 
 $gi_tel = $gi_tel_1."-".$gi_tel_2."-".$gi_tel_3;
 
@@ -52,3 +52,6 @@ if ($rowmember[cnt]) {
 	alert("사이트로 초대되었습니다.","$iw[admin_path]/member_invite_list.php?type=$iw[type]&ep=$iw[store]&gp=$iw[group]");
 }
 ?>
+
+
+

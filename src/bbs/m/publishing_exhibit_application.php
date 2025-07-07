@@ -41,7 +41,7 @@ if ($picture_idx != "") {
 			<div class="breadcrumb-box input-group">
 				<ol class="breadcrumb ">
 					<li>
-					<?
+					<?php
 						$hm_code = $_GET["menu"];
 						$hm_row = sql_fetch("select * from $iw[home_menu_table] where ep_code = '$iw[store]' and gp_code='$iw[group]' and hm_code = '$hm_code'");
 						echo stripslashes($hm_row[hm_name])
@@ -101,12 +101,12 @@ if ($picture_idx != "") {
 						<div class="row form-group">
 							<div class="col-sm-2">
 								<select name="userPhone1" class="form-control">
-									<option value="010" <?if($mb_tel[0] == "010"){?>selected<?}?>>010</option>
-									<option value="011" <?if($mb_tel[0] == "011"){?>selected<?}?>>011</option>
-									<option value="016" <?if($mb_tel[0] == "016"){?>selected<?}?>>016</option>
-									<option value="017" <?if($mb_tel[0] == "017"){?>selected<?}?>>017</option>
-									<option value="018" <?if($mb_tel[0] == "018"){?>selected<?}?>>018</option>
-									<option value="019" <?if($mb_tel[0] == "019"){?>selected<?}?>>019</option>
+									<option value="010" <?php if{?>selected<?php }?>>010</option>
+									<option value="011" <?php if{?>selected<?php }?>>011</option>
+									<option value="016" <?php if{?>selected<?php }?>>016</option>
+									<option value="017" <?php if{?>selected<?php }?>>017</option>
+									<option value="018" <?php if{?>selected<?php }?>>018</option>
+									<option value="019" <?php if{?>selected<?php }?>>019</option>
 								</select>
 							</div>
 							<div class="col-sm-2">
@@ -362,6 +362,9 @@ function check_form() {
 	}
 </script>
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

@@ -15,5 +15,9 @@ PRIMARY KEY (ad_no),
 UNIQUE KEY ad_code (ad_code)
 ) DEFAULT CHARSET=utf8";
 
-mysql_query($sql) or die(mysql_error());
+global $db_conn;
+mysqli_query($db_conn, $sql) or die(mysqli_error($db_conn));
 ?>
+
+
+

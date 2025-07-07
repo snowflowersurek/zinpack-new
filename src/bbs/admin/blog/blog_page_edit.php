@@ -38,7 +38,7 @@ if (!$row["bg_no"]) alert("잘못된 접근입니다!","");
 							<input type="file" class="col-xs-12 col-sm-12" name="bg_image">
 							<span class="help-block col-xs-12">
 								사이즈(pixel) 240 X 240
-								<?if($row["bg_image"]){?><br/><a href="<?=$iw["path"].$upload_path."/".$row["bg_image"]?>" target="_blank">기존 이미지</a><?}?>
+								<?php if($row["bg_image"]){?><br/><a href="<?=$iw["path"].$upload_path."/".$row["bg_image"]?>" target="_blank">기존 이미지</a><?php }?>
 							</span>
 						</div>
 					</div>
@@ -103,6 +103,9 @@ if (!$row["bg_no"]) alert("잘못된 접근입니다!","");
 	}
 </script>
 
-<?
+<?php
 include_once($iw['admin_path']."/_cg_tail.php");
 ?>
+
+
+

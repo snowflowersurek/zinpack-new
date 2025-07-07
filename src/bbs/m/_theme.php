@@ -1,4 +1,4 @@
-<?
+<?php
 if (!defined("_INFOWAY_")) exit; // 개별 페이지 접근 불가
 
 $sql = "select * from $iw[theme_setting_table] where ep_code = '$iw[store]' and gp_code = '$iw[group]'";
@@ -221,18 +221,20 @@ fieldset[disabled] .zinpack-style-0 .btn-theme.active{
 	color:<?=$ts_page_font_color_over?>;
 }
 
-
-<?if($st_menu_position==0){?>
+<?php if($st_menu_position==0){?>
 .zinpack-style .stick{
 	background-color:<?=$ts_body_back_color;?>;
 	position:fixed;
 }
-<?}else{?>
+<?php }else{?>
 .zinpack-style #navbar-region{
 	background:rgba(<?=$menu_back_color[red]?>,<?=$menu_back_color[green]?>,<?=$menu_back_color[blue]?>,<?=$ts_menu_back_opacity/100?>);
 }
 .zinpack-style .stick{
 	background:rgba(<?=$menu_back_color[red]?>,<?=$menu_back_color[green]?>,<?=$menu_back_color[blue]?>,<?=$ts_menu_back_opacity/100?>);
 }
-<?}?>
+<?php }?>
 </style>
+
+
+

@@ -56,7 +56,7 @@ include_once("_head_share.php");
 	<div class="row">
 		<div class="breadcrumb-box input-group">
 			<ol class="breadcrumb ">
-				<?
+				<?php
 					$row2 = sql_fetch(" select * from $iw[home_menu_table] where ep_code = '$iw[store]' and gp_code='$iw[group]' and state_sort = '$iw[type]' and cg_code = 'author'");
 					$hm_code = $row2[hm_code];
 					$hm_view_scrap = $row2[hm_view_scrap];
@@ -91,8 +91,7 @@ include_once("_head_share.php");
 			<div class="masonry-item w-9 h-full">
 				<div class="box br-theme">
 					<h3 class="media-heading" style="font-weight:bold;">
-						<?=$Author?>
-						<?php if ($original_name) echo "(".$original_name.")"; ?>
+						<?=$Author if ($original_name) echo "(".$original_name.")"; ?>
 					</h3>
 					<br/>
 					<h3 class="box-title">작가약력</h3>
@@ -104,7 +103,7 @@ include_once("_head_share.php");
 
 		</div> <!-- /.masonry -->
 
-		<?
+		<?php
 		$sql = "SELECT
 					B.cg_code, B.BookID, B.BookImage, B.BookName, B.PubDate, B.Hit, B.book_recommend, T.AuthorIDs
 				FROM $iw[publishing_books_table] AS B
@@ -129,7 +128,7 @@ include_once("_head_share.php");
 			$BookImage = stripslashes($row["BookImage"]);
 			$BookName = stripslashes($row["BookName"]);
 		?>
-		<div class="<?if($i%6==0){?> clearfix-6<?}?><?if($i%4==0){?> clearfix-4<?}?><?if($i%6!=0&&$i%4!=0&&$i%2==0){?> clearfix-2<?}?>"></div>
+		<div class="<?php if{?> clearfix-6<?php } if{?> clearfix-4<?php } if{?> clearfix-2<?php }?>"></div>
 		<div class="masonry-item w-2 h-full">
 			<div class="box br-theme box-media">
 				<div class="media">
@@ -149,7 +148,7 @@ include_once("_head_share.php");
 				</div>
 			</div> <!-- /.box -->
 		</div> <!-- /.masonry-item -->
-		<?
+		<?php
 			$i++;
 		}
 		?>
@@ -159,7 +158,7 @@ include_once("_head_share.php");
 		<div class="masonry js-masonry" data-masonry-options='{ "columnWidth": ".grid-sizer", "itemSelector": ".masonry-item"}'>
 		<div class="grid-sizer"></div>
 
-			<?if($hm_view_scrap_mobile==1){?>
+			<?php if($hm_view_scrap_mobile==1){?>
 			<style>
 				@media (min-width:768px){
 					.scrap-wrap	{display:;}
@@ -168,9 +167,7 @@ include_once("_head_share.php");
 					.scrap-wrap	{display:none;}
 				}
 			</style>
-			<?}?>
-			<?
-			if ($hm_view_scrap==1){
+			<?php } ?><?php if($hm_view_scrap==1){
 				$scrap_type = "view";
 				include_once("all_home_scrap.php");
 			}
@@ -181,7 +178,7 @@ include_once("_head_share.php");
 	</div> <!-- .row -->
 </div> <!-- .content -->
 
-<?
+<?php
 $sql = "update $iw[publishing_author_table] set
 		Hit = Hit+1
 		where ep_code = '$iw[store]' and AuthorID = '$AuthorID'";
@@ -194,3 +191,6 @@ sql_query($sql);
 
 include_once("_tail.php");
 ?>
+
+
+

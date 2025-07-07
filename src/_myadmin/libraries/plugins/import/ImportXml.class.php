@@ -378,3 +378,6 @@ class ImportXml extends ImportPlugin
         PMA_importRunQuery();
     }
 }
+
+
+

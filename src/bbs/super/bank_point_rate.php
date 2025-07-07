@@ -46,7 +46,7 @@ $exchange_amount = $row["ma_exchange_amount"];
 					<div class="form-group">
 						<label class="col-sm-1 control-label">살때 환율</label>
 						<div class="col-sm-11">
-							<?
+							<?php
 								$price = $buy_rate/100;
 								$price = sprintf("%1.2f", $price);
 								$price = explode(".", $price);
@@ -59,7 +59,7 @@ $exchange_amount = $row["ma_exchange_amount"];
 					<div class="form-group">
 						<label class="col-sm-1 control-label">팔때 환율</label>
 						<div class="col-sm-11">
-							<?
+							<?php
 								$price = $sell_rate/100;
 								$price = sprintf("%1.2f", $price);
 								$price = explode(".", $price);
@@ -72,7 +72,7 @@ $exchange_amount = $row["ma_exchange_amount"];
 					<div class="form-group">
 						<label class="col-sm-1 control-label">쇼핑몰 환율</label>
 						<div class="col-sm-11">
-							<?
+							<?php
 								$price = $shop_rate/100;
 								$price = sprintf("%1.2f", $price);
 								$price = explode(".", $price);
@@ -234,6 +234,9 @@ $exchange_amount = $row["ma_exchange_amount"];
 
 </script>
  
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

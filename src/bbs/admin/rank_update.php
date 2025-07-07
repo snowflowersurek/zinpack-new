@@ -1,4 +1,4 @@
-<?
+<?php
 $row = sql_fetch("select * from $iw[rank_table] where rk_no = 1");
 $rk_month = date("Ymd", strtotime($row["rk_month"]));
 $rk_day = date("Ymd", strtotime($row["rk_day"]));
@@ -318,3 +318,6 @@ if($now_date != $rk_month){
 }
 
 ?>
+
+
+

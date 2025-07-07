@@ -1,4 +1,4 @@
-<?
+<?php
 /*
 * File: SimpleImage.php
 * Author: Simon Jarvis
@@ -100,3 +100,6 @@ class SimpleImage {
    }
 }
 ?>
+
+
+

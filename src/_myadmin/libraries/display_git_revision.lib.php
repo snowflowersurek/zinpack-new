@@ -81,3 +81,7 @@ function PMA_printGitRevision()
         'li_pma_version_git', null, null, null
     );
 }
+
+
+
+

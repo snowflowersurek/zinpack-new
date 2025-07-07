@@ -46,3 +46,7 @@ if (!$config_writable) {
 PMA_displayFieldsetBottomSimple();
 PMA_displayFormBottom();
 ?>
+
+
+
+

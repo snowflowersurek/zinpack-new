@@ -6,7 +6,7 @@ if (!$db_conn) {
 	$db_conn = $connect_db;
 }
 
-$re_url = $_POST['re_url'];
+$re_url = $_POST['re_url'] ?? '';
 $mb_mail = trim($_POST['mb_mail']);
 $mb_password = trim($_POST['mb_password']);
 
@@ -45,3 +45,6 @@ if ($row && password_verify($mb_password, $row['mb_password'])) {
 ?>
 <meta http-equiv="content-type" content="text/html; charset=<?=$iw['charset']?>" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+
+
+

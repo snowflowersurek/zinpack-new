@@ -48,7 +48,7 @@ $ep_anonymity = $row["ep_anonymity"];
 						<label class="col-sm-1 control-label">노출설정</label>
 						<div class="col-sm-11">
 							<label class="middle">
-								<input type="checkbox" name="ep_exposed" value="1" <?if($row["ep_exposed"]==1){?>checked<?}?>>
+								<input type="checkbox" name="ep_exposed" value="1" <?php if{?>checked<?php }?>>
 								<span class="lbl"> 회원에게만 노출</span>
 							</label>
 						</div>
@@ -60,31 +60,31 @@ $ep_anonymity = $row["ep_anonymity"];
 						<div class="col-sm-11">
 							<div class="radio">
 								<label>
-									<input type="radio" name="type" value="0" onclick="javascript:radio_check(this.value);" <?if($ep_jointype==0){?>checked<?}?>>
+									<input type="radio" name="type" value="0" onclick="javascript:radio_check(this.value);" <?php if{?>checked<?php }?>>
 									<span class="lbl"> 가입불가</span>
 								</label>
 							</div>
 							<div class="radio">
 								<label>
-									<input type="radio" name="type" value="1" onclick="javascript:radio_check(this.value);" <?if($ep_jointype==1){?>checked<?}?>>
+									<input type="radio" name="type" value="1" onclick="javascript:radio_check(this.value);" <?php if{?>checked<?php }?>>
 									<span class="lbl"> 가입신청 > 관리자승인</span>
 								</label>
 							</div>
 							<div class="radio">
 								<label>
-									<input type="radio" name="type" value="2" onclick="javascript:radio_check(this.value);" <?if($ep_jointype==2){?>checked<?}?>>
+									<input type="radio" name="type" value="2" onclick="javascript:radio_check(this.value);" <?php if{?>checked<?php }?>>
 									<span class="lbl"> 무조건 가입</span>
 								</label>
 							</div>
 							<div class="radio">
 								<label>
-									<input type="radio" name="type" value="4" onclick="javascript:radio_check(this.value);" <?if($ep_jointype==4){?>checked<?}?>>
+									<input type="radio" name="type" value="4" onclick="javascript:radio_check(this.value);" <?php if{?>checked<?php }?>>
 									<span class="lbl"> 초대후 가입</span>
 								</label>
 							</div>
 							<div class="radio">
 								<label>
-									<input type="radio" name="type" value="5" onclick="javascript:radio_check(this.value);" <?if($ep_jointype==5){?>checked<?}?>>
+									<input type="radio" name="type" value="5" onclick="javascript:radio_check(this.value);" <?php if{?>checked<?php }?>>
 									<span class="lbl"> 가입코드 입력후 자동승인</span> <input type="text" placeholder="입력" name="ep_autocode" maxlength="20" value="<?=$row[ep_autocode]?>">
 								</label>
 							</div>
@@ -97,13 +97,13 @@ $ep_anonymity = $row["ep_anonymity"];
 						<div class="col-sm-11">
 							<div class="radio">
 								<label>
-									<input type="radio" name="ep_anonymity" value="0" <?if($ep_anonymity==0){?>checked<?}?>>
+									<input type="radio" name="ep_anonymity" value="0" <?php if{?>checked<?php }?>>
 									<span class="lbl"> 공개</span>
 								</label>
 							</div>
 							<div class="radio">
 								<label>
-									<input type="radio" name="ep_anonymity" value="1" <?if($ep_anonymity==1){?>checked<?}?>>
+									<input type="radio" name="ep_anonymity" value="1" <?php if{?>checked<?php }?>>
 									<span class="lbl"> 비공개</span>
 								</label>
 							</div>
@@ -139,6 +139,9 @@ $ep_anonymity = $row["ep_anonymity"];
 	}
 </script>
  
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

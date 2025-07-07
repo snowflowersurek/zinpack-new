@@ -32,3 +32,7 @@ function PMA_detectMIME(&$test)
     return 'application/octet-stream';
 }
 ?>
+
+
+
+

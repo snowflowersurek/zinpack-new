@@ -1,4 +1,4 @@
-<?
+<?php
 if (!defined("_PAYMENT_")) exit; // 개별 페이지 접근 불가
 
 include_once("_head_sub.php");
@@ -99,3 +99,6 @@ if (get_cookie("payment_member") != "payment") {
 		</div><!-- / end sidebar -->
 		
 		<div class="main-content">
+
+
+

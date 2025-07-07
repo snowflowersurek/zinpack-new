@@ -155,11 +155,7 @@ include_once("_head.php");
 											<td class="text-end" data-title="회원수"><?php echo $ep_total; ?></td>
 											<td class="text-center" data-title="사용현황">
 												<div class="action-icon">
-													<?php if($ep_state_mcb == 1){?><i class="fa fa-clipboard"></i><?php }?>
-													<?php if($ep_state_publishing == 1){?><i class="fa fa-book"></i><?php }?>
-													<?php if($ep_state_shop == 1){?><i class="fa fa-shopping-cart"></i><?php }?>
-													<?php if($ep_state_doc == 1){?><i class="fa fa-inbox"></i><?php }?>
-													<?php if($ep_state_book == 1){?><i class="fa fa-newspaper-o"></i><?php }?>
+													<?php if($ep_state_mcb == 1){?><i class="fa fa-clipboard"></i><?php } ?><?php if($ep_state_publishing == 1){?><i class="fa fa-book"></i><?php } ?><?php if($ep_state_shop == 1){?><i class="fa fa-shopping-cart"></i><?php } ?><?php if($ep_state_doc == 1){?><i class="fa fa-inbox"></i><?php } ?><?php if($ep_state_book == 1){?><i class="fa fa-newspaper-o"></i><?php }?>
 												</div>
 											</td>
 											<td class="text-center" data-title="생성일"><?php echo substr($ep_datetime, 0, 10); ?></td>
@@ -263,3 +259,6 @@ include_once("_head.php");
 <?php
 include_once("_tail.php");
 ?>
+
+
+

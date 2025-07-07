@@ -104,3 +104,7 @@ function PMA_validateSQL($sql)
 } // end of the "PMA_validateSQL()" function
 
 ?>
+
+
+
+

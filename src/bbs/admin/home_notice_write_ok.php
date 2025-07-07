@@ -4,10 +4,10 @@ if (($iw[group] == "all" && $iw[level] != "admin") || ($iw[group] != "all" && $i
 ?>
 <meta http-equiv="content-type" content="text/html; charset=<?=$iw['charset']?>" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-<?
-$nt_subject = trim(mysql_real_escape_string($_POST[nt_subject]));
-$nt_type = trim(mysql_real_escape_string($_POST[nt_type]));
-$nt_content = mysql_real_escape_string($_POST[contents1]);
+<?php
+$nt_subject = trim(mysqli_real_escape_string($iw['connect'], $_POST['nt_subject']));
+$nt_type = trim(mysqli_real_escape_string($iw['connect'], $_POST['nt_type']));
+$nt_content = mysqli_real_escape_string($iw['connect'], $_POST['contents1']);
 
 $nt_datetime = date("Y-m-d H:i:s");
 
@@ -27,3 +27,6 @@ sql_query($sql);
 
 alert("공지사항이 등록되었습니다.","$iw[admin_path]/home_notice_list.php?type=$iw[type]&ep=$iw[store]&gp=$iw[group]");
 ?>
+
+
+

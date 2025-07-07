@@ -28,3 +28,7 @@ function get_color($get_name, $default)
     </defs>
     <rect width="100%" height="100%" style="fill:url(#linear-gradient);" />
 </svg>
+
+
+
+

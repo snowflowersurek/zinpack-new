@@ -12,3 +12,6 @@ PRIMARY KEY (gl_no)
 ) DEFAULT CHARSET=utf8";
 
 ?>
+
+
+

@@ -62,3 +62,7 @@ function PMA_RTE_getWord($index)
 } // end PMA_RTE_getWord()
 
 ?>
+
+
+
+

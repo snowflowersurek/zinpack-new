@@ -57,7 +57,7 @@ include_once("_head.php");
 									</div>
 									<div class="col-sm-6">
 										<div class="dataTable-option-right">
-											<?
+											<?php
 												if($_POST['search']){
 													$search = $_POST['search'];
 													$searchs = $_POST['searchs'];
@@ -71,7 +71,7 @@ include_once("_head.php");
 											?>
 											<form name="search_form" id="search_form" action="<?=$PHP_SELF?>?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>" method="post">
 											<label>검색: <select name="search">
-												<option value="a" <?if($search == "a"){?>selected="selected"<?}?>>회원코드</option>
+												<option value="a" <?php if{?>selected="selected"<?php }?>>회원코드</option>
 											</select></label><input type="text" name="searchs" value="<?=$searchs?>">
 											</form>
 										</div>
@@ -92,10 +92,10 @@ include_once("_head.php");
 										</tr>
 									</thead>
 									<tbody>
-									<?
+									<?php
 										$sql = "select * from $iw[exchange_table] where ep_code = '$iw[store]' $search_sql";
 										$result = sql_query($sql);
-										$total_line = mysql_num_rows($result);
+										$total_line = mysqli_num_rows($result);
 
 										$max_line = 10;
 										$max_page = 10;
@@ -141,9 +141,9 @@ include_once("_head.php");
 											<td data-title="은행"><?=$ec_bank?></td>
 											<td data-title="계좌번호"><?=$ec_number?></td>
 											<td data-title="예금주"><?=$ec_holder?></td>
-											<td data-title="지급일"><?if($ec_display==1){?><?=$ec_give_datetime?><?}?></td>
+											<td data-title="지급일"><?php if{?><?=$ec_give_datetime }?></td>
 										</tr>
-									<?
+									<?php
 										$i++;
 										}
 										if($i==0) echo "<tr><td colspan='9' align='center'>환전내역이 없습니다.</td></tr>";
@@ -155,7 +155,7 @@ include_once("_head.php");
 									<div class="col-sm-6">
 										<div class="dataTable-option-right">
 											<ul class="pagination">
-											<?
+											<?php
 												if($total_page!=0){
 													if($page>$total_page) { $page=$total_page; }
 													$start_page = ((ceil($page/$max_page)-1)*$max_page)+1;
@@ -197,6 +197,9 @@ include_once("_head.php");
 	</div><!-- /container -->
 </div><!-- /end .page-content -->
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

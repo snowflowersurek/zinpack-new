@@ -4,7 +4,7 @@ if (($iw[group] == "all" && $iw[level] != "admin") || ($iw[group] != "all" && $i
 ?>
 <meta http-equiv="content-type" content="text/html; charset=<?=$iw['charset']?>" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-<?
+<?php
 $bd_code = $_GET[idx];
 $bd_display = $_GET[dis];
 
@@ -23,3 +23,6 @@ sql_query($sql);
 
 goto_url("$iw[admin_path]/book_exposure_list.php?type=$iw[type]&ep=$iw[store]&gp=$iw[group]");
 ?>
+
+
+

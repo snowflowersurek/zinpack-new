@@ -1,15 +1,15 @@
 <?php
 include_once("_common.php");
-if ($iw[type] != "mcb" || $iw[level] != "admin" || $iw[group] != "all") alert("잘못된 접근입니다!","");
+if ($iw['type'] != "mcb" || $iw['level'] != "admin" || $iw['group'] != "all") alert("잘못된 접근입니다!","");
 
 include_once("_head.php");
 
-$row = sql_fetch(" select ep_nick from $iw[enterprise_table] where ep_code = '$iw[store]'");
-$upload_path = "/$iw[type]/$row[ep_nick]";
+$row = sql_fetch(" select ep_nick from $iw['enterprise_table'] where ep_code = '$iw['store']'");
+$upload_path = "/$iw['type']/$row['ep_nick']";
 
 $md_code = $_GET["idx"];
 
-$sql = "select * from $iw[mcb_data_table] where ep_code = '$iw[store]' and md_code = '$md_code'";
+$sql = "select * from $iw['mcb_data_table'] where ep_code = '$iw['store']' and md_code = '$md_code'";
 $row = sql_fetch($sql);
 if (!$row["md_no"]) alert("잘못된 접근입니다!","");
 
@@ -38,7 +38,7 @@ if($row["md_display"]==1){
 if ($gp_code == "all"){
 	$upload_path .= "/all";
 }else{
-	$row2 = sql_fetch(" select gp_nick from $iw[group_table] where ep_code = '$iw[store]' and gp_code = '$gp_code'");
+	$row2 = sql_fetch(" select gp_nick from $iw['group_table'] where ep_code = '$iw['store']' and gp_code = '$gp_code'");
 	$upload_path .="/$row2[gp_nick]";
 }
 
@@ -68,7 +68,7 @@ if($md_type == 1){
 	$md_content = $row["md_content"];
 }
 
-$sql2 = "select * from $iw[member_table] where ep_code = '$iw[store]' and mb_code = '$mb_code'";
+$sql2 = "select * from $iw['member_table'] where ep_code = '$iw['store']' and mb_code = '$mb_code'";
 $row2 = sql_fetch($sql2);
 $mb_nick = $row2["mb_nick"];
 ?>
@@ -150,7 +150,7 @@ $mb_nick = $row2["mb_nick"];
 						<label class="col-sm-1 control-label">글쓰기 방식</label>
 						<div class="col-sm-11">
 							<p class="col-xs-12 col-sm-8 form-control-static">
-								<?
+								<?php
 									if($md_type == 1){
 										echo "간편모드";
 									}else{
@@ -165,11 +165,11 @@ $mb_nick = $row2["mb_nick"];
 						<label class="col-sm-1 control-label">카테고리</label>
 						<div class="col-sm-11">
 							<p class="col-xs-12 col-sm-8 form-control-static">
-								<?
+								<?php
 									$cg_code = $row["cg_code"];
 									$gp_code = $row["gp_code"];
 
-									$sql2 = " select * from $iw[home_menu_table] where ep_code = '$iw[store]' and gp_code = '$gp_code' and state_sort = '$iw[type]' and cg_code = '$cg_code'";
+									$sql2 = " select * from $iw['home_menu_table'] where ep_code = '$iw['store']' and gp_code = '$gp_code' and state_sort = '$iw['type']' and cg_code = '$cg_code'";
 									$row2 = sql_fetch($sql2);
 									$hm_upper_code = $row2["hm_upper_code"];
 									$dd_category = $row2["hm_name"];
@@ -207,20 +207,20 @@ $mb_nick = $row2["mb_nick"];
 					<div class="form-group">
 						<label class="col-sm-1 control-label">옵션</label>
 						<div class="col-sm-11">
-							<p class="col-xs-12 col-sm-8 form-control-static">좌우여백( <?if($md_padding==1){?>O<?}else{?>X<?}?> ) / 비밀글( <?if($md_secret==1){?>O<?}else{?>X<?}?> )</p>
+							<p class="col-xs-12 col-sm-8 form-control-static">좌우여백( <?php if{?>O<?php }else{?>X<?php }?> ) / 비밀글( <?php if{?>O<?php }else{?>X<?php }?> )</p>
 						</div>
 					</div>
 
-				<?if($md_type == 1){?>
+				<?php if($md_type == 1){?>
 					<div class="form-group">
 						<label class="col-sm-1 control-label">유튜브영상</label>
 						<div class="col-sm-11">
 							<p class="col-xs-12 col-sm-8 form-control-static">
-								<?if($youtube_code){?>
+								<?php if($youtube_code){?>
 								<div class="video-container">
 									<iframe type="text/html" width="700" height="400" src="//www.youtube.com/embed/<?=$youtube_code?>?autoplay=1" frameborder="0"/></iframe>
 								</div>
-								<?}?>
+								<?php }?>
 							</p>
 						</div>
 					</div>
@@ -230,11 +230,10 @@ $mb_nick = $row2["mb_nick"];
 						<div class="col-sm-11">
 							<p class="col-xs-12 col-sm-8 form-control-static">
 								<div class="html_edit_wrap" style="max-width:700px;">
-									<?
+									<?php
 										for ($i=1; $i<=10; $i++) {
 											if($row["md_file_".$i]){
-												?><div class="image-container"><img src="<?=$upload_path?>/<?=$md_code?>/<?=$row["md_file_".$i]?>"/></div><?
-											}
+												?><div class="image-container"><img src="<?=$upload_path?>/<?=$md_code?>/<?=$row["md_file_".$i]?>"/></div><?php }
 										}
 									?>
 								</div>
@@ -248,14 +247,14 @@ $mb_nick = $row2["mb_nick"];
 							<p class="col-xs-12 col-sm-8 form-control-static"><?=$md_content?></p>
 						</div>
 					</div>
-				<?}else if($md_type == 2){?>
+				<?php }else if($md_type == 2){?>
 					<div class="form-group">
 						<label class="col-sm-1 control-label">본문</label>
 						<div class="col-sm-11">
 							<p class="col-xs-12 col-sm-8 form-control-static"><div class="html_edit_wrap" style="max-width:1000px;"><?=stripslashes($md_content);?></div></p>
 						</div>
 					</div>
-				<?}?>
+				<?php }?>
 					<div class="form-group">
 						<label class="col-sm-1 control-label">첨부파일</label>
 						<div class="col-sm-11">
@@ -300,6 +299,9 @@ $mb_nick = $row2["mb_nick"];
 	}
 </script>
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

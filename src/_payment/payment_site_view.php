@@ -64,11 +64,11 @@ $cancel_response = number_format($row[cnt]);
 						<label class="col-sm-1 control-label">사용현황</label>
 						<div class="col-sm-11">
 							<p class="col-xs-12 col-sm-8 form-control-static">
-								<?if($ps_display == 1){?>
+								<?php if($ps_display == 1){?>
 										<span class="label label-sm label-success">사용</span>
-								<?}else if($ps_display == 0){?>
+								<?php }else if($ps_display == 0){?>
 										<span class="label label-sm label-warning">정지</span>
-								<?}?>
+								<?php }?>
 							</p>
 						</div>
 					</div>
@@ -111,6 +111,9 @@ $cancel_response = number_format($row[cnt]);
 		</div><!-- /row -->
 	</div><!-- /container -->
 </div><!-- /end .page-content -->
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

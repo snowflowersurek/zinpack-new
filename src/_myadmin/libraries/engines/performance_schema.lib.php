@@ -26,3 +26,7 @@ class PMA_StorageEngine_performance_schema extends PMA_StorageEngine
 }
 
 ?>
+
+
+
+

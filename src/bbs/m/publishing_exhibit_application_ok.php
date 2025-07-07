@@ -9,7 +9,7 @@ if (!$db_conn) {
 ?>
 <meta http-equiv="content-type" content="text/html; charset=<?=$iw['charset']?>" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-<?
+<?php
 $userName = trim($_POST['userName']);
 $strgubun = trim($_POST['strgubun']);
 $strgubunTxt = trim($_POST['strgubunTxt']);
@@ -75,3 +75,6 @@ if (!$check_row["idx"]) {
 	alert("선택하신 일정은 이미 다른 기관에서 신청되었습니다.","{$iw['m_path']}/publishing_exhibit_status.php?ep={$iw['store']}&gp={$iw['group']}");
 }
 ?>
+
+
+

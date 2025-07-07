@@ -746,3 +746,7 @@ function PMA_DBI_field_flags($result, $i)
 }
 
 ?>
+
+
+
+

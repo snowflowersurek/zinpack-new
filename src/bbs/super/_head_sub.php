@@ -24,7 +24,7 @@ if (!defined("_INFOWAY_")) exit; // 개별 페이지 접근 불가
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 	
 	<!-- 기존 스크립트 (jQuery 의존성으로 인해 일부는 작동하지 않을 수 있음) -->
-	<script type="text/javascript" src="<?php echo $iw['design_path']; ?>/js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="<?php echo $iw['design_path']; ?>/js/jquery-3.7.1.min.js"></script>
 	<script type="text/javascript" src="<?php echo $iw['design_path']; ?>/js/bootstrap-colorpicker.min.js"></script>
 	<script type="text/javascript" src="<?php echo $iw['design_path']; ?>/js/jquery.nestable.min.js"></script>
 	<script type="text/javascript" src="<?php echo $iw['design_path']; ?>/js/site.js"></script>
@@ -64,3 +64,6 @@ if (!defined("_INFOWAY_")) exit; // 개별 페이지 접근 불가
 	</style>
 </head>
 <body>
+
+
+

@@ -982,3 +982,7 @@ class PMA_Types_Drizzle extends PMA_Types
         return $ret;
     }
 }
+
+
+
+

@@ -58,7 +58,7 @@ $bmd_image = explode(";", $row["bmd_image"]);
 							<input type="file" class="col-xs-12 col-sm-12" name="bm_image">
 							<span class="help-block col-xs-12">
 								사이즈(pixel) 240 X 240
-								<?if($bm_image){?><br/><a href="<?=$iw["path"].$upload_path."/".$bm_image?>" target="_blank">기존 이미지</a><?}?>
+								<?php if($bm_image){?><br/><a href="<?=$iw["path"].$upload_path."/".$bm_image?>" target="_blank">기존 이미지</a><?php }?>
 							</span>
 						</div>
 					</div>
@@ -82,7 +82,7 @@ $bmd_image = explode(";", $row["bmd_image"]);
 						</label>
 						<div class="col-sm-8">
 							<table>
-							<?
+							<?php
 								$file_num=0;
 								for ($i=1; $i<count($bmd_image); $i++) {
 									if($bmd_image[$i]){
@@ -93,15 +93,15 @@ $bmd_image = explode(";", $row["bmd_image"]);
 												<input type='hidden' name='bmd_check[]'>
 												<span class='help-block col-xs-12'><b><?=$i?>. 이미지</b> - 사이즈(pixel) 1024 X 1024 이하</span>
 												<input type='file' class='col-xs-12 col-sm-12' name='bmd_image[]'>
-												<?if($bmd_image[$i]){?>
+												<?php if($bmd_image[$i]){?>
 												<span class='help-block col-xs-12'>
 													<a href="<?=$iw["path"].$upload_path."/".$bmd_image[$i]?>" target="_blank">기존 이미지</a>
 													<input type='checkbox' name='bmd_image_delete[]' value="del" /> 삭제
 												</span>
-												<?}?>
+												<?php }?>
 											</td>
 										</tr>
-										<?
+										<?php
 										$file_num++;
 									}
 								}
@@ -233,6 +233,9 @@ $bmd_image = explode(";", $row["bmd_image"]);
 	}
 </script>
 
-<?
+<?php
 include_once($iw['admin_path']."/_cg_tail.php");
 ?>
+
+
+

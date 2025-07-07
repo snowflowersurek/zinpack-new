@@ -1738,3 +1738,7 @@ function PMA_resultSetContainsUniqueKey($db, $table, $fields_meta)
 }
 
 ?>
+
+
+
+

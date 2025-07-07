@@ -103,3 +103,7 @@ function PMA_aix_iconv_wrapper($in_charset, $out_charset, $str)
 } //  end of the "PMA_aix_iconv_wrapper()" function
 
 ?>
+
+
+
+

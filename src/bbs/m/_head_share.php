@@ -1,4 +1,4 @@
-<?
+<?php
 if (!defined("_INFOWAY_")) exit; // 개별 페이지 접근 불가
 ?>
 
@@ -25,14 +25,12 @@ if (!defined("_INFOWAY_")) exit; // 개별 페이지 접근 불가
 		<link rel="stylesheet" type="text/css" href="<?=$iw[design_path]?>/css/vendor.css?ver=20240520" />
 		<link rel="stylesheet" type="text/css" href="<?=$iw[design_path]?>/css/site.css" />
 		<link rel="stylesheet" type="text/css" href="<?=$iw[design_path]?>/css/theme.css" />
-		<script src="//code.jquery.com/jquery.min.js"></script>
+		<script src="//code.jquery.com/jquery-3.7.1.min.js"></script>
 		<script type="text/javascript" src="<?=$iw[design_path]?>/js/modernizr.custom.js"></script>
 		<script type="text/javascript" src="<?=$iw[design_path]?>/js/bootstrap.min.js"></script>
-		<?if($ep_copy_off == 1){?>
+		<?php if($ep_copy_off == 1){?>
 			<script type="text/javascript" src="<?=$iw[design_path]?>/js/copy_off.js"></script>
-		<?}?>
-
-		<?include_once("_theme.php");?>
+		<?php } include_once("_theme.php");?>
 
 		<?=$st_favicon?>
 
@@ -143,7 +141,7 @@ if (!defined("_INFOWAY_")) exit; // 개별 페이지 접근 불가
 
 	<body class="zinpack-style">
 
-<?
+<?php
 	if($st_menu_position==0){
 		include_once("_head_navi.php");
 	}else if($st_menu_position==1){
@@ -152,3 +150,6 @@ if (!defined("_INFOWAY_")) exit; // 개별 페이지 접근 불가
 		include_once("_head_navi_3.php");
 	}
 ?>
+
+
+

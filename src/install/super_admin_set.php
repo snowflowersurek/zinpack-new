@@ -30,3 +30,6 @@ $sql = "insert into $iw[master_table] set
 sql_query($sql);
 
 ?>
+
+
+

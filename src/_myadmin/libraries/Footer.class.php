@@ -285,3 +285,7 @@ class PMA_Footer
         return $retval;
     }
 }
+
+
+
+

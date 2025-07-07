@@ -240,3 +240,7 @@ function PMA_changePassDisplayPage($message, $sql_query, $_url_params)
     exit;
 }
 ?>
+
+
+
+

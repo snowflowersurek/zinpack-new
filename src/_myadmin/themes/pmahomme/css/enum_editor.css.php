@@ -78,3 +78,7 @@ p.enum_notice {
     <?php echo $left; ?>: 81%;
     bottom: .35em;
 }
+
+
+
+

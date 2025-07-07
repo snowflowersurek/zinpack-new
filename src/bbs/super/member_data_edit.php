@@ -109,8 +109,7 @@ $iw['language'] = $row2["ep_language"];
 					</div>
 					<div class="space-4"></div>
 
-					<?if($iw[language]=="ko"){?>
-						<?
+					<?php if($iw[language]=="ko"){
 							$mb_tel = explode("-", $row["mb_tel"]);
 							$mb_zip_code = $row["mb_zip_code"];
 						?>
@@ -118,12 +117,12 @@ $iw['language'] = $row2["ep_language"];
 							<label class="col-sm-1 control-label">휴대폰번호</label>
 							<div class="col-sm-11">
 								<select name="mb_tel_1">
-									<option value="010" <?if($mb_tel[0] == "010"){?>checked<?}?>>010</option>
-									<option value="011" <?if($mb_tel[0] == "011"){?>checked<?}?>>011</option>
-									<option value="016" <?if($mb_tel[0] == "016"){?>checked<?}?>>016</option>
-									<option value="017" <?if($mb_tel[0] == "017"){?>checked<?}?>>017</option>
-									<option value="018" <?if($mb_tel[0] == "018"){?>checked<?}?>>018</option>
-									<option value="019" <?if($mb_tel[0] == "019"){?>checked<?}?>>019</option>
+									<option value="010" <?php if{?>checked<?php }?>>010</option>
+									<option value="011" <?php if{?>checked<?php }?>>011</option>
+									<option value="016" <?php if{?>checked<?php }?>>016</option>
+									<option value="017" <?php if{?>checked<?php }?>>017</option>
+									<option value="018" <?php if{?>checked<?php }?>>018</option>
+									<option value="019" <?php if{?>checked<?php }?>>019</option>
 								</select>&nbsp;-&nbsp;
 								<input type="text" placeholder="입력" name="mb_tel_2" maxlength="4" value="<?=$mb_tel[1]?>">&nbsp;-&nbsp;
 								<input type="text" placeholder="입력" name="mb_tel_3" maxlength="4" value="<?=$mb_tel[2]?>">
@@ -149,7 +148,7 @@ $iw['language'] = $row2["ep_language"];
 								<input type="text" class="form-control" name="mb_address_sub" id="mb_address_sub" placeholder="상세주소" value="<?=$row['mb_address_sub']?>" />
 							</div>
 						</div>
-					<?}else if($iw[language]=="en"){?>
+					<?php }else if($iw[language]=="en"){?>
 						<div class="form-group">
 							<label class="col-sm-1 control-label">Phone Number</label>
 							<div class="col-sm-11">
@@ -205,18 +204,18 @@ $iw['language'] = $row2["ep_language"];
 							<div class="col-sm-11">
 								<select name="mb_address_country">
 									<option value="">--</option>
-								<?
+								<?php
 									$sql2 = "select * from $iw[country_table] order by ct_no asc";
 									$result2 = sql_query($sql2);
 
 									while($row2 = @sql_fetch_array($result2)){
 								?>
-									<option value="<?=$row2["ct_code"];?>" <?if($row['mb_address_country']==$row2["ct_code"]){?>selected<?}?>><?=$row2["ct_name"];?></option>
-								<?}?>
+									<option value="<?=$row2["ct_code"];?>" <?php if{?>selected<?php }?>><?=$row2["ct_name"];?></option>
+								<?php }?>
 								</select>
 							</div>
 						</div>
-					<?}?>
+					<?php }?>
 
 					<div class="clearfix form-actions">
 						<div class="col-md-offset-3 col-md-9">
@@ -274,7 +273,7 @@ $iw['language'] = $row2["ep_language"];
 			mb_form.mb_sub_mail.focus();
 			return;
 		}
-		<?if($iw[language]=="ko"){?>
+		<?php if($iw[language]=="ko"){?>
 			if (mb_form.mb_tel_2.value == ""){
 				alert("휴대폰 번호를 입력하여 주십시오.");
 				mb_form.mb_tel_2.focus();
@@ -295,7 +294,7 @@ $iw['language'] = $row2["ep_language"];
 				mb_form.mb_address_sub.focus();
 				return;
 			}
-		<?}else if($iw[language]=="en"){?>
+		<?php }else if($iw[language]=="en"){?>
 			if (mb_form.mb_tel.value == ""){
 				alert("<?=national_language($iw[language],'a0088','휴대폰 번호를 입력하여 주십시오.');?>");
 				mb_form.mb_tel.focus();
@@ -331,7 +330,7 @@ $iw['language'] = $row2["ep_language"];
 				mb_form.mb_address_country.focus();
 				return;
 			}
-		<?}?>
+		<?php }?>
 		mb_form.submit();
 	}
 </script>
@@ -374,6 +373,9 @@ $iw['language'] = $row2["ep_language"];
         }).open();
     }
 </script>
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

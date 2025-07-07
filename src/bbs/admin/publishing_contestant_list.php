@@ -56,7 +56,7 @@ include_once("_head.php");
 									</div>
 									<div class="col-sm-8">
 										<div class="dataTable-option-right">
-											<?
+											<?php
 												if($_POST['searchby']){
 													$searchby = $_POST['searchby'];
 													$keyword = $_POST['keyword'];
@@ -70,7 +70,7 @@ include_once("_head.php");
 											?>
 											<form name="search_form" id="search_form" action="<?=$PHP_SELF?>?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>" method="post">
 											<label>검색: <select name="searchby">
-												<option value="name" <?if($searchby == "name"){?>selected="selected"<?}?>>응모자명</option>
+												<option value="name" <?php if{?>selected="selected"<?php }?>>응모자명</option>
 											</select></label><input type="text" name="keyword" value="<?=$keyword?>">
 											</form>
 										</div>
@@ -91,7 +91,7 @@ include_once("_head.php");
 										</tr>
 									</thead>
 									<tbody>
-									<?
+									<?php
 										$sql = "select * from iw_publishing_contestant where ep_code = '$iw[store]' and gp_code = '$iw[group]' and contest_code = '$contest_code' $search_sql";
 										$result = sql_query($sql);
 										$total_line = mysql_num_rows($result);
@@ -144,7 +144,7 @@ include_once("_head.php");
 												<a href="javascript:delete_contestant('<?=$iw['admin_path']?>/publishing_contestant_delete.php?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&contest_code=<?=$contest_code?>&idx=<?=$idx?>');">삭제하기</a>
 											</td>
 										</tr>
-									<?
+									<?php
 										$i++;
 										}
 										if($i==0) echo "<tr><td colspan='9' align='center'>응모내역이 없습니다.</td></tr>";
@@ -160,7 +160,7 @@ include_once("_head.php");
 									<div class="col-sm-8">
 										<div class="dataTable-option-right">
 											<ul class="pagination">
-											<?
+											<?php
 												if($total_page!=0){
 													if($page>$total_page) { $page=$total_page; }
 													$start_page = ((ceil($page/$max_page)-1)*$max_page)+1;
@@ -214,6 +214,9 @@ include_once("_head.php");
 	}
 </script>
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

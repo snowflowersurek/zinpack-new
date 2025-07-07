@@ -40,3 +40,6 @@ $dir_size = $total_size > (1024*1024*1024) ? number_format($gb, 2)."GB" : ($tota
 
 echo json_encode(array('dir_size' => $dir_size));
 ?>
+
+
+

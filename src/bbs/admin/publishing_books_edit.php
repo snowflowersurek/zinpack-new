@@ -128,9 +128,9 @@ if(preg_match('/(iPod|iPhone|Mobile|UP.Browser|Android|BlackBerry|Windows CE|Nok
 						<div class="col-sm-8">
 							<select name="stock_status">
 								<option value="">선택</option>
-								<option value="0" <?if($stock_status === "0"){?>selected="selected"<?}?>>정상</option>
-								<option value="1" <?if($stock_status === "1"){?>selected="selected"<?}?>>품절</option>
-								<option value="2" <?if($stock_status === "2"){?>selected="selected"<?}?>>절판</option>
+								<option value="0" <?php if{?>selected="selected"<?php }?>>정상</option>
+								<option value="1" <?php if{?>selected="selected"<?php }?>>품절</option>
+								<option value="2" <?php if{?>selected="selected"<?php }?>>절판</option>
 							</select>
 						</div>
 					</div>
@@ -395,34 +395,34 @@ if(preg_match('/(iPod|iPhone|Mobile|UP.Browser|Android|BlackBerry|Windows CE|Nok
 					<div class="form-group">
 						<label class="col-lg-1 col-sm-2 control-label">널리 읽힌 책</label>
 						<div class="col-sm-8">
-							<input type="checkbox" name="readmore" value="1" <?if($readmore == 1){?>checked<?}?>> 널리 읽힌 책인 경우 체크하세요
+							<input type="checkbox" name="readmore" value="1" <?php if{?>checked<?php }?>> 널리 읽힌 책인 경우 체크하세요
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label class="col-lg-1 col-sm-2 control-label">추천도서</label>
 						<div class="col-sm-8">
-							<input type="checkbox" name="themabook" value="1" <?if($themabook == 1){?>checked<?}?>> 이달의 테마 책인 경우 체크하세요
+							<input type="checkbox" name="themabook" value="1" <?php if{?>checked<?php }?>> 이달의 테마 책인 경우 체크하세요
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label class="col-lg-1 col-sm-2 control-label">포인트상품도서</label>
 						<div class="col-sm-8">
-							<input type="checkbox" name="strPoint" value="1" <?if($strPoint == 1){?>checked<?}?>> 포인트상품도서일 경우 체크하세요
+							<input type="checkbox" name="strPoint" value="1" <?php if{?>checked<?php }?>> 포인트상품도서일 경우 체크하세요
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label class="col-lg-1 col-sm-2 control-label">재고여부</label>
 						<div class="col-sm-8">
-							<input type="checkbox" name="soldout" value="2" <?if($soldout == 2){?>checked<?}?>> 재고가 없으면 체크하세요
+							<input type="checkbox" name="soldout" value="2" <?php if{?>checked<?php }?>> 재고가 없으면 체크하세요
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-lg-1 col-sm-2 control-label">사계절문학상</label>
 						<div class="col-sm-8">
-							<input type="checkbox" name="award" value="1" <?if($award == 1){?>checked<?}?>> 사계절문학상에 해당되는 도서는  체크하세요
+							<input type="checkbox" name="award" value="1" <?php if{?>checked<?php }?>> 사계절문학상에 해당되는 도서는  체크하세요
 						</div>
 					</div>
 					-->
@@ -430,7 +430,7 @@ if(preg_match('/(iPod|iPhone|Mobile|UP.Browser|Android|BlackBerry|Windows CE|Nok
 						<label class="col-lg-1 col-sm-2 control-label">책표지</label>
 						<div class="col-sm-8">
 							<input type="file" name="NewBookImage" id="NewBookImage">
-							<?
+							<?php
 								if ($BookImage != ""){
 							?>
 							<p class="col-xs-12 col-sm-8 form-control-static">
@@ -438,7 +438,7 @@ if(preg_match('/(iPod|iPhone|Mobile|UP.Browser|Android|BlackBerry|Windows CE|Nok
 								<input type="checkbox" name="delfile" value="Y" /> 삭제
 								<input type="hidden" name="BookImage" value="<?=$BookImage?>">
 							</p>
-							<?
+							<?php
 								}
 							?>
 						</div>
@@ -447,10 +447,10 @@ if(preg_match('/(iPod|iPhone|Mobile|UP.Browser|Android|BlackBerry|Windows CE|Nok
 					<div class="form-group">
 						<label class="col-lg-1 col-sm-2 control-label">전자책</label>
 						<div class="col-sm-8">
-							<input type="radio" name="ebook_yn" id="ebook_y" value="1" <?if($ebook_yn==1){?>checked<?}?>>
+							<input type="radio" name="ebook_yn" id="ebook_y" value="1" <?php if{?>checked<?php }?>>
 							<label for="ebook_y"> 있음</label>
 							&nbsp;&nbsp;&nbsp;
-							<input type="radio" name="ebook_yn" id="ebook_n" value="0" <?if($ebook_yn==0){?>checked<?}?>>
+							<input type="radio" name="ebook_yn" id="ebook_n" value="0" <?php if{?>checked<?php }?>>
 							<label for="ebook_n"> 없음</label>
 						</div>
 					</div>
@@ -458,10 +458,10 @@ if(preg_match('/(iPod|iPhone|Mobile|UP.Browser|Android|BlackBerry|Windows CE|Nok
 					<div class="form-group">
 						<label class="col-lg-1 col-sm-2 control-label">오디오북</label>
 						<div class="col-sm-8">
-							<input type="radio" name="audiobook_yn" id="audiobook_y" value="1" <?if($audiobook_yn==1){?>checked<?}?>>
+							<input type="radio" name="audiobook_yn" id="audiobook_y" value="1" <?php if{?>checked<?php }?>>
 							<label for="audiobook_y"> 있음</label>
 							&nbsp;&nbsp;&nbsp;
-							<input type="radio" name="audiobook_yn" id="audiobook_n" value="0" <?if($audiobook_yn==0){?>checked<?}?>>
+							<input type="radio" name="audiobook_yn" id="audiobook_n" value="0" <?php if{?>checked<?php }?>>
 							<label for="audiobook_n"> 없음</label>
 						</div>
 					</div>
@@ -469,10 +469,10 @@ if(preg_match('/(iPod|iPhone|Mobile|UP.Browser|Android|BlackBerry|Windows CE|Nok
 					<div class="form-group">
 						<label class="col-lg-1 col-sm-2 control-label">등록상태</label>
 						<div class="col-sm-8">
-							<input type="radio" name="book_display" id="display1" value="1" <?if($book_display==1){?>checked<?}?>>
+							<input type="radio" name="book_display" id="display1" value="1" <?php if{?>checked<?php }?>>
 							<label for="display1"> 노출</label>
 							&nbsp;&nbsp;&nbsp;
-							<input type="radio" name="book_display" id="display2" value="2" <?if($book_display==2){?>checked<?}?>>
+							<input type="radio" name="book_display" id="display2" value="2" <?php if{?>checked<?php }?>>
 							<label for="display2"> 숨김</label>
 						</div>
 					</div>
@@ -716,6 +716,9 @@ function confirm_delete() {
 }
 </script>
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

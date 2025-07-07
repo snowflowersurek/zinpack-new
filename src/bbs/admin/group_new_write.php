@@ -176,6 +176,9 @@ $ep_nick = $row["ep_nick"];
 	}
 </script>
  
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

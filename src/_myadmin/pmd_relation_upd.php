@@ -73,3 +73,7 @@ function PMD_return_upd($b, $ret)
     die('<root act="relation_upd" return="'.$ret.'" b="'.$b.'" K="'.$K.'"></root>');
 }
 ?>
+
+
+
+

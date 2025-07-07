@@ -635,3 +635,7 @@ function PMA_EVN_getQueryFromRequest()
 } // end PMA_EVN_getQueryFromRequest()
 
 ?>
+
+
+
+

@@ -178,3 +178,7 @@ function PMA_buildHtmlForDb(
     return array($column_order, $out);
 }
 ?>
+
+
+
+

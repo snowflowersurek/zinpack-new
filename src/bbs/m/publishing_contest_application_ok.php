@@ -8,7 +8,7 @@ if (!$db_conn) {
 ?>
 <meta http-equiv="content-type" content="text/html; charset=<?=$iw['charset']?>" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-<?
+<?php
 $contest_code = trim($_POST['contest_code']);
 $mb_code = trim($_POST['mb_code']);
 $user_name = trim($_POST['user_name']);
@@ -93,3 +93,6 @@ if($_FILES["attach_file"]["name"] && $_FILES["attach_file"]["size"] > 1024*1024*
 	}
 }
 ?>
+
+
+

@@ -20,9 +20,7 @@ if ($iw[group] == "all") {
 
 $search = $_GET['search'];
 
-?>
-
-<?php if ($ep_state_publishing == 1) { ?>
+ if ($ep_state_publishing == 1) { ?>
 <div class="content">
 	<div class="row">
 		<div class="breadcrumb-box input-group">
@@ -33,7 +31,7 @@ $search = $_GET['search'];
 				<a class="btn btn-theme" href="<?=$iw[m_path]?>/publishing_search_list.php?type=publishing&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&search=<?=urlencode($search)?>" title="더보기">더보기</a>
 			</span>
 		</div>
-		<?
+		<?php
 			$start_line = 0;
 			if($st_publishing_list==4 || $st_publishing_list==7){
 				$end_line = $st_publishing_list-1;
@@ -91,8 +89,7 @@ $search = $_GET['search'];
 				$cg_hit = $row2[cg_hit];
 				$cg_comment = $row2[cg_comment];
 				$cg_recommend = $row2[cg_recommend];
-		?>
-		<?if($st_publishing_list==2){?>
+		 if($st_publishing_list==2){?>
 			<div class="masonry-item w-6">
 				<div class="box br-theme box-media">
 					<div class="media">
@@ -108,22 +105,19 @@ $search = $_GET['search'];
 								<h4 class="media-heading box-title"><?=$BookName?></h4>
 								<p><?=$authorName?></p>
 								<ul class="list-inline">
-									<?if($cg_hit==1){?><li><i class="fa fa-eye"></i> <?=$Hit?></li><?}?>
-									<?if($cg_comment==1){?><li><i class="fa fa-comment"></i> <?=$reply_count?></li><?}?>
-									<?if($cg_recommend==1){?><li><i class="fa fa-thumbs-up"></i> <?=$book_recommend?></li><?}?>
+									<?php if($cg_hit==1){?><li><i class="fa fa-eye"></i> <?=$Hit?></li><?php } ?><?php if($cg_comment==1){?><li><i class="fa fa-comment"></i> <?=$reply_count?></li><?php } ?><?php if($cg_recommend==1){?><li><i class="fa fa-thumbs-up"></i> <?=$book_recommend?></li><?php }?>
 								</ul>
 							</div>
 						</a>
 					</div>
 				</div> <!-- /.box -->
 			</div> <!-- /.masonry-item -->
-		<?}else if($st_publishing_list==3 || $st_publishing_list==4 || $st_publishing_list==6 || $st_publishing_list==7){?>
-			<?if($st_publishing_list==3 || $st_publishing_list==4){?>
-			<div class="<?if($i%3==0){?> clearfix-6<?}?><?if($i%2==0){?> clearfix-4<?}?><?if($i%3!=0&&$i%2!=0&&$i%1==0){?> clearfix-2<?}?>"></div>
-			<?}else if($st_publishing_list==6 || $st_publishing_list==7){?>
-			<div class="<?if($i%6==0){?> clearfix-6<?}?><?if($i%4==0){?> clearfix-4<?}?><?if($i%6!=0&&$i%4!=0&&$i%2==0){?> clearfix-2<?}?>"></div>
-			<?}?>
-			<div class="masonry-item h-full <?if($st_publishing_list==3 || $st_publishing_list==4){?>w-4<?}else{?>w-2<?}?>">
+		<?php }else if($st_publishing_list==3 || $st_publishing_list==4 || $st_publishing_list==6 || $st_publishing_list==7){ if($st_publishing_list==3 || $st_publishing_list==4){?>
+			<div class="<?php if{?> clearfix-6<?php } if{?> clearfix-4<?php } if{?> clearfix-2<?php }?>"></div>
+			<?php }else if($st_publishing_list==6 || $st_publishing_list==7){?>
+			<div class="<?php if{?> clearfix-6<?php } if{?> clearfix-4<?php } if{?> clearfix-2<?php }?>"></div>
+			<?php }?>
+			<div class="masonry-item h-full <?php if{?>w-4<?php }else{?>w-2<?php }?>">
 				<div class="box br-theme box-media">
 					<div class="media">
 						<a href="<?=$iw['m_path']?>/publishing_data_view.php?type=publishing&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&item=<?=$BookID?>">
@@ -136,17 +130,14 @@ $search = $_GET['search'];
 								<h4 class="media-heading"><?=$BookName?></h4>
 								<p><?=$authorName?></p>
 								<ul class="list-inline">
-									<?if($cg_hit==1){?><li><i class="fa fa-eye"></i> <?=$Hit?></li><?}?>
-									<?if($cg_comment==1){?><li><i class="fa fa-comment"></i> <?=$reply_count?></li><?}?>
-									<?if($cg_recommend==1){?><li><i class="fa fa-thumbs-up"></i> <?=$book_recommend?></li><?}?>
+									<?php if($cg_hit==1){?><li><i class="fa fa-eye"></i> <?=$Hit?></li><?php } ?><?php if($cg_comment==1){?><li><i class="fa fa-comment"></i> <?=$reply_count?></li><?php } ?><?php if($cg_recommend==1){?><li><i class="fa fa-thumbs-up"></i> <?=$book_recommend?></li><?php }?>
 								</ul>
 							</div>
 						</a>
 					</div>
 				</div> <!-- /.box -->
 			</div> <!-- /.masonry-item -->
-		<?}?>
-		<?
+		<?php }
 			$i++;
 			}
 		?>
@@ -164,7 +155,7 @@ $search = $_GET['search'];
 				<a class="btn btn-theme" href="<?=$iw[m_path]?>/publishing_author_search_list.php?type=author&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&search=<?=urlencode($search)?>" title="더보기">더보기</a>
 			</span>
 		</div>
-		<?
+		<?php
 			$start_line = 0;
 			if($st_publishing_list==4 || $st_publishing_list==7){
 				$end_line = $st_publishing_list-1;
@@ -183,8 +174,7 @@ $search = $_GET['search'];
 				$Photo = $row["Photo"];
 				$Hit = number_format($row["Hit"]);
 				$author_recommend = $row["author_recommend"];
-		?>
-		<?if($st_publishing_list==2){?>
+		 if($st_publishing_list==2){?>
 			<div class="masonry-item w-6">
 				<div class="box br-theme box-media">
 					<div class="media">
@@ -203,13 +193,12 @@ $search = $_GET['search'];
 					</div>
 				</div> <!-- /.box -->
 			</div> <!-- /.masonry-item -->
-		<?}else if($st_publishing_list==3 || $st_publishing_list==4 || $st_publishing_list==6 || $st_publishing_list==7){?>
-			<?if($st_publishing_list==3 || $st_publishing_list==4){?>
-			<div class="<?if($i%3==0){?> clearfix-6<?}?><?if($i%2==0){?> clearfix-4<?}?><?if($i%3!=0&&$i%2!=0&&$i%1==0){?> clearfix-2<?}?>"></div>
-			<?}else if($st_publishing_list==6 || $st_publishing_list==7){?>
-			<div class="<?if($i%6==0){?> clearfix-6<?}?><?if($i%4==0){?> clearfix-4<?}?><?if($i%6!=0&&$i%4!=0&&$i%2==0){?> clearfix-2<?}?>"></div>
-			<?}?>
-			<div class="masonry-item h-full <?if($st_publishing_list==3 || $st_publishing_list==4){?>w-4<?}else{?>w-2<?}?>">
+		<?php }else if($st_publishing_list==3 || $st_publishing_list==4 || $st_publishing_list==6 || $st_publishing_list==7){ if($st_publishing_list==3 || $st_publishing_list==4){?>
+			<div class="<?php if{?> clearfix-6<?php } if{?> clearfix-4<?php } if{?> clearfix-2<?php }?>"></div>
+			<?php }else if($st_publishing_list==6 || $st_publishing_list==7){?>
+			<div class="<?php if{?> clearfix-6<?php } if{?> clearfix-4<?php } if{?> clearfix-2<?php }?>"></div>
+			<?php }?>
+			<div class="masonry-item h-full <?php if{?>w-4<?php }else{?>w-2<?php }?>">
 				<div class="box br-theme box-media">
 					<div class="media">
 						<a href="<?=$iw['m_path']?>/publishing_author_data_view.php?type=author&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&item=<?=$AuthorID?>">
@@ -225,8 +214,7 @@ $search = $_GET['search'];
 					</div>
 				</div> <!-- /.box -->
 			</div> <!-- /.masonry-item -->
-		<?}?>
-		<?
+		<?php }
 			$i++;
 			}
 		?>
@@ -244,7 +232,7 @@ $search = $_GET['search'];
 				<a class="btn btn-theme" href="<?=$iw[m_path]?>/publishing_exhibit_search_list.php?type=exhibit&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&search=<?=urlencode($search)?>" title="더보기">더보기</a>
 			</span>
 		</div>
-		<?
+		<?php
 			$start_line = 0;
 			if($st_publishing_list==4 || $st_publishing_list==7){
 				$end_line = $st_publishing_list-1;
@@ -274,8 +262,7 @@ $search = $_GET['search'];
 						$picture_photo = $iw[path]."/publishing/".$ep_nick."/book/".$picture_photo;
 					}
 				}
-		?>
-		<?if($st_publishing_list==2){?>
+		 if($st_publishing_list==2){?>
 			<div class="masonry-item w-6">
 				<div class="box br-theme box-media">
 					<div class="media">
@@ -298,13 +285,12 @@ $search = $_GET['search'];
 					</div>
 				</div> <!-- /.box -->
 			</div> <!-- /.masonry-item -->
-		<?}else if($st_publishing_list==3 || $st_publishing_list==4 || $st_publishing_list==6 || $st_publishing_list==7){?>
-			<?if($st_publishing_list==3 || $st_publishing_list==4){?>
-			<div class="<?if($i%3==0){?> clearfix-6<?}?><?if($i%2==0){?> clearfix-4<?}?><?if($i%3!=0&&$i%2!=0&&$i%1==0){?> clearfix-2<?}?>"></div>
-			<?}else if($st_publishing_list==6 || $st_publishing_list==7){?>
-			<div class="<?if($i%6==0){?> clearfix-6<?}?><?if($i%4==0){?> clearfix-4<?}?><?if($i%6!=0&&$i%4!=0&&$i%2==0){?> clearfix-2<?}?>"></div>
-			<?}?>
-			<div class="masonry-item h-full <?if($st_publishing_list==3 || $st_publishing_list==4){?>w-4<?}else{?>w-2<?}?>">
+		<?php }else if($st_publishing_list==3 || $st_publishing_list==4 || $st_publishing_list==6 || $st_publishing_list==7){ if($st_publishing_list==3 || $st_publishing_list==4){?>
+			<div class="<?php if{?> clearfix-6<?php } if{?> clearfix-4<?php } if{?> clearfix-2<?php }?>"></div>
+			<?php }else if($st_publishing_list==6 || $st_publishing_list==7){?>
+			<div class="<?php if{?> clearfix-6<?php } if{?> clearfix-4<?php } if{?> clearfix-2<?php }?>"></div>
+			<?php }?>
+			<div class="masonry-item h-full <?php if{?>w-4<?php }else{?>w-2<?php }?>">
 				<div class="box br-theme box-media">
 					<div class="media">
 						<a href="<?=$iw['m_path']?>/publishing_exhibit_data_view.php?type=exhibit&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&item=<?=$picture_idx?>">
@@ -322,17 +308,14 @@ $search = $_GET['search'];
 					</div>
 				</div> <!-- /.box -->
 			</div> <!-- /.masonry-item -->
-		<?}?>
-		<?
+		<?php }
 			$i++;
 			}
 		?>
 		<div class="clearfix"></div>
 	</div> <!-- /.row -->
 </div> <!-- /.content -->
-<?php }?>
-
-<?php if ($ep_state_mcb == 1) { ?>
+<?php } ?><?php if($ep_state_mcb == 1) { ?>
 <div class="content">
 	<div class="row">
 		<div class="breadcrumb-box input-group">
@@ -345,7 +328,7 @@ $search = $_GET['search'];
 		</div>
 		<div class="masonry">
 			<div class="grid-sizer"></div>
-			<?
+			<?php
 				$start_line = 0;
 				if($st_mcb_list==4 || $st_mcb_list==7){
 					$end_line = $st_mcb_list-1;
@@ -429,32 +412,26 @@ $search = $_GET['search'];
 					$cg_hit = $row2[cg_hit];
 					$cg_comment = $row2[cg_comment];
 					$cg_recommend = $row2[cg_recommend];
-			?>
-			<?if($st_mcb_list==2){?>
+			 if($st_mcb_list==2){?>
 				<div class="masonry-item w-6 h-2">
 					<div class="box br-theme box-media">
 						<div class="media">
 							<a href="<?=$iw['m_path']?>/mcb_data_view.php?type=mcb&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&item=<?=$md_code?>">
 								<div class="img-frame pull-left <?=$no_image?>">
-								<?if($no_image !="no-img"){?><table style="height:100%;width:100%;background-color:#000000;"><tr><td><?}?>
-								<?if($row["md_file_1"]){?>
+								<?php if($no_image !="no-img"){?><table style="height:100%;width:100%;background-color:#000000;"><tr><td><?php } ?><?php if($row["md_file_1"]){?>
 									<img src="<?=$iw[path]."/mcb/".$ep_nick."/".$gp_nick."/".$md_code."/".$md_file_1?>" class="media-object img-responsive" alt=""/>
-								<?}else if($row["md_youtube"]){?>
+								<?php }else if($row["md_youtube"]){?>
 									<img src="//img.youtube.com/vi/<?=$youtube_code?>/0.jpg" class="media-object img-responsive" alt=""/>
-								<?}else if($md_type == 2 && $md_images[1][0]){?>
+								<?php }else if($md_type == 2 && $md_images[1][0]){?>
 									<img src="<?=htmlspecialchars($md_images[1][0]);?>" class="media-object img-responsive" alt=""/>
-								<?}?>
-								<?if($no_image !="no-img"){?></td></tr></table><?}?>
+								<?php } ?><?php if($no_image !="no-img"){?></td></tr></table><?php }?>
 								</div>
 								<div class="media-body">
 									<h4 class="media-heading box-title"><?=$md_subject?></h4>
 									<ul class="list-inline">
-										<?if($cg_hit==1){?><li><i class="fa fa-eye"></i> <?=$md_hit?></li><?}?>
-										<?if($cg_comment==1){?><li><i class="fa fa-comment"></i> <?=$reply_count?></li><?}?>
-										<?if($cg_recommend==1){?><li><i class="fa fa-thumbs-up"></i> <?=$md_recommend?></li><?}?>
-										<?if($md_attach){?>
+										<?php if($cg_hit==1){?><li><i class="fa fa-eye"></i> <?=$md_hit?></li><?php } ?><?php if($cg_comment==1){?><li><i class="fa fa-comment"></i> <?=$reply_count?></li><?php } ?><?php if($cg_recommend==1){?><li><i class="fa fa-thumbs-up"></i> <?=$md_recommend?></li><?php } ?><?php if($md_attach){?>
 										<li><i class="fa fa-file"></i> <?=$md_attach?></li>
-										<?}?>
+										<?php }?>
 									</ul>
 									<p><?=cut_str($md_content,$content_size)?></p>
 								</div>
@@ -462,34 +439,30 @@ $search = $_GET['search'];
 						</div>
 					</div> <!-- /.box -->
 				</div> <!-- /.masonry-item -->
-			<?}else if($st_mcb_list==3 || $st_mcb_list==4 || $st_mcb_list==6 || $st_mcb_list==7){?>
-				<?if($st_mcb_list==3 || $st_mcb_list==4){?>
-				<div class="<?if($i%3==0){?> clearfix-6<?}?><?if($i%2==0){?> clearfix-4<?}?><?if($i%3!=0&&$i%2!=0&&$i%1==0){?> clearfix-2<?}?>"></div>
-				<?}else if($st_mcb_list==6 || $st_mcb_list==7){?>
-				<div class="<?if($i%6==0){?> clearfix-6<?}?><?if($i%4==0){?> clearfix-4<?}?><?if($i%6!=0&&$i%4!=0&&$i%2==0){?> clearfix-2<?}?>"></div>
-				<?}?>
-				<div class="masonry-item h-full <?if($st_mcb_list==3 || $st_mcb_list==4){?>w-4<?}else{?>w-2<?}?>">
+			<?php }else if($st_mcb_list==3 || $st_mcb_list==4 || $st_mcb_list==6 || $st_mcb_list==7){ if($st_mcb_list==3 || $st_mcb_list==4){?>
+				<div class="<?php if{?> clearfix-6<?php } if{?> clearfix-4<?php } if{?> clearfix-2<?php }?>"></div>
+				<?php }else if($st_mcb_list==6 || $st_mcb_list==7){?>
+				<div class="<?php if{?> clearfix-6<?php } if{?> clearfix-4<?php } if{?> clearfix-2<?php }?>"></div>
+				<?php }?>
+				<div class="masonry-item h-full <?php if{?>w-4<?php }else{?>w-2<?php }?>">
 					<div class="box br-theme box-media">
 						<div class="media">
 							<a href="<?=$iw['m_path']?>/mcb_data_view.php?type=mcb&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&item=<?=$md_code?>">
 								<div>
-									<?if($row["md_file_1"]){?>
+									<?php if($row["md_file_1"]){?>
 										<img src="<?=$iw[path]."/mcb/".$ep_nick."/".$gp_nick."/".$md_code."/".$md_file_1?>" class="media-object img-responsive" alt=""/>
-									<?}else if($row["md_youtube"]){?>
+									<?php }else if($row["md_youtube"]){?>
 										<img src="//img.youtube.com/vi/<?=$youtube_code?>/0.jpg" class="media-object img-responsive" alt=""/>
-									<?}else if($md_type == 2 && $md_images[1][0]){?>
+									<?php }else if($md_type == 2 && $md_images[1][0]){?>
 										<img src="<?=htmlspecialchars($md_images[1][0]);?>" class="media-object img-responsive" alt=""/>
-									<?}?>
+									<?php }?>
 								</div>
 								<div class="media-body">
 									<h4 class="media-heading"><?=$md_subject?></h4>
 									<ul class="list-inline">
-										<?if($cg_hit==1){?><li><i class="fa fa-eye"></i> <?=$md_hit?></li><?}?>
-										<?if($cg_comment==1){?><li><i class="fa fa-comment"></i> <?=$reply_count?></li><?}?>
-										<?if($cg_recommend==1){?><li><i class="fa fa-thumbs-up"></i> <?=$md_recommend?></li><?}?>
-										<?if($md_attach){?>
+										<?php if($cg_hit==1){?><li><i class="fa fa-eye"></i> <?=$md_hit?></li><?php } ?><?php if($cg_comment==1){?><li><i class="fa fa-comment"></i> <?=$reply_count?></li><?php } ?><?php if($cg_recommend==1){?><li><i class="fa fa-thumbs-up"></i> <?=$md_recommend?></li><?php } ?><?php if($md_attach){?>
 										<li><i class="fa fa-file"></i> <?=$md_attach?></li>
-										<?}?>
+										<?php }?>
 									</ul>
 									<p><?=cut_str($md_content,$content_size)?></p>
 								</div>
@@ -497,8 +470,7 @@ $search = $_GET['search'];
 						</div>
 					</div> <!-- /.box -->
 				</div> <!-- /.masonry-item -->
-			<?}?>
-			<?
+			<?php }
 				$i++;
 				}
 			?>
@@ -506,9 +478,7 @@ $search = $_GET['search'];
 
 	</div> <!-- /.row -->
 </div> <!-- /.content -->
-<?php }?>
-
-<?php if ($ep_state_shop == 1) { ?>
+<?php } ?><?php if($ep_state_shop == 1) { ?>
 <div class="content">
 	<div class="row">
 		<div class="breadcrumb-box input-group">
@@ -519,7 +489,7 @@ $search = $_GET['search'];
 				<a class="btn btn-theme" href="<?=$iw[m_path]?>/shop_search_list.php?type=shop&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&search=<?=urlencode($search)?>" title="더보기">더보기</a>
 			</span>
 		</div>
-		<?
+		<?php
 			$start_line = 0;
 			if($st_shop_list==4 || $st_shop_list==7){
 				$end_line = $st_shop_list-1;
@@ -567,19 +537,18 @@ $search = $_GET['search'];
 				$cg_hit = $row2[cg_hit];
 				$cg_comment = $row2[cg_comment];
 				$cg_recommend = $row2[cg_recommend];
-		?>
-		<?if($st_shop_list==2){?>
+		 if($st_shop_list==2){?>
 			<div class="masonry-item w-6">
 				<div class="box br-theme box-media">
 					<div class="media">
 						<a href="<?=$iw['m_path']?>/shop_data_view.php?type=shop&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&item=<?=$sd_code?>">
 							<div class="img-frame pull-left">
-								<?if($sd_price != $sd_sale){?>
+								<?php if($sd_price != $sd_sale){?>
 									<span class="sale-tag">
 										<i class="fa fa-certificate fa-5x"></i>
 										<i class="text-icon"><?=$sd_percent?>%</i>
 									</span>
-								<?}?>
+								<?php }?>
 								<table style="height:100%;width:100%;background-color:#000000;"><tr><td>
 								<img class="media-object img-responsive" src="<?=$iw[path]."/shop/".$ep_nick."/".$gp_nick."/".$sd_code."/".$sd_image?>" alt="">
 								</td></tr></table>
@@ -587,61 +556,53 @@ $search = $_GET['search'];
 							<div class="media-body">
 								<h4 class="media-heading box-title"><?=$sd_subject?></h4>
 								<ul class="list-inline">
-									<?if($cg_hit==1){?><li><i class="fa fa-eye"></i> <?=$sd_hit?></li><?}?>
-									<?if($cg_comment==1){?><li><i class="fa fa-comment"></i> <?=$reply_count?></li><?}?>
-									<?if($cg_recommend==1){?><li><i class="fa fa-thumbs-up"></i> <?=$sd_recommend?></li><?}?>
+									<?php if($cg_hit==1){?><li><i class="fa fa-eye"></i> <?=$sd_hit?></li><?php } ?><?php if($cg_comment==1){?><li><i class="fa fa-comment"></i> <?=$reply_count?></li><?php } ?><?php if($cg_recommend==1){?><li><i class="fa fa-thumbs-up"></i> <?=$sd_recommend?></li><?php }?>
 								</ul>
-								<?if($sd_price != $sd_sale){?><p class="line-through"><small><?=national_money($iw[language], $sd_price);?></small></p><?}?>
+								<?php if($sd_price != $sd_sale){?><p class="line-through"><small><?=national_money($iw[language], $sd_price);?></small></p><?php }?>
 								<span class="label label-info"><?=national_money($iw[language], $sd_sale);?></span>
 							</div>
 						</a>
 					</div>
 				</div> <!-- /.box -->
 			</div> <!-- /.masonry-item -->
-		<?}else if($st_shop_list==3 || $st_shop_list==4 || $st_shop_list==6 || $st_shop_list==7){?>
-			<?if($st_shop_list==3 || $st_shop_list==4){?>
-			<div class="<?if($i%3==0){?> clearfix-6<?}?><?if($i%2==0){?> clearfix-4<?}?><?if($i%3!=0&&$i%2!=0&&$i%1==0){?> clearfix-2<?}?>"></div>
-			<?}else if($st_shop_list==6 || $st_shop_list==7){?>
-			<div class="<?if($i%6==0){?> clearfix-6<?}?><?if($i%4==0){?> clearfix-4<?}?><?if($i%6!=0&&$i%4!=0&&$i%2==0){?> clearfix-2<?}?>"></div>
-			<?}?>
-			<div class="masonry-item h-full <?if($st_shop_list==3 || $st_shop_list==4){?>w-4<?}else{?>w-2<?}?>">
+		<?php }else if($st_shop_list==3 || $st_shop_list==4 || $st_shop_list==6 || $st_shop_list==7){ if($st_shop_list==3 || $st_shop_list==4){?>
+			<div class="<?php if{?> clearfix-6<?php } if{?> clearfix-4<?php } if{?> clearfix-2<?php }?>"></div>
+			<?php }else if($st_shop_list==6 || $st_shop_list==7){?>
+			<div class="<?php if{?> clearfix-6<?php } if{?> clearfix-4<?php } if{?> clearfix-2<?php }?>"></div>
+			<?php }?>
+			<div class="masonry-item h-full <?php if{?>w-4<?php }else{?>w-2<?php }?>">
 				<div class="box br-theme box-media">
 					<div class="media">
 						<a href="<?=$iw['m_path']?>/shop_data_view.php?type=shop&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&item=<?=$sd_code?>">
 							<div>
-								<?if($sd_price != $sd_sale){?>
+								<?php if($sd_price != $sd_sale){?>
 								<span class="sale-tag">
 									<i class="fa fa-certificate fa-5x"></i>
 									<i class="text-icon"><?=$sd_percent?>%</i>
 								</span>
-								<?}?>
+								<?php }?>
 								<img class="media-object img-responsive" src="<?=$iw[path]."/shop/".$ep_nick."/".$gp_nick."/".$sd_code."/".$sd_image?>" alt="">
 							</div>
 							<div class="media-body">
 								<h4 class="media-heading"><?=$sd_subject?></h4>
 								<ul class="list-inline">
-									<?if($cg_hit==1){?><li><i class="fa fa-eye"></i> <?=$sd_hit?></li><?}?>
-									<?if($cg_comment==1){?><li><i class="fa fa-comment"></i> <?=$reply_count?></li><?}?>
-									<?if($cg_recommend==1){?><li><i class="fa fa-thumbs-up"></i> <?=$sd_recommend?></li><?}?>
+									<?php if($cg_hit==1){?><li><i class="fa fa-eye"></i> <?=$sd_hit?></li><?php } ?><?php if($cg_comment==1){?><li><i class="fa fa-comment"></i> <?=$reply_count?></li><?php } ?><?php if($cg_recommend==1){?><li><i class="fa fa-thumbs-up"></i> <?=$sd_recommend?></li><?php }?>
 								</ul>
-								<?if($sd_price != $sd_sale){?><p class="line-through"><small><?=national_money($iw[language], $sd_price);?></small></p><?}?>
+								<?php if($sd_price != $sd_sale){?><p class="line-through"><small><?=national_money($iw[language], $sd_price);?></small></p><?php }?>
 								<p><?=national_money($iw[language], $sd_sale);?></p>
 							</div>
 						</a>
 					</div>
 				</div> <!-- /.box -->
 			</div> <!-- /.masonry-item -->
-		<?}?>
-		<?
+		<?php }
 			$i++;
 			}
 		?>
 		<div class="clearfix"></div>
 	</div> <!-- /.row -->
 </div> <!-- /.content -->
-<?php }?>
-
-<?php if ($ep_state_doc == 1) { ?>
+<?php } ?><?php if($ep_state_doc == 1) { ?>
 <div class="content">
 	<div class="row">
 		<div class="breadcrumb-box input-group">
@@ -654,7 +615,7 @@ $search = $_GET['search'];
 		</div>
 		<div class="masonry">
 			<div class="grid-sizer"></div>
-			<?
+			<?php
 				$start_line = 0;
 				if($st_doc_list==4 || $st_doc_list==7){
 					$end_line = $st_doc_list-1;
@@ -702,75 +663,66 @@ $search = $_GET['search'];
 					$cg_hit = $row2[cg_hit];
 					$cg_comment = $row2[cg_comment];
 					$cg_recommend = $row2[cg_recommend];
-			?>
-			<?if($st_doc_list==2){?>
+			 if($st_doc_list==2){?>
 				<div class="masonry-item w-6">
 					<div class="box br-theme box-media">
 						<div class="media">
 							<a href="<?=$iw['m_path']?>/doc_data_view.php?type=doc&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&item=<?=$dd_code?>">
-								<div class="img-frame pull-left <?if(!$dd_image){?>no-img<?}?>">
-								<?if($dd_image){?>
+								<div class="img-frame pull-left <?php if{?>no-img<?php }?>">
+								<?php if($dd_image){?>
 									<table style="height:100%;width:100%;background-color:#000000;"><tr><td>
 									<img class="media-object img-responsive" src="<?=$iw[path]."/doc/".$ep_nick."/".$gp_nick."/".$dd_code."/".$dd_image?>" alt="">
 									</td></tr></table>
-								<?}?>
+								<?php }?>
 								</div>
 								<div class="media-body">
 									<h4 class="media-heading box-title"><?=$dd_subject?></h4>
 									<ul class="list-inline">
-										<li><i class="fa fa-info-circle"></i> <?=$row["dd_amount"]?> <?if($row["dd_type"]==1){?><?=national_language($iw[language],"a0167","쪽");?><?}else if($row["dd_type"]==2){?><?=national_language($iw[language],"a0168","분");?><?}?></li>
+										<li><i class="fa fa-info-circle"></i> <?=$row["dd_amount"] if{?><?=national_language($iw[language],"a0167","쪽"); }else if($row["dd_type"]==2){?><?=national_language($iw[language],"a0168","분"); }?></li>
 										<li><i class="fa fa-file"></i> <?=$dd_file;?>(<?=$dd_file_size?> MB)</li>
-										<?if($cg_hit==1){?><li><i class="fa fa-eye"></i> <?=$dd_hit?></li><?}?>
-										<?if($cg_comment==1){?><li><i class="fa fa-comment"></i> <?=$reply_count?></li><?}?>
-										<?if($cg_recommend==1){?><li><i class="fa fa-thumbs-up"></i> <?=$dd_recommend?></li><?}?>
+										<?php if($cg_hit==1){?><li><i class="fa fa-eye"></i> <?=$dd_hit?></li><?php } ?><?php if($cg_comment==1){?><li><i class="fa fa-comment"></i> <?=$reply_count?></li><?php } ?><?php if($cg_recommend==1){?><li><i class="fa fa-thumbs-up"></i> <?=$dd_recommend?></li><?php }?>
 									</ul>
-									<span class="label label-info"><?if($dd_price=="0"){?><?=national_language($iw[language],"a0265","무료");?><?}else{?><?=$dd_price?> Point<?}?></span>
+									<span class="label label-info"><?php if{?><?=national_language($iw[language],"a0265","무료");?><?php }else{?><?=$dd_price?> Point<?php }?></span>
 								</div>
 							</a>
 						</div>
 					</div> <!-- /.box -->
 				</div> <!-- /.masonry-item -->
-			<?}else if($st_doc_list==3 || $st_doc_list==4 || $st_doc_list==6 || $st_doc_list==7){?>
-				<?if($st_doc_list==3 || $st_doc_list==4){?>
-				<div class="<?if($i%3==0){?> clearfix-6<?}?><?if($i%2==0){?> clearfix-4<?}?><?if($i%3!=0&&$i%2!=0&&$i%1==0){?> clearfix-2<?}?>"></div>
-				<?}else if($st_doc_list==6 || $st_doc_list==7){?>
-				<div class="<?if($i%6==0){?> clearfix-6<?}?><?if($i%4==0){?> clearfix-4<?}?><?if($i%6!=0&&$i%4!=0&&$i%2==0){?> clearfix-2<?}?>"></div>
-				<?}?>
-				<div class="masonry-item h-full <?if($st_doc_list==3 || $st_doc_list==4){?>w-4<?}else{?>w-2<?}?>">
+			<?php }else if($st_doc_list==3 || $st_doc_list==4 || $st_doc_list==6 || $st_doc_list==7){ if($st_doc_list==3 || $st_doc_list==4){?>
+				<div class="<?php if{?> clearfix-6<?php } if{?> clearfix-4<?php } if{?> clearfix-2<?php }?>"></div>
+				<?php }else if($st_doc_list==6 || $st_doc_list==7){?>
+				<div class="<?php if{?> clearfix-6<?php } if{?> clearfix-4<?php } if{?> clearfix-2<?php }?>"></div>
+				<?php }?>
+				<div class="masonry-item h-full <?php if{?>w-4<?php }else{?>w-2<?php }?>">
 					<div class="box br-theme box-media">
 						<div class="media">
 							<a href="<?=$iw['m_path']?>/doc_data_view.php?type=doc&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&item=<?=$dd_code?>">
 								<div>
-									<?if($dd_image){?>
+									<?php if($dd_image){?>
 										<img class="media-object img-responsive" src="<?=$iw[path]."/doc/".$ep_nick."/".$gp_nick."/".$dd_code."/".$dd_image?>" alt="">
-									<?}?>
+									<?php }?>
 								</div>
 								<div class="media-body">
 									<h4 class="media-heading"><?=$dd_subject?></h4>
 									<ul class="list-inline">
-										<li><i class="fa fa-info-circle"></i> <?=$row["dd_amount"]?> <?if($row["dd_type"]==1){?><?=national_language($iw[language],"a0167","쪽");?><?}else if($row["dd_type"]==2){?><?=national_language($iw[language],"a0168","분");?><?}?></li>
+										<li><i class="fa fa-info-circle"></i> <?=$row["dd_amount"] if{?><?=national_language($iw[language],"a0167","쪽"); }else if($row["dd_type"]==2){?><?=national_language($iw[language],"a0168","분"); }?></li>
 										<li><i class="fa fa-file"></i> <?=$dd_file;?>(<?=$dd_file_size?> MB)</li>
-										<?if($cg_hit==1){?><li><i class="fa fa-eye"></i> <?=$dd_hit?></li><?}?>
-										<?if($cg_comment==1){?><li><i class="fa fa-comment"></i> <?=$reply_count?></li><?}?>
-										<?if($cg_recommend==1){?><li><i class="fa fa-thumbs-up"></i> <?=$dd_recommend?></li><?}?>
+										<?php if($cg_hit==1){?><li><i class="fa fa-eye"></i> <?=$dd_hit?></li><?php } ?><?php if($cg_comment==1){?><li><i class="fa fa-comment"></i> <?=$reply_count?></li><?php } ?><?php if($cg_recommend==1){?><li><i class="fa fa-thumbs-up"></i> <?=$dd_recommend?></li><?php }?>
 									</ul>
-									<p><?if($dd_price=="0"){?><?=national_language($iw[language],"a0265","무료");?><?}else{?><?=$dd_price?> Point<?}?></p>
+									<p><?php if{?><?=national_language($iw[language],"a0265","무료");?><?php }else{?><?=$dd_price?> Point<?php }?></p>
 								</div>
 							</a>
 						</div>
 					</div> <!-- /.box -->
 				</div> <!-- /.masonry-item -->
-			<?}?>
-			<?
+			<?php }
 				$i++;
 				}
 			?>
 		</div> <!-- /#grid -->
 	</div> <!-- /.row -->
 </div> <!-- /.content -->
-<?php }?>
-
-<?php if ($ep_state_book == 1) { ?>
+<?php } ?><?php if($ep_state_book == 1) { ?>
 <div class="content">
 	<div class="row">
 		<div class="breadcrumb-box input-group">
@@ -782,7 +734,7 @@ $search = $_GET['search'];
 			</span>
 		</div>
 
-			<?
+			<?php
 				$start_line = 0;
 				if($st_book_list==4 || $st_book_list==7){
 					$end_line = $st_book_list-1;
@@ -840,8 +792,7 @@ $search = $_GET['search'];
 					$cg_hit = $row2[cg_hit];
 					$cg_comment = $row2[cg_comment];
 					$cg_recommend = $row2[cg_recommend];
-			?>
-			<?if($st_book_list==2){?>
+			 if($st_book_list==2){?>
 				<div class="masonry-item w-6">
 					<div class="box br-theme box-media">
 						<div class="media">
@@ -856,23 +807,20 @@ $search = $_GET['search'];
 									<ul class="list-inline">
 										<li><i class="fa fa-pencil"></i> <?=$bd_author?></li>
 										<li><i class="fa fa-info-circle"></i> <?=$bd_publisher?></li>
-										<?if($cg_hit==1){?><li><i class="fa fa-eye"></i> <?=$bd_hit?></li><?}?>
-										<?if($cg_comment==1){?><li><i class="fa fa-comment"></i> <?=$reply_count?></li><?}?>
-										<?if($cg_recommend==1){?><li><i class="fa fa-thumbs-up"></i> <?=$bd_recommend?></li><?}?>
+										<?php if($cg_hit==1){?><li><i class="fa fa-eye"></i> <?=$bd_hit?></li><?php } ?><?php if($cg_comment==1){?><li><i class="fa fa-comment"></i> <?=$reply_count?></li><?php } ?><?php if($cg_recommend==1){?><li><i class="fa fa-thumbs-up"></i> <?=$bd_recommend?></li><?php }?>
 									</ul>
-									<span class="label label-info"><?if($bd_price=="0"){?><?=national_language($iw[language],"a0265","무료");?><?}else{?><?=$bd_price?> Point<?}?></span>
+									<span class="label label-info"><?php if{?><?=national_language($iw[language],"a0265","무료");?><?php }else{?><?=$bd_price?> Point<?php }?></span>
 								</div>
 							</a>
 						</div>
 					</div> <!-- /.box -->
 				</div> <!-- /.masonry-item -->
-			<?}else if($st_book_list==3 || $st_book_list==4 || $st_book_list==6 || $st_book_list==7){?>
-				<?if($st_book_list==3 || $st_book_list==4){?>
-				<div class="<?if($i%3==0){?> clearfix-6<?}?><?if($i%2==0){?> clearfix-4<?}?><?if($i%3!=0&&$i%2!=0&&$i%1==0){?> clearfix-2<?}?>"></div>
-				<?}else if($st_book_list==6 || $st_book_list==7){?>
-				<div class="<?if($i%6==0){?> clearfix-6<?}?><?if($i%4==0){?> clearfix-4<?}?><?if($i%6!=0&&$i%4!=0&&$i%2==0){?> clearfix-2<?}?>"></div>
-				<?}?>
-				<div class="masonry-item h-full <?if($st_book_list==3 || $st_book_list==4){?>w-4<?}else{?>w-2<?}?>">
+			<?php }else if($st_book_list==3 || $st_book_list==4 || $st_book_list==6 || $st_book_list==7){ if($st_book_list==3 || $st_book_list==4){?>
+				<div class="<?php if{?> clearfix-6<?php } if{?> clearfix-4<?php } if{?> clearfix-2<?php }?>"></div>
+				<?php }else if($st_book_list==6 || $st_book_list==7){?>
+				<div class="<?php if{?> clearfix-6<?php } if{?> clearfix-4<?php } if{?> clearfix-2<?php }?>"></div>
+				<?php }?>
+				<div class="masonry-item h-full <?php if{?>w-4<?php }else{?>w-2<?php }?>">
 					<div class="box br-theme box-media">
 						<div class="media">
 							<a href="<?=$iw['m_path']?>/book_data_view.php?type=book&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&item=<?=$bd_code?>">
@@ -884,26 +832,24 @@ $search = $_GET['search'];
 									<ul class="list-inline">
 										<li><i class="fa fa-pencil"></i> <?=$bd_author?></li>
 										<li><i class="fa fa-info-circle"></i> <?=$bd_publisher?></li>
-										<?if($cg_hit==1){?><li><i class="fa fa-eye"></i> <?=$bd_hit?></li><?}?>
-										<?if($cg_comment==1){?><li><i class="fa fa-comment"></i> <?=$reply_count?></li><?}?>
-										<?if($cg_recommend==1){?><li><i class="fa fa-thumbs-up"></i> <?=$bd_recommend?></li><?}?>
+										<?php if($cg_hit==1){?><li><i class="fa fa-eye"></i> <?=$bd_hit?></li><?php } ?><?php if($cg_comment==1){?><li><i class="fa fa-comment"></i> <?=$reply_count?></li><?php } ?><?php if($cg_recommend==1){?><li><i class="fa fa-thumbs-up"></i> <?=$bd_recommend?></li><?php }?>
 									</ul>
-									<p><?if($bd_price=="0"){?><?=national_language($iw[language],"a0265","무료");?><?}else{?><?=$bd_price?> Point<?}?></p>
+									<p><?php if{?><?=national_language($iw[language],"a0265","무료");?><?php }else{?><?=$bd_price?> Point<?php }?></p>
 								</div>
 							</a>
 						</div>
 					</div> <!-- /.box -->
 				</div> <!-- /.masonry-item -->
-			<?}?>
-			<?
+			<?php }
 				$i++;
 				}
 			?>
 		<div class="clearfix"></div>
 	</div> <!-- /.row -->
 </div> <!-- /.content -->
-<?php }?>
-
-<?
+<?php }
 include_once("_tail.php");
 ?>
+
+
+

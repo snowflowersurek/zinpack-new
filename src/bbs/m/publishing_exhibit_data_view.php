@@ -131,7 +131,7 @@ include_once("_head_share.php");
 	<div class="row">
 		<div class="breadcrumb-box input-group">
 			<ol class="breadcrumb ">
-				<?
+				<?php
 					$row2 = sql_fetch(" select * from $iw[home_menu_table] where ep_code = '$iw[store]' and gp_code='$iw[group]' and state_sort = '$iw[type]' and cg_code = 'exhibit'");
 					$hm_code = $row2[hm_code];
 					$hm_view_scrap = $row2[hm_view_scrap];
@@ -278,9 +278,7 @@ include_once("_head_share.php");
 					<h3 class="box-title">도서 소개</h3>
 					<div class="content-info image-container"><?=$Intro?></div>
 				</div>
-				<?php }?>
-				
-				<?php if ($contents) { ?>
+				<?php } ?><?php if($contents) { ?>
 				<div class="box br-default">
 					<h3 class="box-title">그림전시 소개</h3>
 					<div class="content-info image-container"><?=$contents?></div>
@@ -288,7 +286,7 @@ include_once("_head_share.php");
 				<?php } ?>
 			</div> <!-- /.masonry-item -->
 
-			<?if($hm_view_scrap_mobile==1){?>
+			<?php if($hm_view_scrap_mobile==1){?>
 			<style>
 				@media (min-width:768px){
 					.scrap-wrap	{display:;}
@@ -297,9 +295,7 @@ include_once("_head_share.php");
 					.scrap-wrap	{display:none;}
 				}
 			</style>
-			<?}?>
-			<?
-			if ($hm_view_scrap==1){
+			<?php } ?><?php if($hm_view_scrap==1){
 				$scrap_type = "view";
 				include_once("all_home_scrap.php");
 			}
@@ -311,6 +307,9 @@ include_once("_head_share.php");
 	</div> <!-- .row -->
 </div> <!-- .content -->
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

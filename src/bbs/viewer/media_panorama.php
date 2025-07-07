@@ -78,6 +78,9 @@ $bmd_image = $row["bmd_image"];
 }
 </style>
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

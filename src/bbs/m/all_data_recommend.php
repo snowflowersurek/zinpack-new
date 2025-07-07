@@ -3,14 +3,14 @@ include_once("_common.php");
 ?>
 <meta http-equiv="content-type" content="text/html; charset=<?=$iw['charset']?>" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-<?
+<?php
 //1일 지난 데이터 삭제
 $recommend_confirm_date = date('Y-m-d H:i:s', strtotime('-1 days'));
 $sql = "delete from $iw[recommend_table] where date(rc_date) < '$recommend_confirm_date'";
 sql_query($sql);
 
-$board = $_GET[board];
-$idx = $_GET[idx];
+$board = $_GET['board'] ?? '';
+$idx = $_GET['idx'] ?? '';
 
 if($board == "board"){
 	$rc_type = 1;
@@ -83,3 +83,6 @@ if($board == "board"){
 
 echo $row[recommend];
 ?>
+
+
+

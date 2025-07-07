@@ -4,7 +4,7 @@ if ($iw[type] != "group" || $iw[gp_level] != "gp_admin" || $iw[group] == "all") 
 ?>
 <meta http-equiv="content-type" content="text/html; charset=<?=$iw['charset']?>" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-<?
+<?php
 $gm_no = $_GET[idx];
 
 $sql = "update $iw[group_member_table] set
@@ -17,3 +17,6 @@ sql_query($sql);
 alert("가입신청이 승인되었습니다.","$iw[admin_path]/group_join_list.php?type=$iw[type]&ep=$iw[store]&gp=$iw[group]");
 
 ?>
+
+
+

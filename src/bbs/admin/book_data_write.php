@@ -19,7 +19,8 @@ set_cookie("iw_upload",$upload_path,time()+36000);
 
 include_once("_head.php");
 ?>
-<script language="Javascript" src="/include/ckeditor/ckeditor.js"></script>
+<script src="/include/ckeditor/ckeditor5.js"></script>
+<script src="/include/ckeditor/ckeditor5-adapter.js"></script>
 
 <div class="breadcrumbs" id="breadcrumbs">
 	<ul class="breadcrumb">
@@ -61,7 +62,7 @@ include_once("_head.php");
 						<div class="col-sm-11">
 							<select class="col-xs-12 col-sm-8" name="cg_code">
 								<option value="">선택</option>
-								<?
+								<?php
 									$sql1 = "select * from $iw[home_menu_table] where ep_code = '$iw[store]' and gp_code = '$iw[group]' and hm_deep = 1 order by hm_order asc,hm_no asc";
 									$result1 = sql_query($sql1);
 									while($row1 = @sql_fetch_array($result1)){
@@ -74,8 +75,8 @@ include_once("_head.php");
 										$rows = sql_fetch("select * from $iw[category_table] where ep_code = '$iw[store]' and gp_code = '$iw[group]' and state_sort = '$iw[type]' and cg_code = '$cg_code'");
 										$cg_level_write = $rows["cg_level_write"];
 								?>
-									<option value="<?=$cg_code?>" <?if($iw[mb_level] < $cg_level_write){?>disabled<?}?>><?=$hm_name1?></option>
-									<?
+									<option value="<?=$cg_code?>" <?php if{?>disabled<?php }?>><?=$hm_name1?></option>
+									<?php
 										}
 										$sql2 = "select * from $iw[home_menu_table] where hm_upper_code = '$hm_code' and hm_deep = 2 and ep_code = '$iw[store]' and gp_code = '$iw[group]' order by hm_order asc,hm_no asc";
 										$result2 = sql_query($sql2);
@@ -90,8 +91,8 @@ include_once("_head.php");
 											$rows = sql_fetch("select * from $iw[category_table] where ep_code = '$iw[store]' and gp_code = '$iw[group]' and state_sort = '$iw[type]' and cg_code = '$cg_code'");
 											$cg_level_write = $rows["cg_level_write"];
 									?>
-										<option value="<?=$cg_code?>" <?if($iw[mb_level] < $cg_level_write){?>disabled<?}?>><?=$hm_name1?> > <?=$hm_name2?></option>
-										<?
+										<option value="<?=$cg_code?>" <?php if{?>disabled<?php }?>><?=$hm_name1?> > <?=$hm_name2?></option>
+										<?php
 											}
 											$sql3 = "select * from $iw[home_menu_table] where hm_upper_code = '$hm_code' and hm_deep = 3 and ep_code = '$iw[store]' and gp_code = '$iw[group]' order by hm_order asc,hm_no asc";
 											$result3 = sql_query($sql3);
@@ -106,8 +107,8 @@ include_once("_head.php");
 												$rows = sql_fetch("select * from $iw[category_table] where ep_code = '$iw[store]' and gp_code = '$iw[group]' and state_sort = '$iw[type]' and cg_code = '$cg_code'");
 												$cg_level_write = $rows["cg_level_write"];
 										?>
-											<option value="<?=$cg_code?>" <?if($iw[mb_level] < $cg_level_write){?>disabled<?}?>><?=$hm_name1?> > <?=$hm_name2?> > <?=$hm_name3?></option>
-											<?
+											<option value="<?=$cg_code?>" <?php if{?>disabled<?php }?>><?=$hm_name1?> > <?=$hm_name2?> > <?=$hm_name3?></option>
+											<?php
 												}
 												$sql4 = "select * from $iw[home_menu_table] where hm_upper_code = '$hm_code' and hm_deep = 4 and ep_code = '$iw[store]' and gp_code = '$iw[group]' order by hm_order asc,hm_no asc";
 												$result4 = sql_query($sql4);
@@ -122,10 +123,8 @@ include_once("_head.php");
 													$rows = sql_fetch("select * from $iw[category_table] where ep_code = '$iw[store]' and gp_code = '$iw[group]' and state_sort = '$iw[type]' and cg_code = '$cg_code'");
 													$cg_level_write = $rows["cg_level_write"];
 											?>
-												<option value="<?=$cg_code?>" <?if($iw[mb_level] < $cg_level_write){?>disabled<?}?>><?=$hm_name1?> > <?=$hm_name2?> > <?=$hm_name3?> > <?=$hm_name4?></option>
-											<?
-													}
-												}
+												<option value="<?=$cg_code?>" <?php if{?>disabled<?php }?>><?=$hm_name1?> > <?=$hm_name2?> > <?=$hm_name3?> > <?=$hm_name4?></option>
+											<?php } ?><?php }
 											}
 										}
 									}
@@ -334,6 +333,9 @@ include_once("_head.php");
 
 </script>
  
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

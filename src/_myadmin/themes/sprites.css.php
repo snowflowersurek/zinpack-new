@@ -80,3 +80,7 @@ if (is_readable($_SESSION['PMA_Theme']->getPath() . '/sprites.lib.php')) {
     }
 }
 ?>
+
+
+
+

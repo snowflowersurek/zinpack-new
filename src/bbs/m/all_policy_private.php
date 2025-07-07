@@ -16,6 +16,6 @@ if (!$row["ep_policy_private"]) alert("잘못된 접근입니다!","");
 		<?=stripslashes($row["ep_policy_private"])?>
 	</div>
 </div>
-<?
+<?php
 include_once("_tail.php");
-?>
+

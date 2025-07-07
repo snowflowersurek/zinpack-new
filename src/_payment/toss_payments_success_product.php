@@ -9,10 +9,10 @@
 <body>
 
 <?php
-$paymentKey = $_GET['paymentKey'];
-$orderId = $_GET['orderId'];
-$amount = $_GET['amount'];
-$method = $_GET['md'];
+$paymentKey = $_GET['paymentKey'] ?? '';
+$orderId = $_GET['orderId'] ?? '';
+$amount = $_GET['amount'] ?? '';
+$method = $_GET['md'] ?? '';
 
 //var_dump($_GET);
 //var_dump($_POST); exit;
@@ -270,3 +270,7 @@ if($isSuccess) {
 </section>
 </body>
 </html>
+
+
+
+

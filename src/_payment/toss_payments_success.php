@@ -10,10 +10,10 @@
 
 <?php
 session_start();
-$paymentKey = $_GET['paymentKey'];
-$orderId = $_GET['orderId'];
-$amount = $_GET['amount'];
-$method = $_GET['md'];
+$paymentKey = $_GET['paymentKey'] ?? '';
+$orderId = $_GET['orderId'] ?? '';
+$amount = $_GET['amount'] ?? '';
+$method = $_GET['md'] ?? '';
 
 $payment_config = require_once(__DIR__ . '/../config/payment.php');
 
@@ -99,7 +99,7 @@ $buyerid = get_cookie("buyer_id");
 /*
 $response_domain = get_cookie("response_domain");
 if(trim($response_domain)==""){
-	$response_domain = $_SESSION['response_domain'];
+	$response_domain = $_SESSION['response_domain'] ?? '';
 }
 */
 // set_cookie("response_domain", NULL, time() - 3600); 이 부분 사무실가서 확인 요망
@@ -134,8 +134,8 @@ if($isSuccess) {
 	}
 	$LGD_CASCAMOUNT = $responseJson->totalAmount;						//현입금금액
 
-	$response_domain = $_SESSION[$LGD_OID];
-	unset($_SESSION[$LGD_OID]);
+	$response_domain = isset($_SESSION[$LGD_OID]) ? $_SESSION[$LGD_OID] : '';
+if(isset($_SESSION[$LGD_OID])) unset($_SESSION[$LGD_OID]);
 
 	$REFUNDSTATE = $responseJson->virtualAccount->refundStatus;			//거래종류(R:할당,I:입금,C:취소), 토스 => NONE(할당), DONE(입금완료), CANCELED(입금취소), PARTIAL_CANCELED(부분취소)
 	if($REFUNDSTATE=="DONE"){
@@ -296,3 +296,7 @@ if($isSuccess) {
 </section>
 </body>
 </html>
+
+
+
+

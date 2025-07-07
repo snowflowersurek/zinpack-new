@@ -28,3 +28,7 @@ require_once 'libraries/sql_query_form.lib.php';
 PMA_sqlQueryForm();
 
 ?>
+
+
+
+

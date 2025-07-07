@@ -4,7 +4,7 @@ if ($iw[type] != "shop" || $iw[level] != "admin" || $iw[group] != "all") alert("
 ?>
 <meta http-equiv="content-type" content="text/html; charset=<?=$iw['charset']?>" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-<?
+<?php
 $ss_no = $_GET[idx];
 $ss_display = $_GET[dis];
 
@@ -31,3 +31,6 @@ sql_query($sql);
 
 alert("판매자등록이 승인되었습니다.","$iw[admin_path]/shop_seller_approval_list.php?type=$iw[type]&ep=$iw[store]&gp=$iw[group]");
 ?>
+
+
+

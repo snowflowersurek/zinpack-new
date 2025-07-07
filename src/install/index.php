@@ -85,3 +85,6 @@ include_once("{$iw_path}/install/super_admin_set.php");
 
 echo "<script>alert('테이블 생성이 완료되었습니다. 이제 install 디렉터리를 삭제하거나 접근할 수 없도록 변경하십시오.');</script>";
 ?>
+
+
+

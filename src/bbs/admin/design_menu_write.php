@@ -68,36 +68,32 @@ while($row = @sql_fetch_array($result)){
 						<label class="col-sm-2 control-label">종류</label>
 						<div class="col-sm-8">
 							<input type="hidden" name="state_sort" id="state_sort" value="" />
-						<?if($iw[mcb]==1){?>
+						<?php if($iw[mcb]==1){?>
 							<label class="middle">
 								<input type="radio" name="menu_type" value="mcb" onClick="setMenuType(this.value);">
 								<span class="lbl"> 게시판</span>
 							</label>
-						<?}?>
-						<?if($iw[publishing]==1){?>
+						<?php } ?><?php if($iw[publishing]==1){?>
 							<label class="middle">
 								<input type="radio" name="menu_type" value="publishing" onClick="setMenuType(this.value);">
 								<span class="lbl"> 출판도서</span>
 							</label>
-						<?}?>
-						<?if($iw[shop]==1){?>
+						<?php } ?><?php if($iw[shop]==1){?>
 							<label class="middle">
 								<input type="radio" name="menu_type" value="shop" onClick="setMenuType(this.value);">
 								<span class="lbl"> 쇼핑몰</span>
 							</label>
-						<?}?>
-						<?if($iw[doc]==1){?>
+						<?php } ?><?php if($iw[doc]==1){?>
 							<label class="middle">
 								<input type="radio" name="menu_type" value="doc" onClick="setMenuType(this.value);">
 								<span class="lbl"> 컨텐츠몰</span>
 							</label>
-						<?}?>
-						<?if($iw[book]==1){?>
+						<?php } ?><?php if($iw[book]==1){?>
 							<label class="middle">
 								<input type="radio" name="menu_type" value="book" onClick="setMenuType(this.value);">
 								<span class="lbl"> 이북몰</span>
 							</label>
-						<?}?>
+						<?php }?>
 							<label class="middle">
 								<input type="radio" name="menu_type" value="about" onClick="setMenuType(this.value);">
 								<span class="lbl"> 독립페이지</span>
@@ -425,6 +421,9 @@ while($row = @sql_fetch_array($result)){
 	}
 </script>
 
-<?
+<?php
 include_once("_cg_tail.php");
 ?>
+
+
+

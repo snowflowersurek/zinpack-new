@@ -41,3 +41,7 @@ if (! defined('PMA_MINIMUM_COMMON') && ! defined('TESTSUITE')) {
 .rte_table .routine_params_table {
     width: 100%;
 }
+
+
+
+

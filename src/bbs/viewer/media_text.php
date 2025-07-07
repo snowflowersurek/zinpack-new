@@ -51,6 +51,9 @@ $content = str_replace("\r\n", "<br/>", stripslashes($row["bmd_content"]));
 	</div>
 </div>
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

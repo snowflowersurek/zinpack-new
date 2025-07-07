@@ -53,3 +53,7 @@ function PMA_lang_name($canonical_path, $type = 'name', $default = 'key')
         : ($default == 'key' ? $lang_key : $default);
 }
 ?>
+
+
+
+

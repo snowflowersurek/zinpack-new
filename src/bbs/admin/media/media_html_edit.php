@@ -64,7 +64,7 @@ $bmd_content = stripslashes($row['bmd_content']);
 							<input type="file" class="col-xs-12 col-sm-12" name="bm_image">
 							<span class="help-block col-xs-12">
 								사이즈(pixel) 240 X 240
-								<?if($bm_image){?><br/><a href="<?=$iw["path"].$upload_path."/".$bm_image?>" target="_blank">기존 이미지</a><?}?>
+								<?php if($bm_image){?><br/><a href="<?=$iw["path"].$upload_path."/".$bm_image?>" target="_blank">기존 이미지</a><?php }?>
 							</span>
 						</div>
 					</div>
@@ -159,6 +159,9 @@ $bmd_content = stripslashes($row['bmd_content']);
 	}
 </script>
 
-<?
+<?php
 include_once($iw['admin_path']."/_cg_tail.php");
 ?>
+
+
+

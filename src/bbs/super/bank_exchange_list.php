@@ -75,17 +75,17 @@ if($searchs) {
 							</div>
 							<div class="table-set-mobile dataTable-wrapper">
 								<form name="fsearch" id="fsearch" action="<?=$PHP_SELF?>" method="get">
-								<input type="hidden" name="type" value="<?=$iw[type]?>">
-								<input type="hidden" name="ep" value="<?=$iw[store]?>">
-								<input type="hidden" name="gp" value="<?=$iw[group]?>">
+								<input type="hidden" name="type" value="<?=$iw['type']?>">
+								<input type="hidden" name="ep" value="<?=$iw['store']?>">
+								<input type="hidden" name="gp" value="<?=$iw['group']?>">
 								<div class="row">
 									<div class="col-sm-6">
 										<div class="input-group">
 											<label class="input-group-text">상태</label>
 											<select class="form-select" onchange="location.href=this.value">
-												<option value="<?=$PHP_SELF?>?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&start_date=<?=$start_date?>&end_date=<?=$end_date?>&search=d&searchs=">전체</option>
-												<option value="<?=$PHP_SELF?>?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&start_date=<?=$start_date?>&end_date=<?=$end_date?>&search=d&searchs=wait" <?if($searchs == "wait"){?>selected="selected"<?}?>>입금대기</option>
-												<option value="<?=$PHP_SELF?>?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&start_date=<?=$start_date?>&end_date=<?=$end_date?>&search=d&searchs=ok" <?if($searchs == "ok"){?>selected="selected"<?}?>>처리완료</option>
+												<option value="<?=$PHP_SELF?>?type=<?=$iw['type']?>&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>&start_date=<?=$start_date?>&end_date=<?=$end_date?>&search=d&searchs=">전체</option>
+												<option value="<?=$PHP_SELF?>?type=<?=$iw['type']?>&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>&start_date=<?=$start_date?>&end_date=<?=$end_date?>&search=d&searchs=wait" <?php if($search=="d" && $searchs=="wait"){?>selected="selected"<?php }?>>입금대기</option>
+												<option value="<?=$PHP_SELF?>?type=<?=$iw['type']?>&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>&start_date=<?=$start_date?>&end_date=<?=$end_date?>&search=d&searchs=ok" <?php if($search=="d" && $searchs=="ok"){?>selected="selected"<?php }?>>처리완료</option>
 											</select>
 											<input type="text" name="start_date" class="form-control" maxlength="8" value="<?=$start_date?>">
 											<span class="input-group-text">~</span>
@@ -96,9 +96,9 @@ if($searchs) {
 									<div class="col-sm-6">
 										<div class="input-group float-end">
 											<select name="search" class="form-select">
-												<option value="a" <?if($search == "a"){?>selected="selected"<?}?>>업체코드</option>
-												<option value="b" <?if($search == "b"){?>selected="selected"<?}?>>회원코드</option>
-												<option value="c" <?if($search == "c"){?>selected="selected"<?}?>>예금주</option>
+												<option value="a" <?php if($search=="a"){?>selected="selected"<?php }?>>업체코드</option>
+												<option value="b" <?php if($search=="b"){?>selected="selected"<?php }?>>회원코드</option>
+												<option value="c" <?php if($search=="c"){?>selected="selected"<?php }?>>예금주</option>
 											</select>
 											<input type="text" name="searchs" class="form-control" value="<?=$searchs?>">
 											<button class="btn btn-primary" type="submit">검색</button>
@@ -125,7 +125,7 @@ if($searchs) {
 										</tr>
 									</thead>
 									<tbody>
-									<?
+									<?php
 										$sql_count = "select count(*) as cnt from {$iw['exchange_table']} a {$search_sql}";
 										$stmt_count = mysqli_prepare($db_conn, $sql_count);
 										mysqli_stmt_bind_param($stmt_count, $types, ...$params);
@@ -180,11 +180,9 @@ if($searchs) {
 											$ec_give_datetime = date("Y-m-d", strtotime($row["ec_give_datetime"]));
 											$mb_code = $row["mb_code"];
 
-											$row2 = sql_fetch("select * from $iw[member_table] where ep_code = '$ep_code' and mb_code = '$mb_code'");
-											$mb_nick = $row2["mb_nick"];
-
-											$row2 = sql_fetch("select ep_corporate from $iw[enterprise_table] where ep_code = '$ep_code'");
-											$ep_corporate = $row2["ep_corporate"];
+											// LEFT JOIN으로 이미 가져온 데이터 사용
+											$mb_nick = $row["mb_nick"] ?? '';
+											$ep_corporate = $row["ep_corporate"] ?? '';
 									?>
 										<tr>
 											<td data-title="신청일"><?=$ec_datetime?></td>
@@ -197,17 +195,17 @@ if($searchs) {
 											<td data-title="계좌번호"><?=$ec_number?></td>
 											<td data-title="예금주"><?=$ec_holder?></td>
 											<!--
-											<td data-title="지급일"><?if($ec_display==1){?><?=$ec_give_datetime?><?}?></td>
+											<td data-title="지급일"><?php if($ec_give_datetime){?><?=$ec_give_datetime?><?php }?></td>
 											<td data-title="노출">
-												<?if($ec_display == 1){?>
+												<?php if($ec_display == 1){?>
 													처리완료
-												<?}else{?>
-													<a href="<?=$iw['super_path']?>/bank_exchange_list_ok.php?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&idx=<?=$ec_no?>"><span class="badge bg-success">입금</span></a>
-												<?}?>
+												<?php }else{?>
+													<a href="<?=$iw['super_path']?>/bank_exchange_list_ok.php?type=<?=$iw['type']?>&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>&idx=<?=$ec_no?>"><span class="badge bg-success">입금</span></a>
+												<?php }?>
 											</td>
 											-->
 										</tr>
-									<?
+									<?php
 										$i++;
 										}
 										mysqli_stmt_close($stmt);
@@ -218,7 +216,7 @@ if($searchs) {
 								<div class="row">
 									<div class="col-sm-6">
 										<div class="dataTable-info">
-											<button class="btn btn-success" type="button" onclick="location.href='<?=$iw['super_path']?>/bank_exchange_list_excel.php?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&start_date=<?=$start_date?>&end_date=<?=$end_date?>'">
+											<button class="btn btn-success" type="button" onclick="location.href='<?=$iw['super_path']?>/bank_exchange_list_excel.php?type=<?=$iw['type']?>&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>&start_date=<?=$start_date?>&end_date=<?=$end_date?>'">
 												<i class="fas fa-check"></i>
 												엑셀 출력
 											</button>
@@ -227,7 +225,7 @@ if($searchs) {
 									<div class="col-sm-6">
 										<div class="d-flex justify-content-center">
 											<ul class="pagination">
-											<?
+											<?php
 												if($total_page!=0){
 													if($page>$total_page) { $page=$total_page; }
 													$start_page = ((ceil($page/$max_page)-1)*$max_page)+1;
@@ -237,19 +235,19 @@ if($searchs) {
 												 
 													if($page>$max_page) {
 														$pre = $start_page - 1;
-														echo "<li class='page-item'><a class='page-link' href='$PHP_SELF?type=$iw[type]&ep=$iw[store]&gp=$iw[group]&page=$pre&search=$search&searchs=$searchs&start_date=$start_date&end_date=$end_date'><i class='fas fa-angle-double-left'></i></a></li>";
+														echo "<li class='page-item'><a class='page-link' href='$PHP_SELF?type={$iw['type']}&ep={$iw['store']}&gp={$iw['group']}&page=$pre&search=$search&searchs=$searchs&start_date=$start_date&end_date=$end_date'><i class='fas fa-angle-double-left'></i></a></li>";
 													} else {
 														echo "<li class='page-item disabled'><a class='page-link' href='#'><i class='fas fa-angle-double-left'></i></a></li>";
 													}
 													
 													for($i=$start_page;$i<=$end_page;$i++) {
 														if($i==$page) echo "<li class='page-item active'><a class='page-link' href='#'>$i</a></li>";
-														else          echo "<li class='page-item'><a class='page-link' href='$PHP_SELF?type=$iw[type]&ep=$iw[store]&gp=$iw[group]&page=$i&search=$search&searchs=$searchs&start_date=$start_date&end_date=$end_date'>$i</a></li>";
+														else          echo "<li class='page-item'><a class='page-link' href='$PHP_SELF?type={$iw['type']}&ep={$iw['store']}&gp={$iw['group']}&page=$i&search=$search&searchs=$searchs&start_date=$start_date&end_date=$end_date'>$i</a></li>";
 													}
 												 
 													if($end_page<$total_page) {
 														$next = $end_page + 1;
-														echo "<li class='page-item'><a class='page-link' href='$PHP_SELF?type=$iw[type]&ep=$iw[store]&gp=$iw[group]&page=$next&search=$search&searchs=$searchs&start_date=$start_date&end_date=$end_date'><i class='fas fa-angle-double-right'></i></a></li>";
+														echo "<li class='page-item'><a class='page-link' href='$PHP_SELF?type={$iw['type']}&ep={$iw['store']}&gp={$iw['group']}&page=$next&search=$search&searchs=$searchs&start_date=$start_date&end_date=$end_date'><i class='fas fa-angle-double-right'></i></a></li>";
 													} else {
 														echo "<li class='page-item disabled'><a class='page-link' href='#'><i class='fas fa-angle-double-right'></i></a></li>";
 													}
@@ -311,6 +309,9 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

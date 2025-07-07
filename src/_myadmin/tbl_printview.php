@@ -461,3 +461,7 @@ echo PMA_Util::getButton();
 
 echo "<div id='PMA_disable_floating_menubar'></div>\n";
 ?>
+
+
+
+

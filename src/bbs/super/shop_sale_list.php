@@ -53,20 +53,20 @@ if($monsel){
 								<div class="row">
 									<div class="col-sm-6">
 										<form name="fsearch" id="fsearch" action="<?=$PHP_SELF?>" method="get">
-										<input type="hidden" name="type" value="<?=$iw[type]?>">
-										<input type="hidden" name="ep" value="<?=$iw[store]?>">
-										<input type="hidden" name="gp" value="<?=$iw[group]?>">
+										<input type="hidden" name="type" value="<?=$iw['type']?>">
+										<input type="hidden" name="ep" value="<?=$iw['store']?>">
+										<input type="hidden" name="gp" value="<?=$iw['group']?>">
 											<div class="input-group">
 												<label class="input-group-text">정산월</label>
 												<select name="monsel" class="form-select" onchange="this.form.submit()">
 												<?php
-													$msql = "SELECT DISTINCT(SUBSTRING( lgd_paydate, 1, 6 )) AS mon FROM $iw[lgd_table] WHERE 1 ORDER BY lgd_no DESC";
+													$msql = "SELECT DISTINCT(SUBSTRING( lgd_paydate, 1, 6 )) AS mon FROM {$iw['lgd_table']} WHERE 1 ORDER BY lgd_no DESC";
 													$mresult = sql_query($msql);
 													while($mrow = sql_fetch_array($mresult)){
 														if($mrow['mon']=="") continue;
 														$mval = substr($mrow['mon'],0,4)."-".substr($mrow['mon'],4);
 												?>
-													<option value="<?=$mval?>" <?if($chk_mon == $mval){?>selected="selected"<?}?>><?=$mval?></option>
+													<option value="<?=$mval?>" <?php if($mval==$chk_mon){?>selected="selected"<?php }?>><?=$mval?></option>
 												<?php
 													}
 												?>
@@ -90,21 +90,21 @@ if($monsel){
 										</tr>
 									</thead>
 									<tbody>
-									<?
+									<?php
 										$epcode_ary = array();
-										//$sql = "select * from $iw[lgd_table] where (pt_datetime >= '$now_start' and pt_datetime <= '$now_end') $search_sql";
-										$sql = "SELECT DISTINCT(ep_code) AS epcode FROM $iw[lgd_table] WHERE (lgd_datetime >= '$start_date' AND lgd_datetime <= '$end_date') AND state_sort='shop' AND lgd_display=1";
+										//$sql = "select * from {$iw['lgd_table']} where (pt_datetime >= '$now_start' and pt_datetime <= '$now_end') $search_sql";
+										$sql = "SELECT DISTINCT(ep_code) AS epcode FROM {$iw['lgd_table']} WHERE (lgd_datetime >= '$start_date' AND lgd_datetime <= '$end_date') AND state_sort='shop' AND lgd_display=1";
 										//echo "sql= ".$sql."<br>";
 										$result = sql_query($sql);
-										$ctotal = mysql_num_rows($result);
+										$ctotal = mysqli_num_rows($result);
 										if($ctotal > 0){
 											while($row=@sql_fetch_array($result)){
 												array_push($epcode_ary, $row['epcode']);
 											}
 										}
-										$sql = "SELECT DISTINCT(ep_code) AS epcode FROM $iw[book_buy_table] WHERE bb_datetime >= '$start_date' AND bb_datetime <= '$end_date'";
+										$sql = "SELECT DISTINCT(ep_code) AS epcode FROM {$iw['book_buy_table']} WHERE bb_datetime >= '$start_date' AND bb_datetime <= '$end_date'";
 										$result = sql_query($sql);
-										$btotal = mysql_num_rows($result);
+										$btotal = mysqli_num_rows($result);
 										if($btotal > 0){
 											while($row=@sql_fetch_array($result)){
 												if(in_array($row['epcode'], $epcode_ary)){
@@ -122,16 +122,16 @@ if($monsel){
 											for($i=0; $i<sizeof($epcode_ary); $i++){
 												$epcode = $epcode_ary[$i];
 
-												$ssql = "SELECT c.ep_corporate, SUM(a.srs_price * a.srs_amount) AS sr_sum, SUM(a.srs_delivery_price) AS sr_delivery, SUM(aa.lgd_amount) AS lgd_sum FROM $iw[shop_order_sub_table] a LEFT JOIN $iw[lgd_table] aa ON a.sr_code = aa.lgd_oid LEFT JOIN $iw[shop_order_table] b ON a.sr_code = b.sr_code LEFT JOIN $iw[enterprise_table] c ON a.ep_code = c.ep_code WHERE aa.lgd_display = 1 AND b.sr_datetime >= '$start_date' AND b.sr_datetime <= '$end_date' AND b.ep_code = '$epcode' AND a.srs_taxfree = 1";
+												$ssql = "SELECT c.ep_corporate, SUM(a.srs_price * a.srs_amount) AS sr_sum, SUM(a.srs_delivery_price) AS sr_delivery, SUM(aa.lgd_amount) AS lgd_sum FROM {$iw['shop_order_sub_table']} a LEFT JOIN {$iw['lgd_table']} aa ON a.sr_code = aa.lgd_oid LEFT JOIN {$iw['shop_order_table']} b ON a.sr_code = b.sr_code LEFT JOIN {$iw['enterprise_table']} c ON a.ep_code = c.ep_code WHERE aa.lgd_display = 1 AND b.sr_datetime >= '$start_date' AND b.sr_datetime <= '$end_date' AND b.ep_code = '$epcode' AND a.srs_taxfree = 1";
 												$srow = sql_fetch($ssql);
 												$ep_corporate = $srow['ep_corporate'];
 												$taxfree_amt = $srow['sr_sum'] + $srow['sr_delivery'];
 
-												$ssql = "SELECT c.ep_corporate, SUM(a.srs_price * a.srs_amount) AS sr_sum, SUM(a.srs_delivery_price) AS sr_delivery, SUM(aa.lgd_amount) AS lgd_sum FROM $iw[shop_order_sub_table] a LEFT JOIN $iw[lgd_table] aa ON a.sr_code = aa.lgd_oid LEFT JOIN $iw[shop_order_table] b ON a.sr_code = b.sr_code LEFT JOIN $iw[enterprise_table] c ON a.ep_code = c.ep_code WHERE aa.lgd_display = 1 AND b.sr_datetime >= '$start_date' AND b.sr_datetime <= '$end_date' AND b.ep_code = '$epcode' AND a.srs_taxfree = 0";
+												$ssql = "SELECT c.ep_corporate, SUM(a.srs_price * a.srs_amount) AS sr_sum, SUM(a.srs_delivery_price) AS sr_delivery, SUM(aa.lgd_amount) AS lgd_sum FROM {$iw['shop_order_sub_table']} a LEFT JOIN {$iw['lgd_table']} aa ON a.sr_code = aa.lgd_oid LEFT JOIN {$iw['shop_order_table']} b ON a.sr_code = b.sr_code LEFT JOIN {$iw['enterprise_table']} c ON a.ep_code = c.ep_code WHERE aa.lgd_display = 1 AND b.sr_datetime >= '$start_date' AND b.sr_datetime <= '$end_date' AND b.ep_code = '$epcode' AND a.srs_taxfree = 0";
 												$srow = sql_fetch($ssql);
 												$tax_amt = $srow['sr_sum'] + $srow['sr_delivery'];
 
-												$ssql = "SELECT c.ep_corporate, SUM(a.srs_price * a.srs_amount) AS sr_sum, SUM(a.srs_delivery_price) AS sr_delivery, SUM(aa.lgd_amount) AS lgd_sum FROM $iw[shop_order_sub_table] a LEFT JOIN $iw[lgd_table] aa ON a.sr_code = aa.lgd_oid LEFT JOIN $iw[shop_order_table] b ON a.sr_code = b.sr_code LEFT JOIN $iw[enterprise_table] c ON a.ep_code = c.ep_code WHERE aa.lgd_display = 1 AND b.sr_datetime >= '$start_date' AND b.sr_datetime <= '$end_date' AND b.ep_code = '$epcode' AND aa.lgd_in_date <> '0000-00-00'";
+												$ssql = "SELECT c.ep_corporate, SUM(a.srs_price * a.srs_amount) AS sr_sum, SUM(a.srs_delivery_price) AS sr_delivery, SUM(aa.lgd_amount) AS lgd_sum FROM {$iw['shop_order_sub_table']} a LEFT JOIN {$iw['lgd_table']} aa ON a.sr_code = aa.lgd_oid LEFT JOIN {$iw['shop_order_table']} b ON a.sr_code = b.sr_code LEFT JOIN {$iw['enterprise_table']} c ON a.ep_code = c.ep_code WHERE aa.lgd_display = 1 AND b.sr_datetime >= '$start_date' AND b.sr_datetime <= '$end_date' AND b.ep_code = '$epcode' AND aa.lgd_in_date <> '0000-00-00'";
 												$srow = sql_fetch($ssql);
 												$in_amt = $srow['sr_sum'] + $srow['sr_delivery'];
 												$tot_amt = $taxfree_amt + $tax_amt;
@@ -160,7 +160,7 @@ if($monsel){
 												$sum_pay += $pay_amt;
 
 												if($ep_corporate==''){
-													$tsql = "SELECT * FROM $iw[enterprise_table] WHERE ep_code LIKE '".$epcode."%'";
+													$tsql = "SELECT * FROM {$iw['enterprise_table']} WHERE ep_code LIKE '".$epcode."%'";
 													$trow = sql_fetch($tsql);
 													$epcode = $trow['ep_code'];
 													$ep_corporate = $trow['ep_corporate'];
@@ -180,9 +180,7 @@ if($monsel){
 												<button class="btn btn-info btn-sm" onclick="javascript:show_receipt('<?=$chk_mon?>','<?=$epcode?>','<?=$tax_amt?>','<?=$taxfree_amt?>','<?=$tp_amt?>')">정산서</button>
 											</td>
 										</tr>
-									<?php
-											}
-										}
+									<?php } ?><?php }
 									?>
 									</tbody>
 								</table>
@@ -206,14 +204,17 @@ if($monsel){
 
 <script type="text/javascript">
 function view_details(mon,epcorp){
-	document.location.href="shop_sale_details.php?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&mon=" + mon + "&epcorp=" + epcorp;
+	document.location.href="shop_sale_details.php?type=<?=$iw['type']?>&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>&mon=" + mon + "&epcorp=" + epcorp;
 }
 function show_receipt(mon,epcorp,taxsum,freesum,ebook){
-	var url = "shop_receipt_win.php?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&mon=" + mon + "&epcorp=" + epcorp + "&taxsum=" + taxsum + "&freesum=" + freesum + "&ebook=" + ebook;
+	var url = "shop_receipt_win.php?type=<?=$iw['type']?>&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>&mon=" + mon + "&epcorp=" + epcorp + "&taxsum=" + taxsum + "&freesum=" + freesum + "&ebook=" + ebook;
 	var win = window.open(url, "PopupWin", "width=710,height=500");
 }
 </script>
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

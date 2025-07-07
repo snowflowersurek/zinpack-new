@@ -4,15 +4,15 @@ if (($iw[group] == "all" && $iw[level] != "admin")) alert("잘못된 접근입�
 ?>
 <meta http-equiv="content-type" content="text/html; charset=<?=$iw['charset']?>" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-<?
-$picture_name = trim(mysql_real_escape_string($_POST[picture_name]));
-$can_rent = trim(mysql_real_escape_string($_POST[can_rent]));
-$special = trim(mysql_real_escape_string($_POST[special]));
-$how_many = trim(mysql_real_escape_string($_POST[how_many]));
-$size = trim(mysql_real_escape_string($_POST[size]));
-$book_id = trim(mysql_real_escape_string($_POST[book_id]));
-$contents = mysql_real_escape_string($_POST[contents]);
-$reg_date = trim(mysql_real_escape_string($_POST[reg_date]));
+<?php
+$picture_name = trim(mysqli_real_escape_string($iw['connect'], $_POST['picture_name']));
+$can_rent = trim(mysqli_real_escape_string($iw['connect'], $_POST['can_rent']));
+$special = trim(mysqli_real_escape_string($iw['connect'], $_POST['special']));
+$how_many = trim(mysqli_real_escape_string($iw['connect'], $_POST['how_many']));
+$size = trim(mysqli_real_escape_string($iw['connect'], $_POST['size']));
+$book_id = trim(mysqli_real_escape_string($iw['connect'], $_POST['book_id']));
+$contents = mysqli_real_escape_string($iw['connect'], $_POST['contents']);
+$reg_date = trim(mysqli_real_escape_string($iw['connect'], $_POST['reg_date']));
 
 if ($reg_date) {
 	if (!validateDate($reg_date.":00")) {
@@ -39,7 +39,7 @@ $sql = "insert into $iw[publishing_exhibit_table] set
 		";
 sql_query($sql);
 
-$td_code = mysql_insert_id();
+$td_code = mysqli_insert_id($iw['connect']);
 
 if ($can_rent == "Y") {
 	$td_display = 1;
@@ -62,3 +62,6 @@ sql_query($sql);
 
 alert("그림전시가 추가되었습니다.","$iw[admin_path]/publishing_exhibit_list.php?type=$iw[type]&ep=$iw[store]&gp=$iw[group]");
 ?>
+
+
+

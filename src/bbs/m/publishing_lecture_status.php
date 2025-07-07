@@ -14,7 +14,7 @@ $menu = $_GET["menu"];
 		<div class="breadcrumb-box input-group">
 			<ol class="breadcrumb ">
 				<li>
-				<?
+				<?php
 					$hm_code = $_GET["menu"];
 					$hm_row = sql_fetch("select * from $iw[home_menu_table] where ep_code = '$iw[store]' and gp_code='$iw[group]' and hm_code = '$hm_code'");
 					echo stripslashes($hm_row[hm_name])
@@ -40,10 +40,10 @@ $menu = $_GET["menu"];
 					</tr>
 				</thead>
 				<tbody>
-				<?
+				<?php
 				$sql = "select * from $iw[publishing_lecture_table] where ep_code = '$iw[store]' and mb_code = '$iw[member]'";
 				$result = sql_query($sql);
-				$total_line = mysql_num_rows($result);
+				$total_line = mysqli_num_rows($result);
 				
 				$max_line = 10;
 				$max_page = 10;
@@ -108,22 +108,22 @@ $menu = $_GET["menu"];
 						</td>
 						<td data-th="신청일"><?=$strRegDate?></td>
 						<td data-th="신청현황">
-							<?if($strConfirm == "N"){?>
+							<?php if($strConfirm == "N"){?>
 								<span class="label label-sm label-default">접수대기</span>
-							<?}else if($strConfirm == "A"){?>
+							<?php }else if($strConfirm == "A"){?>
 								<span class="label label-sm label-primary">접수완료</span>
-							<?}else if($strConfirm == "D"){?>
+							<?php }else if($strConfirm == "D"){?>
 								<span class="label label-sm label-warning">도서관연락</span>
-							<?}else if($strConfirm == "J"){?>
+							<?php }else if($strConfirm == "J"){?>
 								<span class="label label-sm label-info">작가섭외</span>
-							<?}else if($strConfirm == "Y"){?>
+							<?php }else if($strConfirm == "Y"){?>
 								<span class="label label-sm label-success">강연확정</span>
-							<?}else if($strConfirm == "C"){?>
+							<?php }else if($strConfirm == "C"){?>
 								<span class="label label-sm label-danger">강연취소</span>
-							<?}?>
+							<?php }?>
 						</td>
 					</tr>
-				<?		
+				<?php
 					$i++;
 					}
 					if($i==0) echo "<tr><td colspan='4' align='center'>검색된 게시글이 없습니다.</td></tr>";
@@ -134,7 +134,7 @@ $menu = $_GET["menu"];
 		<div class="clearfix"></div>
 		<div class="pagContainer text-center">
 			<ul class="pagination">
-				<?
+				<?php
 					if($total_page!=0){
 						if($page>$total_page) { $page=$total_page; }
 						$start_page = ((ceil($page/$max_page)-1)*$max_page)+1;
@@ -167,6 +167,9 @@ $menu = $_GET["menu"];
 	</div> <!-- /.row -->
 </div> <!-- /.content -->
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

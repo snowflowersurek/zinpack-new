@@ -98,58 +98,54 @@ while($row = @sql_fetch_array($result)){
 						<label class="col-sm-2 control-label">종류</label>
 						<div class="col-sm-8">
 							<input type="hidden" name="state_sort" id="state_sort" value="<?=$state_sort?>" />
-						<?if($iw[mcb]==1){?>
+						<?php if($iw[mcb]==1){?>
 							<label class="middle">
-								<input type="radio" name="menu_type" value="mcb" onClick="setMenuType(this.value);" <?if($state_sort=="mcb"){?>checked<?}?>>
+								<input type="radio" name="menu_type" value="mcb" onClick="setMenuType(this.value);" <?php if{?>checked<?php }?>>
 								<span class="lbl"> 게시판</span>
 							</label>
-						<?}?>
-						<?if($iw[publishing]==1){?>
+						<?php } ?><?php if($iw[publishing]==1){?>
 							<label class="middle">
-								<input type="radio" name="menu_type" value="publishing" onClick="setMenuType(this.value);" <?if($state_sort=="publishing"){?>checked<?}?>>
+								<input type="radio" name="menu_type" value="publishing" onClick="setMenuType(this.value);" <?php if{?>checked<?php }?>>
 								<span class="lbl"> 출판도서</span>
 							</label>
-						<?}?>
-						<?if($iw[shop]==1){?>
+						<?php } ?><?php if($iw[shop]==1){?>
 							<label class="middle">
-								<input type="radio" name="menu_type" value="shop" onClick="setMenuType(this.value);" <?if($state_sort=="shop"){?>checked<?}?>>
+								<input type="radio" name="menu_type" value="shop" onClick="setMenuType(this.value);" <?php if{?>checked<?php }?>>
 								<span class="lbl"> 쇼핑몰</span>
 							</label>
-						<?}?>
-						<?if($iw[doc]==1){?>
+						<?php } ?><?php if($iw[doc]==1){?>
 							<label class="middle">
-								<input type="radio" name="menu_type" value="doc" onClick="setMenuType(this.value);" <?if($state_sort=="doc"){?>checked<?}?>>
+								<input type="radio" name="menu_type" value="doc" onClick="setMenuType(this.value);" <?php if{?>checked<?php }?>>
 								<span class="lbl"> 컨텐츠몰</span>
 							</label>
-						<?}?>
-						<?if($iw[book]==1){?>
+						<?php } ?><?php if($iw[book]==1){?>
 							<label class="middle">
-								<input type="radio" name="menu_type" value="book" onClick="setMenuType(this.value);" <?if($state_sort=="book"){?>checked<?}?>>
+								<input type="radio" name="menu_type" value="book" onClick="setMenuType(this.value);" <?php if{?>checked<?php }?>>
 								<span class="lbl"> 이북몰</span>
 							</label>
-						<?}?>
+						<?php }?>
 							<label class="middle">
-								<input type="radio" name="menu_type" value="about" onClick="setMenuType(this.value);" <?if($state_sort=="about"){?>checked<?}?>>
+								<input type="radio" name="menu_type" value="about" onClick="setMenuType(this.value);" <?php if{?>checked<?php }?>>
 								<span class="lbl"> 독립페이지</span>
 							</label>
 							<label class="middle">
-								<input type="radio" name="menu_type" value="open" onClick="setMenuType(this.value);" <?if($state_sort=="open"){?>checked<?}?>>
+								<input type="radio" name="menu_type" value="open" onClick="setMenuType(this.value);" <?php if{?>checked<?php }?>>
 								<span class="lbl"> 분류(목록)</span>
 							</label>
 							<label class="middle">
-								<input type="radio" name="menu_type" value="close" onClick="setMenuType(this.value);" <?if($state_sort=="close"){?>checked<?}?>>
+								<input type="radio" name="menu_type" value="close" onClick="setMenuType(this.value);" <?php if{?>checked<?php }?>>
 								<span class="lbl"> 분류(비노출)</span>
 							</label>
 							<label class="middle">
-								<input type="radio" name="menu_type" value="link" onClick="setMenuType(this.value);" <?if($state_sort=="link"){?>checked<?}?>>
+								<input type="radio" name="menu_type" value="link" onClick="setMenuType(this.value);" <?php if{?>checked<?php }?>>
 								<span class="lbl"> 링크</span>
 							</label>
 							<label class="middle">
-								<input type="radio" name="menu_type" value="scrap" onClick="setMenuType(this.value);" <?if($state_sort=="scrap"){?>checked<?}?>>
+								<input type="radio" name="menu_type" value="scrap" onClick="setMenuType(this.value);" <?php if{?>checked<?php }?>>
 								<span class="lbl"> 스크래퍼</span>
 							</label>
 							<label class="middle">
-								<input type="radio" name="menu_type" value="main" onClick="setMenuType(this.value);" <?if($state_sort=="main"){?>checked<?}?>>
+								<input type="radio" name="menu_type" value="main" onClick="setMenuType(this.value);" <?php if{?>checked<?php }?>>
 								<span class="lbl"> 메인</span>
 							</label>
 						</div>
@@ -161,16 +157,16 @@ while($row = @sql_fetch_array($result)){
 							<label class="col-sm-2 control-label">출판도서 메뉴</label>
 							<div class="col-sm-8">
 								<select class="col-xs-12 col-sm-8" id="publishing_menu" onchange="setMenuType(this.value);">
-									<option value="publishing" <?if($state_sort == "publishing"){?>selected<?}?>>도서</option>
-									<option value="publishing_brand" <?if($state_sort == "publishing_brand"){?>selected<?}?>>브랜드(출판사)</option>
-									<option value="author" <?if($state_sort == "author"){?>selected<?}?>>저자</option>
-									<option value="publishing_contest" <?if($state_sort == "publishing_contest"){?>selected<?}?>>공모전</option>
-									<option value="exhibit" <?if($state_sort == "exhibit"){?>selected<?}?>>그림전시</option>
-									<option value="exhibit_monthly" <?if($state_sort == "exhibit_monthly"){?>selected<?}?>>월별 그림전시 현황</option>
-									<option value="exhibit_application" <?if($state_sort == "exhibit_application"){?>selected<?}?>>그림전시 신청</option>
-									<option value="exhibit_status" <?if($state_sort == "exhibit_status"){?>selected<?}?>>그림전시 나의 신청현황</option>
-									<option value="lecture_application" <?if($state_sort == "lecture_application"){?>selected<?}?>>작가강연 신청</option>
-									<option value="lecture_status" <?if($state_sort == "lecture_status"){?>selected<?}?>>작가강연 나의 신청현황</option>
+									<option value="publishing" <?php if{?>selected<?php }?>>도서</option>
+									<option value="publishing_brand" <?php if{?>selected<?php }?>>브랜드(출판사)</option>
+									<option value="author" <?php if{?>selected<?php }?>>저자</option>
+									<option value="publishing_contest" <?php if{?>selected<?php }?>>공모전</option>
+									<option value="exhibit" <?php if{?>selected<?php }?>>그림전시</option>
+									<option value="exhibit_monthly" <?php if{?>selected<?php }?>>월별 그림전시 현황</option>
+									<option value="exhibit_application" <?php if{?>selected<?php }?>>그림전시 신청</option>
+									<option value="exhibit_status" <?php if{?>selected<?php }?>>그림전시 나의 신청현황</option>
+									<option value="lecture_application" <?php if{?>selected<?php }?>>작가강연 신청</option>
+									<option value="lecture_status" <?php if{?>selected<?php }?>>작가강연 나의 신청현황</option>
 								</select>
 							</div>
 						</div>
@@ -194,14 +190,14 @@ while($row = @sql_fetch_array($result)){
 							<label class="col-sm-2 control-label">리스트 형식</label>
 							<div class="col-sm-8">
 								<select class="col-xs-12 col-sm-8" name="hm_list_style">
-									<option value="1" <?if($hm_list_style==1){?>selected<?}?>>일반</option>
-									<option value="2" <?if($hm_list_style==2){?>selected<?}?>>2단</option>
-									<option value="3" <?if($hm_list_style==3){?>selected<?}?>>3단(정렬)</option>
-									<option value="4" <?if($hm_list_style==4){?>selected<?}?>>3단(쌓기)</option>
-									<option value="5" <?if($hm_list_style==5){?>selected<?}?>>3단(고정)</option>
-									<option value="6" <?if($hm_list_style==6){?>selected<?}?>>6단(정렬)</option>
-									<option value="7" <?if($hm_list_style==7){?>selected<?}?>>6단(쌓기)</option>
-									<option value="8" <?if($hm_list_style==8){?>selected<?}?>>6단(고정)</option>
+									<option value="1" <?php if{?>selected<?php }?>>일반</option>
+									<option value="2" <?php if{?>selected<?php }?>>2단</option>
+									<option value="3" <?php if{?>selected<?php }?>>3단(정렬)</option>
+									<option value="4" <?php if{?>selected<?php }?>>3단(쌓기)</option>
+									<option value="5" <?php if{?>selected<?php }?>>3단(고정)</option>
+									<option value="6" <?php if{?>selected<?php }?>>6단(정렬)</option>
+									<option value="7" <?php if{?>selected<?php }?>>6단(쌓기)</option>
+									<option value="8" <?php if{?>selected<?php }?>>6단(고정)</option>
 								</select>
 							</div>
 						</div>
@@ -211,8 +207,8 @@ while($row = @sql_fetch_array($result)){
 							<label class="col-sm-2 control-label">우선 순위</label>
 							<div class="col-sm-8">
 								<select class="col-xs-12 col-sm-8" name="hm_list_order">
-									<option value="1" <?if($hm_list_order==1){?>selected<?}?>>최신 작성순</option>
-									<option value="2" <?if($hm_list_order==2){?>selected<?}?>>최신 수정순</option>
+									<option value="1" <?php if{?>selected<?php }?>>최신 작성순</option>
+									<option value="2" <?php if{?>selected<?php }?>>최신 수정순</option>
 								</select>
 							</div>
 						</div>
@@ -222,8 +218,8 @@ while($row = @sql_fetch_array($result)){
 							<label class="col-sm-2 control-label">목록 스크래퍼</label>
 							<div class="col-sm-8">
 								<select class="col-xs-12 col-sm-8" name="hm_list_scrap">
-									<option value="0" <?if($hm_list_scrap==0){?>selected<?}?>>없음</option>
-									<option value="1" <?if($hm_list_scrap==1){?>selected<?}?>>노출</option>
+									<option value="0" <?php if{?>selected<?php }?>>없음</option>
+									<option value="1" <?php if{?>selected<?php }?>>노출</option>
 								</select>
 							</div>
 						</div>
@@ -234,30 +230,30 @@ while($row = @sql_fetch_array($result)){
 							<label class="col-sm-2 control-label">본문 스크래퍼</label>
 							<div class="col-sm-8">
 								<select class="col-xs-12 col-sm-8" name="hm_view_scrap" onChange="javascript:check_select(this.value);">
-									<option value="0" <?if($hm_view_scrap==0){?>selected<?}?>>없음</option>
-									<option value="1" <?if($hm_view_scrap==1){?>selected<?}?>>노출</option>
+									<option value="0" <?php if{?>selected<?php }?>>없음</option>
+									<option value="1" <?php if{?>selected<?php }?>>노출</option>
 								</select>
 							</div>
 						</div>
 						<div class="space-4"></div>
 
-						<div id="wrap_scrap_option" <?if($hm_view_scrap==0){?>style="display:none;"<?}?>>
+						<div id="wrap_scrap_option" <?php if{?>style="display:none;"<?php }?>>
 							<div class="form-group">
 								<label class="col-sm-2 control-label">본문 가로사이즈</label>
 								<div class="col-sm-8">
 									<select class="col-xs-12 col-sm-8" name="hm_view_size">
-										<option value="1" <?if($hm_view_size==1){?>selected<?}?>>1칸</option>
-										<option value="2" <?if($hm_view_size==2){?>selected<?}?>>2칸</option>
-										<option value="3" <?if($hm_view_size==3){?>selected<?}?>>3칸</option>
-										<option value="4" <?if($hm_view_size==4){?>selected<?}?>>4칸</option>
-										<option value="5" <?if($hm_view_size==5){?>selected<?}?>>5칸</option>
-										<option value="6" <?if($hm_view_size==6){?>selected<?}?>>6칸</option>
-										<option value="7" <?if($hm_view_size==7){?>selected<?}?>>7칸</option>
-										<option value="8" <?if($hm_view_size==8){?>selected<?}?>>8칸</option>
-										<option value="9" <?if($hm_view_size==9){?>selected<?}?>>9칸</option>
-										<option value="10" <?if($hm_view_size==10){?>selected<?}?>>10칸</option>
-										<option value="11" <?if($hm_view_size==11){?>selected<?}?>>11칸</option>
-										<option value="12" <?if($hm_view_size==12){?>selected<?}?>>12칸</option>
+										<option value="1" <?php if{?>selected<?php }?>>1칸</option>
+										<option value="2" <?php if{?>selected<?php }?>>2칸</option>
+										<option value="3" <?php if{?>selected<?php }?>>3칸</option>
+										<option value="4" <?php if{?>selected<?php }?>>4칸</option>
+										<option value="5" <?php if{?>selected<?php }?>>5칸</option>
+										<option value="6" <?php if{?>selected<?php }?>>6칸</option>
+										<option value="7" <?php if{?>selected<?php }?>>7칸</option>
+										<option value="8" <?php if{?>selected<?php }?>>8칸</option>
+										<option value="9" <?php if{?>selected<?php }?>>9칸</option>
+										<option value="10" <?php if{?>selected<?php }?>>10칸</option>
+										<option value="11" <?php if{?>selected<?php }?>>11칸</option>
+										<option value="12" <?php if{?>selected<?php }?>>12칸</option>
 									</select>
 								</div>
 							</div>
@@ -267,8 +263,8 @@ while($row = @sql_fetch_array($result)){
 								<label class="col-sm-2 control-label">본문 스크래퍼 모바일</label>
 								<div class="col-sm-8">
 									<select class="col-xs-12 col-sm-8" name="hm_view_scrap_mobile">
-										<option value="0" <?if($hm_view_scrap_mobile==0){?>selected<?}?>>노출</option>
-										<option value="1" <?if($hm_view_scrap_mobile==1){?>selected<?}?>>숨김</option>
+										<option value="0" <?php if{?>selected<?php }?>>노출</option>
+										<option value="1" <?php if{?>selected<?php }?>>숨김</option>
 									</select>
 								</div>
 							</div>
@@ -462,6 +458,9 @@ while($row = @sql_fetch_array($result)){
 	}
 </script>
 
-<?
+<?php
 include_once("_cg_tail.php");
 ?>
+
+
+

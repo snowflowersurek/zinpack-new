@@ -38,7 +38,7 @@ include_once("_head.php");
 									</div>
 									<div class="col-sm-6">
 										<div class="dataTable-option-right">
-											<?
+											<?php
 												if($_POST['search']){
 													$search = $_POST['search'];
 													$searchs = $_POST['searchs'];
@@ -54,8 +54,8 @@ include_once("_head.php");
 											?>
 											<form name="search_form" id="search_form" action="<?=$PHP_SELF?>" method="post">
 											<label>검색: <select name="search">
-												<option value="a" <?if($search == "a"){?>selected="selected"<?}?>>도메인</option>
-												<option value="b" <?if($search == "b"){?>selected="selected"<?}?>>주문코드</option>
+												<option value="a" <?php if{?>selected="selected"<?php }?>>도메인</option>
+												<option value="b" <?php if{?>selected="selected"<?php }?>>주문코드</option>
 											</select></label><input type="text" name="searchs" value="<?=$searchs?>">
 											</form>
 										</div>
@@ -74,7 +74,7 @@ include_once("_head.php");
 										</tr>
 									</thead>
 									<tbody>
-									<?
+									<?php
 										$sql = "select * from $payment[lgd_request_table] $search_sql";
 										$result = sql_query($sql);
 										$total_line = mysqli_num_rows($result);
@@ -118,23 +118,23 @@ include_once("_head.php");
 											<td data-title="주문코드"><?=$lgd_oid?></td>
 											<td data-title="가격"><?=$lgd_amount?></td>
 											<td data-title="결제방식">
-												<?if($lgd_custom_firstpay=="SC0010"){?>
+												<?php if($lgd_custom_firstpay=="SC0010"){?>
 													신용카드
-												<?}else if($lgd_custom_firstpay=="SC0030"){?>
+												<?php }else if($lgd_custom_firstpay=="SC0030"){?>
 													계좌이체
-												<?}else if($lgd_custom_firstpay=="SC0060"){?>
+												<?php }else if($lgd_custom_firstpay=="SC0060"){?>
 													휴대폰
-												<?}else if($lgd_custom_firstpay=="SC0040"){?>
+												<?php }else if($lgd_custom_firstpay=="SC0040"){?>
 													가상계좌
-												<?}?>
+												<?php }?>
 											</td>
 											<td data-title="처리현황">
-												<?if($lgd_display == 1){?>
+												<?php if($lgd_display == 1){?>
 												<span class="label label-sm label-success">응답</span>
-												<?}?>
+												<?php }?>
 											</td>
 										</tr>
-									<?
+									<?php
 										$i++;
 										}
 										if($i==0) echo "<tr><td colspan='7' align='center'>결제요청 내역이 없습니다.</td></tr>";
@@ -145,7 +145,7 @@ include_once("_head.php");
 									<div class="col-sm-6">
 										<div class="dataTable-option-right">
 											<ul class="pagination">
-											<?
+											<?php
 												if($total_page!=0){
 													if($page>$total_page) { $page=$total_page; }
 													$start_page = ((ceil($page/$max_page)-1)*$max_page)+1;
@@ -187,6 +187,9 @@ include_once("_head.php");
 	</div><!-- /container -->
 </div><!-- /end .page-content -->
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

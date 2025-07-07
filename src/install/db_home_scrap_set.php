@@ -82,3 +82,6 @@ PRIMARY KEY (hs_no)
 
 mysql_query($sql) or die(mysql_error());
 ?>
+
+
+

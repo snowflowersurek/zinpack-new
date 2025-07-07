@@ -6,12 +6,12 @@ $alipay = new alipay_notify($partner,$security_code,$sign_type,$_input_charset,$
 $verify_result = $alipay->notify_verify();
 if($verify_result) {
 	
-	$ALIPAY_total_fee = trim(mysql_real_escape_string($_POST['total_fee']))*1000;			//결제금액
-	$ALIPAY_out_trade_no = trim(mysql_real_escape_string($_POST['out_trade_no']));			//주문번호
-	$ALIPAY_trade_no	= trim(mysql_real_escape_string($_POST['trade_no']));				//페이팔 거래번호
-	$ALIPAY_trade_status = trim(mysql_real_escape_string($_POST['trade_status']));			//결제결과
-	$ALIPAY_currency = trim(mysql_real_escape_string($_POST['currency']));					//통화(달러)
-	$ALIPAY_member_id = trim(mysql_real_escape_string($_GET['mb']));					//구매자아이디
+	$ALIPAY_total_fee = trim(sql_real_escape_string($_POST['total_fee']))*1000;			//결제금액
+	$ALIPAY_out_trade_no = trim(sql_real_escape_string($_POST['out_trade_no']));			//주문번호
+	$ALIPAY_trade_no	= trim(sql_real_escape_string($_POST['trade_no']));				//페이팔 거래번호
+	$ALIPAY_trade_status = trim(sql_real_escape_string($_POST['trade_status']));			//결제결과
+	$ALIPAY_currency = trim(sql_real_escape_string($_POST['currency']));					//통화(달러)
+	$ALIPAY_member_id = trim(sql_real_escape_string($_GET['mb']));					//구매자아이디
 
 	if($ALIPAY_total_fee = 9990){
 		$ALIPAY_item_name = 650;
@@ -94,3 +94,6 @@ function  log_result($word) {
 }
 	
 ?>
+
+
+

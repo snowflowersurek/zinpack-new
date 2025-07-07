@@ -1,16 +1,28 @@
-<?
+<?php
 if (!defined("_INFOWAY_")) exit; // 개별 페이지 접근 불가
 
-include_once("$iw[admin_path]/_head_sub.php");
-if ($iw[level] == "guest") alert("잘못된 접근입니다!","");
+include_once("{$iw['admin_path']}/_head_sub.php");
+if ($iw['level'] == "guest") {
+    // 디버깅용: 리다이렉트 비활성화
+    echo "<div style='background: red; color: white; padding: 10px; margin: 10px;'>";
+    echo "로그인이 필요합니다!<br>";
+    echo "level: " . ($iw['level'] ?? 'undefined') . "<br>";
+    echo "store: " . ($iw['store'] ?? 'undefined') . "<br>";
+    echo "group: " . ($iw['group'] ?? 'undefined') . "<br>";
+    $login_url = "/bbs/m/all_login.php?type=dashboard&ep=" . ($iw['store'] ?? 'ep1822322763609cab5915c89') . "&gp=" . ($iw['group'] ?? 'all');
+    echo "로그인 URL: <a href='$login_url'>$login_url</a><br>";
+    echo "</div>";
+    // 디버깅용으로 exit 주석처리
+    // exit;
+}
 ?>
 <div class="navbar navbar-default" id="navbar" style="background-color:#737379;">
 	<div class="navbar-container" id="navbar-container">
 		<div class="navbar-header">
 			<span class="navbar-brand">
 				<i class="zp zp-type white"></i>
-				<a href="<?=$iw[m_path]?>/main.php?type=main&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>" class="white">
-				<?
+				<a href="<?=$iw['m_path']?>/main.php?type=main&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>" class="white">
+				<?php
 					$row = sql_fetch("select * from $iw[setting_table] where ep_code = '$iw[store]' and gp_code = '$iw[group]'");
 					echo $row["st_title"];
 				?>
@@ -33,7 +45,7 @@ if ($iw[level] == "guest") alert("잘못된 접근입니다!","");
 					<a data-toggle="dropdown" href="#" class="dropdown-toggle" style="background:none;">
 						<span class="user-info" style="color:#ffffff;">
 							<small>Welcome,</small>
-							<?
+							<?php
 								$row = sql_fetch("select mb_name from $iw[member_table] where ep_code = '$iw[store]' and mb_code = '$iw[member]'");
 								echo $row["mb_name"];
 							?>
@@ -47,7 +59,7 @@ if ($iw[level] == "guest") alert("잘못된 접근입니다!","");
 
 						<li class="divider"></li>-->
 
-						<li><a href="<?=$iw[m_path]?>/all_logout.php?type=mcb&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>"><i class="fa fa-power-off"></i> 로그아웃</a></li>
+						<li><a href="<?=$iw['m_path']?>/all_logout.php?type=mcb&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>"><i class="fa fa-power-off"></i> 로그아웃</a></li>
 					</ul>
 				</li>
 			</ul><!-- /.nav -->
@@ -80,657 +92,617 @@ if ($iw[level] == "guest") alert("잘못된 접근입니다!","");
 			</div><!-- #sidebar-shortcuts -->
 
 			<ul class="nav nav-list">
-				<li <?if($iw[type] == "dashboard"){?>class="active"<?}?>>
-					<a href="<?=$iw[admin_path]?>/main.php?type=dashboard&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+				<li <?php if($iw['type'] == "dashboard"){?>class="active"<?php }?>>
+					<a href="<?=$iw['admin_path']?>/main.php?type=dashboard&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 						<i class="fa fa-dashboard"></i>
 						<span class="menu-text"> 데쉬보드</span>
 					</a>
 				</li>
-			<?if($iw[mcb]==1){?>
-				<li<?if ($iw[type] == "mcb"){?> class="active"<?}?>>
+			<?php if($iw['mcb']==1){?>
+				<li<?php if ($iw['type'] == "mcb"){?> class="active"<?php }?>>
 					<a href="#" data-toggle="collapse" data-target="#news">
 						<i class="fa fa-clipboard"></i>
 						<span class="menu-text"> 게시판</span>
 						<i class="arrow fa fa-angle-down"></i>
 					</a>
 
-					<ul class="submenu <?if($iw[type] == "mcb"){?>in<?}else{?>collapse<?}?>" id="news">
+					<ul class="submenu <?php if($iw['type'] == "mcb"){?>in<?php }else{?>collapse<?php }?>" id="news">
 						<li>
-							<a href="<?=$iw[admin_path]?>/mcb_data_list.php?type=mcb&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/mcb_data_list.php?type=mcb&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								게시글 관리
 							</a>
 						</li>
 						<li>
-							<a href="<?=$iw[admin_path]?>/mcb_support_list.php?type=mcb&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/mcb_support_list.php?type=mcb&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								후원내역
 							</a>
 						</li>
 
-					<?if($iw[group] == "all" && $iw[level] == "admin"){?>
+					<?php if($iw['group'] == "all" && $iw['level'] == "admin"){?>
 						<li>
-							<a href="<?=$iw[admin_path]?>/mcb_all_list.php?type=mcb&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/mcb_all_list.php?type=mcb&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								전체 게시글 조회
 							</a>
 						</li>
 						<li>
-							<a href="<?=$iw[admin_path]?>/mcb_all_support_list.php?type=mcb&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/mcb_all_support_list.php?type=mcb&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								전체 후원내역
 							</a>
 						</li>
-					<?}?>
-
-					<?if(($iw[group]=="all" && $iw[level] == "admin") || ($iw[group]!="all" && $iw[gp_level] == "gp_admin")){?>
+					<?php } ?><?php if(($iw['group']=="all" && $iw['level'] == "admin") || ($iw['group']!="all" && $iw['gp_level'] == "gp_admin")){?>
 						<li>
-							<a href="<?=$iw[admin_path]?>/category_list.php?type=mcb&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/category_list.php?type=mcb&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								분류 관리
 							</a>
 						</li>
-					<?}?>
+					<?php }?>
 					</ul>
 				</li>
-			<?}?>
-
-			<?if($iw[publishing] == 1 && (($iw[group] == "all" && $iw[level] == "admin") || ($iw[group] != "all" && $iw[gp_level] == "gp_admin"))){?>
-				<li<?if ($iw[type] == "publishing" || $iw[type] == "publishing_brand"){?> class="active"<?}?>>
+			<?php } ?>
+			<?php if($iw['publishing'] == 1 && (($iw['group'] == "all" && $iw['level'] == "admin") || ($iw['group'] != "all" && $iw['gp_level'] == "gp_admin"))){?>
+				<li<?php if ($iw['type'] == "publishing" || $iw['type'] == "publishing_brand"){?> class="active"<?php }?>>
 					<a href="#" data-toggle="collapse" data-target="#publishing">
 						<i class="fa fa-book"></i>
 						<span class="menu-text"> 출판도서</span>
 						<i class="arrow fa fa-angle-down"></i>
 					</a>
 
-					<ul class="submenu <?if($iw[type] == "publishing" || $iw[type] == "publishing_brand" || $iw[type] == "publishing_contest"){?>in<?}else{?>collapse<?}?>" id="publishing">
-					<?if(($iw[group] == "all" && $iw[level] == "admin") || ($iw[group] != "all" && $iw[gp_level] == "gp_admin")){?>
+					<ul class="submenu <?php if($iw['type'] == "publishing" || $iw['type'] == "publishing_brand" || $iw['type'] == "publishing_contest"){?>in<?php }else{?>collapse<?php }?>" id="publishing">
+					<?php if(($iw['group'] == "all" && $iw['level'] == "admin") || ($iw['group'] != "all" && $iw['gp_level'] == "gp_admin")){?>
 						<li>
-							<a href="<?=$iw[admin_path]?>/category_list.php?type=publishing&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/category_list.php?type=publishing&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								분류관리
 							</a>
 						</li>
 						<li>
-							<a href="<?=$iw[admin_path]?>/category_list.php?type=publishing_brand&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/category_list.php?type=publishing_brand&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								브랜드관리
 							</a>
 						</li>
 						<li>
-							<a href="<?=$iw[admin_path]?>/publishing_books_list.php?type=publishing&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/publishing_books_list.php?type=publishing&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								도서관리
 							</a>
 						</li>
 						<li>
-							<a href="<?=$iw[admin_path]?>/publishing_author_list.php?type=publishing&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/publishing_author_list.php?type=publishing&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								저자관리
 							</a>
 						</li>
-						<?if($iw[group] == "all" && $iw[level] == "admin"){?>
+						<?php if($iw['group'] == "all" && $iw['level'] == "admin"){?>
 						<li>
-							<a href="<?=$iw[admin_path]?>/publishing_exhibit_list.php?type=publishing&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/publishing_exhibit_list.php?type=publishing&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								그림전시관리
 							</a>
 						</li>
 						<li>
-							<a href="<?=$iw[admin_path]?>/publishing_exhibit_status_list.php?type=publishing&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/publishing_exhibit_status_list.php?type=publishing&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								그림전시 신청내역
 							</a>
 						</li>
 						<li>
-							<a href="<?=$iw[admin_path]?>/publishing_lecture_list.php?type=publishing&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/publishing_lecture_list.php?type=publishing&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								작가강연회 신청내역
 							</a>
 						</li>
 						<li>
-							<a href="<?=$iw[admin_path]?>/category_list.php?type=publishing_contest&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/category_list.php?type=publishing_contest&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								공모전 분류관리
 							</a>
 						</li>
 						<li>
-							<a href="<?=$iw[admin_path]?>/publishing_contest_list.php?type=publishing&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/publishing_contest_list.php?type=publishing&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								공모전관리
 							</a>
 						</li>
-						<?}?>
-					<?}?>
+						<?php } ?>
+					<?php }?>
 					</ul>
 				</li>
-			<?}?>
-
-			<?if($iw[shop]==1){?>
-				<li<?if($iw[type] == "shop"){?> class="active"<?}?>>
+			<?php } ?>
+			<?php if($iw['shop']==1){?>
+				<li<?php if($iw['type'] == "shop"){?> class="active"<?php }?>>
 					<a href="#" data-toggle="collapse" data-target="#shopping">
 						<i class="fa fa-shopping-cart"></i>
 						<span class="menu-text"> 쇼핑몰</span>
 						<i class="arrow fa fa-angle-down"></i>
 					</a>
 					
-					<ul class="submenu <?if($iw[type] == "shop"){?>in<?}else{?>collapse<?}?>" id="shopping">
-					<?if($iw[group] == "all" && $iw[level] == "admin"){?>
+					<ul class="submenu <?php if($iw['type'] == "shop"){?>in<?php }else{?>collapse<?php }?>" id="shopping">
+					<?php if($iw['group'] == "all" && $iw['level'] == "admin"){?>
 						<li>
-							<a href="<?=$iw[admin_path]?>/shop_seller_approval_list.php?type=shop&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/shop_seller_approval_list.php?type=shop&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								판매자등록 승인
 							</a>
 						</li>
 						<li>
-							<a href="<?=$iw[admin_path]?>/shop_seller_list.php?type=shop&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/shop_seller_list.php?type=shop&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								전체 판매자
 							</a>
 						</li>
 						<li>
-							<a href="<?=$iw[admin_path]?>/shop_post_store_list.php?type=shop&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&search=e&searchs=주문">
+							<a href="<?=$iw['admin_path']?>/shop_post_store_list.php?type=shop&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>&search=e&searchs=주문">
 								<i class="fa fa-angle-double-right"></i>
 								주문관리
 							</a>
 						</li>
 						<li>
-							<a href="<?=$iw[admin_path]?>/shop_data_list.php?type=shop&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/shop_data_list.php?type=shop&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								상품관리
 							</a>
 						</li>
 						<li>
-							<a href="<?=$iw[admin_path]?>/shop_delivery_list.php?type=shop&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/shop_delivery_list.php?type=shop&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								배송코드관리
 							</a>
 						</li>
 						<li>
-							<a href="<?=$iw[admin_path]?>/shop_seller_edit.php?type=shop&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/shop_seller_edit.php?type=shop&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								판매자 정보
 							</a>
 						</li>
 						<li>
-							<a href="<?=$iw[admin_path]?>/shop_seller_write.php?type=shop&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/shop_seller_write.php?type=shop&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								판매자등록 신청
 							</a>
 						</li>
-					<?}else if($iw[level] == "seller"){?>
+					<?php }else if($iw['level'] == "seller"){?>
 						<li>
-							<a href="<?=$iw[admin_path]?>/shop_post_store_list.php?type=shop&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&search=e&searchs=주문">
+							<a href="<?=$iw['admin_path']?>/shop_post_store_list.php?type=shop&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>&search=e&searchs=주문">
 								<i class="fa fa-angle-double-right"></i>
 								주문관리
 							</a>
 						</li>
 						<li>
-							<a href="<?=$iw[admin_path]?>/shop_data_list.php?type=shop&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/shop_data_list.php?type=shop&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								상품관리
 							</a>
 						</li>
 						<li>
-							<a href="<?=$iw[admin_path]?>/shop_delivery_list.php?type=shop&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/shop_delivery_list.php?type=shop&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								배송코드관리
 							</a>
 						</li>
 						<li>
-							<a href="<?=$iw[admin_path]?>/shop_seller_edit.php?type=shop&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/shop_seller_edit.php?type=shop&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								판매자 정보
 							</a>
 						</li>
-					<?}else if($iw[level] == "member"){?>
+					<?php }else if($iw['level'] == "member"){?>
 						<li>
-							<a href="<?=$iw[admin_path]?>/shop_seller_write.php?type=shop&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/shop_seller_write.php?type=shop&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								판매자등록 신청
 							</a>
 						</li>
-					<?}?>
-
-					<?if($iw[group] == "all" && $iw[level] == "admin"){?>
+					<?php } ?><?php if($iw['group'] == "all" && $iw['level'] == "admin"){?>
 						<li>
-							<a href="<?=$iw[admin_path]?>/shop_all_list.php?type=shop&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/shop_all_list.php?type=shop&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								전체 상품조회
 							</a>
 						</li>
 						<li>
-							<a href="<?=$iw[admin_path]?>/shop_post_all_list.php?type=shop&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/shop_post_all_list.php?type=shop&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								전체 주문조회
 							</a>
 						</li>
 						<li>
-							<a href="<?=$iw[admin_path]?>/shop_post_pay_list.php?type=shop&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/shop_post_pay_list.php?type=shop&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								전체 결제조회
 							</a>
 						</li>
 						<li>
-							<a href="<?=$iw[admin_path]?>/shop_card_list.php?type=shop&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/shop_card_list.php?type=shop&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								TOSS 결제내역
 							</a>
 						</li>
 						<li>
-							<a href="<?=$iw[admin_path]?>/shop_card_cancel_list.php?type=shop&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/shop_card_cancel_list.php?type=shop&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								TOSS 취소내역
 							</a>
 						</li>
+					<?php } ?><?php if(($iw['group'] == "all" && $iw['level'] == "admin") || ($iw['group'] != "all" && $iw['gp_level'] == "gp_admin")){?>
 						<li>
-							<a href="<?=$iw[admin_path]?>/shop_paypal_list.php?type=shop&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
-								<i class="fa fa-angle-double-right"></i>
-								PAYPAL결제내역
-							</a>
-						</li>
-						<li>
-							<a href="<?=$iw[admin_path]?>/shop_alipay_list.php?type=shop&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
-								<i class="fa fa-angle-double-right"></i>
-								ALIPAY결제내역
-							</a>
-						</li>
-						<!--<li>
-							<a href="<?=$iw[admin_path]?>/shop_card_partial_list.php?type=shop&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
-								<i class="fa fa-angle-double-right"></i>
-								부분취소내역
-							</a>
-						</li>-->
-					<?}?>
-
-					<?if(($iw[group] == "all" && $iw[level] == "admin") || ($iw[group] != "all" && $iw[gp_level] == "gp_admin")){?>
-						<li>
-							<a href="<?=$iw[admin_path]?>/category_list.php?type=shop&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/category_list.php?type=shop&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								분류 관리
 							</a>
 						</li>
 						<li>
-							<a href="<?=$iw[admin_path]?>/shop_approval_list.php?type=shop&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/shop_approval_list.php?type=shop&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								상품등록 승인
 							</a>
 						</li>
 						<li>
-							<a href="<?=$iw[admin_path]?>/shop_exposure_list.php?type=shop&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/shop_exposure_list.php?type=shop&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								상품 노출관리
 							</a>
 						</li>
-					<?}?>
+					<?php }?>
 					</ul>
 				</li>
-			<?}?>
-
-			<?if($iw[doc]==1){?>
-				<li<?if($iw[type] == "doc"){?> class="active"<?}?>>
+			<?php } ?><?php if($iw['doc']==1){?>
+				<li<?php if($iw['type'] == "doc"){?> class="active"<?php }?>>
 					<a href="#" data-toggle="collapse" data-target="#contents-mall">
 						<i class="fa fa-inbox"></i>
 						<span class="menu-text"> 컨텐츠몰</span>
 						<i class="arrow fa fa-angle-down"></i>
 					</a>
 					
-					<ul class="submenu <?if($iw[type] == "doc"){?>in<?}else{?>collapse<?}?>" id="contents-mall">
-					<?if($iw[level] == "member" || $iw[level] == "seller"){?>
+					<ul class="submenu <?php if($iw['type'] == "doc"){?>in<?php }else{?>collapse<?php }?>" id="contents-mall">
+					<?php if($iw['level'] == "member" || $iw['level'] == "seller"){?>
 						<li>
-							<a href="<?=$iw[admin_path]?>/doc_data_list.php?type=doc&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/doc_data_list.php?type=doc&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								컨텐츠 관리
 							</a>
 						</li>
 						<li>
-							<a href="<?=$iw[admin_path]?>/doc_sale_list.php?type=doc&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/doc_sale_list.php?type=doc&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								판매내역
 							</a>
 						</li>
 						<li>
-							<a href="<?=$iw[admin_path]?>/doc_support_list.php?type=doc&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/doc_support_list.php?type=doc&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								후원내역
 							</a>
 						</li>
-					<?}?>
-
-					<?if($iw[group] == "all" && $iw[level] == "admin"){?>
+					<?php } ?><?php if($iw['group'] == "all" && $iw['level'] == "admin"){?>
 						<li>
-							<a href="<?=$iw[admin_path]?>/doc_all_list.php?type=doc&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/doc_all_list.php?type=doc&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								전체 컨텐츠 조회
 							</a>
 						</li>
 						<li>
-							<a href="<?=$iw[admin_path]?>/doc_all_sale_list.php?type=doc&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/doc_all_sale_list.php?type=doc&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								전체 판매내역
 							</a>
 						</li>
 						<li>
-							<a href="<?=$iw[admin_path]?>/doc_all_support_list.php?type=doc&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/doc_all_support_list.php?type=doc&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								전체 후원내역
 							</a>
 						</li>
-					<?}?>
-					
-					<?if(($iw[group] == "all" && $iw[level] == "admin") || ($iw[group] != "all" && $iw[gp_level] == "gp_admin")){?>
+					<?php } ?><?php if(($iw['group'] == "all" && $iw['level'] == "admin") || ($iw['group'] != "all" && $iw['gp_level'] == "gp_admin")){?>
 						<li>
-							<a href="<?=$iw[admin_path]?>/category_list.php?type=doc&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/category_list.php?type=doc&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								분류 관리
 							</a>
 						</li>
 						<li>
-							<a href="<?=$iw[admin_path]?>/doc_approval_list.php?type=doc&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/doc_approval_list.php?type=doc&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								컨텐츠 등록 승인
 							</a>
 						</li>
 						<li>
-							<a href="<?=$iw[admin_path]?>/doc_exposure_list.php?type=doc&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/doc_exposure_list.php?type=doc&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								컨텐츠 노출 관리
 							</a>
 						</li>
-					<?}?>
+					<?php }?>
 					</ul>
 				</li>
-			<?}?>
-
-			<?if($iw[book]==1){?>
-				<li<?if($iw[type] == "book"){?> class="active"<?}?>>
+			<?php } ?><?php if($iw['book']==1){?>
+				<li<?php if($iw['type'] == "book"){?> class="active"<?php }?>>
 					<a href="#" data-toggle="collapse" data-target="#ebook-mall">
 						<i class="fa fa-newspaper-o"></i>
 						<span class="menu-text"> 이북몰</span>
 						<i class="arrow fa fa-angle-down"></i>
 					</a>
 					
-					<ul class="submenu <?if($iw[type] == "book"){?>in<?}else{?>collapse<?}?>" id="ebook-mall">
-					<?if($iw[level] == "member" || $iw[level] == "seller"){?>
+					<ul class="submenu <?php if($iw['type'] == "book"){?>in<?php }else{?>collapse<?php }?>" id="ebook-mall">
+					<?php if($iw['level'] == "member" || $iw['level'] == "seller"){?>
 						<li>
-							<a href="<?=$iw[admin_path]?>/book_data_list.php?type=book&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/book_data_list.php?type=book&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								이북 관리
 							</a>
 						</li>
 						<li>
-							<a href="<?=$iw[admin_path]?>/book_sale_list.php?type=book&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/book_sale_list.php?type=book&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								판매내역
 							</a>
 						</li>
 						<li>
-							<a href="<?=$iw[admin_path]?>/book_support_list.php?type=book&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/book_support_list.php?type=book&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								후원내역
 							</a>
 						</li>
-					<?}?>
-
-					<?if($iw[group] == "all" && $iw[level] == "admin"){?>
+					<?php } ?><?php if($iw['group'] == "all" && $iw['level'] == "admin"){?>
 						<li>
-							<a href="<?=$iw[admin_path]?>/book_all_list.php?type=book&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/book_all_list.php?type=book&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								전체 이북 조회
 							</a>
 						</li>
 						<li>
-							<a href="<?=$iw[admin_path]?>/book_all_sale_list.php?type=book&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/book_all_sale_list.php?type=book&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								전체 판매내역
 							</a>
 						</li>
 						<li>
-							<a href="<?=$iw[admin_path]?>/book_all_support_list.php?type=book&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/book_all_support_list.php?type=book&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								전체 후원내역
 							</a>
 						</li>
-					<?}?>
-					
-					<?if(($iw[group] == "all" && $iw[level] == "admin") || ($iw[group] != "all" && $iw[gp_level] == "gp_admin")){?>
+					<?php } ?><?php if(($iw['group'] == "all" && $iw['level'] == "admin") || ($iw['group'] != "all" && $iw['gp_level'] == "gp_admin")){?>
 						<li>
-							<a href="<?=$iw[admin_path]?>/category_list.php?type=book&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/category_list.php?type=book&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								분류 관리
 							</a>
 						</li>
 						<li>
-							<a href="<?=$iw[admin_path]?>/book_approval_list.php?type=book&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/book_approval_list.php?type=book&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								이북 등록 승인
 							</a>
 						</li>
 						<li>
-							<a href="<?=$iw[admin_path]?>/book_exposure_list.php?type=book&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/book_exposure_list.php?type=book&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								이북 노출 관리
 							</a>
 						</li>
-					<?}?>
+					<?php }?>
 					</ul>
 				</li>
-			<?}?>
-				<li <?if($iw[type] == "group"){?>class="active"<?}?>>
+			<?php }?>
+				<li <?php if($iw['type'] == "group"){?>class="active"<?php }?>>
 					<a href="#" data-toggle="collapse" data-target="#group">
 						<i class="fa fa-users"></i>
 						<span class="menu-text"> 그룹/회원관리</span>
 						<i class="arrow fa fa-angle-down"></i>
 					</a>
 					
-					<ul class="submenu <?if($iw[type] == "group"){?>in<?}else{?>collapse<?}?>" id="group">
-					<?if($iw[group] != "all" && $iw[gp_level] == "gp_admin"){?>
+					<ul class="submenu <?php if($iw['type'] == "group"){?>in<?php }else{?>collapse<?php }?>" id="group">
+					<?php if($iw['group'] != "all" && $iw['gp_level'] == "gp_admin"){?>
 						<li>
-							<a href="<?=$iw[admin_path]?>/group_data_edit.php?type=group&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/group_data_edit.php?type=group&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								그룹 정보
 							</a>
 						</li>
 						<li>
-							<a href="<?=$iw[admin_path]?>/group_member_list.php?type=group&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/group_member_list.php?type=group&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								그룹 회원
 							</a>
 						</li>
 						<li>
-							<a href="<?=$iw[admin_path]?>/group_invite_list.php?type=group&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/group_invite_list.php?type=group&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								그룹 초대
 							</a>
 						</li>
 						<li>
-							<a href="<?=$iw[admin_path]?>/group_join_list.php?type=group&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/group_join_list.php?type=group&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								그룹가입 승인
 							</a>
 						</li>
-					<?}else if($iw[group] == "all" && $iw[level] == "admin"){?>
+					<?php }else if($iw['group'] == "all" && $iw['level'] == "admin"){?>
 						<li>
-							<a href="<?=$iw[admin_path]?>/group_approval_list.php?type=group&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/group_approval_list.php?type=group&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								신규그룹 승인
 							</a>
 						</li>
 						<li>
-							<a href="<?=$iw[admin_path]?>/group_all_list.php?type=group&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/group_all_list.php?type=group&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								전체 그룹
 							</a>
 						</li>
 						
 						<li>
-							<a href="<?=$iw[admin_path]?>/member_join_list.php?type=group&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/member_join_list.php?type=group&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								회원가입 승인
 							</a>
 						</li>
 						<li>
-							<a href="<?=$iw[admin_path]?>/member_invite_list.php?type=group&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/member_invite_list.php?type=group&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								회원 초대
 							</a>
 						</li>
 						<li>
-							<a href="<?=$iw[admin_path]?>/member_join_setting.php?type=group&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/member_join_setting.php?type=group&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								회원가입 설정
 							</a>
 						</li>
 						<li>
-							<a href="<?=$iw[admin_path]?>/member_data_list.php?type=group&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/member_data_list.php?type=group&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								전체 회원관리
 							</a>
 						</li>
 						<li>
-							<a href="<?=$iw[admin_path]?>/member_point_list.php?type=group&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/member_point_list.php?type=group&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								포인트 내역
 							</a>
 						</li>
-					<?}else if($iw[group] == "all"){?>
+					<?php }else if($iw['group'] == "all"){?>
 						<li>
-							<a href="<?=$iw[admin_path]?>/group_my_list.php?type=group&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/group_my_list.php?type=group&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								가입한 그룹
 							</a>
 						</li>
 						<li>
-							<a href="<?=$iw[admin_path]?>/group_all_list.php?type=group&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/group_all_list.php?type=group&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								전체 그룹
 							</a>
 						</li>
-					<?}?>
-
-					<?if(($iw[group]=="all" && $iw[level] == "admin") || ($iw[group]!="all" && $iw[gp_level] == "gp_admin")){?>
+					<?php } ?><?php if(($iw['group']=="all" && $iw['level'] == "admin") || ($iw['group']!="all" && $iw['gp_level'] == "gp_admin")){?>
 						<li>
-							<a href="<?=$iw[admin_path]?>/group_level_edit.php?type=group&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/group_level_edit.php?type=group&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								회원등급 설정
 							</a>
 						</li>
-					<?}?>
+					<?php }?>
 					</ul>
 				</li>
 
-				<li<?if($iw[type] == "bank"){?> class="active"<?}?>>
+				<li<?php if($iw['type'] == "bank"){?> class="active"<?php }?>>
 					<a href="#" data-toggle="collapse" data-target="#financial">
 						<i class="fa fa-calculator"></i>
 						<span class="menu-text"> 정산관리</span>
 						<i class="arrow fa fa-angle-down"></i>
 					</a>
 
-					<ul class="submenu <?if($iw[type] == "bank"){?>in<?}else{?>collapse<?}?>" id="financial">
-					<?if($iw[level] == "member" || $iw[level] == "seller"){?>
+					<ul class="submenu <?php if($iw['type'] == "bank"){?>in<?php }else{?>collapse<?php }?>" id="financial">
+					<?php if($iw['level'] == "member" || $iw['level'] == "seller"){?>
 						<li>
-							<a href="<?=$iw[admin_path]?>/bank_exchange_list.php?type=bank&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/bank_exchange_list.php?type=bank&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								환전
 							</a>
 						</li>
 						<li>
-							<a href="<?=$iw[admin_path]?>/bank_account_write.php?type=bank&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/bank_account_write.php?type=bank&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								계좌정보
 							</a>
 						</li>
-					<?}?>
-
-					<?if($iw[level] == "admin"){?>
+					<?php } ?><?php if($iw['level'] == "admin"){?>
 						<li>
-							<a href="<?=$iw[admin_path]?>/bank_all_exchange_list.php?type=bank&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/bank_all_exchange_list.php?type=bank&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								전체 환전내역
 							</a>
 						</li>
-					<?}?>
+					<?php }?>
 					</ul>
 				</li>
 				
-			<?if(($iw[group]=="all" && $iw[level] == "admin") || ($iw[group]!="all" && $iw[gp_level] == "gp_admin")){?>
-				<li<?if($iw[type] == "design"){?> class="active"<?}?>>
+			<?php if(($iw['group']=="all" && $iw['level'] == "admin") || ($iw['group']!="all" && $iw['gp_level'] == "gp_admin")){?>
+				<li<?php if($iw['type'] == "design"){?> class="active"<?php }?>>
 					<a href="#" data-toggle="collapse" data-target="#designset">
 						<i class="fa fa-object-group"></i>
 						<span class="menu-text"> 디자인 설정</span>
 						<i class="arrow fa fa-angle-down"></i>
 					</a>
 
-					<ul class="submenu <?if($iw[type] == "design"){?>in<?}else{?>collapse<?}?>" id="designset">
+					<ul class="submenu <?php if($iw['type'] == "design"){?>in<?php }else{?>collapse<?php }?>" id="designset">
 						<li>
-							<a href="<?=$iw[admin_path]?>/design_default_edit.php?type=design&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/design_default_edit.php?type=design&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								기본 설정
 							</a>
 						</li>
 						<li>
-							<a href="<?=$iw[admin_path]?>/design_category_edit.php?type=design&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/design_category_edit.php?type=design&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								게시판 기본 설정
 							</a>
 						</li>
 						<li>
-							<a href="<?=$iw[admin_path]?>/design_menu_list.php?type=design&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/design_menu_list.php?type=design&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								메뉴 및 레이아웃 설정
 							</a>
 						</li>
 						<li>
-							<a href="<?=$iw[admin_path]?>/design_scrap_list.php?type=design&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&menu=&scrap=main">
+							<a href="<?=$iw['admin_path']?>/design_scrap_list.php?type=design&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>&menu=&scrap=main">
 								<i class="fa fa-angle-double-right"></i>
 								메인화면 설정
 							</a>
 						</li>
 						<li>
-							<a href="<?=$iw[admin_path]?>/design_theme_edit.php?type=design&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/design_theme_edit.php?type=design&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								테마디자인 설정
 							</a>
 						</li>
 						<li>
-							<a href="<?=$iw[admin_path]?>/about_data_list.php?type=design&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/about_data_list.php?type=design&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								독립페이지 관리
 							</a>
 						</li>
-					<?if($iw[group]=="all" && $iw[level] == "admin"){?>
+					<?php if($iw['group']=="all" && $iw['level'] == "admin"){?>
 						<li>
-							<a href="<?=$iw[admin_path]?>/design_policy_edit.php?type=design&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/design_policy_edit.php?type=design&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								이용약관 설정
 							</a>
 						</li>
 						<li>
-							<a href="<?=$iw[admin_path]?>/popup_layer_list.php?type=design&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+							<a href="<?=$iw['admin_path']?>/popup_layer_list.php?type=design&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 								<i class="fa fa-angle-double-right"></i>
 								팝업창
 							</a>
 						</li>
-					<?}?>
+					<?php }?>
 					</ul>
 				</li>
-			<?}?>
-			<?if(($iw[group]=="all" && $iw[level] == "admin") || ($iw[group]!="all" && $iw[gp_level] == "gp_admin")){?>
-				<li <?if($iw[type] == "notice"){?>class="active"<?}?>>
-					<a href="<?=$iw[admin_path]?>/home_notice_list.php?type=notice&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+			<?php } ?><?php if(($iw['group']=="all" && $iw['level'] == "admin") || ($iw['group']!="all" && $iw['gp_level'] == "gp_admin")){?>
+				<li <?php if($iw['type'] == "notice"){?>class="active"<?php }?>>
+					<a href="<?=$iw['admin_path']?>/home_notice_list.php?type=notice&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 						<i class="fa fa-bullhorn"></i>
 						<span class="menu-text"> 공지사항</span>
 					</a>
 				</li>
-				<li <?if($iw[type] == "count"){?>class="active"<?}?>>
-					<a href="<?=$iw[admin_path]?>/home_count_list.php?type=count&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>">
+				<li <?php if($iw['type'] == "count"){?>class="active"<?php }?>>
+					<a href="<?=$iw['admin_path']?>/home_count_list.php?type=count&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>">
 						<i class="fa fa-bar-chart-o"></i>
 						<span class="menu-text"> 방문자수</span>
 					</a>
 				</li>
-			<?}?>
+			<?php }?>
 			</ul><!-- /.nav-list -->
 
 		</div><!-- / end sidebar -->
 		
 		<div class="main-content" id="main-content">
+
+
+

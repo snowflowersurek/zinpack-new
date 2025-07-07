@@ -98,3 +98,7 @@ if (isset($_REQUEST['submitcollation'])
 $url_query = PMA_generate_common_url($db);
 
 ?>
+
+
+
+

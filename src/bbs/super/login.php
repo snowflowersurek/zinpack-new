@@ -67,7 +67,10 @@ if (isset($iw['level']) && $iw['level'] == "super") {
 		mb_form.submit();
 	}
 </script>
-<?
-include_once("$iw[super_path]/_tail_sub.php");
+<?php
+include_once("{$iw['super_path']}/_tail_sub.php");
 exit; // 다른 파일의 영향을 받지 않도록 여기서 실행을 강제 종료
 ?>
+
+
+

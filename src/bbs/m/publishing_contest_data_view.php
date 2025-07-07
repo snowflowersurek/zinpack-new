@@ -39,7 +39,7 @@ include_once("_head_share.php");
 	<div class="row">
 		<div class="breadcrumb-box input-group">
 			<ol class="breadcrumb">
-				<?
+				<?php
 					$row3 = sql_fetch(" select * from $iw[home_menu_table] where ep_code = '$iw[store]' and gp_code='$iw[group]' and state_sort = '$iw[type]' and cg_code = '$contest_cg_code'");
 					$hm_code = $row3[hm_code];
 					$hm_view_scrap = $row3[hm_view_scrap];
@@ -65,23 +65,23 @@ include_once("_head_share.php");
 						<ul class="list-inline">
 							<li><i class="fa fa-calendar"></i> 응모기간 <?=$start_date." ~ ".$end_date?></li>
 							
-							<?if($attach_filename){?>
+							<?php if($attach_filename){?>
 								<li><i class="fa fa-file"></i> <a href="javascript:downloadFile('publishing','<?=$iw[store]?>','<?=$iw[group]?>','<?=$contest_code?>');"><?=$origin_filename?></a> </li>
-							<?}?>
+							<?php }?>
 						</ul>
 					</div>
 				</div> <!-- /.box -->
 			</div> <!-- /.masonry-item -->	
 		
 			<div class="masonry-item w-<?=$hm_view_size?> h-full">
-				<div class="box br-default <?if($md_padding==1){?>box-padding-pc<?}?>">
-				<?
+				<div class="box br-default <?php if{?>box-padding-pc<?php }?>">
+				<?php
 					echo "<div class='image-container'>".stripslashes($contest_content)."</div>";
 				?>
 				</div> <!-- /.box -->
 			</div> <!-- /.masonry-item -->
 			
-			<?if($hm_view_scrap_mobile==1){?>
+			<?php if($hm_view_scrap_mobile==1){?>
 				<style>
 					@media (min-width:768px){
 						.scrap-wrap	{display:;}
@@ -90,20 +90,18 @@ include_once("_head_share.php");
 						.scrap-wrap	{display:none;}
 					}
 				</style>
-			<?}?>
-			<?
-				if ($hm_view_scrap==1){
+			<?php } ?><?php if($hm_view_scrap==1){
 					$scrap_type = "view";
 					include_once("all_home_scrap.php");
 				}
 			?>
 
 			<div class="masonry-item w-full h-full text-center">
-				<?
+				<?php
 					if(strtotime($end_date) - strtotime(date("Y-m-d")) > -1){
 				?>
 					<a href="<?=$iw['m_path']?>/publishing_contest_application.php?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&menu=<?=$hm_code?>&contest_code=<?=$contest_code?>" class="btn btn-theme">응모하기</a>
-				<?
+				<?php
 					}
 				?>
 			</div>
@@ -120,7 +118,7 @@ include_once("_head_share.php");
 	}
 </script>
 
-<?
+<?php
 $sql = "update iw_publishing_contest set
 		hit = hit+1
 		where ep_code = '$iw[store]' and gp_code='$iw[group]' and contest_code = '$contest_code'";
@@ -133,3 +131,7 @@ sql_query($sql);
 
 include_once("_tail.php");
 ?>
+
+
+
+

@@ -47,3 +47,7 @@ abstract class TransformationsPlugin extends PluginObserver
     abstract public function applyTransformation($buffer, $options = array(), $meta = '');
 }
 ?>
+
+
+
+

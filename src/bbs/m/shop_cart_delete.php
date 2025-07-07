@@ -9,7 +9,7 @@ if (!$db_conn) {
 ?>
 <meta http-equiv="content-type" content="text/html; charset=<?=$iw['charset']?>" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-<?
+<?php
 $item_no = (int)$_GET['item'];
 if (!$item_no) alert(national_language($iw[language],"a0035","잘못된 접근입니다."),"");
 
@@ -21,3 +21,6 @@ mysqli_stmt_close($stmt);
 
 goto_url("{$iw['m_path']}/shop_cart_form.php?type={$iw['type']}&ep={$iw['store']}&gp={$iw['group']}");
 ?>
+
+
+

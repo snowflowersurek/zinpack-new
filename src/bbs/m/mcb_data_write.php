@@ -31,7 +31,8 @@ if(preg_match('/(iPod|iPhone|Mobile|UP.Browser|Android|BlackBerry|Windows CE|Nok
 }
 ?>
 
-<script src="/include/ckeditor/ckeditor.js"></script>
+<script src="/include/ckeditor/ckeditor5.js"></script>
+<script src="/include/ckeditor/ckeditor5-adapter.js"></script>
 <script src="/include/ckeditor/mutilple/jquery.min.js"></script>
 <script src="/include/ckeditor/mutilple/jquery.wallform.js"></script>
 <script>
@@ -76,7 +77,7 @@ if(preg_match('/(iPod|iPhone|Mobile|UP.Browser|Android|BlackBerry|Windows CE|Nok
 						<input type="hidden" name="md_code" value="<?=$md_code?>" />
 						<input type="hidden" name="upload_path" value="<?=$upload_path_write?>" />
 						<input type="hidden" name="ep_upload_size" value="<?=$ep_upload_size?>" />
-						<?if(($iw[gp_level] == "gp_admin" && $iw[group] != "all") || ($iw[level] == "admin" && $iw[group] == "all")){?>
+						<?php if(($iw[gp_level] == "gp_admin" && $iw[group] != "all") || ($iw[level] == "admin" && $iw[group] == "all")){?>
 						<div class="form-group">
 							<label for="md_datetime2">등록일</label>
 							<div>
@@ -84,17 +85,16 @@ if(preg_match('/(iPod|iPhone|Mobile|UP.Browser|Android|BlackBerry|Windows CE|Nok
 								예) <?=date("Y-m-d H:i")?>
 							</div>
 						</div>
-						<?}?>
+						<?php }?>
 						<div class="form-group">
 							<label for="md_type"><?=national_language($iw[language],"a0267","글쓰기 방식");?></label>
 							<div>
 							<input type="radio" name="md_type" value="1" id="간편모드" onclick="javascript:type_change(this.value);" checked/>&nbsp;<label for="간편모드"><?=national_language($iw[language],"a0268","간편모드");?></label>&nbsp;&nbsp;&nbsp;
 							<input type="radio" name="md_type" value="2" id="웹에디터" onclick="javascript:type_change(this.value);" />&nbsp;
 							<label for="웹에디터">
-								<?=national_language($iw[language],"a0269","웹에디터");?> 
-							<?if ($mobile_check == "ok"){?>
+								<?=national_language($iw[language],"a0269","웹에디터"); if($mobile_check == "ok"){?>
 								(모바일 미지원)
-							<?}?>
+							<?php }?>
 							</label>
 							</div>
 						</div>
@@ -102,7 +102,7 @@ if(preg_match('/(iPod|iPhone|Mobile|UP.Browser|Android|BlackBerry|Windows CE|Nok
 							<label for="cg_code"><?=national_language($iw[language],"a0013","카테고리");?></label>
 							<select class="form-control" name="cg_code" onchange="javascript:cetegory_change(this.value,'<?=$ep_upload?>');">
 								<option value=""><?=national_language($iw[language],"a0186","선택");?></option>
-								<?
+								<?php
 									$hm_code_check = $_GET[menu];
 									$sql1 = "select * from $iw[home_menu_table] where ep_code = '$iw[store]' and gp_code = '$iw[group]' and hm_deep = 1 order by hm_order asc,hm_no asc";
 									$result1 = sql_query($sql1);
@@ -121,8 +121,8 @@ if(preg_match('/(iPod|iPhone|Mobile|UP.Browser|Android|BlackBerry|Windows CE|Nok
 											$cg_level_upload = "y";
 										}
 								?>
-									<option value="<?=$cg_code?>,<?=$cg_level_upload?>" <?if($iw[mb_level] < $cg_level_write){?>disabled<?}else if($hm_code_check==$hm_code){?>selected<?}?>><?=$hm_name1?></option>
-									<?
+									<option value="<?=$cg_code?>,<?=$cg_level_upload?>" <?php if{?>disabled<?php }else if($hm_code_check==$hm_code){?>selected<?php }?>><?=$hm_name1?></option>
+									<?php
 										}
 										$sql2 = "select * from $iw[home_menu_table] where hm_upper_code = '$hm_code' and hm_deep = 2 and ep_code = '$iw[store]' and gp_code = '$iw[group]' order by hm_order asc,hm_no asc";
 										$result2 = sql_query($sql2);
@@ -142,8 +142,8 @@ if(preg_match('/(iPod|iPhone|Mobile|UP.Browser|Android|BlackBerry|Windows CE|Nok
 												$cg_level_upload = "y";
 											}
 									?>
-										<option value="<?=$cg_code?>,<?=$cg_level_upload?>" <?if($iw[mb_level] < $cg_level_write){?>disabled<?}else if($hm_code_check==$hm_code){?>selected<?}?>><?=$hm_name1?> > <?=$hm_name2?></option>
-										<?
+										<option value="<?=$cg_code?>,<?=$cg_level_upload?>" <?php if{?>disabled<?php }else if($hm_code_check==$hm_code){?>selected<?php }?>><?=$hm_name1?> > <?=$hm_name2?></option>
+										<?php
 											}
 											$sql3 = "select * from $iw[home_menu_table] where hm_upper_code = '$hm_code' and hm_deep = 3 and ep_code = '$iw[store]' and gp_code = '$iw[group]' order by hm_order asc,hm_no asc";
 											$result3 = sql_query($sql3);
@@ -163,8 +163,8 @@ if(preg_match('/(iPod|iPhone|Mobile|UP.Browser|Android|BlackBerry|Windows CE|Nok
 													$cg_level_upload = "y";
 												}
 										?>
-											<option value="<?=$cg_code?>,<?=$cg_level_upload?>" <?if($iw[mb_level] < $cg_level_write){?>disabled<?}else if($hm_code_check==$hm_code){?>selected<?}?>><?=$hm_name1?> > <?=$hm_name2?> > <?=$hm_name3?></option>
-											<?
+											<option value="<?=$cg_code?>,<?=$cg_level_upload?>" <?php if{?>disabled<?php }else if($hm_code_check==$hm_code){?>selected<?php }?>><?=$hm_name1?> > <?=$hm_name2?> > <?=$hm_name3?></option>
+											<?php
 												}
 												$sql4 = "select * from $iw[home_menu_table] where hm_upper_code = '$hm_code' and hm_deep = 4 and ep_code = '$iw[store]' and gp_code = '$iw[group]' order by hm_order asc,hm_no asc";
 												$result4 = sql_query($sql4);
@@ -184,10 +184,8 @@ if(preg_match('/(iPod|iPhone|Mobile|UP.Browser|Android|BlackBerry|Windows CE|Nok
 														$cg_level_upload = "y";
 													}
 											?>
-												<option value="<?=$cg_code?>,<?=$cg_level_upload?>" <?if($iw[mb_level] < $cg_level_write){?>disabled<?}else if($hm_code_check==$hm_code){?>selected<?}?>><?=$hm_name1?> > <?=$hm_name2?> > <?=$hm_name3?> > <?=$hm_name4?></option>
-											<?
-													}
-												}
+												<option value="<?=$cg_code?>,<?=$cg_level_upload?>" <?php if{?>disabled<?php }else if($hm_code_check==$hm_code){?>selected<?php }?>><?=$hm_name1?> > <?=$hm_name2?> > <?=$hm_name3?> > <?=$hm_name4?></option>
+											<?php } ?><?php }
 											}
 										}
 									}
@@ -366,6 +364,9 @@ if(preg_match('/(iPod|iPhone|Mobile|UP.Browser|Android|BlackBerry|Windows CE|Nok
 
 </script>
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

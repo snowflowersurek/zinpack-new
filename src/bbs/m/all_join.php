@@ -61,7 +61,7 @@ $ep_policy_private = stripslashes($row["ep_policy_private"]);
                         </div>
 
 						<div id="option_wrap" style="display:none;">
-							<?if($iw[language]=="ko"){?>
+							<?php if($iw[language]=="ko"){?>
 								<label>휴대폰번호</label>
 								<div class="row form-group">
 									<div class="col-sm-2">
@@ -102,7 +102,7 @@ $ep_policy_private = stripslashes($row["ep_policy_private"]);
 									<label class="sr-only" for="mb_address_sub">상세주소</label>
 									<input type="text" class="form-control" name="mb_address_sub" id="mb_address_sub" placeholder="상세주소" />
 								</div>
-							<?}else if($iw[language]=="en"){?>
+							<?php }else if($iw[language]=="en"){?>
 								<div class="form-group">
 									<label for="id_name">Address Line1</label>
 									<input type="text" class="form-control" name="mb_address" placeholder="Street address, P.O. box, company name, c/o" />
@@ -126,14 +126,14 @@ $ep_policy_private = stripslashes($row["ep_policy_private"]);
 									<label for="id_name">Country</label>
 									<select name="mb_address_country" class="form-control">
 										<option value="">--</option>
-									<?
+									<?php
 										$sql = "select * from $iw[country_table] order by ct_no asc";
 										$result = sql_query($sql);
 
 										while($row = @sql_fetch_array($result)){
 									?>
 										<option value="<?=$row["ct_code"];?>"><?=$row["ct_name"];?></option>
-									<?}?>
+									<?php }?>
 									</select>
 								</div>
 
@@ -146,7 +146,7 @@ $ep_policy_private = stripslashes($row["ep_policy_private"]);
 									<label for="id_name">Phone Number</label>
 									<input type="text" class="form-control" name="mb_tel" />
 								</div>
-							<?}?>
+							<?php }?>
 						</div>
                         <div class="checkbox">
                             <label><input type="checkbox" name="check1"> <?=national_language($iw[language],"a0079","이용약관 동의");?></label>
@@ -160,12 +160,12 @@ $ep_policy_private = stripslashes($row["ep_policy_private"]);
                         <div class="terms" style="overflow:auto;height:100px;border:1px solid #b6b6b6;">
 							<?=$ep_policy_private?>
                         </div>
-					<?if ($ep_jointype == 5) {?>
+					<?php if($ep_jointype == 5) {?>
 						<div class="form-group">
 							<label for="id_name"><?=national_language($iw[language],"a0056","가입코드");?></label>
 							<input type="text" class="form-control" name="ep_autocode" placeholder="<?=national_language($iw[language],"a0056","가입코드");?>" />
 						</div>
-					<?}?>
+					<?php }?>
                         <br />
                         <button type="button" class="btn btn-theme" onclick="javascript:check_form();"><?=national_language($iw[language],"a0081","가입하기");?></button>
                     </form>
@@ -221,7 +221,7 @@ $ep_policy_private = stripslashes($row["ep_policy_private"]);
 			return;
 		}
 		if (mb_form.option_chk.checked == true){
-		<?if($iw[language]=="ko"){?>
+		<?php if($iw[language]=="ko"){?>
 			if (mb_form.mb_tel_2.value == ""){
 				alert("휴대폰 번호를 입력하여 주십시오.");
 				mb_form.mb_tel_2.focus();
@@ -242,7 +242,7 @@ $ep_policy_private = stripslashes($row["ep_policy_private"]);
 				mb_form.mb_address_sub.focus();
 				return;
 			}
-		<?}else if($iw[language]=="en"){?>
+		<?php }else if($iw[language]=="en"){?>
 			if (mb_form.mb_address.value == ""){
 				alert("<?=national_language($iw[language],'a0090','주소를 입력하여 주십시오.');?>");
 				mb_form.mb_address.focus();
@@ -278,7 +278,7 @@ $ep_policy_private = stripslashes($row["ep_policy_private"]);
 				mb_form.mb_tel.focus();
 				return;
 			}
-	<?}?>
+	<?php }?>
 		}
 		if (mb_form.check1.checked == false){
 			alert("<?=national_language($iw[language],'a0093','이용약관 동의에 체크하여 주십시오');?>");
@@ -342,6 +342,9 @@ $ep_policy_private = stripslashes($row["ep_policy_private"]);
     }
 </script>
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

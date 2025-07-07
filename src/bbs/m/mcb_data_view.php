@@ -185,7 +185,7 @@ include_once("_head_share.php");
 	<div class="row">
 		<div class="breadcrumb-box input-group">
 			<ol class="breadcrumb">
-				<?
+				<?php
 					$row2 = sql_fetch(" select * from $iw[home_menu_table] where ep_code = '$iw[store]' and gp_code='$iw[group]' and state_sort = '$iw[type]' and cg_code = '$cg_code_view'");
 					$hm_code = $row2[hm_code];
 					$hm_view_scrap = $row2[hm_view_scrap];
@@ -210,45 +210,38 @@ include_once("_head_share.php");
 		
 			<div class="masonry-item w-full h-full">
 				<div class="box br-theme">
-					<h3 class="media-heading"><?=$md_subject?><?if($md_secret==1){?> <i class="fa fa-lock"></i><?}?></h3>
+					<h3 class="media-heading"><?=$md_subject if{?> <i class="fa fa-lock"></i><?php }?></h3>
 					<div class="content-info">
 						<ul class="list-inline">
-							<?if($cg_date==1){?><li><i class="fa fa-calendar"></i> <?=$md_datetime?></li><?}?>
-							<?if($cg_writer==1){?><li><i class="fa fa-user"></i> <?=$mb_nick?></li><?}?>
-							<?if($cg_hit==1){?><li><i class="fa fa-eye"></i> <?=$md_hit?></li><?}?>
-							<?if($cg_comment_view==1){?><li><i class="fa fa-comment"></i> <?=$reply_count?></li><?}?>
-							<?if($cg_recommend_view==1){?><li><i class="fa fa-thumbs-up"></i> <span id="recommend_board_1"><?=$md_recommend?></span></li><?}?>
-							
-							<?if($md_attach){?>
+							<?php if($cg_date==1){?><li><i class="fa fa-calendar"></i> <?=$md_datetime?></li><?php } ?><?php if($cg_writer==1){?><li><i class="fa fa-user"></i> <?=$mb_nick?></li><?php } ?><?php if($cg_hit==1){?><li><i class="fa fa-eye"></i> <?=$md_hit?></li><?php } ?><?php if($cg_comment_view==1){?><li><i class="fa fa-comment"></i> <?=$reply_count?></li><?php } ?><?php if($cg_recommend_view==1){?><li><i class="fa fa-thumbs-up"></i> <span id="recommend_board_1"><?=$md_recommend?></span></li><?php } ?><?php if($md_attach){?>
 								<li><i class="fa fa-file"></i> <a href="javascript:downloadFile('<?=$iw[type]?>','<?=$iw[store]?>','<?=$iw[group]?>','<?=$md_code?>','<?=$cg_code_view?>');"><?=$md_attach_name?></a> </li>
-							<?}?>
+							<?php }?>
 						</ul>
 						<ul class="list-inline">
-							<?if($cg_point_btn==1){?>
+							<?php if($cg_point_btn==1){?>
 								<li><a class="btn btn-theme btn-sm" href="<?=$iw[m_path]?>/mcb_point_give.php?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&seller=<?=$mb_code?>"><?=national_language($iw[language],"a0199","PV 후원하기");?></a></li>
-							<?}?>
+							<?php }?>
 						</ul>
 					</div>
 				</div> <!-- /.box -->
 			</div> <!-- /.masonry-item -->	
 		
 			<div class="masonry-item w-<?=$hm_view_size?> h-full">
-				<div class="box br-default <?if($md_padding==1){?>box-padding-pc<?}?>">
-				<?
+				<div class="box br-default <?php if{?>box-padding-pc<?php }?>">
+				<?php
 					if($md_type == 1){
 						$sql = "select * from $iw[mcb_data_table] where ep_code = '$iw[store]' and gp_code='$iw[group]' and md_display = 1 and md_code = '$md_code'";
 						$row = sql_fetch($sql);
 						for ($i=1; $i<=10; $i++) {
 							if($row["md_file_".$i]){
-								?><div class="image-container"><img src="<?=$upload_path?>/<?=$md_code?>/<?=$row["md_file_".$i]?>" /></div><?
-							}
+								?><div class="image-container"><img src="<?=$upload_path?>/<?=$md_code?>/<?=$row["md_file_".$i]?>" /></div><?php }
 						}
 						if($youtube_code){
 				?>
 							<div class="video-container">
 								<iframe type="text/html" width="1000" height="400" src="//www.youtube.com/embed/<?=$youtube_code?>?autoplay=1" frameborder="0"/></iframe>
 							</div>
-				<?
+				<?php
 						}
 						echo stripslashes($md_content);
 					}else if($md_type == 2){
@@ -258,7 +251,7 @@ include_once("_head_share.php");
 				</div> <!-- /.box -->
 			</div> <!-- /.masonry-item -->
 			
-			<?if($hm_view_scrap_mobile==1){?>
+			<?php if($hm_view_scrap_mobile==1){?>
 				<style>
 					@media (min-width:768px){
 						.scrap-wrap	{display:;}
@@ -267,9 +260,7 @@ include_once("_head_share.php");
 						.scrap-wrap	{display:none;}
 					}
 				</style>
-			<?}?>
-			<?
-				if ($hm_view_scrap==1){
+			<?php } ?><?php if($hm_view_scrap==1){
 					$scrap_type = "view";
 					include_once("all_home_scrap.php");
 				}
@@ -278,24 +269,23 @@ include_once("_head_share.php");
 		
 			<div class="masonry-item w-full h-full">
 				<a href="<?=$iw['m_path']?>/all_data_list.php?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&menu=<?=$hm_code?>" class="btn btn-theme"><?=national_language($iw[language],"a0260","목록");?></a>
-				<?if($mb_code == $iw[member] || ($iw[gp_level] == "gp_admin" && $iw[group] != "all") || ($iw[level] == "admin" && $iw[group] == "all")){?>
+				<?php if($mb_code == $iw[member] || ($iw[gp_level] == "gp_admin" && $iw[group] != "all") || ($iw[level] == "admin" && $iw[group] == "all")){?>
 					<a href="<?=$iw['m_path']?>/mcb_data_edit.php?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&item=<?=$md_code?>" class="btn btn-theme"><?=national_language($iw[language],"a0256","수정");?></a>
 					<a href="javascript:board_delete('<?=$iw[type]?>', '<?=$iw[store]?>','<?=$iw[group]?>','<?=$hm_code?>','<?=$md_code?>');" class="btn btn-theme"><?=national_language($iw[language],"a0257","삭제");?></a>
-				<?}?>
-				<?if (($iw[gp_level] != "gp_guest" && $iw[group] != "all") || ($iw[level] != "guest" && $iw[group] == "all")){?>
+				<?php } ?><?php if(($iw[gp_level] != "gp_guest" && $iw[group] != "all") || ($iw[level] != "guest" && $iw[group] == "all")){?>
 					<a href="<?=$iw['m_path']?>/mcb_data_write.php?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&menu=<?=$hm_code?>" class="btn btn-theme"><?=national_language($iw[language],"a0258","글쓰기");?></a>
-				<?}?>
+				<?php }?>
 			</div>
 	
 		<div class="clearfix"></div>
 
 		</div> <!-- /.masonry -->
 
-		<?if($cg_comment_view==1){?>
+		<?php if($cg_comment_view==1){?>
 		<!-- /댓글 -->
 		<div class="grid-sizer"></div>
 		<!-- / 베스트댓글 리스트 -->
-		<?
+		<?php
 			$sql_best = "SELECT a.*, b.mb_nick FROM {$iw['comment_table']} a LEFT JOIN {$iw['member_table']} b ON a.mb_code = b.mb_code
 						 WHERE a.ep_code = ? AND a.gp_code = ? AND a.state_sort = ? AND a.cm_code = ? 
 						 AND a.cm_display = 1 AND a.cm_recomment = 0 AND a.cm_recommend > 2 
@@ -317,21 +307,21 @@ include_once("_head_share.php");
 						<?=$mb_nick?>
 						<small><?=$row2["cm_datetime"]?></small>
 						<a href="javascript:recommend_click('<?=$iw['type']?>','<?=$iw['store']?>','<?=$iw['group']?>','comment','<?=$cm_no?>');"><i class="fa fa-thumbs-up"></i> <span id="recommend_comment_<?=$cm_no?>"><?=$row2["cm_recommend"]?></span></a>
-						<?if($row2["cm_secret"]==1){?> <i class="fa fa-lock"></i> <?}?>
+						<?php if($row2["cm_secret"]==1){?> <i class="fa fa-lock"></i> <?php }?>
 					</h4>
-					<p><?if($mb_code == $iw['member'] || ($iw['gp_level'] == "gp_admin" && $iw['group'] != "all") || ($iw['level'] == "admin" && $iw['group'] == "all") || $row2["cm_secret"]!=1 || $row2["mb_code"] == $iw['member']){?><?=stripslashes($row2["cm_content"])?><?}else{?>비밀글입니다.<?}?></p>
-					<?if ((($iw['gp_level'] != "gp_guest" && $iw['group'] != "all") || ($iw['level'] != "guest" && $iw['group'] == "all")) && ($iw['mb_level'] >= $cg_level_comment)){?>
+					<p><?php if{?><?=stripslashes($row2["cm_content"])?><?php }else{?>비밀글입니다.<?php }?></p>
+					<?php if((($iw['gp_level'] != "gp_guest" && $iw['group'] != "all") || ($iw['level'] != "guest" && $iw['group'] == "all")) && ($iw['mb_level'] >= $cg_level_comment)){?>
 						<p><a href="javascript:comment_move('#best_comment_<?=$i?>','<?=$cm_no?>');">[<?=national_language($iw['language'],"a0266","댓글");?>]</a></p>
-					<?}?>
+					<?php }?>
 				</div>
 			</div>
-		<?
+		<?php
 			$i++;
 			}
             mysqli_stmt_close($stmt_best);
 		?>
 		<!-- / 댓글 쓰기 -->
-		<?if ((($iw['gp_level'] != "gp_guest" && $iw['group'] != "all") || ($iw['level'] != "guest" && $iw['group'] == "all")) && ($iw['mb_level'] >= $cg_level_comment)){?>
+		<?php if((($iw['gp_level'] != "gp_guest" && $iw['group'] != "all") || ($iw['level'] != "guest" && $iw['group'] == "all")) && ($iw['mb_level'] >= $cg_level_comment)){?>
 			<form id="cm_form" name="cm_form" action="<?=$iw['m_path']?>/all_data_comment.php?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>" method="post">
 			<div class="masonry-item w-full h-full">
 				<div class="box br-theme">
@@ -348,8 +338,7 @@ include_once("_head_share.php");
 				</div>
 			</div>
 			</form>
-		<?}else{?>
-			<?
+		<?php }else{
 				if($iw['mb_level'] < $cg_level_comment) $comment_login = "덧글쓰기 권한이 없습니다.";
 				if($iw['gp_level'] == "gp_guest" && $iw['group'] != "all") $comment_login = "그룹 가입 후  댓글 작성이 가능합니다.";
 				if($iw['level'] == "guest" && $iw['group'] == "all") $comment_login = "로그인 후 댓글 작성이 가능합니다.";
@@ -362,7 +351,7 @@ include_once("_head_share.php");
 					</div>
 				</div>
 			</div>
-		<?}?>
+		<?php }?>
 		
 		<form id="re_form" name="re_form" action="<?=$iw['m_path']?>/all_data_comment.php?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>" method="post" style="display:none;">
 			<div class="box br-theme">
@@ -380,7 +369,7 @@ include_once("_head_share.php");
 		</form>
 
 		<!-- / 댓글 리스트 -->
-		<?
+		<?php
 			$sql_comment = "SELECT a.*, b.mb_nick FROM {$iw['comment_table']} a LEFT JOIN {$iw['member_table']} b ON a.mb_code = b.mb_code
                             WHERE a.ep_code = ? AND a.gp_code = ? AND a.state_sort = ? AND a.cm_code = ? 
                             AND a.cm_display = 1 AND a.cm_recomment = 0 ORDER BY a.cm_no desc";
@@ -400,16 +389,14 @@ include_once("_head_share.php");
 						<?=$mb_nick?>
 						<small><?=$row2["cm_datetime"]?></small>
 						<a href="javascript:recommend_click('<?=$iw['type']?>','<?=$iw['store']?>','<?=$iw['group']?>','comment','<?=$cm_no_parent?>');"><i class="fa fa-thumbs-up"></i> <span id="recommend_comment_<?=$cm_no_parent?>"><?=$row2["cm_recommend"]?></span></a>
-						<?if($row2["mb_code"] == $iw['member']){?>
+						<?php if($row2["mb_code"] == $iw['member']){?>
 							<a href="javascript:comment_delete('<?=$iw['type']?>','<?=$iw['store']?>','<?=$iw['group']?>','<?=$md_code?>','<?=$cm_no_parent?>');" class="text-danger"><i class="fa fa-times-circle"></i></a>
-						<?}?>
-						<?if($row2["cm_secret"]==1){?> <i class="fa fa-lock"></i> <?}?>
+						<?php } ?><?php if($row2["cm_secret"]==1){?> <i class="fa fa-lock"></i> <?php }?>
 					</h4>
-					<p><?if($mb_code == $iw['member'] || ($iw['gp_level'] == "gp_admin" && $iw['group'] != "all") || ($iw['level'] == "admin" && $iw['group'] == "all") || $row2["cm_secret"]!=1 || $row2["mb_code"] == $iw['member']){?><?=stripslashes($row2["cm_content"])?><?}else{?>비밀글입니다.<?}?></p>
-					<?if ((($iw['gp_level'] != "gp_guest" && $iw['group'] != "all") || ($iw['level'] != "guest" && $iw['group'] == "all")) && ($iw['mb_level'] >= $cg_level_comment)){?>
+					<p><?php if{?><?=stripslashes($row2["cm_content"])?><?php }else{?>비밀글입니다.<?php }?></p>
+					<?php if((($iw['gp_level'] != "gp_guest" && $iw['group'] != "all") || ($iw['level'] != "guest" && $iw['group'] == "all")) && ($iw['mb_level'] >= $cg_level_comment)){?>
 						<p><a href="javascript:comment_move('#comment_<?=$i?>','<?=$cm_no_parent?>');">[<?=national_language($iw['language'],"a0266","댓글");?>]</a></p>
-					<?}?>
-					<?
+					<?php }
 						$sql_re = "SELECT a.*, b.mb_nick FROM {$iw['comment_table']} a LEFT JOIN {$iw['member_table']} b ON a.mb_code = b.mb_code
                                    WHERE a.ep_code = ? AND a.gp_code = ? AND a.state_sort = ? AND a.cm_code = ? 
                                    AND a.cm_display = 1 AND a.cm_recomment = ? ORDER BY a.cm_no asc";
@@ -426,25 +413,23 @@ include_once("_head_share.php");
 							<h4 class="media-heading box-title">
 								<?=$mb_nick_re?>
 								<small><?=$row4["cm_datetime"]?></small>
-								<?if($row4["mb_code"] == $iw['member']){?>
+								<?php if($row4["mb_code"] == $iw['member']){?>
 									<a href="javascript:comment_delete('<?=$iw['type']?>','<?=$iw['store']?>','<?=$iw['group']?>','<?=$md_code?>','<?=$cm_no?>');" class="text-danger"><i class="fa fa-times-circle"></i></a>
-								<?}?>
-								<?if($row4["cm_secret"]==1){?> <i class="fa fa-lock"></i> <?}?>
+								<?php } ?><?php if($row4["cm_secret"]==1){?> <i class="fa fa-lock"></i> <?php }?>
 							</h4>
-							<p><?if($mb_code == $iw['member'] || ($iw['gp_level'] == "gp_admin" && $iw['group'] != "all") || ($iw['level'] == "admin" && $iw['group'] == "all") || $row4["cm_secret"]!=1 || $row4["mb_code"] == $iw['member'] || $row2["mb_code"] == $iw['member']){?><?=stripslashes($row4["cm_content"])?><?}else{?>비밀글입니다.<?}?></p>
+							<p><?php if{?><?=stripslashes($row4["cm_content"])?><?php }else{?>비밀글입니다.<?php }?></p>
 						</div>
-					<?
+					<?php
 						}
                         mysqli_stmt_close($stmt_re);
 					?>
 				</div>
 			</div>
-		<?
+		<?php
 			$i++;
 			}
             mysqli_stmt_close($stmt_comment);
-		?>
-		<?}?>
+		 }?>
 		<div class="clearfix"></div>
 	</div>
 </div>
@@ -522,7 +507,7 @@ include_once("_head_share.php");
 	}
 </script>
 
-<?
+<?php
 // 조회수 업데이트
 $sql_hit_mcb = "update {$iw['mcb_data_table']} set md_hit = md_hit+1 where ep_code = ? and gp_code= ? and md_code = ?";
 $stmt_hit_mcb = mysqli_prepare($db_conn, $sql_hit_mcb);
@@ -538,3 +523,7 @@ mysqli_stmt_close($stmt_hit_total);
 
 include_once("_tail.php");
 ?>
+
+
+
+

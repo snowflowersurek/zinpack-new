@@ -4,22 +4,22 @@ if ($iw[type] != "shop" || !($iw[level] == "seller" || $iw[level] == "admin")) a
 ?>
 <meta http-equiv="content-type" content="text/html; charset=<?=$iw['charset']?>" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-<?
+<?php
 $upload_path = $_POST[upload_path];
-$sd_code = trim(mysql_real_escape_string($_POST[sd_code]));
-$cg_code = trim(mysql_real_escape_string($_POST[cg_code]));
-$sd_price = trim(mysql_real_escape_string($_POST[sd_price]));
-$sd_sale = trim(mysql_real_escape_string($_POST[sd_sale]));
-$sd_subject = trim(mysql_real_escape_string($_POST[sd_subject]));
-$sd_information = mysql_real_escape_string($_POST[sd_information]);
-$sd_max = trim(mysql_real_escape_string($_POST[sd_max]));
-$sy_code = trim(mysql_real_escape_string($_POST[sy_code]));
-$sd_content = mysql_real_escape_string($_POST[contents1]);
-$sd_image_old = trim(mysql_real_escape_string($_POST[sd_image_old]));
+$sd_code = trim(mysqli_real_escape_string($iw['connect'], $_POST['sd_code']));
+$cg_code = trim(mysqli_real_escape_string($iw['connect'], $_POST['cg_code']));
+$sd_price = trim(mysqli_real_escape_string($iw['connect'], $_POST['sd_price']));
+$sd_sale = trim(mysqli_real_escape_string($iw['connect'], $_POST['sd_sale']));
+$sd_subject = trim(mysqli_real_escape_string($iw['connect'], $_POST['sd_subject']));
+$sd_information = mysqli_real_escape_string($iw['connect'], $_POST['sd_information']);
+$sd_max = trim(mysqli_real_escape_string($iw['connect'], $_POST['sd_max']));
+$sy_code = trim(mysqli_real_escape_string($iw['connect'], $_POST['sy_code']));
+$sd_content = mysqli_real_escape_string($iw['connect'], $_POST['contents1']);
+$sd_image_old = trim(mysqli_real_escape_string($iw['connect'], $_POST['sd_image_old']));
 
 if($iw[language]=="en"){
-	$sd_price = ($sd_price * 1000) + (trim(mysql_real_escape_string($_POST[sd_price_2]))*10);
-	$sd_sale = ($sd_sale * 1000) + (trim(mysql_real_escape_string($_POST[sd_sale_2]))*10);
+	$sd_price = ($sd_price * 1000) + (trim(mysqli_real_escape_string($iw['connect'], $_POST['sd_price_2']))*10);
+	$sd_sale = ($sd_sale * 1000) + (trim(mysqli_real_escape_string($iw['connect'], $_POST['sd_sale_2']))*10);
 }
 
 $row = sql_fetch(" select * from $iw[category_table] where ep_code = '$iw[store]' and gp_code = '$iw[group]' and state_sort = '$iw[type]' and cg_code = '$cg_code' ");
@@ -69,16 +69,16 @@ if (!$row[cg_code]) {
 	sql_query($sql);
 
 	for ($i=0; $i<count($_POST[so_name]); $i++) {
-		$so_name = trim(mysql_real_escape_string($_POST[so_name][$i]));
-		$so_amount = trim(mysql_real_escape_string($_POST[so_amount][$i]));
-		$so_price = trim(mysql_real_escape_string($_POST[so_price][$i]));
-		$so_taxfree = trim(mysql_real_escape_string($_POST[so_taxfree][$i]));
+		$so_name = trim(mysqli_real_escape_string($iw['connect'], $_POST['so_name'][$i]));
+		$so_amount = trim(mysqli_real_escape_string($iw['connect'], $_POST['so_amount'][$i]));
+		$so_price = trim(mysqli_real_escape_string($iw['connect'], $_POST['so_price'][$i]));
+		$so_taxfree = trim(mysqli_real_escape_string($iw['connect'], $_POST['so_taxfree'][$i]));
 		if($iw[language]=="en"){
-			$so_price = ($so_price * 1000) + (trim(mysql_real_escape_string($_POST[so_price_2][$i]))*10);
+			$so_price = ($so_price * 1000) + (trim(mysqli_real_escape_string($iw['connect'], $_POST['so_price_2'][$i]))*10);
 		}
 
 		if($_POST[so_no][$i]){
-			$so_no = trim(mysql_real_escape_string($_POST[so_no][$i]));
+			$so_no = trim(mysqli_real_escape_string($iw['connect'], $_POST['so_no'][$i]));
 			if($_POST[so_delete][$i] == "del"){
 				$sql = "delete from $iw[shop_option_table] where so_no = '$so_no' and sd_code = '$sd_code' and ep_code = '$iw[store]' and mb_code = '$iw[member]'";
 				sql_query($sql);
@@ -118,3 +118,6 @@ if (!$row[cg_code]) {
 	alert("상품정보가 변경되었습니다.","$iw[admin_path]/shop_data_view.php?type=$iw[type]&ep=$iw[store]&gp=$iw[group]&idx=$sd_code");
 }
 ?>
+
+
+

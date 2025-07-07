@@ -107,7 +107,7 @@ $rowm = sql_fetch($sqlm);
 						<label class="col-sm-1 control-label">카테고리</label>
 						<div class="col-sm-11">
 							<p class="col-xs-12 col-sm-8 form-control-static">
-								<?
+								<?php
 									$cg_code = $row["cg_code"];
 
 									$sql2 = " select * from $iw[home_menu_table] where ep_code = '$iw[store]' and gp_code = '$iw[group]' and state_sort = '$iw[type]' and cg_code = '$cg_code'";
@@ -150,7 +150,7 @@ $rowm = sql_fetch($sqlm);
 					<div class="form-group">
 						<label class="col-sm-1 control-label">컨텐츠 표지</label>
 						<div class="col-sm-11">
-							<p class="col-xs-12 col-sm-8 form-control-static"><?if($row["dd_image"]){?><img src="<?=$iw["path"].$upload_path."/".$row["dd_image"]?>" width="300px" height="400px" /><?}else{?>없음<?}?></p>
+							<p class="col-xs-12 col-sm-8 form-control-static"><?php if{?><img src="<?=$iw["path"].$upload_path."/".$row["dd_image"]?>" width="300px" height="400px" /><?php }else{?>없음<?php }?></p>
 						</div>
 					</div>
 
@@ -164,7 +164,7 @@ $rowm = sql_fetch($sqlm);
 					<div class="form-group">
 						<label class="col-sm-1 control-label">컨텐츠 분량</label>
 						<div class="col-sm-11">
-							<p class="col-xs-12 col-sm-8 form-control-static"><?=$row["dd_amount"]?> <?if($row["dd_type"]==1){?>쪽<?}else{?>분<?}?></p>
+							<p class="col-xs-12 col-sm-8 form-control-static"><?=$row["dd_amount"] if{?>쪽<?php }else{?>분<?php }?></p>
 						</div>
 					</div>
 
@@ -178,7 +178,7 @@ $rowm = sql_fetch($sqlm);
 					<div class="form-group">
 						<label class="col-sm-1 control-label">다운로드 유효기간</label>
 						<div class="col-sm-11">
-							<p class="col-xs-12 col-sm-8 form-control-static"><?if($row["dd_download"]=="0"){?>무제한<?}else{?><?=$row["dd_download"]?> 일<?}?></p>
+							<p class="col-xs-12 col-sm-8 form-control-static"><?php if{?>무제한<?php }else{?><?=$row["dd_download"]?> 일<?php }?></p>
 						</div>
 					</div>
 					
@@ -230,6 +230,9 @@ $rowm = sql_fetch($sqlm);
 	}
 </script>
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

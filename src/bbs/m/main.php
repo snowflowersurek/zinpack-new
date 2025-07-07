@@ -18,7 +18,7 @@ if($iw[type] == "scrap"){
 ?>
 <div class="content">
 	<div class="row">
-		<?if($st_navigation==1){?>
+		<?php if($st_navigation==1){?>
 		<div class="breadcrumb-box input-group">
 			<ol class="breadcrumb ">
 				<li>
@@ -26,19 +26,22 @@ if($iw[type] == "scrap"){
 				</li>
 			</ol>
 		</div>
-		<?}?>
+		<?php }?>
 		<div class="masonry js-masonry" data-masonry-options='{ "columnWidth": ".grid-sizer", "itemSelector": ".masonry-item"}'>
 		<div class="grid-sizer"></div>
-		<?
+		<?php
 			include_once("all_home_scrap.php");
 		?>
 		</div> <!-- /.masonry -->
 	</div> <!-- /.row -->
 </div> <!-- /.content -->
-<?
+<?php
 include_once("_tail.php");
 if($scrap_type == "main" && !preg_match('/iPhone|iPod|iPad|BlackBerry|Android|Windows CE|LG|MOT|SAMSUNG|SonyEricsson|IEMobile|Mobile|lgtelecom|PPC|opera mobi|opera mini|nokia|webos/',$_SERVER['HTTP_USER_AGENT'])){
 	/*----- 팝업창 -----*/
 	include_once("main_popup.php");
 }
 ?>
+
+
+

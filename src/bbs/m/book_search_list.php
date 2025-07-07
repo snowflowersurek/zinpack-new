@@ -12,10 +12,10 @@ if ($iw[group] == "all"){
 	$upload_path .= "/$row[gp_nick]";
 }
 
-if($_POST['search']){
+if(!empty($_POST['search'])){
 	$search = $_POST['search'];
 }else{
-	$search = $_GET['search'];
+	$search = $_GET['search'] ?? '';
 }
 ?>
 
@@ -30,11 +30,10 @@ if($_POST['search']){
 				<a class="btn btn-theme" href="<?=$iw[m_path]?>/book_buy_list.php?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>" title="<?=national_language($iw[language],"a0005","구매자료");?>"><i class="fa fa-book fa-lg"></i></a>
 			</span>
 		</div>
-		<?if($st_book_list==4 || $st_book_list==7){?>
+		<?php if($st_book_list==4 || $st_book_list==7){?>
 		<div class="masonry">
 			<div class="grid-sizer"></div>
-		<?}?>
-			<?
+		<?php }
 				// 해시태그 검색 여부
 				if (strpos($search, "#") === 0) {
 					$where_clause = "A.bd_tag LIKE '%".str_replace("#", "", $search)."%'";
@@ -50,7 +49,7 @@ if($_POST['search']){
 					WHERE A.ep_code = '$iw[store]' AND A.gp_code='$iw[group]' AND A.bd_display = 1 AND $where_clause 
 				";
 				$result = sql_query($sql);
-				$total_line = mysql_num_rows($result);
+				$total_line = mysqli_num_rows($result);
 
 				if($st_book_list==5 || $st_book_list==8){
 					$max_line = ($st_book_list-2)*6;
@@ -61,7 +60,7 @@ if($_POST['search']){
 				}
 				$max_page = 5;
 					
-				$page = $_GET["page"];
+				$page = $_GET["page"] ?? 1;
 				if(!$page) $page=1;
 				$start_line = ($page-1)*$max_line;
 				$total_page = ceil($total_line/$max_line);
@@ -117,8 +116,7 @@ if($_POST['search']){
 					$cg_hit = $row2[cg_hit];
 					$cg_comment = $row2[cg_comment];
 					$cg_recommend = $row2[cg_recommend];
-			?>
-			<?if($st_book_list==2){?>
+			 if($st_book_list==2){?>
 				<div class="masonry-item w-6">
 					<div class="box br-theme box-media">
 						<div class="media">
@@ -133,23 +131,20 @@ if($_POST['search']){
 									<ul class="list-inline">
 										<li><i class="fa fa-pencil"></i> <?=$bd_author?></li>
 										<li><i class="fa fa-info-circle"></i> <?=$bd_publisher?></li>
-										<?if($cg_hit==1){?><li><i class="fa fa-eye"></i> <?=$bd_hit?></li><?}?>
-										<?if($cg_comment==1){?><li><i class="fa fa-comment"></i> <?=$reply_count?></li><?}?>
-										<?if($cg_recommend==1){?><li><i class="fa fa-thumbs-up"></i> <?=$bd_recommend?></li><?}?>
+										<?php if($cg_hit==1){?><li><i class="fa fa-eye"></i> <?=$bd_hit?></li><?php } ?><?php if($cg_comment==1){?><li><i class="fa fa-comment"></i> <?=$reply_count?></li><?php } ?><?php if($cg_recommend==1){?><li><i class="fa fa-thumbs-up"></i> <?=$bd_recommend?></li><?php }?>
 									</ul>
-									<span class="label label-info"><?if($bd_price=="0"){?><?=national_language($iw[language],"a0265","무료");?><?}else{?><?=$bd_price?> Point<?}?></span>
+									<span class="label label-info"><?php if{?><?=national_language($iw[language],"a0265","무료");?><?php }else{?><?=$bd_price?> Point<?php }?></span>
 								</div>
 							</a>
 						</div>
 					</div> <!-- /.box -->
 				</div> <!-- /.masonry-item -->
-			<?}else if($st_book_list>=3 && $st_book_list<=8){?>
-				<?if($st_book_list>=3 && $st_book_list<=5){?>
-				<div class="<?if($i%3==0){?> clearfix-6<?}?><?if($i%2==0){?> clearfix-4<?}?><?if($i%3!=0&&$i%2!=0&&$i%1==0){?> clearfix-2<?}?>"></div>
-				<?}else if($st_book_list>=6 && $st_book_list<=8){?>
-				<div class="<?if($i%6==0){?> clearfix-6<?}?><?if($i%4==0){?> clearfix-4<?}?><?if($i%6!=0&&$i%4!=0&&$i%2==0){?> clearfix-2<?}?>"></div>
-				<?}?>
-				<div class="masonry-item <?if($st_book_list==5 || $st_book_list==8){?>h-4<?}else{?>h-full<?}?>  <?if($st_book_list>=3 && $st_book_list<=5){?>w-4<?}else{?>w-2<?}?>">
+			<?php }else if($st_book_list>=3 && $st_book_list<=8){ if($st_book_list>=3 && $st_book_list<=5){?>
+				<div class="<?php if{?> clearfix-6<?php } if{?> clearfix-4<?php } if{?> clearfix-2<?php }?>"></div>
+				<?php }else if($st_book_list>=6 && $st_book_list<=8){?>
+				<div class="<?php if{?> clearfix-6<?php } if{?> clearfix-4<?php } if{?> clearfix-2<?php }?>"></div>
+				<?php }?>
+				<div class="masonry-item <?php if{?>h-4<?php }else{?>h-full<?php } if{?>w-4<?php }else{?>w-2<?php }?>">
 					<div class="box br-theme box-media">
 						<div class="media">
 							<a href="<?=$iw['m_path']?>/<?=$iw[type]?>_data_view.php?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&item=<?=$bd_code?>">
@@ -161,28 +156,24 @@ if($_POST['search']){
 									<ul class="list-inline">
 										<li><i class="fa fa-pencil"></i> <?=$bd_author?></li>
 										<li><i class="fa fa-info-circle"></i> <?=$bd_publisher?></li>
-										<?if($cg_hit==1){?><li><i class="fa fa-eye"></i> <?=$bd_hit?></li><?}?>
-										<?if($cg_comment==1){?><li><i class="fa fa-comment"></i> <?=$reply_count?></li><?}?>
-										<?if($cg_recommend==1){?><li><i class="fa fa-thumbs-up"></i> <?=$bd_recommend?></li><?}?>
+										<?php if($cg_hit==1){?><li><i class="fa fa-eye"></i> <?=$bd_hit?></li><?php } ?><?php if($cg_comment==1){?><li><i class="fa fa-comment"></i> <?=$reply_count?></li><?php } ?><?php if($cg_recommend==1){?><li><i class="fa fa-thumbs-up"></i> <?=$bd_recommend?></li><?php }?>
 									</ul>
-									<p><?if($bd_price=="0"){?><?=national_language($iw[language],"a0265","무료");?><?}else{?><?=$bd_price?> Point<?}?></p>
+									<p><?php if{?><?=national_language($iw[language],"a0265","무료");?><?php }else{?><?=$bd_price?> Point<?php }?></p>
 								</div>
 							</a>
 						</div>
 					</div> <!-- /.box -->
 				</div> <!-- /.masonry-item -->
-			<?}?>
-			<?
+			<?php }
 				$i++;
 				}
-			?>
-		<?if($st_book_list==4 || $st_book_list==7){?>
+			 if($st_book_list==4 || $st_book_list==7){?>
 		</div> <!-- /#grid -->
-		<?}?>
+		<?php }?>
 		<div class="clearfix"></div>
 		<div class="pagContainer text-center">
 			<ul class="pagination">
-				<?
+				<?php
 					$search = urlencode($search);
 					if($total_page!=0){
 						if($page>$total_page) { $page=$total_page; }
@@ -216,6 +207,9 @@ if($_POST['search']){
 	</div> <!-- /.row -->
 </div> <!-- /.content -->
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

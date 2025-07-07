@@ -487,3 +487,7 @@ function PMA_displayErrors($name, $error_list)
     echo '</dl>';
 }
 ?>
+
+
+
+

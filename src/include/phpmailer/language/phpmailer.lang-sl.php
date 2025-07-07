@@ -25,3 +25,7 @@ $PHPMAILER_LANG['smtp_connect_failed']  = 'Ne morem vzpostaviti povezave s SMTP 
 $PHPMAILER_LANG['smtp_error']           = 'Napaka SMTP strežnika: ';
 $PHPMAILER_LANG['variable_set']         = 'Ne morem nastaviti oz. ponastaviti spremenljivke: ';
 $PHPMAILER_LANG['extension_missing']    = 'Manjkajoča razširitev: ';
+
+
+
+

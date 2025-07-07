@@ -420,8 +420,7 @@ $chkexpiry = ($chkcookie=="" || $chkcookie!=date("Y-m-d"))?"1":"0";
 									<?php
 										$i++;
 										}
-									?>
-									<?php for($i=$i;$i<=10;$i++){?>
+									 for($i=$i;$i<=10;$i++){?>
 										<tr>
 											<td><?php echo $i; ?></td>
 											<td>-</td>
@@ -480,8 +479,7 @@ $chkexpiry = ($chkcookie=="" || $chkcookie!=date("Y-m-d"))?"1":"0";
 									<?php
 										$i++;
 										}
-									?>
-									<?php for($i=$i;$i<=10;$i++){?>
+									 for($i=$i;$i<=10;$i++){?>
 										<tr>
 											<td><?php echo $i; ?></td>
 											<td>-</td>
@@ -606,3 +604,6 @@ if(chkyn==1){
 <?php
 include_once("_tail.php");
 ?>
+
+
+

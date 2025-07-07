@@ -79,39 +79,39 @@ $gp_type = $row["gp_type"];
 						<label class="col-sm-1 control-label">가입방식</label>
 						<div class="col-sm-11">
 							<p class="col-xs-12 col-sm-8 form-control-static">
-								<?if($gp_type == 0){?>
+								<?php if($gp_type == 0){?>
 									가입 불가
-								<?}else if($gp_type == 1){?>
+								<?php }else if($gp_type == 1){?>
 									가입 신청 > 관리자 승인
-								<?}else if($gp_type == 2){?>
+								<?php }else if($gp_type == 2){?>
 									무조건 가입 > 자동 승인
-								<?}else if($gp_type == 4){?>
+								<?php }else if($gp_type == 4){?>
 									초대후 가입 > 자동 승인
-								<?}else if($gp_type == 5){?>
+								<?php }else if($gp_type == 5){?>
 									가입코드 입력 > 자동 승인
-								<?}?>
+								<?php }?>
 							</p>
 						</div>
 					</div>
 					<div class="space-4"></div>
 					
-					<?if($gp_type == 5){?>
+					<?php if($gp_type == 5){?>
 					<div class="form-group">
 						<label class="col-sm-1 control-label">가입코드</label>
 						<div class="col-sm-11">
 							<input type="text" placeholder="입력" class="col-xs-12 col-sm-8" name="gp_autocode" maxlength="100">
 						</div>
 					</div>
-					<?}?>
+					<?php }?>
 					
 					<div class="clearfix form-actions">
 						<div class="col-md-offset-3 col-md-9">
-						<?if($gp_type != 0){?>
+						<?php if($gp_type != 0){?>
 							<button class="btn btn-primary" type="button" onclick="javascript:check_form();">
 								<i class="fa fa-check"></i>
 								가입하기
 							</button>
-						<?}?>
+						<?php }?>
 							<button class="btn btn-default" type="button" onclick="location='<?=$iw['admin_path']?>/group_all_list.php?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>'">
 								<i class="fa fa-undo"></i>
 								취소
@@ -131,6 +131,9 @@ $gp_type = $row["gp_type"];
 	}
 </script>
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

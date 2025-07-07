@@ -1402,3 +1402,7 @@ function PMA_REL_createPage($newpage, $cfgRelation, $db)
     );
 }
 ?>
+
+
+
+

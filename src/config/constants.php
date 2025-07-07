@@ -14,3 +14,6 @@ $ORDSTATUS = [
 
 // PHP 5.6 미만 버전을 위해 define 사용 (현재는 PHP 8.3이므로 필요 없지만, 호환성을 위해 남겨둘 수 있음)
 // define('ORDSTATUS', serialize($ORDSTATUS)); 
+
+
+

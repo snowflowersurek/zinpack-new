@@ -5,18 +5,18 @@ if (($iw[group] == "all" && $iw[level] != "admin")) alert("잘못된 접근입�
 ?>
 <meta http-equiv="content-type" content="text/html; charset=<?=$iw['charset']?>" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-<?
+<?php
 $upload_path = $_POST[upload_path];
-$contest_code = trim(mysql_real_escape_string($_POST[contest_code]));
-$ep_upload_size = trim(mysql_real_escape_string($_POST[ep_upload_size]));
-$cg_code = trim(mysql_real_escape_string($_POST[cg_code]));
-$subject = trim(mysql_real_escape_string($_POST[subject]));
-$start_date = trim(mysql_real_escape_string($_POST[start_date]))." 00:00:00";
-$end_date = trim(mysql_real_escape_string($_POST[end_date]))." 23:59:59";
-$content = trim(mysql_real_escape_string($_POST[content]));
-$display = trim(mysql_real_escape_string($_POST[display]));
-$is_delfile = trim(mysql_real_escape_string($_POST[is_delfile]));
-$delete_filename = trim(mysql_real_escape_string($_POST[delete_filename]));
+$contest_code = trim(mysqli_real_escape_string($iw['connect'], $_POST['contest_code']));
+$ep_upload_size = trim(mysqli_real_escape_string($iw['connect'], $_POST['ep_upload_size']));
+$cg_code = trim(mysqli_real_escape_string($iw['connect'], $_POST['cg_code']));
+$subject = trim(mysqli_real_escape_string($iw['connect'], $_POST['subject']));
+$start_date = trim(mysqli_real_escape_string($iw['connect'], $_POST['start_date']))." 00:00:00";
+$end_date = trim(mysqli_real_escape_string($iw['connect'], $_POST['end_date']))." 23:59:59";
+$content = trim(mysqli_real_escape_string($iw['connect'], $_POST['content']));
+$display = trim(mysqli_real_escape_string($iw['connect'], $_POST['display']));
+$is_delfile = trim(mysqli_real_escape_string($iw['connect'], $_POST['is_delfile']));
+$delete_filename = trim(mysqli_real_escape_string($iw['connect'], $_POST['delete_filename']));
 $edit_date = date("Y-m-d H:i:s");
 
 $abs_dir = $iw[path].$upload_path;
@@ -84,3 +84,6 @@ if($_FILES["new_attach_file"]["name"] && $_FILES["new_attach_file"]["size"] > 10
 	alert("수정되었습니다.","$iw[admin_path]/publishing_contest_list.php?type=$iw[type]&ep=$iw[store]&gp=$iw[group]");
 }
 ?>
+
+
+

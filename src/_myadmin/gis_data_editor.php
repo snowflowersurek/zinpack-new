@@ -414,3 +414,7 @@ echo '</form>';
 PMA_Response::getInstance()->addJSON('gis_editor', ob_get_contents());
 ob_end_clean();
 ?>
+
+
+
+

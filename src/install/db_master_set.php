@@ -18,3 +18,6 @@ PRIMARY KEY (ma_no)
 
 mysql_query($sql) or die(mysql_error());
 ?>
+
+
+

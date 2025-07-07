@@ -23,3 +23,7 @@ $_PMA_RTE = 'TRI';
 require_once 'libraries/rte/rte_main.inc.php';
 
 ?>
+
+
+
+

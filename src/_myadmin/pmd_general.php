@@ -879,3 +879,7 @@ if (! empty($_REQUEST['query'])) {
 <img src="<?php echo $_SESSION['PMA_Theme']->getImgPath('pmd/rightarrow2.png'); ?>" width="0" height="0" alt="" />
 <img src="<?php echo $_SESSION['PMA_Theme']->getImgPath('pmd/uparrow2_m.png'); ?>" width="0" height="0" alt="" />
 <div id="PMA_disable_floating_menubar"></div>
+
+
+
+

@@ -2764,3 +2764,7 @@ body .ui-widget {
 .jqplot-axis {
     overflow:hidden;
 }
+
+
+
+

@@ -506,3 +506,7 @@ function PMA_pluginGetOptions($section, &$list)
     }
     return $ret;
 }
+
+
+
+

@@ -2,8 +2,14 @@
 include_once("_common.php");
 include_once "../include/mailer.php";
 
-$LGD_OID = $_GET[lgd_oid];
-$LGD_TID = $_GET[lgd_tid];
+$LGD_OID = $_GET['lgd_oid'];
+$LGD_TID = $_GET['lgd_tid'];
+
+if (!defined("_INFOWAY_")) exit; // 개별 페이지 접근 불가
+
+if (!$LGD_OID || !$LGD_TID) {
+	alert("결제 정보가 올바르지 않습니다.");
+}
 
 $lgd_row = sql_fetch("select * from infoway.iw_lgd where lgd_oid = '$LGD_OID' and lgd_tid = '$LGD_TID'");
 
@@ -15,7 +21,7 @@ if ($lgd_row) {
 	if ($payment_row) {
 		$lgd_display = 1;
 		
-		if ($payment_row[lgd_paytype] == "SC0040") {
+		if ($payment_row['lgd_paytype'] == "SC0040") {
 			$lgd_display = 5;
 		}
 		
@@ -55,7 +61,8 @@ if ($lgd_row) {
 				lgd_casseqno = '$payment_row[lgd_casseqno]',
 				lgd_saowner = '$payment_row[lgd_saowner]',
 				lgd_telno = '$payment_row[lgd_telno]',
-				lgd_datetime = '$payment_row[lgd_datetime]'
+				lgd_datetime = '$payment_row[lgd_datetime]',
+				lgd_display = $lgd_display
 				";
 		sql_query($sql);
 	
@@ -129,14 +136,14 @@ if ($lgd_row) {
 			sql_query($sql);
 		}
 		
-		if ($payment_row[lgd_paytype] == "SC0040") {
+		if ($payment_row['lgd_paytype'] == "SC0040") {
 			alert("가상계좌 결제정보가 등록되었습니다.");
 		} else {
 			$paytype = "";
 			
-			if ($payment_row[lgd_paytype] == "SC0010") {
+			if ($payment_row['lgd_paytype'] == "SC0010") {
 				$paytype = "신용카드";
-			} else if ($payment_row[lgd_paytype] == "SC0030") {
+			} else if ($payment_row['lgd_paytype'] == "SC0030") {
 				$paytype = "계좌이체";
 			}
 			
@@ -216,3 +223,6 @@ if ($lgd_row) {
 }
 ?>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+
+

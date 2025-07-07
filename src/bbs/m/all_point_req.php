@@ -49,3 +49,6 @@ if ($iw[level]=="guest") alert("로그인 해주시기 바랍니다. ","$iw[m_pa
 	document.getElementById('LGD_PAYINFO').submit();
 </script>
 </html>
+
+
+

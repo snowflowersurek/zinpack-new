@@ -103,3 +103,7 @@ if (isset($GLOBALS["message"]) && $GLOBALS["message"]) {
     PMA_importAjaxStatus($GLOBALS["id"]);
 }
 ?>
+
+
+
+

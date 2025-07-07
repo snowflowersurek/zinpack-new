@@ -77,7 +77,7 @@ if($LGD_CUSTOM_FIRSTPAY=="PAYPAL"){
 		</script>
 	</body>
 	</html>
-<?
+<?php
 }else if($LGD_CUSTOM_FIRSTPAY=="ALIPAY"){
 	$alipay_out_trade_no		= $HTTP_POST_VARS["LGD_OID"];           //주문번호(상점정의 유니크한 주문번호를 입력하세요)
 	$alipay_total_fee			= $HTTP_POST_VARS["LGD_AMOUNT"]/1000-$HTTP_POST_VARS["rate_point"];        //결제금액("," 를 제외한 결제금액을 입력하세요)
@@ -145,3 +145,6 @@ if($LGD_CUSTOM_FIRSTPAY=="PAYPAL"){
 	goto_url($link);
 }
 ?>
+
+
+

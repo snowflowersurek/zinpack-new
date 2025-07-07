@@ -56,7 +56,7 @@ include_once("_head.php");
 									</div>
 									<div class="col-sm-6">
 										<div class="dataTable-option-right">
-											<?
+											<?php
 												if($_POST['search']){
 													$search = $_POST['search'];
 													$searchs = $_POST['searchs'];
@@ -76,10 +76,10 @@ include_once("_head.php");
 											?>
 											<form name="search_form" id="search_form" action="<?=$PHP_SELF?>?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>" method="post">
 											<label>검색: <select name="search">
-												<option value="a" <?if($search == "a"){?>selected="selected"<?}?>>그룹코드</option>
-												<option value="b" <?if($search == "b"){?>selected="selected"<?}?>>그룹이름</option>
-												<option value="c" <?if($search == "c"){?>selected="selected"<?}?>>그룹주소</option>
-												<option value="d" <?if($search == "d"){?>selected="selected"<?}?>>회원코드</option>
+												<option value="a" <?php if{?>selected="selected"<?php }?>>그룹코드</option>
+												<option value="b" <?php if{?>selected="selected"<?php }?>>그룹이름</option>
+												<option value="c" <?php if{?>selected="selected"<?php }?>>그룹주소</option>
+												<option value="d" <?php if{?>selected="selected"<?php }?>>회원코드</option>
 											</select></label><input type="text" name="searchs" value="<?=$searchs?>">
 											</form>
 										</div>
@@ -99,7 +99,7 @@ include_once("_head.php");
 										</tr>
 									</thead>
 									<tbody>
-									<?
+									<?php
 										$sql = "select * from $iw[group_table] where ep_code = '$iw[store]' and gp_display = 1 $search_sql";
 										$result = sql_query($sql);
 										$total_line = mysql_num_rows($result);
@@ -153,34 +153,34 @@ include_once("_head.php");
 											<td data-title="그룹관리자"><?=$gp_manager?></td>
 											<td data-title="개설일자"><?=$gp_datetime?></td>
 											<td data-title="가입방식">
-												<?if($gp_type == 0){?>
+												<?php if($gp_type == 0){?>
 													가입불가
-												<?}else if($gp_type == 1){?>
+												<?php }else if($gp_type == 1){?>
 													관리자승인
-												<?}else if($gp_type == 2){?>
+												<?php }else if($gp_type == 2){?>
 													자동가입
-												<?}else if($gp_type == 4){?>
+												<?php }else if($gp_type == 4){?>
 													가입초대
-												<?}else if($gp_type == 5){?>
+												<?php }else if($gp_type == 5){?>
 													가입코드입력
-												<?}?>
+												<?php }?>
 											</td>
 											<td data-title="가입여부">
-												<?if($gm_display == 7){?>
+												<?php if($gm_display == 7){?>
 													<a href="<?=$iw['admin_path']?>/group_join_write.php?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&idx=<?=$gp_no?>"><span class="label label-sm label-success">가입하기</span></a>
-												<?}else if($gm_display == 9){?>
+												<?php }else if($gm_display == 9){?>
 													관리자
-												<?}else if($gm_display == 1){?>
+												<?php }else if($gm_display == 1){?>
 													회원
-												<?}else if($gm_display == 0){?>
+												<?php }else if($gm_display == 0){?>
 													가입대기
-												<?}?>
+												<?php }?>
 											</td>
 											<td data-title="링크">
 												<a href="<?=$iw[m_path]?>/main.php?type=main&ep=<?=$iw[store]?>&gp=<?=$gp_code?>" target="_blank">바로가기</a>
 											</td>
 										</tr>
-									<?
+									<?php
 										$i++;
 										}
 										if($i==0) echo "<tr><td colspan='8' align='center'>등록된 그룹이 없습니다.</td></tr>";
@@ -199,7 +199,7 @@ include_once("_head.php");
 									<div class="col-sm-6">
 										<div class="dataTable-option-right">
 											<ul class="pagination">
-											<?
+											<?php
 												if($total_page!=0){
 													if($page>$total_page) { $page=$total_page; }
 													$start_page = ((ceil($page/$max_page)-1)*$max_page)+1;
@@ -241,6 +241,9 @@ include_once("_head.php");
 	</div><!-- /container -->
 </div><!-- /end .page-content -->
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

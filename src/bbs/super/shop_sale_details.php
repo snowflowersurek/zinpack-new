@@ -12,7 +12,7 @@ if($_REQUEST['mon']){
 }
 
 $tepcode = $_REQUEST['epcorp'];
-$sql = "SELECT * FROM $iw[enterprise_table] WHERE ep_code='$tepcode'";
+$sql = "SELECT * FROM {$iw['enterprise_table']} WHERE ep_code='$tepcode'";
 //echo "tsql : ".$sql."<br>";
 $row = sql_fetch($sql);
 $corp = $row['ep_corporate'];
@@ -51,15 +51,15 @@ $epcode = str_replace(".del","",$tepcode);
 							<div class="table-set-mobile dataTable-wrapper">
 								<div class="row">
 									<div class="col-sm-6">
-										<form name="date_form" id="date_form" action="<?=$PHP_SELF?>?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&mon=<?=$mon?>&epcorp=<?=$tepcode?>" method="post">
+										<form name="date_form" id="date_form" action="<?=$PHP_SELF?>?type=<?=$iw['type']?>&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>&mon=<?=$mon?>&epcorp=<?=$tepcode?>" method="post">
 											<select name="mon" onchange="mon_refresh()">
 											<?php
-												$msql = "SELECT DISTINCT(SUBSTRING( lgd_paydate, 1, 6 )) AS mon FROM $iw[lgd_table] WHERE ep_code = '$epcode' ORDER BY lgd_no DESC";
+												$msql = "SELECT DISTINCT(SUBSTRING( lgd_paydate, 1, 6 )) AS mon FROM {$iw['lgd_table']} WHERE ep_code = '$epcode' ORDER BY lgd_no DESC";
 												$mresult = sql_query($msql);
 												while($mrow = sql_fetch_array($mresult)){
 													$mval = substr($mrow['mon'],0,4)."-".substr($mrow['mon'],4);
 											?>
-												<option value="<?=$mval?>" <?if($chk_mon == $mval){?>selected="selected"<?}?>><?=$mval?></option>
+												<option value="<?=$mval?>" <?php if($mval==$chk_mon){?>selected="selected"<?php }?>><?=$mval?></option>
 											<?php
 												}
 											?>
@@ -83,12 +83,12 @@ $epcode = str_replace(".del","",$tepcode);
 										</tr>
 									</thead>
 									<tbody>
-									<?
-										//$sql = "select * from $iw[lgd_table] where (pt_datetime >= '$now_start' and pt_datetime <= '$now_end') $search_sql";
-										$sql = "SELECT a.*, aa.* FROM $iw[shop_order_sub_table] a LEFT JOIN $iw[lgd_table] aa ON a.sr_code = aa.lgd_oid LEFT JOIN $iw[shop_order_table] b ON a.sr_code = b.sr_code WHERE aa.lgd_display = 1 AND b.sr_datetime >= '$start_date' AND b.sr_datetime <= '$end_date' AND b.ep_code = '$epcode'";
+									<?php
+										//$sql = "select * from {$iw['lgd_table']} where (pt_datetime >= '$now_start' and pt_datetime <= '$now_end') $search_sql";
+										$sql = "SELECT a.*, aa.* FROM {$iw['shop_order_sub_table']} a LEFT JOIN {$iw['lgd_table']} aa ON a.sr_code = aa.lgd_oid LEFT JOIN {$iw['shop_order_table']} b ON a.sr_code = b.sr_code WHERE aa.lgd_display = 1 AND b.sr_datetime >= '$start_date' AND b.sr_datetime <= '$end_date' AND b.ep_code = '$epcode'";
 										//echo "sql= ".$sql."<br>";
 										$result = sql_query($sql);
-										$total = mysql_num_rows($result);
+										$total = mysqli_num_rows($result);
 										$i=0;
 										$tot_amount = 0;
 										$sum_tax_amt = 0;
@@ -119,7 +119,7 @@ $epcode = str_replace(".del","",$tepcode);
 												$lgd_castamount = $lgd_amount . "원";
 											}
 
-											$row2 = sql_fetch("select ep_corporate from $iw[enterprise_table] where ep_code = '$ep_code'");
+											$row2 = sql_fetch("select ep_corporate from {$iw['enterprise_table']} where ep_code = '$ep_code'");
 											$ep_corporate = $row2["ep_corporate"];
 									?>
 										<tr>
@@ -131,15 +131,15 @@ $epcode = str_replace(".del","",$tepcode);
 											<td data-title="승인결과" style="text-align:center;"><?=$lgd_respmsg?></td>
 											<td data-title="승인일시" style="text-align:center;"><?=$lgd_paydate?></td>
 											<td data-title="결제방식" style="text-align:center;">
-												<?if($lgd_paytype=="SC0010"){?>
+												<?php if($lgd_paytype=="SC0010"){?>
 													신용카드
-												<?}else if($lgd_paytype=="SC0030"){?>
+												<?php }else if($lgd_paytype=="SC0030"){?>
 													계좌이체
-												<?}else if($lgd_paytype=="SC0060"){?>
+												<?php }else if($lgd_paytype=="SC0060"){?>
 													휴대폰
-												<?}else if($lgd_paytype=="SC0040"){?>
+												<?php }else if($lgd_paytype=="SC0040"){?>
 													가상계좌
-												<?}?>
+												<?php }?>
 											</td>
 											<td data-title="정산입금일자" style="text-align:center;"><input type="text" name="in_date" id="in_<?=$row["lgd_no"]?>" value="<?=$lgd_in_date?>"  style="width:120px;border-color:beige;" disabled></td>
 											<td data-title="결제자" style="text-align:center;"><?=$lgd_buyer?></td>
@@ -157,11 +157,11 @@ $epcode = str_replace(".del","",$tepcode);
 								</div>
 							</div><!-- /.table-responsive -->
 						</section>
-						<?
-							$sql = "SELECT a.*, b.mb_name, b.mb_nick FROM $iw[book_buy_table] a LEFT JOIN $iw[member_table] b ON a.mb_code = b.mb_code WHERE a.bb_datetime >= '$start_date' AND a.bb_datetime <= '$end_date' AND a.ep_code = '$epcode' ORDER BY a.bb_no DESC";
+						<?php
+							$sql = "SELECT a.*, b.mb_name, b.mb_nick FROM {$iw['book_buy_table']} a LEFT JOIN {$iw['member_table']} b ON a.mb_code = b.mb_code WHERE a.bb_datetime >= '$start_date' AND a.bb_datetime <= '$end_date' AND a.ep_code = '$epcode' ORDER BY a.bb_no DESC";
 							//echo "sql= ".$sql."<br>";
 							$result = sql_query($sql);
-							$ptotal = mysql_num_rows($result);
+							$ptotal = mysqli_num_rows($result);
 							$sum_point = 0;
 							if($ptotal > 0){
 						?>
@@ -237,10 +237,13 @@ function mon_refresh(){
 	document.date_form.submit();
 }
 function view_list(){
-	document.location.href="shop_sale_list.php?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>";
+	document.location.href="shop_sale_list.php?type=<?=$iw['type']?>&ep=<?=$iw['store']?>&gp=<?=$iw['group']?>";
 }
 </script>
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

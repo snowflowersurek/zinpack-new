@@ -441,3 +441,7 @@ echo PMA_Util::getExternalBug(
 echo '<input type="submit" value="' . __('Go') . '" id="buttonGo" />';
 echo '</div>';
 echo '</form>';
+
+
+
+

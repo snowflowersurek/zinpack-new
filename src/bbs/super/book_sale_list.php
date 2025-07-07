@@ -150,10 +150,10 @@ $now_end = date("Y-m-d H:i:s", strtotime($end_date.' + 23 hours + 59 minutes + 5
 									?>
 										<tr>
 											<td class="text-center" data-title="판매일자" style="white-space:nowrap;"><?php echo $bb_datetime;?></td>
-											<td class="text-center" data-title="사이트"><?php echo $ep_corporate; ?> <?php echo $ep_code;?></td>
-											<td class="text-center" data-title="그룹"><?php echo $gp_subject; ?> <?php echo $gp_code;?></td>
-											<td class="text-center" data-title="판매자"><?php echo $mb_name; ?> <?php echo $seller_mb_code;?></td>
-											<td class="text-center" data-title="구매자"><?php echo $member_name; ?> <?php echo $mb_code;?></td>
+											<td class="text-center" data-title="사이트"><?php echo $ep_corporate;  echo $ep_code;?></td>
+											<td class="text-center" data-title="그룹"><?php echo $gp_subject;  echo $gp_code;?></td>
+											<td class="text-center" data-title="판매자"><?php echo $mb_name;  echo $seller_mb_code;?></td>
+											<td class="text-center" data-title="구매자"><?php echo $member_name;  echo $mb_code;?></td>
 											<td class="text-center" data-title="이북"><?php echo $bb_subject;?><br><?php echo $bd_code;?></td>
 											<td class="text-end" data-title="판매(point)"><?php echo number_format($bb_price); ?></td>
 											<td class="text-end" data-title="위즈윈디지털(point)"><?php echo $bb_price_super; ?></td>
@@ -263,3 +263,6 @@ $now_end = date("Y-m-d H:i:s", strtotime($end_date.' + 23 hours + 59 minutes + 5
 <?php
 include_once("_tail.php");
 ?>
+
+
+

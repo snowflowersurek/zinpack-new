@@ -6,3 +6,6 @@ $_input_charset = "utf-8";
 $sign_type = "MD5"; 
 $transport= "http";
 ?>
+
+
+

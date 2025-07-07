@@ -1,59 +1,58 @@
 <?php
 include_once("_common.php");
-if (($iw[group] == "all" && $iw[level] != "admin") || ($iw[group] != "all" && $iw[gp_level] != "gp_admin")) alert("잘못된 접근입니다!","");
+if (($iw['group'] == "all" && $iw['level'] != "admin") || ($iw['group'] != "all" && $iw['gp_level'] != "gp_admin")) alert("잘못된 접근입니다!","");
 ?>
 <meta http-equiv="content-type" content="text/html; charset=<?=$iw['charset']?>" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-<?
-
-$upload_path = $_POST[upload_path];
-$hs_scrap = trim(mysql_real_escape_string($_POST[hs_scrap]));
-$hm_code = trim(mysql_real_escape_string($_POST[hm_code]));
-$hs_name = trim(mysql_real_escape_string($_POST[hs_name]));
-$hs_style = trim(mysql_real_escape_string($_POST[hs_style]));
-$hs_type = trim(mysql_real_escape_string($_POST[hs_type]));
-$hs_border_width = trim(mysql_real_escape_string($_POST[hs_border_width]));
-$hs_border_color = trim(mysql_real_escape_string($_POST[hs_border_color]));
-$hs_border_radius = trim(mysql_real_escape_string($_POST[hs_border_radius]));
-$hs_topic_type = trim(mysql_real_escape_string($_POST[hs_topic_type]));
-$hs_topic_link = trim(mysql_real_escape_string($_POST[hs_topic_link]));
-$hs_topic_more = trim(mysql_real_escape_string($_POST[hs_topic_more]));
-$hs_topic_bullet = mysql_real_escape_string($_POST[hs_topic_bullet]);
-$hs_bg_alpha = trim(mysql_real_escape_string($_POST[hs_bg_alpha]));
-$hs_title_color = trim(mysql_real_escape_string($_POST[hs_title_color]));
-$hs_font_color = trim(mysql_real_escape_string($_POST[hs_font_color]));
-$hs_font_hover = trim(mysql_real_escape_string($_POST[hs_font_hover]));
-$hs_box_padding = trim(mysql_real_escape_string($_POST[hs_box_padding]));
+<?php
+$upload_path = $_POST['upload_path'];
+$hs_scrap = trim(sql_real_escape_string($_POST['hs_scrap']));
+$hm_code = trim(sql_real_escape_string($_POST['hm_code']));
+$hs_name = trim(sql_real_escape_string($_POST['hs_name']));
+$hs_style = trim(sql_real_escape_string($_POST['hs_style']));
+$hs_type = trim(sql_real_escape_string($_POST['hs_type']));
+$hs_border_width = trim(sql_real_escape_string($_POST['hs_border_width']));
+$hs_border_color = trim(sql_real_escape_string($_POST['hs_border_color']));
+$hs_border_radius = trim(sql_real_escape_string($_POST['hs_border_radius']));
+$hs_topic_type = trim(sql_real_escape_string($_POST['hs_topic_type']));
+$hs_topic_link = trim(sql_real_escape_string($_POST['hs_topic_link']));
+$hs_topic_more = trim(sql_real_escape_string($_POST['hs_topic_more']));
+$hs_topic_bullet = sql_real_escape_string($_POST['hs_topic_bullet']);
+$hs_bg_alpha = trim(sql_real_escape_string($_POST['hs_bg_alpha']));
+$hs_title_color = trim(sql_real_escape_string($_POST['hs_title_color']));
+$hs_font_color = trim(sql_real_escape_string($_POST['hs_font_color']));
+$hs_font_hover = trim(sql_real_escape_string($_POST['hs_font_hover']));
+$hs_box_padding = trim(sql_real_escape_string($_POST['hs_box_padding']));
 $hs_file_sort = "";
 
 if($hs_style == 1){
 	$hs_size_width = 12;
 	$hs_size_height = 0;
 }else{
-	$hs_size_width = trim(mysql_real_escape_string($_POST[hs_size_width]));
-	$hs_size_height = trim(mysql_real_escape_string($_POST[hs_size_height]));
-	$hs_bg_color = trim(mysql_real_escape_string($_POST[hs_bg_color]));
+	$hs_size_width = trim(sql_real_escape_string($_POST['hs_size_width']));
+	$hs_size_height = trim(sql_real_escape_string($_POST['hs_size_height']));
+	$hs_bg_color = trim(sql_real_escape_string($_POST['hs_bg_color']));
 }
 
 if($hs_type == "menu"){
-	$hs_menu = trim(mysql_real_escape_string($_POST[hs_menu]));
-	$hs_banner_cnt = trim(mysql_real_escape_string($_POST[hs_banner_cnt]));
+	$hs_menu = trim(sql_real_escape_string($_POST['hs_menu']));
+	$hs_banner_cnt = trim(sql_real_escape_string($_POST['hs_banner_cnt']));
 }
 if($hs_type != "custom"){
-	$hs_sort = trim(mysql_real_escape_string($_POST[hs_sort]));
+	$hs_sort = trim(sql_real_escape_string($_POST['hs_sort']));
 }
 
 if($hs_style == 6 && $hs_type == "custom"){
-	$hs_sns_url = trim(mysql_real_escape_string($_POST[hs_sns_url]));
+	$hs_sns_url = trim(sql_real_escape_string($_POST['hs_sns_url']));
 }else if($hs_style == 3 && $hs_type == "custom"){
-	$abs_dir = $iw[path].$upload_path;
+	$abs_dir = $iw['path'].$upload_path;
 
-	for ($i=0; $i<count($_POST[hs_link]); $i++) {
-		$hs_title = trim(mysql_real_escape_string($_POST[hs_title][$i]));
+	for ($i=0; $i<count($_POST['hs_link']); $i++) {
+		$hs_title = trim(sql_real_escape_string($_POST['hs_title'][$i]));
 		$hs_title_total .= ";".$hs_title;
-		$hs_content = trim(mysql_real_escape_string($_POST[hs_content][$i]));
+		$hs_content = trim(sql_real_escape_string($_POST['hs_content'][$i]));
 		$hs_content_total .= ";".$hs_content;
-		$hs_link = trim(mysql_real_escape_string($_POST[hs_link][$i]));
+		$hs_link = trim(sql_real_escape_string($_POST['hs_link'][$i]));
 		$hs_link_total .= ";".$hs_link;
 		
 		if($_FILES["hs_file"]["name"][$i] && $_FILES["hs_file"]["size"][$i]>0){
@@ -79,12 +78,12 @@ if($hs_style == 6 && $hs_type == "custom"){
 		}
 	}
 }else if($hs_style != 3 && $hs_type == "custom"){
-	$abs_dir = $iw[path].$upload_path;
+	$abs_dir = $iw['path'].$upload_path;
 	
-	for ($i=0; $i<count($_POST[hs_link]); $i++) {
+	for ($i=0; $i<count($_POST['hs_link']); $i++) {
 		if($_FILES["hs_file"]["name"][$i] && $_FILES["hs_file"]["size"][$i]>0){
-			$hs_file_sort .= $_POST[hs_file_sort][$i].",";
-			$hs_link = trim(mysql_real_escape_string($_POST[hs_link][$i]));
+			$hs_file_sort .= $_POST['hs_file_sort'][$i].",";
+			$hs_link = trim(sql_real_escape_string($_POST['hs_link'][$i]));
 			$hs_link_total .= ";".$hs_link;
 			$hs_file_name = uniqid(rand());
 			$hs_file = $hs_file_name.".".preg_replace('/^.*\.([^.]+)$/D', '$1',$_FILES["hs_file"]["name"][$i]);
@@ -114,9 +113,9 @@ $hs_content_total = explode(";", $hs_content_total);
 $hs_link_total = explode(";", $hs_link_total);
 $hs_file_total = explode(";", $hs_file_total);
 
-$sql = "insert into $iw[home_scrap_table] set
-		ep_code = '$iw[store]',
-		gp_code = '$iw[group]',
+$sql = "insert into $iw['home_scrap_table'] set
+		ep_code = '$iw['store']',
+		gp_code = '$iw['group']',
 		hm_code = '$hm_code',
 		hs_scrap = '$hs_scrap',
 		hs_name = '$hs_name',
@@ -196,6 +195,9 @@ $sql = "insert into $iw[home_scrap_table] set
 
 sql_query($sql);
 
-echo "<script>window.parent.location.href='$iw[admin_path]/design_scrap_list.php?type=$iw[type]&ep=$iw[store]&gp=$iw[group]&menu=$hm_code&scrap=$hs_scrap';</script>";
+echo "<script>window.parent.location.href='$iw['admin_path']/design_scrap_list.php?type=$iw['type']&ep=$iw['store']&gp=$iw['group']&menu=$hm_code&scrap=$hs_scrap';</script>";
 
 ?>
+
+
+

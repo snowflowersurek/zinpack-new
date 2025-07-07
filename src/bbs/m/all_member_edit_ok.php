@@ -9,7 +9,7 @@ if (!$db_conn) {
 ?>
 <meta http-equiv="content-type" content="text/html; charset=<?=$iw['charset']?>" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-<?
+<?php
 $mb_password = trim($_POST['mb_password']);
 $mb_name = trim($_POST['mb_name']);
 $mb_nick = trim($_POST['mb_nick']);
@@ -80,3 +80,6 @@ if ($row_user && password_verify($confirm_password, $row_user['mb_password'])) {
 	alert(national_language($iw['language'],"a0116","비밀번호를 확인하여 주십시오."),"");
 }
 ?>
+
+
+

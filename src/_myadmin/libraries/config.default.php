@@ -2841,3 +2841,7 @@ $cfg['DefaultFunctions'] = array(
 $cfg['maxRowPlotLimit'] = 500;
 
 ?>
+
+
+
+

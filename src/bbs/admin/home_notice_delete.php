@@ -4,7 +4,7 @@ if (($iw[group] == "all" && $iw[level] != "admin") || ($iw[group] != "all" && $i
 ?>
 <meta http-equiv="content-type" content="text/html; charset=<?=$iw['charset']?>" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-<?
+<?php
 if (!$_GET['idx']) exit;
 $nt_no = $_GET[idx];
 
@@ -13,3 +13,6 @@ sql_query($sql);
 
 alert("공지사항이 삭제되었습니다.","$iw[admin_path]/home_notice_list.php?type=$iw[type]&ep=$iw[store]&gp=$iw[group]");
 ?>
+
+
+

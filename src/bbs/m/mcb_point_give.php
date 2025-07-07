@@ -89,6 +89,10 @@ echo "</script>";
 	}
 </script>
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+
+

@@ -59,8 +59,8 @@ $gp_closed = $row["gp_closed"];
 						<label class="col-sm-1 control-label">언어설정</label>
 						<div class="col-sm-11">
 							<select name="gp_language">
-								<option value="ko" <?if($row[gp_language] == "ko"){?>selected<?}?>>한국어</option>
-								<option value="en" <?if($row[gp_language] == "en"){?>selected<?}?>>영어</option>
+								<option value="ko" <?php if{?>selected<?php }?>>한국어</option>
+								<option value="en" <?php if{?>selected<?php }?>>영어</option>
 							</select>
 						</div>
 					</div>
@@ -87,31 +87,31 @@ $gp_closed = $row["gp_closed"];
 						<div class="col-sm-11">
 							<div class="radio">
 								<label>
-									<input type="radio" name="type" value="0" onclick="javascript:radio_check(this.value);" <?if($gp_type==0){?>checked<?}?>>
+									<input type="radio" name="type" value="0" onclick="javascript:radio_check(this.value);" <?php if{?>checked<?php }?>>
 									<span class="lbl"> 가입불가</span>
 								</label>
 							</div>
 							<div class="radio">
 								<label>
-									<input type="radio" name="type" value="1" onclick="javascript:radio_check(this.value);" <?if($gp_type==1){?>checked<?}?>>
+									<input type="radio" name="type" value="1" onclick="javascript:radio_check(this.value);" <?php if{?>checked<?php }?>>
 									<span class="lbl"> 가입신청 > 관리자승인</span>
 								</label>
 							</div>
 							<div class="radio">
 								<label>
-									<input type="radio" name="type" value="2" onclick="javascript:radio_check(this.value);" <?if($gp_type==2){?>checked<?}?>>
+									<input type="radio" name="type" value="2" onclick="javascript:radio_check(this.value);" <?php if{?>checked<?php }?>>
 									<span class="lbl"> 무조건 가입</span>
 								</label>
 							</div>
 							<div class="radio">
 								<label>
-									<input type="radio" name="type" value="4" onclick="javascript:radio_check(this.value);" <?if($gp_type==4){?>checked<?}?>>
+									<input type="radio" name="type" value="4" onclick="javascript:radio_check(this.value);" <?php if{?>checked<?php }?>>
 									<span class="lbl"> 초대후 가입</span>
 								</label>
 							</div>
 							<div class="radio">
 								<label>
-									<input type="radio" name="type" value="5" onclick="javascript:radio_check(this.value);" <?if($gp_type==5){?>checked<?}?>>
+									<input type="radio" name="type" value="5" onclick="javascript:radio_check(this.value);" <?php if{?>checked<?php }?>>
 									<span class="lbl"> 가입코드 입력후 자동승인</span> <input type="text" placeholder="입력" name="gp_autocode" maxlength="20" value="<?=$row[gp_autocode]?>">
 								</label>
 							</div>
@@ -123,8 +123,8 @@ $gp_closed = $row["gp_closed"];
 						<label class="col-sm-1 control-label">그룹 공개</label>
 						<div class="col-sm-11">
 							<select class="col-xs-12 col-sm-2" name="gp_closed">
-								<option value="0" <?if($gp_closed==0){?>selected<?}?>>비공개 (그룹회원만 열람)</option>
-								<option value="1" <?if($gp_closed==1){?>selected<?}?>>공개 (비회원도 열람 가능)</option>
+								<option value="0" <?php if{?>selected<?php }?>>비공개 (그룹회원만 열람)</option>
+								<option value="1" <?php if{?>selected<?php }?>>공개 (비회원도 열람 가능)</option>
 							</select>
 						</div>
 					</div>
@@ -168,6 +168,9 @@ $gp_closed = $row["gp_closed"];
 	}
 </script>
  
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

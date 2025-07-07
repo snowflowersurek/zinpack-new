@@ -1631,3 +1631,7 @@ function PMA_getQueryAndResultForPartition()
 }
 
 ?>
+
+
+
+

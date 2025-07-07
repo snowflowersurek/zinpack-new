@@ -52,7 +52,7 @@ include_once("_head.php");
 									</div>
 									<div class="col-sm-8">
 										<div class="dataTable-option-right">
-											<?
+											<?php
 												if($_POST['searchby']){
 													$searchby = $_POST['searchby'];
 													$keyword = $_POST['keyword'];
@@ -66,7 +66,7 @@ include_once("_head.php");
 											?>
 											<form name="search_form" id="search_form" action="<?=$PHP_SELF?>?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>" method="post">
 											<label>검색: <select name="searchby">
-												<option value="name" <?if($searchby == "name"){?>selected="selected"<?}?>>그림전시명</option>
+												<option value="name" <?php if{?>selected="selected"<?php }?>>그림전시명</option>
 											</select></label><input type="text" name="keyword" value="<?=$keyword?>">
 											</form>
 										</div>
@@ -85,7 +85,7 @@ include_once("_head.php");
 										</tr>
 									</thead>
 									<tbody>
-									<?
+									<?php
 										$sql = "select * from $iw[publishing_exhibit_table] where ep_code = '$iw[store]' $search_sql";
 										$result = sql_query($sql);
 										$total_line = mysql_num_rows($result);
@@ -127,23 +127,23 @@ include_once("_head.php");
 											<td data-title="액자수(점)"><?=$how_many?></td>
 											<td data-title="액자크기"><?=$size?></td>
 											<td data-title="대여가능">
-												<?if($can_rent == "Y"){?>
+												<?php if($can_rent == "Y"){?>
 													<span class="label label-sm label-success">가능</span>
-												<?}else if($can_rent == "M"){?>
+												<?php }else if($can_rent == "M"){?>
 													<span class="label label-sm label-warning">점검</span>
-												<?}else{?>
+												<?php }else{?>
 													<span class="label label-sm label-danger">불가</span>
-												<?}?>
+												<?php }?>
 											</td>
 											<td data-title="도서정보">
-												<?if($book_id != ""){?>
+												<?php if($book_id != ""){?>
 													<a href="<?=$iw['m_path']?>/publishing_data_view.php?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$gp_code?>&item=<?=$book_id?>" target="_blank"><span class="label label-sm label-default">바로가기</span></a>
-												<?}else{?>
+												<?php }else{?>
 													&nbsp;
-												<?}?>
+												<?php }?>
 											</td>
 										</tr>
-									<?
+									<?php
 										$i++;
 										}
 										if($i==0) echo "<tr><td colspan='7' align='center'>검색된 게시글이 없습니다.</td></tr>";
@@ -162,7 +162,7 @@ include_once("_head.php");
 									<div class="col-sm-8">
 										<div class="dataTable-option-right">
 											<ul class="pagination">
-											<?
+											<?php
 												if($total_page!=0){
 													if($page>$total_page) { $page=$total_page; }
 													$start_page = ((ceil($page/$max_page)-1)*$max_page)+1;
@@ -204,6 +204,9 @@ include_once("_head.php");
 	</div><!-- /container -->
 </div><!-- /end .page-content -->
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

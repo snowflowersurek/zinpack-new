@@ -4,7 +4,7 @@ if ($iw[type] != "bank" || ($iw[level] != "seller" && $iw[level] != "member")) a
 ?>
 <meta http-equiv="content-type" content="text/html; charset=<?=$iw['charset']?>" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-<?
+<?php
 $row = sql_fetch(" select count(*) as cnt from $iw[account_table] where ep_code = '$iw[store]' and mb_code = '$iw[member]' and ac_display = 1");
 if (!$row[cnt]) alert("계좌정보 등록후 환전하실 수 있습니다.","$iw[admin_path]/bank_account_write.php?type=$iw[type]&ep=$iw[store]&gp=$iw[group]");
 
@@ -60,3 +60,6 @@ sql_query($sql);
 
 alert("환전 신청이 정상적으로 처리되었습니다.","$iw[admin_path]/bank_exchange_list.php?type=$iw[type]&ep=$iw[store]&gp=$iw[group]");
 ?>
+
+
+

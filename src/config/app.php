@@ -39,3 +39,6 @@ $iw['time_ymdhis'] = date("Y-m-d H:i:s", $iw['server_time']);
 // 기타 설정
 $iw['re_url'] = isset($_SERVER['REQUEST_URI']) ? urlencode($_SERVER['REQUEST_URI']) : '';
 $iw['server_path'] = "/www/infoway/_infoway"; // 이 값은 환경에 따라 달라질 수 있으므로 주의 
+
+
+

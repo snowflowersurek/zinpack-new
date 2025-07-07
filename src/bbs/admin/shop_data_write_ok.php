@@ -4,7 +4,7 @@ if ($iw[type] != "shop" || !($iw[level] == "seller" || $iw[level] == "admin")) a
 ?>
 <meta http-equiv="content-type" content="text/html; charset=<?=$iw['charset']?>" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-<?
+<?php
 $upload_path = $_POST[upload_path];
 $sd_code = trim(mysql_real_escape_string($_POST[sd_code]));
 $cg_code = trim(mysql_real_escape_string($_POST[cg_code]));
@@ -102,3 +102,6 @@ if (!$row[cg_code]) {
 	alert("상품정보가 등록되었습니다.","$iw[admin_path]/shop_data_list.php?type=$iw[type]&ep=$iw[store]&gp=$iw[group]");
 }
 ?>
+
+
+

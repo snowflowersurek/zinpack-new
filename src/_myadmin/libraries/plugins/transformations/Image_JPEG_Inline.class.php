@@ -63,3 +63,7 @@ function Image_JPEG_Inline_getInfo()
     return Image_JPEG_Inline::getInfo();
 }
 ?>
+
+
+
+

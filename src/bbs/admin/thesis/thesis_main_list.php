@@ -81,11 +81,11 @@ $bn_font = $row["bn_font"];
 							<div class="wrap">
 								<div class="top_logo">
 									<a href="javascript:bookFrameMain('<?=$iw[type]?>','<?=$iw[store]?>','<?=$iw[group]?>','<?=$bd_code?>');">
-										<?if($bn_logo){?>
+										<?php if($bn_logo){?>
 											<img src="<?=$iw["path"].$upload_path."/".$bn_logo?>" />
-										<?}else{?>
+										<?php }else{?>
 											<img src="<?=$iw["bbs_img_path"]."/book_top_logo.png"?>" />
-										<?}?>
+										<?php }?>
 									</a>
 								</div>
 								<div class="main_list_btn">
@@ -96,7 +96,7 @@ $bn_font = $row["bn_font"];
 								</div>
 								<div class="book_list_wrap">
 									<ul>
-									<?
+									<?php
 										$sql = "select * from $iw[book_thesis_table] where ep_code = '$iw[store]' and gp_code = '$iw[group]' and bd_code = '$bd_code' and mb_code = '$iw[member]' order by bt_order asc";
 										$result = sql_query($sql);
 
@@ -111,14 +111,10 @@ $bn_font = $row["bn_font"];
 									?>
 										<li>
 											<a href="javascript:bookFramePageEdit('<?=$iw[type]?>','<?=$iw[store]?>','<?=$iw[group]?>','<?=$bd_code?>','<?=$bt_no?>');" style="color:<?=$bn_font?>;text-decoration:none;">
-												<?if($bt_title_kr){?><p class="title_kr"><?=$i+1?>. <?=$bt_title_kr?></p><?}?>
-												<?if($bt_sub_kr){?><p class="title_kr">- <?=$bt_sub_kr?></p><?}?>
-												<?if($bt_title_us){?><p class="title_us"><?=$bt_title_us?></p><?}?>
-												<?if($bt_sub_us){?><p class="title_us">- <?=$bt_sub_us?></p><?}?>
-												<?if($bt_person){?><p class="person"><?=$bt_person?></p><?}?>
+												<?php if($bt_title_kr){?><p class="title_kr"><?=$i+1?>. <?=$bt_title_kr?></p><?php } ?><?php if($bt_sub_kr){?><p class="title_kr">- <?=$bt_sub_kr?></p><?php } ?><?php if($bt_title_us){?><p class="title_us"><?=$bt_title_us?></p><?php } ?><?php if($bt_sub_us){?><p class="title_us">- <?=$bt_sub_us?></p><?php } ?><?php if($bt_person){?><p class="person"><?=$bt_person?></p><?php }?>
 											</a>
 										</li>
-									<?
+									<?php
 											$i++;
 										}
 									?>
@@ -150,6 +146,9 @@ $bn_font = $row["bn_font"];
 	}
 </script>
 
-<?
+<?php
 include_once($iw['admin_path']."/_tail.php");
 ?>
+
+
+

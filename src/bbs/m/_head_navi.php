@@ -1,4 +1,4 @@
-<?
+<?php
 if (!defined("_INFOWAY_")) exit; // 개별 페이지 접근 불가
 ?>	
 		<div class="container"><!-- Main container -->
@@ -19,7 +19,7 @@ if (!defined("_INFOWAY_")) exit; // 개별 페이지 접근 불가
 		<div class="searchbox">
 			<form action="<?=$iw['m_path']?>/main_search_list.php" method="get" onsubmit="return checkSearchForm(this);">
 				<div class="input-group">
-					<?
+					<?php
 						if($_GET['search']){$top_search = $_GET['search'];}
 					?>
 					<input type="hidden" name="type" value="main">
@@ -42,7 +42,7 @@ if (!defined("_INFOWAY_")) exit; // 개별 페이지 접근 불가
 
 		<div class="navbar-collapse collapse cbp-hrmenu" id="main-navbar">
 			<ul class="nav nav-pills navbar-left">
-				<?
+				<?php
 					$sql = "select hm_code,cg_code,hm_name,state_sort,hm_link from $iw[home_menu_table] where ep_code = '$iw[store]' and gp_code = '$iw[group]' and hm_deep = 1 order by hm_order asc,hm_no asc";
 					$result = sql_query($sql);
 					while($row = @sql_fetch_array($result)){
@@ -54,8 +54,7 @@ if (!defined("_INFOWAY_")) exit; // 개별 페이지 접근 불가
 						
 						$sql2 = "select count(*) as cnt from $iw[home_menu_table] where hm_upper_code = '$hm_code' and hm_deep = 2 and ep_code = '$iw[store]' and gp_code = '$iw[group]'";
 						$row2 = sql_fetch($sql2);
-				?>
-				<?
+				
 				if(!$row2[cnt]){
 					if($state_sort=="main") $menu_html = $iw[m_path]."/main.php?type=main&ep=".$iw[store]."&gp=".$iw[group];
 					if($state_sort=="scrap") $menu_html = $iw[m_path]."/main.php?type=scrap&ep=".$iw[store]."&gp=".$iw[group]."&menu=".$hm_code;
@@ -79,9 +78,9 @@ if (!defined("_INFOWAY_")) exit; // 개별 페이지 접근 불가
 					if($state_sort=="about") $menu_html = $iw[m_path]."/about_data_view.php?type=about&ep=".$iw[store]."&gp=".$iw[group]."&item=".$cg_code;
 				?>
 					<li>
-						<a href='#' <?if($state_sort!="close"){?>onclick="location.href='<?=$menu_html?>'"<?}?>><?=$hm_name?></a>
+						<a href='#' <?php if{?>onclick="location.href='<?=$menu_html?>'"<?php }?>><?=$hm_name?></a>
 					</li>
-				<?
+				<?php
 				}else{
 					if($state_sort=="main") $menu_html = "<a href='".$iw[m_path]."/main.php?type=main&ep=".$iw[store]."&gp=".$iw[group]."'>".$hm_name."</a>";
 					if($state_sort=="scrap") $menu_html = "<a href='".$iw[m_path]."/main.php?type=scrap&ep=".$iw[store]."&gp=".$iw[group]."&menu=".$hm_code."'>".$hm_name."</a>";
@@ -111,7 +110,7 @@ if (!defined("_INFOWAY_")) exit; // 개별 페이지 접근 불가
 								<div>
 									<h3><?=$menu_html?> <i class='fa fa-chevron-right'></i></h3>
 								</div>
-					<?
+					<?php
 						$sql2 = "select hm_code,cg_code,hm_name,state_sort,hm_link from $iw[home_menu_table] where hm_upper_code = '$hm_code' and hm_deep = 2 and ep_code = '$iw[store]' and gp_code = '$iw[group]' order by hm_order asc,hm_no asc";
 						$result2 = sql_query($sql2);
 						$middle_num = 0;
@@ -146,7 +145,7 @@ if (!defined("_INFOWAY_")) exit; // 개별 페이지 접근 불가
 						<div>
 							<h4><?=$menu_html?></h4>
 							<ul>				
-						<?
+						<?php
 							$sql3 = "select hm_code,cg_code,hm_name,state_sort,hm_link from $iw[home_menu_table] where hm_upper_code = '$hm_code' and hm_deep = 3 and ep_code = '$iw[store]' and gp_code = '$iw[group]' order by hm_order asc,hm_no asc";
 							$result3 = sql_query($sql3);
 							$small_num = 0;
@@ -180,8 +179,7 @@ if (!defined("_INFOWAY_")) exit; // 개별 페이지 접근 불가
 						?>
 							<li><?=$menu_html?>
 							<ul>
-							<?
-
+							<?php
 								$sql4 = "select hm_code,cg_code,hm_name,state_sort,hm_link from $iw[home_menu_table] where hm_upper_code = '$hm_code' and hm_deep = 4 and ep_code = '$iw[store]' and gp_code = '$iw[group]' order by hm_order asc,hm_no asc";
 								$result4 = sql_query($sql4);
 								while($row4 = @sql_fetch_array($result4)){
@@ -213,7 +211,7 @@ if (!defined("_INFOWAY_")) exit; // 개별 페이지 접근 불가
 									if($state_sort=="about") $menu_html = "<a href='".$iw[m_path]."/about_data_view.php?type=about&ep=".$iw[store]."&gp=".$iw[group]."&item=".$cg_code."'>".$hm_name."</a>";
 							?>
 								<li><?=$menu_html?></li>
-							<?
+							<?php
 								}
 								echo "</ul></li>";
 							}
@@ -223,9 +221,7 @@ if (!defined("_INFOWAY_")) exit; // 개별 페이지 접근 불가
 						</div><!-- /cbp-hrsub-inner -->
                     </div>
                 </li>
-				<?
-					}
-				}
+				<?php } ?><?php }
 				?>
 			</ul>
         </div>
@@ -233,3 +229,6 @@ if (!defined("_INFOWAY_")) exit; // 개별 페이지 접근 불가
 		
 
         <div class="clearfix"></div>
+
+
+

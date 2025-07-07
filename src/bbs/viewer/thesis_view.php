@@ -41,6 +41,9 @@ $bt_page = $row["bt_page"];
 	</div>
 </div>
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

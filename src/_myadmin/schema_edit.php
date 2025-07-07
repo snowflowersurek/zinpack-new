@@ -118,9 +118,11 @@ if ($cfgRelation['pdfwork']) {
             ToggleDragDrop('pdflayout');
             //]]>
             </script>
-            <?php
-        }
-    } // end if
+            <?php } ?><?php } // end if
 } // end if ($cfgRelation['pdfwork'])
 
 ?>
+
+
+
+

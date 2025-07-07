@@ -103,6 +103,9 @@ $nt_content = stripslashes($row["nt_content"]);
 	}
 </script>
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

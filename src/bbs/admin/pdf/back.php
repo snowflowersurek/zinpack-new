@@ -5,11 +5,11 @@ if ($iw[type] != "book" || ($iw[level] != "seller" && $iw[level] != "member")) a
 ?>
 <meta http-equiv="content-type" content="text/html; charset=<?=$iw['charset']?>" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-<?
+<?php
 	$upload_path = $_POST[upload_path];
-	$bd_code = trim(mysql_real_escape_string($_POST[bd_code]));
-	$pdf_quality = trim(mysql_real_escape_string($_POST[pdf_quality]));
-	$pdf_size = trim(mysql_real_escape_string($_POST[pdf_size]));
+	$bd_code = trim(mysqli_real_escape_string($iw['connect'], $_POST['bd_code']));
+	$pdf_quality = trim(mysqli_real_escape_string($iw['connect'], $_POST['pdf_quality']));
+	$pdf_size = trim(mysqli_real_escape_string($iw['connect'], $_POST['pdf_size']));
 
 	$abs_dir = $iw[path].$upload_path;
 	
@@ -89,3 +89,6 @@ if ($iw[type] != "book" || ($iw[level] != "seller" && $iw[level] != "member")) a
 
 	alert("PDF 파일이 등록되었습니다.","$iw[admin_path]/pdf/pdf_data_edit.php?type=$iw[type]&ep=$iw[store]&gp=$iw[group]&idx=$bd_code");
 ?>
+
+
+

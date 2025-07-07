@@ -1,16 +1,16 @@
 <?php
 include_once("_common.php");
-if ($iw[type] != "group" || $iw[gp_level] != "gp_admin" || $iw[group] == "all") alert("잘못된 접근입니다!","");
+if (($iw['group'] == "all" && $iw['level'] != "admin") || ($iw['group'] != "all" && $iw['gp_level'] != "gp_admin")) alert("잘못된 접근입니다!","");
 ?>
 <meta http-equiv="content-type" content="text/html; charset=<?=$iw['charset']?>" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-<?
-$gp_language = trim(mysql_real_escape_string($_POST[gp_language]));
-$gp_subject = trim(mysql_real_escape_string($_POST[gp_subject]));
-$gp_content = mysql_real_escape_string($_POST[gp_content]);
-$gp_autocode = trim(mysql_real_escape_string($_POST[gp_autocode]));
-$gp_type = trim(mysql_real_escape_string($_POST[gp_type]));
-$gp_closed = trim(mysql_real_escape_string($_POST[gp_closed]));
+<?php
+$gp_language = trim(sql_real_escape_string($_POST['gp_language']));
+$gp_subject = trim(sql_real_escape_string($_POST['gp_subject']));
+$gp_content = sql_real_escape_string($_POST['gp_content']);
+$gp_autocode = trim(sql_real_escape_string($_POST['gp_autocode']));
+$gp_type = trim(sql_real_escape_string($_POST['gp_type']));
+$gp_closed = trim(sql_real_escape_string($_POST['gp_closed']));
 
 $rowsubject = sql_fetch(" select count(*) as cnt from $iw[group_table] where ep_code = '$iw[store]' and gp_subject = '$gp_subject' and gp_code != '$iw[group]'");
 if ($rowsubject[cnt]) {
@@ -31,3 +31,6 @@ if ($rowsubject[cnt]) {
 	alert("그룹정보가 수정되었습니다.","$iw[admin_path]/group_data_edit.php?type=$iw[type]&ep=$iw[store]&gp=$iw[group]");
 }
 ?>
+
+
+

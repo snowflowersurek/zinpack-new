@@ -60,7 +60,7 @@ $upload_path = "/$row[ep_nick]";
 									</div>
 									<div class="col-sm-6">
 										<div class="dataTable-option-right">
-											<?
+											<?php
 												if($_POST['search']){
 													$search = $_POST['search'];
 													$searchs = $_POST['searchs'];
@@ -74,7 +74,7 @@ $upload_path = "/$row[ep_nick]";
 											?>
 											<form name="search_form" id="search_form" action="<?=$PHP_SELF?>?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>" method="post">
 											<label>검색: <select name="search">
-												<option value="author" <?if($search == "author"){?>selected="selected"<?}?>>작가명</option>
+												<option value="author" <?php if{?>selected="selected"<?php }?>>작가명</option>
 											</select></label><input type="text" name="searchs" value="<?=$searchs?>">
 											</form>
 										</div>
@@ -94,7 +94,7 @@ $upload_path = "/$row[ep_nick]";
 										</tr>
 									</thead>
 									<tbody>
-									<?
+									<?php
 										$sql = "select AuthorID from $iw[publishing_author_table] where ep_code = '$iw[store]' and gp_code = '$iw[group]' $search_sql";
 										$result = sql_query($sql);
 										$total_line = mysql_num_rows($result);
@@ -141,15 +141,15 @@ $upload_path = "/$row[ep_nick]";
 											<td data-title="추천"><?=$author_recommend?></td>
 											<td data-title="댓글"><?=$reply_count?></td>
 											<td data-title="상태">
-												<?if($author_display==1){?>
+												<?php if($author_display==1){?>
 													<span class="label label-sm label-success">노출</span>
-												<?}else{?>
+												<?php }else{?>
 													<span class="label label-sm label-warning">숨김</span>
-												<?}?>											
+												<?php }?>											
 											</td>
 											<td data-title="링크"><a href="<?=$iw['m_path']?>/publishing_author_data_view.php?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$gp_code?>&item=<?=$AuthorID?>"><span class="label label-sm label-default">바로가기</span></a></td>
 										</tr>
-									<?
+									<?php
 										$i++;
 										}
 										if($i==0) echo "<tr><td colspan='8' align='center'>검색된 게시글이 없습니다.</td></tr>";
@@ -168,7 +168,7 @@ $upload_path = "/$row[ep_nick]";
 									<div class="col-sm-6">
 										<div class="dataTable-option-right">
 											<ul class="pagination">
-											<?
+											<?php
 												if($total_page!=0){
 													if($page>$total_page) { $page=$total_page; }
 													$start_page = ((ceil($page/$max_page)-1)*$max_page)+1;
@@ -210,6 +210,9 @@ $upload_path = "/$row[ep_nick]";
 	</div><!-- /container -->
 </div><!-- /end .page-content -->
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

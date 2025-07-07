@@ -75,7 +75,7 @@ $pixel_height_array = array('72px', '144px', '216px', '288px', '360px', '432px',
 							<label class="col-sm-2 control-label">크기</label>
 							<div class="col-sm-3">
 								<select class="col-xs-12" name="hs_size_width" id="hs_size_width">
-									<?
+									<?php
 										for ($i=1; $i<=12; $i++) {
 											echo "<option value='".$i."'>".$i."칸 (".$pixel_width_array[$i-1].")</option>";
 										}
@@ -84,7 +84,7 @@ $pixel_height_array = array('72px', '144px', '216px', '288px', '360px', '432px',
 							</div>
 							<div class="col-sm-3">
 								<select class="col-xs-12" name="hs_size_height" id="hs_size_height" onChange="javascript:topic_custom();">
-									<?
+									<?php
 										for ($i=1; $i<=8; $i++) {
 											echo "<option value='".$i."'>".$i."줄 (".$pixel_height_array[$i-1].")</option>";
 										}
@@ -120,7 +120,7 @@ $pixel_height_array = array('72px', '144px', '216px', '288px', '360px', '432px',
 							<div class="col-sm-8">
 								<select class="col-xs-12 col-sm-8" name="hs_menu" id="hs_menu">
 									<option value="all">전체</option>
-								<?
+								<?php
 									$sql = "select * from $iw[home_menu_table] where ep_code = '$iw[store]' and gp_code = '$iw[group]' and hm_deep = 1 order by hm_order asc,hm_no asc";
 									$result = sql_query($sql);
 									while($row = @sql_fetch_array($result)){
@@ -128,7 +128,7 @@ $pixel_height_array = array('72px', '144px', '216px', '288px', '360px', '432px',
 										$hm_name = stripslashes($row["hm_name"]);
 								?>
 									<option value="<?=$hm_code?>"><?=$hm_name?></option>
-									<?
+									<?php
 										$sql2 = "select * from $iw[home_menu_table] where hm_upper_code = '$hm_code' and hm_deep = 2 and ep_code = '$iw[store]' and gp_code = '$iw[group]' order by hm_order asc,hm_no asc";
 										$result2 = sql_query($sql2);
 										while($row2 = @sql_fetch_array($result2)){
@@ -136,7 +136,7 @@ $pixel_height_array = array('72px', '144px', '216px', '288px', '360px', '432px',
 											$hm_name = stripslashes($row2["hm_name"]);
 									?>
 										<option value="<?=$hm_code?>">└<?=$hm_name?></option>
-										<?
+										<?php
 											$sql3 = "select * from $iw[home_menu_table] where hm_upper_code = '$hm_code' and hm_deep = 3 and ep_code = '$iw[store]' and gp_code = '$iw[group]' order by hm_order asc,hm_no asc";
 											$result3 = sql_query($sql3);
 											while($row3 = @sql_fetch_array($result3)){
@@ -144,8 +144,7 @@ $pixel_height_array = array('72px', '144px', '216px', '288px', '360px', '432px',
 												$hm_name = stripslashes($row3["hm_name"]);
 										?>
 											<option value="<?=$hm_code?>">&nbsp;&nbsp;&nbsp;└<?=$hm_name?></option>
-											<?
-	
+											<?php
 												$sql4 = "select * from $iw[home_menu_table] where hm_upper_code = '$hm_code' and hm_deep = 4 and ep_code = '$iw[store]' and gp_code = '$iw[group]' order by hm_order asc,hm_no asc";
 												$result4 = sql_query($sql4);
 												while($row4 = @sql_fetch_array($result4)){
@@ -153,9 +152,7 @@ $pixel_height_array = array('72px', '144px', '216px', '288px', '360px', '432px',
 													$hm_name = stripslashes($row4["hm_name"]);
 											?>
 												<option value="<?=$hm_code?>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└<?=$hm_name?></option>
-											<?
-												}
-											}
+											<?php } ?><?php }
 										}
 									}
 								?>
@@ -170,7 +167,7 @@ $pixel_height_array = array('72px', '144px', '216px', '288px', '360px', '432px',
 							<label class="col-sm-2 control-label">조회 자료 수</label>
 							<div class="col-sm-8">
 								<select class="col-xs-12 col-sm-8" name="hs_banner_cnt" id="hs_banner_cnt">
-									<?
+									<?php
 										for ($i=1; $i<=10; $i++) {
 											echo "<option value='".$i."'>".$i."건</option>";
 										}
@@ -734,6 +731,9 @@ $pixel_height_array = array('72px', '144px', '216px', '288px', '360px', '432px',
 	}
 </script>
 
-<?
+<?php
 include_once("_cg_tail.php");
 ?>
+
+
+

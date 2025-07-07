@@ -71,3 +71,7 @@ if (!file_exists('libraries/schema/' . $path . '_Relation_Schema.class.php')) {
 }
 require "libraries/schema/".$path.'_Relation_Schema.class.php';
 $obj_schema = eval("new PMA_".$path."_Relation_Schema();");
+
+
+
+

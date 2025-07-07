@@ -34,10 +34,10 @@ $mb_point = $row["mb_point"];
 				</tr>
 			</thead>
 			<tbody>
-			<?
+			<?php
 				$sql = "select * from $iw[point_table] where ep_code = '$iw[store]' and mb_code = '$iw[member]'";
 				$result = sql_query($sql);
-				$total_line = mysql_num_rows($result);
+				$total_line = mysqli_num_rows($result);
 
 				$max_line = 10;
 				$max_page = 5;
@@ -88,10 +88,9 @@ $mb_point = $row["mb_point"];
 					<td data-th="<?=national_language($iw[language],"a0140","사용");?>" class="text-right"><?=$pt_withdraw?></td>
 					<td data-th="<?=national_language($iw[language],"a0141","잔여");?>" class="text-right"><?=$pt_balance?></td>
 					<td data-th="결제" class="text-right">
-					<?if($pt_display==5){?>
+					<?php if($pt_display==5){?>
 						<a class="label label-warning" href="javascript:pay_cas_confirm('<?=$lgd_financename?>', '<?=$lgd_accountnum?>', '<?=$lgd_payer?>', '<?=$lgd_amount?> 원')">입금대기</a>
-					<?}else if($lgd_oid){?>
-						<?
+					<?php }else if($lgd_oid){
 							$mid_pc = "wiz2016";
 							$mid_mobile = "wiz2016";
 							$pay_receipt = "";
@@ -105,10 +104,10 @@ $mb_point = $row["mb_point"];
 						?>
 						<script language="JavaScript" src="http://pgweb.uplus.co.kr<?=$pay_receipt?>/WEB_SERVER/js/receipt_link.js"></script>
 						<a class="label label-success" href="javascript:showReceiptByTID('<?=$lgd_mid?>', '<?=$lgd_tid?>', '<?=$authdata?>')">영수증</a>
-					<?}?>
+					<?php }?>
 					</td>
 				</tr>
-			<?
+			<?php
 				$i++;
 				}
 				if($i==0) echo "<tr><td colspan='6'>".national_language($iw[language],'a0142','포인트 내역이 없습니다.')."</td></tr>";
@@ -119,7 +118,7 @@ $mb_point = $row["mb_point"];
 
 	<div class="pagContainer text-center">
 		<ul class="pagination">
-			<?
+			<?php
 				if($total_page!=0){
 					if($page>$total_page) { $page=$total_page; }
 					$start_page = ((ceil($page/$max_page)-1)*$max_page)+1;
@@ -170,6 +169,9 @@ $mb_point = $row["mb_point"];
 		alert("은행: "+bank+"\n계좌번호: "+account+"\n입금자명: "+user+"\n입금액: "+price);
 	}
 </script>
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

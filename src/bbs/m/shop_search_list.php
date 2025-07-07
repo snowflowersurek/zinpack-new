@@ -30,11 +30,10 @@ if($_POST['search']){
 				<a class="btn btn-theme" href="<?=$iw[m_path]?>/shop_buy_list.php?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>" title="<?=national_language($iw[language],"a0008","구매내역");?>"><i class="fa fa-truck fa-lg"></i></a>
 			</span>
 		</div>
-		<?if($st_shop_list==4 || $st_shop_list==7){?>
+		<?php if($st_shop_list==4 || $st_shop_list==7){?>
 		<div class="masonry">
 			<div class="grid-sizer"></div>
-		<?}?>
-		<?
+		<?php }
 			// 해시태그 검색 여부
 			if (strpos($search, "#") === 0) {
 				$where_clause = "A.sd_tag LIKE '%".str_replace("#", "", $search)."%'";
@@ -50,7 +49,7 @@ if($_POST['search']){
 				WHERE A.ep_code = '$iw[store]' AND A.gp_code='$iw[group]' AND A.sd_display = 1 AND $where_clause 
 			";
 			$result = sql_query($sql);
-			$total_line = mysql_num_rows($result);
+			$total_line = mysqli_num_rows($result);
 
 			if($st_shop_list==5 || $st_shop_list==8){
 				$max_line = ($st_shop_list-2)*6;
@@ -119,19 +118,18 @@ if($_POST['search']){
 				$cg_comment = $row2[cg_comment];
 				$cg_recommend = $row2[cg_recommend];
 
-		?>
-		<?if($st_shop_list==2){?>
+		 if($st_shop_list==2){?>
 			<div class="masonry-item w-6">
 				<div class="box br-theme box-media">
 					<div class="media">
 						<a href="<?=$iw['m_path']?>/<?=$iw[type]?>_data_view.php?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&item=<?=$sd_code?>">
 							<div class="img-frame pull-left">
-								<?if($sd_price != $sd_sale){?>
+								<?php if($sd_price != $sd_sale){?>
 									<span class="sale-tag">
 										<i class="fa fa-certificate fa-5x"></i>
 										<i class="text-icon"><?=$sd_percent?>%</i>
 									</span>
-								<?}?>
+								<?php }?>
 								<table style="height:100%;width:100%;background-color:#000000;"><tr><td>
 								<img class="media-object img-responsive" src="<?=$iw[path]."/".$upload_path."/".$sd_code."/".$sd_image?>" alt="">
 								</td></tr></table>
@@ -139,63 +137,55 @@ if($_POST['search']){
 							<div class="media-body">
 								<h4 class="media-heading box-title"><?=$sd_subject?></h3>
 								<ul class="list-inline">
-									<?if($cg_hit==1){?><li><i class="fa fa-eye"></i> <?=$sd_hit?></li><?}?>
-									<?if($cg_comment==1){?><li><i class="fa fa-comment"></i> <?=$reply_count?></li><?}?>
-									<?if($cg_recommend==1){?><li><i class="fa fa-thumbs-up"></i> <?=$sd_recommend?></li><?}?>
+									<?php if($cg_hit==1){?><li><i class="fa fa-eye"></i> <?=$sd_hit?></li><?php } ?><?php if($cg_comment==1){?><li><i class="fa fa-comment"></i> <?=$reply_count?></li><?php } ?><?php if($cg_recommend==1){?><li><i class="fa fa-thumbs-up"></i> <?=$sd_recommend?></li><?php }?>
 								</ul>
-								<?if($sd_price != $sd_sale){?><p class="line-through"><small><?=national_money($iw[language], $sd_price);?></small></p><?}?>
+								<?php if($sd_price != $sd_sale){?><p class="line-through"><small><?=national_money($iw[language], $sd_price);?></small></p><?php }?>
 								<span class="label label-info"><?=national_money($iw[language], $sd_sale);?></span>
 							</div>
 						</a>
 					</div>
 				</div> <!-- /.box -->
 			</div> <!-- /.masonry-item -->
-		<?}else if($st_shop_list>=3 && $st_shop_list<=8){?>
-			<?if($st_shop_list>=3 && $st_shop_list<=5){?>
-			<div class="<?if($i%3==0){?> clearfix-6<?}?><?if($i%2==0){?> clearfix-4<?}?><?if($i%3!=0&&$i%2!=0&&$i%1==0){?> clearfix-2<?}?>"></div>
-			<?}else if($st_shop_list>=6 && $st_shop_list<=8){?>
-			<div class="<?if($i%6==0){?> clearfix-6<?}?><?if($i%4==0){?> clearfix-4<?}?><?if($i%6!=0&&$i%4!=0&&$i%2==0){?> clearfix-2<?}?>"></div>
-			<?}?>
-			<div class="masonry-item <?if($st_shop_list==5 || $st_shop_list==8){?>h-4<?}else{?>h-full<?}?>  <?if($st_shop_list>=3 && $st_shop_list<=5){?>w-4<?}else{?>w-2<?}?>">
+		<?php }else if($st_shop_list>=3 && $st_shop_list<=8){ if($st_shop_list>=3 && $st_shop_list<=5){?>
+			<div class="<?php if{?> clearfix-6<?php } if{?> clearfix-4<?php } if{?> clearfix-2<?php }?>"></div>
+			<?php }else if($st_shop_list>=6 && $st_shop_list<=8){?>
+			<div class="<?php if{?> clearfix-6<?php } if{?> clearfix-4<?php } if{?> clearfix-2<?php }?>"></div>
+			<?php }?>
+			<div class="masonry-item <?php if{?>h-4<?php }else{?>h-full<?php } if{?>w-4<?php }else{?>w-2<?php }?>">
 				<div class="box br-theme box-media">
 					<div class="media">
 						<a href="<?=$iw['m_path']?>/<?=$iw[type]?>_data_view.php?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&item=<?=$sd_code?>">
 							<div>
-								<?if($sd_price != $sd_sale){?>
+								<?php if($sd_price != $sd_sale){?>
 								<span class="sale-tag">
 									<i class="fa fa-certificate fa-5x"></i>
 									<i class="text-icon"><?=$sd_percent?>%</i>
 								</span>
-								<?}?>
+								<?php }?>
 								<img class="media-object img-responsive" src="<?=$iw[path]."/".$upload_path."/".$sd_code."/".$sd_image?>" alt="">
 							</div>
 							<div class="media-body">
 								<h4 class="media-heading"><?=$sd_subject?></h4>
 								<ul class="list-inline">
-									<?if($cg_hit==1){?><li><i class="fa fa-eye"></i> <?=$sd_hit?></li><?}?>
-									<?if($cg_comment==1){?><li><i class="fa fa-comment"></i> <?=$reply_count?></li><?}?>
-									<?if($cg_recommend==1){?><li><i class="fa fa-thumbs-up"></i> <?=$sd_recommend?></li><?}?>
+									<?php if($cg_hit==1){?><li><i class="fa fa-eye"></i> <?=$sd_hit?></li><?php } ?><?php if($cg_comment==1){?><li><i class="fa fa-comment"></i> <?=$reply_count?></li><?php } ?><?php if($cg_recommend==1){?><li><i class="fa fa-thumbs-up"></i> <?=$sd_recommend?></li><?php }?>
 								</ul>
-								<?if($sd_price != $sd_sale){?><p class="line-through"><small><?=national_money($iw[language], $sd_price);?></small></p><?}?>
+								<?php if($sd_price != $sd_sale){?><p class="line-through"><small><?=national_money($iw[language], $sd_price);?></small></p><?php }?>
 								<p><?=national_money($iw[language], $sd_sale);?></p>
 							</div>
 						</a>
 					</div>
 				</div> <!-- /.box -->
 			</div> <!-- /.masonry-item -->
-		<?}?>
-		<?
+		<?php }
 			$i++;
 			}
-		?>
-
-		<?if($st_shop_list==4 || $st_shop_list==7){?>
+		 if($st_shop_list==4 || $st_shop_list==7){?>
 		</div> <!-- /#grid -->
-		<?}?>
+		<?php }?>
 		<div class="clearfix"></div>
 		<div class="pagContainer text-center">
 			<ul class="pagination">
-				<?
+				<?php
 					$search = urlencode($search);
 					if($total_page!=0){
 						if($page>$total_page) { $page=$total_page; }
@@ -229,6 +219,9 @@ if($_POST['search']){
 	</div> <!-- /.row -->
 </div> <!-- /.content -->
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

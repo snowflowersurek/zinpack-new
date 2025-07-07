@@ -63,3 +63,7 @@ a.close_gis_editor {
 #gis_data_editor input[type="text"] {
     width: 75px;
 }
+
+
+
+

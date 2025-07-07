@@ -48,3 +48,7 @@ function PMA_remove_request_vars(&$whitelist)
     }
 }
 ?>
+
+
+
+

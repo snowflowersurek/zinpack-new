@@ -9,7 +9,8 @@ set_cookie("iw_upload",$upload_path,time()+36000);
 
 include_once("_head.php");
 ?>
-<script language="Javascript" src="/include/ckeditor/ckeditor.js"></script>
+<script src="/include/ckeditor/ckeditor5.js"></script>
+<script src="/include/ckeditor/ckeditor5-adapter.js"></script>
 
 <div class="breadcrumbs" id="breadcrumbs">
 	<ul class="breadcrumb">
@@ -168,14 +169,14 @@ include_once("_head.php");
 	}
 </script>
  
-<?
+<?php
 include_once("_tail.php");
 ?>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script>
 	$(function() {
-		<?for($a=1; $a <= 2; $a++){?>
+		<?php for($a=1; $a <= 2; $a++){?>
 			$("#sc_reserve_date<?echo $a;?>").datepicker({
 				monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
 				dayNamesMin: ['일','월','화','수','목','금','토'],
@@ -189,6 +190,9 @@ include_once("_tail.php");
 				showOn: "focus", //엘리먼트와 이미지 동시 사용
 				yearRange: '2015:<?echo date("Y") + 2;?>' //2005년부터 내년까지(php)
 			});
-		<?}?>
+		<?php }?>
 	});
 </script>
+
+
+

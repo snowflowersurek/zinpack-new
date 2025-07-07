@@ -188,6 +188,9 @@ if (!$row["bd_no"]) alert("잘못된 접근입니다!","");
 	}
 </script>
 
-<?
+<?php
 include_once($iw['admin_path']."/_cg_tail.php");
 ?>
+
+
+

@@ -53,7 +53,7 @@ $gi_datetime_end = $row["gi_datetime_end"];
 							<input type="text" placeholder="입력" class="col-xs-12 col-sm-8" name="gi_name" value="<?=$row[gi_name]?>">
 							<span class="help-inline col-xs-12 col-sm-4">
 								<label class="middle">
-									<input type="checkbox" name="gi_name_check" value="1" <?if($row[gi_name_check]==1){?>checked<?}?>>
+									<input type="checkbox" name="gi_name_check" value="1" <?php if{?>checked<?php }?>>
 									<span class="lbl"> 필수항목</span>
 								</label>
 							</span>
@@ -67,7 +67,7 @@ $gi_datetime_end = $row["gi_datetime_end"];
 							<input type="text" placeholder="입력" class="col-xs-12 col-sm-8" name="gi_mail" value="<?=$row[gi_mail]?>">
 							<span class="help-inline col-xs-12 col-sm-4">
 								<label class="middle">
-									<input type="checkbox" name="gi_mail_check" value="1" <?if($row[gi_mail_check]==1){?>checked<?}?>>
+									<input type="checkbox" name="gi_mail_check" value="1" <?php if{?>checked<?php }?>>
 									<span class="lbl"> 필수항목</span>
 								</label>
 							</span>
@@ -79,18 +79,18 @@ $gi_datetime_end = $row["gi_datetime_end"];
 						<label class="col-sm-1 control-label">연락처</label>
 						<div class="col-sm-11">
 							<select name="gi_tel_1">
-								<option value="010" <?if($gi_tel[0] == "010"){?>checked<?}?>>010</option>
-								<option value="011" <?if($gi_tel[0] == "011"){?>checked<?}?>>011</option>
-								<option value="016" <?if($gi_tel[0] == "016"){?>checked<?}?>>016</option>
-								<option value="017" <?if($gi_tel[0] == "017"){?>checked<?}?>>017</option>
-								<option value="018" <?if($gi_tel[0] == "018"){?>checked<?}?>>018</option>
-								<option value="019" <?if($gi_tel[0] == "019"){?>checked<?}?>>019</option>
+								<option value="010" <?php if{?>checked<?php }?>>010</option>
+								<option value="011" <?php if{?>checked<?php }?>>011</option>
+								<option value="016" <?php if{?>checked<?php }?>>016</option>
+								<option value="017" <?php if{?>checked<?php }?>>017</option>
+								<option value="018" <?php if{?>checked<?php }?>>018</option>
+								<option value="019" <?php if{?>checked<?php }?>>019</option>
 							</select>&nbsp;-&nbsp;
 							<input type="text" placeholder="입력" name="gi_tel_2" maxlength="4" value="<?=$gi_tel[1]?>">&nbsp;-&nbsp;
 							<input type="text" placeholder="입력" name="gi_tel_3" maxlength="4" value="<?=$gi_tel[2]?>">
 							<span>
 								<label class="middle">
-									<input type="checkbox" name="gi_tel_check" value="1" <?if($row[gi_tel_check]==1){?>checked<?}?>>
+									<input type="checkbox" name="gi_tel_check" value="1" <?php if{?>checked<?php }?>>
 									<span class="lbl"> 필수항목</span>
 								</label>
 							</span>
@@ -194,6 +194,9 @@ $gi_datetime_end = $row["gi_datetime_end"];
     }
 </script>
  
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

@@ -62,3 +62,6 @@ array(7) {
 	document.getElementById('LGD_PAYINFO').submit();
 </script>
 </html>
+
+
+

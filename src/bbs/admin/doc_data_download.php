@@ -1,4 +1,4 @@
-<?
+<?php
 include_once("_common.php");
 if ($iw[type] != "doc" || $iw[level] == "guest") alert("잘못된 접근입니다!","");
 
@@ -64,3 +64,6 @@ flush();
 ?>
 <meta http-equiv="content-type" content="text/html; charset=<?=$iw['charset']?>" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+
+
+

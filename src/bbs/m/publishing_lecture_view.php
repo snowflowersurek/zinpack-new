@@ -75,7 +75,7 @@ include_once("_head_share.php");
 		<div class="breadcrumb-box input-group">
 			<ol class="breadcrumb ">
 				<li>
-					<?
+					<?php
 					$row2 = sql_fetch(" select * from $iw[home_menu_table] where ep_code = '$iw[store]' and gp_code='$iw[group]' and hm_code = '$menu'");
 					echo stripslashes($row2[hm_name])." 상세정보";
 					?>
@@ -100,19 +100,19 @@ include_once("_head_share.php");
 						<tr>
 							<th>신청현황</th>
 							<th>
-								<?if($strConfirm == "N"){?>
+								<?php if($strConfirm == "N"){?>
 									<span class="label label-sm label-default">접수대기</span>
-								<?}else if($strConfirm == "A"){?>
+								<?php }else if($strConfirm == "A"){?>
 									<span class="label label-sm label-primary">접수완료</span>
-								<?}else if($strConfirm == "D"){?>
+								<?php }else if($strConfirm == "D"){?>
 									<span class="label label-sm label-warning">도서관연락</span>
-								<?}else if($strConfirm == "J"){?>
+								<?php }else if($strConfirm == "J"){?>
 									<span class="label label-sm label-info">작가섭외</span>
-								<?}else if($strConfirm == "Y"){?>
+								<?php }else if($strConfirm == "Y"){?>
 									<span class="label label-sm label-success">강연확정</span>
-								<?}else if($strConfirm == "C"){?>
+								<?php }else if($strConfirm == "C"){?>
 									<span class="label label-sm label-danger">강연취소</span>
-								<?}?>
+								<?php }?>
 							</th>
 						</tr>
 						<tr>
@@ -158,17 +158,13 @@ include_once("_head_share.php");
 						<tr>
 							<th>희망작가</th>
 							<th style="font-weight: normal;">
-								<?php if ($strAuthor1) {echo "1지망 : $strAuthor1 - $strAuthorBook1";}?>
-								<?php if ($strAuthor2) {echo "<br>2지망 : $strAuthor2 - $strAuthorBook2";}?>
-								<?php if ($strAuthor3) {echo "<br>3지망 : $strAuthor3 - $strAuthorBook3";}?>
+								<?php if ($strAuthor1) {echo "1지망 : $strAuthor1 - $strAuthorBook1";} if ($strAuthor2) {echo "<br>2지망 : $strAuthor2 - $strAuthorBook2";} if ($strAuthor3) {echo "<br>3지망 : $strAuthor3 - $strAuthorBook3";}?>
 							</th>
 						</tr>
 						<tr>
 							<th>희망일정</th>
 							<th style="font-weight: normal;">
-								<?php if ($strDateTxt1) {echo "1지망 : $strDateTxt1";}?>
-								<?php if ($strDateTxt2) {echo "<br>2지망 : $strDateTxt2";}?>
-								<?php if ($strDateTxt3) {echo "<br>3지망 : $strDateTxt3";}?>
+								<?php if ($strDateTxt1) {echo "1지망 : $strDateTxt1";} if ($strDateTxt2) {echo "<br>2지망 : $strDateTxt2";} if ($strDateTxt3) {echo "<br>3지망 : $strDateTxt3";}?>
 							</th>
 						</tr>
 						<tr>
@@ -199,6 +195,9 @@ include_once("_head_share.php");
 	</div> <!-- .row -->
 </div> <!-- .content -->
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

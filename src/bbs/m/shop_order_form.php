@@ -195,8 +195,7 @@ if ($_SERVER["HTTP_HOST"] == "www.aviation.co.kr" || $_SERVER["HTTP_HOST"] == "w
 }
 $URLTORETURN		= $protocol.$_SERVER["SERVER_NAME"]."/bbs/m/shop_pay_res.php?type=".$iw[type]."&ep=".$iw[store]."&gp=".$iw[group];
 $REQURL		= $protocol.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
-?>
-<?if($iw[language]=="ko"){?><div id="LGD_ACTIVEX_DIV"></div><?}?> <!-- ActiveX 설치 안내 Layer 입니다. 수정하지 마세요. -->
+ if($iw['language']=="ko"){?><div id="LGD_ACTIVEX_DIV"></div><?php }?> <!-- ActiveX 설치 안내 Layer 입니다. 수정하지 마세요. -->
 <div class="content">
 	<div class="row">
 	    <div class="col-xs-12">
@@ -211,7 +210,7 @@ $REQURL		= $protocol.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
             </div>
 			
 			<div class="masonry">
-<?if($pay_device == "pc"){?>
+<?php if($pay_device == "pc"){?>
 				<!-- <div class="masonry-item w-full h-full">
 					<div class="box br-theme text-center" style="background:#fbeeed;">
 						<h3 style="margin-top:0;color:#dc3545;">모바일에서 결제해주시기 바랍니다.</h3>
@@ -222,7 +221,7 @@ $REQURL		= $protocol.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
 						</span>
 					</div>
 				</div> -->
-<?}?>
+<?php }?>
 			<form id="LGD_PAYINFO" name="LGD_PAYINFO" action="<?=$form_action?>" method="post">
 				<input type="hidden" name="PAYMENT_DEVICE" value="<?=$pay_device?>" />
 				<input type="hidden" name="LGD_BUYER" value="<?=$row['mb_name']?>" />
@@ -250,12 +249,12 @@ $REQURL		= $protocol.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
 							<div class="row">
 								<div class="col-sm-4">
 									<select class="form-control" name="sr_buy_phone_1">
-										<option value="010" <?if($mb_tel[0] == "010"){?>checked<?}?>>010</option>
-										<option value="011" <?if($mb_tel[0] == "011"){?>checked<?}?>>011</option>
-										<option value="016" <?if($mb_tel[0] == "016"){?>checked<?}?>>016</option>
-										<option value="017" <?if($mb_tel[0] == "017"){?>checked<?}?>>017</option>
-										<option value="018" <?if($mb_tel[0] == "018"){?>checked<?}?>>018</option>
-										<option value="019" <?if($mb_tel[0] == "019"){?>checked<?}?>>019</option>
+										<option value="010" <?php if{?>checked<?php }?>>010</option>
+										<option value="011" <?php if{?>checked<?php }?>>011</option>
+										<option value="016" <?php if{?>checked<?php }?>>016</option>
+										<option value="017" <?php if{?>checked<?php }?>>017</option>
+										<option value="018" <?php if{?>checked<?php }?>>018</option>
+										<option value="019" <?php if{?>checked<?php }?>>019</option>
 									</select>
 								</div>
 								<div class="col-sm-4">
@@ -281,18 +280,18 @@ $REQURL		= $protocol.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
 							<label for=""><?=national_language($iw[language],"a0070","이름");?></label>
 							<input type="text" class="form-control" name="sr_name" value="<?=$row['mb_name']?>" />
 						</div>
-					<?if($iw[language]=="ko"){?>
+					<?php if($iw['language']=="ko"){?>
 						<div class="form-group">
 							<label for="">휴대폰 번호</label>
 							<div class="row">
 								<div class="col-sm-4">
 									<select class="form-control" name="sr_phone_1">
-										<option value="010" <?if($mb_tel[0] == "010"){?>checked<?}?>>010</option>
-										<option value="011" <?if($mb_tel[0] == "011"){?>checked<?}?>>011</option>
-										<option value="016" <?if($mb_tel[0] == "016"){?>checked<?}?>>016</option>
-										<option value="017" <?if($mb_tel[0] == "017"){?>checked<?}?>>017</option>
-										<option value="018" <?if($mb_tel[0] == "018"){?>checked<?}?>>018</option>
-										<option value="019" <?if($mb_tel[0] == "019"){?>checked<?}?>>019</option>
+										<option value="010" <?php if{?>checked<?php }?>>010</option>
+										<option value="011" <?php if{?>checked<?php }?>>011</option>
+										<option value="016" <?php if{?>checked<?php }?>>016</option>
+										<option value="017" <?php if{?>checked<?php }?>>017</option>
+										<option value="018" <?php if{?>checked<?php }?>>018</option>
+										<option value="019" <?php if{?>checked<?php }?>>019</option>
 									</select>
 								</div>
 								<div class="col-sm-4">
@@ -338,7 +337,7 @@ $REQURL		= $protocol.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
 								</div>
 							</div>
 						</div>
-					<?}else if($iw[language]=="en"){?>
+					<?php }else if($iw['language']=="en"){?>
 						<div class="form-group">
 							<label for="">Address Line1</label>
 							<input type="text" class="form-control" name="sr_address" placeholder="Street address, P.O. box, company name, c/o" value="<?=$row['mb_address']?>" />
@@ -361,14 +360,14 @@ $REQURL		= $protocol.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
 							<label for="">Country</label>
 							<select class="form-control" name="sr_address_country">
 								<option value="">--</option>
-							<?
+							<?php
 								$sql2 = "select * from $iw[country_table] order by ct_no asc";
 								$result2 = sql_query($sql2);
 
 								while($row2 = @sql_fetch_array($result2)){
 							?>
-								<option value="<?=$row2["ct_code"];?>" <?if($row['mb_address_country']==$row2["ct_code"]){?>selected<?}?>><?=$row2["ct_name"];?></option>
-							<?}?>
+								<option value="<?=$row2["ct_code"];?>" <?php if{?>selected<?php }?>><?=$row2["ct_name"];?></option>
+							<?php }?>
 							</select>
 						</div>
 						
@@ -386,7 +385,7 @@ $REQURL		= $protocol.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
 							<label for="">Contact Number</label>
 							<input type="text" class="form-control" name="sr_phone_sub" value="<?=$row['mb_tel']?>" />
 						</div>
-					<?}?>					
+					<?php }?>					
 						<div class="form-group">
 							<label for=""><?=national_language($iw[language],"a0246","배송시 요청사항");?></label>
 							<input type="text" class="form-control" name="sr_request" maxlength="100" />
@@ -422,7 +421,7 @@ $REQURL		= $protocol.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
 						</div>
 						
 
-					<?if($iw[language]=="ko"){?>
+					<?php if($iw['language']=="ko"){?>
 						<label for="신용카드" class="radio-inline">
 							<input type="radio" name="LGD_CUSTOM_FIRSTPAY" value="SC0010" id="신용카드" checked> 신용카드
 						</label>
@@ -431,16 +430,16 @@ $REQURL		= $protocol.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
 							<input type="radio" name="LGD_CUSTOM_FIRSTPAY" value="SC0060" id="휴대폰"> 휴대폰
 						</label>
 						-->
-						<? if(!preg_match('/(iPad|iPod|iPhone|Mobile|UP.Browser|Android|BlackBerry|Windows CE|Nokia|webOS|Opera Mini|SonyEricsson|opera mobi|Windows Phone)/i', $_SERVER['HTTP_USER_AGENT'])){?>
+						<?php if(!preg_match('/(iPad|iPod|iPhone|Mobile|UP.Browser|Android|BlackBerry|Windows CE|Nokia|webOS|Opera Mini|SonyEricsson|opera mobi|Windows Phone)/i', $_SERVER['HTTP_USER_AGENT'])){?>
 							<!-- <label for="계좌이체" class="radio-inline">
 								<input type="radio" name="LGD_CUSTOM_FIRSTPAY" value="SC0030" id="계좌이체"> 실시간 계좌이체
 							</label> -->
-						<?}?>
+						<?php }?>
 						<label for="가상계좌" class="radio-inline">
 							<input type="radio" name="LGD_CUSTOM_FIRSTPAY" value="SC0040" id="가상계좌"> 무통장(가상계좌)
 							<span style="color:red;">※ 가상계좌 입금 후 취소 시, 3 영업일 이후에 환불이 완료됩니다.</span>
 						</label>
-					<?}else if($iw[language]=="en"){?>
+					<?php }else if($iw['language']=="en"){?>
 						<label for="PAYPAL" class="radio-inline">
 							<input type="radio" name="LGD_CUSTOM_FIRSTPAY" value="PAYPAL" id="PAYPAL" checked /> Paypal <img src="<?=$iw[design_path]?>/img/pay_paypal.jpg">
 						</label>
@@ -448,12 +447,12 @@ $REQURL		= $protocol.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
 						<label for="ALIPAY" class="radio-inline">
 							<input type="radio" name="LGD_CUSTOM_FIRSTPAY" value="ALIPAY" id="ALIPAY" /> Alipay <img src="<?=$iw[design_path]?>/img/pay_alipay.jpg">
 						</label>
-					<?}?>
+					<?php }?>
 					</div>
 				</div>
 			</form>
 			
-<?if($pay_device == "pc"){?>
+<?php if($pay_device == "pc"){?>
 				<!-- <div class="masonry-item w-full h-full">
 					<div class="box br-theme text-center" style="background:#fbeeed;">
 						<h3 style="margin-top:0;color:#dc3545;">모바일에서 결제해주시기 바랍니다.</h3>
@@ -464,7 +463,7 @@ $REQURL		= $protocol.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
 						</span>
 					</div>
 				</div> -->
-<?}?>
+<?php }?>
 			</div> <!-- /.masonry -->
 			<div class="col-sm-12">
 				<div class="btn-list">
@@ -510,7 +509,7 @@ $REQURL		= $protocol.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
 			LGD_PAYINFO.sr_name.focus();
 			return;
 		}
-		<?if($iw[language]=="ko"){?>
+		<?php if($iw['language']=="ko"){?>
 			if (LGD_PAYINFO.sr_phone_2.value == ""){
 				alert("받는사람 휴대폰 번호를 입력하여 주십시오.");
 				LGD_PAYINFO.sr_phone_2.focus();
@@ -531,7 +530,7 @@ $REQURL		= $protocol.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
 				LGD_PAYINFO.sr_address_sub.focus();
 				return;
 			}
-		<?}else if($iw[language]=="en"){?>
+		<?php }else if($iw['language']=="en"){?>
 			if (LGD_PAYINFO.sr_address.value == ""){
 				alert("<?=national_language($iw[language],'a0090','주소를 입력하여 주십시오.');?>");
 				LGD_PAYINFO.sr_address.focus();
@@ -567,7 +566,7 @@ $REQURL		= $protocol.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
 				LGD_PAYINFO.sr_phone.focus();
 				return;
 			}
-		<?}?>
+		<?php }?>
 		if (point_total < LGD_PAYINFO.sr_point.value){
 			alert("<?=national_language($iw[language],'a0252','사용가능 포인트를 확인하여 주십시오.');?>");
 			LGD_PAYINFO.sr_point.focus();
@@ -595,7 +594,7 @@ $REQURL		= $protocol.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
 			event.returnValue = false;
 		}
 		var e1_value = e1.value;
-		<?php if($iw[language]=="en"){?>
+		<?php if($iw['language']=="en"){?>
 			e1_value = e1.value*1000;
 		<?php }?>
 		var rate_value = Math.ceil(e1_value / Number(LGD_PAYINFO.exchange_rate.value));
@@ -608,10 +607,10 @@ $REQURL		= $protocol.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
 		LGD_PAYINFO.rate_total.value = "- "+commify(rate_value)+" PV";
 
 		var total_return = point_price - e1_value;
-		<?php if($iw[language]=="en"){?>
+		<?php if($iw['language']=="en"){?>
 			total_return = total_return/1000;
 		<?php }?>
-		LGD_PAYINFO.price_total.value = <?php if($iw[language]=="en"){?>"US$ "+<?php }?>commify(total_return)<?php if($iw[language]=="ko"){?>+" 원"<?php }?>;
+		LGD_PAYINFO.price_total.value = <?php if($iw['language']=="en"){?>"US$ "+<?php }?>commify(total_return)<?php if($iw['language']=="ko"){?>+" 원"<?php }?>;
 	}
 	function commify(n){
     var reg = /(^[+-]?\d+)(\d{3})/;
@@ -664,6 +663,9 @@ $REQURL		= $protocol.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
     }
 </script>
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

@@ -84,14 +84,14 @@ $now_end = date("Y-m-d H:i:s", strtotime($end_date.' + 23 hours + 59 minutes + 5
 										<div class="dataTable-option">
 											<label>상태<select size="1" onchange="javascript:select_search('<?echo $PHP_SELF."?type=".$iw[type]."&ep=".$iw[store]."&gp=".$iw[group]."&start_date=".$start_date."&end_date=".$end_date."&search=".$search."&searchs=".$searchs?>',this.value)">
 												<option value="">전체</option>
-												<option value="1" <?if($display == "1"){echo "selected";}?>>주문</option>
-												<option value="2" <?if($display == "2"){echo "selected";}?>>준비</option>
-												<option value="3" <?if($display == "3"){echo "selected";}?>>배송</option>
-												<option value="4" <?if($display == "4"){echo "selected";}?>>완료</option>
-												<option value="8" <?if($display == "8"){echo "selected";}?>>취소</option>
-												<option value="9" <?if($display == "9"){echo "selected";}?>>반품</option>
-												<option value="7" <?if($display == "7"){echo "selected";}?>>결제취소</option>
-												<option value="5" <?if($display == "5"){echo "selected";}?>>입금대기</option>
+												<option value="1" <?php if($display == "1"){echo "selected";}?>>주문</option>
+												<option value="2" <?php if($display == "2"){echo "selected";}?>>준비</option>
+												<option value="3" <?php if($display == "3"){echo "selected";}?>>배송</option>
+												<option value="4" <?php if($display == "4"){echo "selected";}?>>완료</option>
+												<option value="8" <?php if($display == "8"){echo "selected";}?>>취소</option>
+												<option value="9" <?php if($display == "9"){echo "selected";}?>>반품</option>
+												<option value="7" <?php if($display == "7"){echo "selected";}?>>결제취소</option>
+												<option value="5" <?php if($display == "5"){echo "selected";}?>>입금대기</option>
 											</select></label>
 										</div>
 										<form name="date_form" id="date_form" action="<?echo $PHP_SELF."?type=".$iw[type]."&ep=".$iw[store]."&gp=".$iw[group]."&display=".$display."&search=".$search."&searchs=".$searchs?>" method="post">
@@ -104,14 +104,14 @@ $now_end = date("Y-m-d H:i:s", strtotime($end_date.' + 23 hours + 59 minutes + 5
 										<div class="dataTable-option-right">
 											<form name="search_form" id="search_form" action="<?echo $PHP_SELF."?type=".$iw[type]."&ep=".$iw[store]."&gp=".$iw[group]."&display=".$display."&start_date=".$start_date."&end_date=".$end_date?>" method="post">
 											<label>검색: <select name="search">
-												<option value="g" <?if($search == "g"){echo "selected";}?>>전체</option>
-												<option value="a" <?if($search == "a"){echo "selected";}?>>주문번호</option>
-												<option value="j" <?if($search == "j"){echo "selected";}?>>판매자코드</option>
-												<option value="b" <?if($search == "b"){echo "selected";}?>>회원코드</option>
-												<option value="f" <?if($search == "f"){echo "selected";}?>>주문자</option>
-												<option value="h" <?if($search == "h"){echo "selected";}?>>연락처</option>
-												<option value="c" <?if($search == "c"){echo "selected";}?>>상품코드</option>
-												<option value="d" <?if($search == "d"){echo "selected";}?>>옵션번호</option>
+												<option value="g" <?php if($search == "g"){echo "selected";}?>>전체</option>
+												<option value="a" <?php if($search == "a"){echo "selected";}?>>주문번호</option>
+												<option value="j" <?php if($search == "j"){echo "selected";}?>>판매자코드</option>
+												<option value="b" <?php if($search == "b"){echo "selected";}?>>회원코드</option>
+												<option value="f" <?php if($search == "f"){echo "selected";}?>>주문자</option>
+												<option value="h" <?php if($search == "h"){echo "selected";}?>>연락처</option>
+												<option value="c" <?php if($search == "c"){echo "selected";}?>>상품코드</option>
+												<option value="d" <?php if($search == "d"){echo "selected";}?>>옵션번호</option>
 											</select></label><input type="text" name="searchs" value="<?echo urldecode($searchs);?>">
 											</form>
 										</div>
@@ -135,7 +135,7 @@ $now_end = date("Y-m-d H:i:s", strtotime($end_date.' + 23 hours + 59 minutes + 5
 										</tr>
 									</thead>
 									<tbody>
-									<?
+									<?php
 										$sql = "
 											SELECT 
 												a.*, b.*, c.ep_corporate, d.ss_name, e.mb_name 
@@ -226,7 +226,7 @@ $now_end = date("Y-m-d H:i:s", strtotime($end_date.' + 23 hours + 59 minutes + 5
 									?>
 										<tr>
 											<td data-title="주문일자">
-												<?echo $sr_datetime;?>
+												<?php echo $sr_datetime;?>
 											</td>
 											<td data-title="주문번호">
 												<a href="<?echo $PHP_SELF."?type=".$iw[type]."&ep=".$iw[store]."&gp=".$iw[group]."&display=".$display."&start_date=".$start_date."&end_date=".$end_date."&search=a&searchs=".$sr_code?>"><?echo $sr_code;?></a>
@@ -237,25 +237,25 @@ $now_end = date("Y-m-d H:i:s", strtotime($end_date.' + 23 hours + 59 minutes + 5
 											<td data-title="회원">
 												<a href="<?echo $PHP_SELF."?type=".$iw[type]."&ep=".$iw[store]."&gp=".$iw[group]."&display=".$display."&start_date=".$start_date."&end_date=".$end_date."&search=b&searchs=".$mb_code?>"><?echo $mb_name;?><br><?echo $mb_code;?></a></td>
 											<td data-title="주문자">
-												<?echo $sr_buy_name;?>
+												<?php echo $sr_buy_name;?>
 											</td>
 											<td data-title="연락처">
-												<?echo $sr_phone;?>
+												<?php echo $sr_phone;?>
 											</td>
 											<td data-title="상품명/옵션">
 												<b><a href="<?echo $PHP_SELF."?type=".$iw[type]."&ep=".$iw[store]."&gp=".$iw[group]."&display=".$display."&start_date=".$start_date."&end_date=".$end_date."&search=c&searchs=".$sd_code?>"><?echo $srs_subject;?></a></b><br />
-												<span class="cartOption" <?if($srs_display == 7){ echo "style=\"text-decoration:line-through;\""; }?>><a href="<?echo $PHP_SELF."?type=".$iw[type]."&ep=".$iw[store]."&gp=".$iw[group]."&display=".$display."&start_date=".$start_date."&end_date=".$end_date."&search=d&searchs=".$so_no?>"><?echo $srs_name;?></a></span>
+												<span class="cartOption" <?php if($srs_display == 7){ echo "style=\"text-decoration:line-through;\""; }?>><a href="<?echo $PHP_SELF."?type=".$iw[type]."&ep=".$iw[store]."&gp=".$iw[group]."&display=".$display."&start_date=".$start_date."&end_date=".$end_date."&search=d&searchs=".$so_no?>"><?echo $srs_name;?></a></span>
 											</td>
 											<td data-title="상품금액">
-												<?echo national_money($pay_county, $srs_price);?>
+												<?php echo national_money($pay_county, $srs_price);?>
 											</td>
 											<td data-title="수량">
-												<?echo $srs_amount;?></td>
+												<?php echo $srs_amount;?></td>
 											<td data-title="주문문액">
-												<?echo national_money($pay_county, $srs_price * $srs_amount);?>
+												<?php echo national_money($pay_county, $srs_price * $srs_amount);?>
 											</td>
 											<td data-title="부가세">
-												<?
+												<?php
 													if($srs_taxfree==1){
 														echo "면세";
 													}else{
@@ -267,7 +267,7 @@ $now_end = date("Y-m-d H:i:s", strtotime($end_date.' + 23 hours + 59 minutes + 5
 												<a href="<?echo $PHP_SELF."?type=".$iw[type]."&ep=".$iw[store]."&gp=".$iw[group]."&display=".$srs_display."&start_date=".$start_date."&end_date=".$end_date."&search=".$search."&searchs=".$searchs?>"><?echo $displays;?></a>
 											</td>
 										</tr>
-									<?
+									<?php
 										$i ++;
 										}
 										if($i == 0) echo "<tr><td colspan=\"13\" align=\"center\">주문 내역이 없습니다.</td></tr>";
@@ -286,7 +286,7 @@ $now_end = date("Y-m-d H:i:s", strtotime($end_date.' + 23 hours + 59 minutes + 5
 									<div class="col-sm-6">
 										<div class="dataTable-option-right">
 											<ul class="pagination">
-											<?
+											<?php
 												if($total_page != 0){
 													if($page > $total_page) { $page = $total_page; }
 													$start_page = ((ceil($page / $max_page) - 1) * $max_page) + 1;
@@ -370,6 +370,9 @@ $now_end = date("Y-m-d H:i:s", strtotime($end_date.' + 23 hours + 59 minutes + 5
 	}
 </script>
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

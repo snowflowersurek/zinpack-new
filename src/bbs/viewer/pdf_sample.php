@@ -374,9 +374,9 @@ function loadApp() {
 
 	$('.magazine').addClass('animated');
 
-<?if($bd_file[3]==2){?>
+<?php if($bd_file[3]==2){?>
 	$('.magazine').turn("page", <?=$page?>);
-<?}?>
+<?php }?>
 }
 
 // Zoom icon
@@ -421,6 +421,9 @@ yepnope({
 
 
 </script>
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

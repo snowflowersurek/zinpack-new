@@ -133,6 +133,9 @@ if ($row["ss_no"]) $ss_confirm = "true";
 	}
 </script>
  
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

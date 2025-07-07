@@ -160,3 +160,7 @@ function getQueryStatisticsHtml($ServerStatusData)
 }
 
 ?>
+
+
+
+

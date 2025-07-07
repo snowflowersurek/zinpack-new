@@ -126,7 +126,7 @@ if($sr_pay == "lguplus"){
 										</tr>
 									</thead>
 									<tbody>
-									<?
+									<?php
 										$total_price = 0;
 										$total_delivery = 0;
 										$sd_code_check = "";
@@ -192,20 +192,20 @@ if($sr_pay == "lguplus"){
 											<td data-title="선택"><input type="checkbox" id='ct_chk_<?=$i?>' name='ct_chk[<?=$i?>]' value='1'></td>
 											<td data-title="상품명/옵션정보">
 												<a href="<?=$iw['admin_path']?>/shop_data_view.php?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&idx=<?=$sd_code?>"><b><?=$srs_subject?></b></a><br />
-												<span <?if($srs_display==7){?>style="text-decoration:line-through;"<?}?>><?=$srs_name?></span>
+												<span <?php if{?>style="text-decoration:line-through;"<?php }?>><?=$srs_name?></span>
 											</td>
 											<td data-title="상품금액" style="text-align:right"><?=national_money($pay_county, $srs_price);?></td>
 											<td data-title="수량" style="text-align:center"><?=number_format($srs_amount)?></td>
 											<td data-title="주문금액" style="text-align:right"><b><?=national_money($pay_county, $srs_price*$srs_amount);?></b></td>
-											<td data-title="부가세" style="text-align:right"><?if($srs_taxfree==1){?>면세<?}else{?>포함<?}?></td>
-											<?if($rowspan != 0){?>
+											<td data-title="부가세" style="text-align:right"><?php if{?>면세<?php }else{?>포함<?php }?></td>
+											<?php if($rowspan != 0){?>
 											<td data-title="배송비" rowspan="<?=$rowspan?>" style="text-align:right">
-												<?
+												<?php
 													$total_delivery += $srs_delivery_price;
 													echo national_money($pay_county, $srs_delivery_price);
 												?>
 											</td>
-											<?
+											<?php
 													$rowspan = 0;
 												}
 											?>
@@ -228,7 +228,7 @@ if($sr_pay == "lguplus"){
 												<input type="date" name="dlv_datetime[]" value="<?=$srs_delivery_dt?>" />
 											</td>
 										</tr>
-									<?
+									<?php
 										$i++;
 										}
 										if($i==0) echo "<tr><td colspan='8' align='center'>주문 내역이 없습니다.</td></tr>";
@@ -389,16 +389,16 @@ if($sr_pay == "lguplus"){
 						<label class="col-sm-1 control-label">결제금액</label>
 						<div class="col-sm-11">
 							<p class="col-xs-12 col-sm-8 form-control-static">
-								<b style="color:#e73535;"><?=national_money($pay_county, $lgd_amount);?></b> <?if($sr_sum != $lgd_amount){?>(포인트 : <?=$sr_point?>Point)<?}?><br/>
-								<?if($lgd_paytype=="SC0010"){?>
-									신용카드 ( <?=$lgd_financename?> / <?if($lgd_cardnointyn == 0){?>일시불<?}else{?><?=$lgd_cardnointyn?>개월<?}?> )
-								<?}else if($lgd_paytype=="SC0030"){?>
+								<b style="color:#e73535;"><?=national_money($pay_county, $lgd_amount);?></b> <?php if{?>(포인트 : <?=$sr_point?>Point)<?php }?><br/>
+								<?php if($lgd_paytype=="SC0010"){?>
+									신용카드 ( <?=$lgd_financename?> / <?php if{?>일시불<?php }else{?><?=$lgd_cardnointyn?>개월<?php }?> )
+								<?php }else if($lgd_paytype=="SC0030"){?>
 									계좌이체 ( <?=$lgd_financename?> / 계좌주 : <?=$lgd_accountowner?> )
-								<?}else if($lgd_paytype=="SC0060"){?>
+								<?php }else if($lgd_paytype=="SC0060"){?>
 									휴대폰 ( <?=$lgd_financename?> )
-								<?}else if($lgd_paytype=="SC0040"){?>
+								<?php }else if($lgd_paytype=="SC0040"){?>
 									가상계좌 ( <?=$lgd_financename?> <?=$lgd_accountnum?> / 입금자명 : <?=$lgd_payer?> )
-								<?}?>
+								<?php }?>
 							</p>
 						</div>
 					</div>
@@ -539,6 +539,9 @@ if($sr_pay == "lguplus"){
 	}
 </script>
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

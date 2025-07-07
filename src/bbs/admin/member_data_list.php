@@ -48,7 +48,7 @@ include_once("_head.php");
 									<div class="col-sm-6">
 										선택 회원을
 										<select onchange="javascript:level_change(this.value);">
-											<?
+											<?php
 												$level_array = array(); 
 												$sql = "select * from $iw[group_level_table] where ep_code = '$iw[store]' and gp_code = '$iw[group]' and gl_display=1 order by gl_no asc";
 												$result = sql_query($sql);
@@ -56,7 +56,7 @@ include_once("_head.php");
 													array_push($level_array, $row["gl_name"]);
 											?>
 												<option value="<?=$row["gl_level"]?>"><?=$row["gl_name"]?></option>
-											<?
+											<?php
 												}
 											?>
 										</select>(으)로
@@ -66,7 +66,7 @@ include_once("_head.php");
 									</div>
 									<div class="col-sm-6">
 										<div class="dataTable-option-right">
-											<?
+											<?php
 												if($_POST['search']){
 													$search = $_POST['search'];
 													$searchs = $_POST['searchs'];
@@ -86,10 +86,10 @@ include_once("_head.php");
 											?>
 											<form name="search_form" id="search_form" action="<?=$PHP_SELF?>?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>" method="post">
 											<label>검색: <select name="search">
-												<option value="a" <?if($search == "a"){?>selected="selected"<?}?>>회원코드</option>
-												<option value="b" <?if($search == "b"){?>selected="selected"<?}?>>아이디(이메일)</option>
-												<option value="c" <?if($search == "c"){?>selected="selected"<?}?>>이름</option>
-												<option value="d" <?if($search == "d"){?>selected="selected"<?}?>>닉네임</option>
+												<option value="a" <?php if{?>selected="selected"<?php }?>>회원코드</option>
+												<option value="b" <?php if{?>selected="selected"<?php }?>>아이디(이메일)</option>
+												<option value="c" <?php if{?>selected="selected"<?php }?>>이름</option>
+												<option value="d" <?php if{?>selected="selected"<?php }?>>닉네임</option>
 											</select></label><input type="text" name="searchs" value="<?=$searchs?>">
 											</form>
 										</div>
@@ -111,7 +111,7 @@ include_once("_head.php");
 											</tr>
 										</thead>
 										<tbody>
-										<?
+										<?php
 											$sql = "select * from $iw[member_table] where ep_code = '$iw[store]' $search_sql";
 											$result = sql_query($sql);
 											$total_line = mysql_num_rows($result);
@@ -157,14 +157,14 @@ include_once("_head.php");
 												<td data-title="휴대폰"><?=$mb_tel?></td>
 												<td data-title="포인트"><?=$mb_point?></td>
 												<td data-title="인증">
-												<?if($mb_display==0){?>
+												<?php if($mb_display==0){?>
 													<a href="javascript:email_confirm('<?=$iw[type]?>','<?=$iw[store]?>','<?=$iw[group]?>','<?=$mb_no?>');"><span class="label label-sm label-warning">승인하기</span></a>
-												<?}else{?>
+												<?php }else{?>
 													<span class="label label-sm label-success">완료</span>
-												<?}?>
+												<?php }?>
 												</td>
 											</tr>
-										<?
+										<?php
 											$i++;
 											}
 											if($i==0) echo "<tr><td colspan='9' align='center'>검색된 회원정보가 없습니다.</td></tr>";
@@ -186,7 +186,7 @@ include_once("_head.php");
 									<div class="col-sm-6">
 										<div class="dataTable-option-right">
 											<ul class="pagination">
-											<?
+											<?php
 												if($total_page!=0){
 													if($page>$total_page) { $page=$total_page; }
 													$start_page = ((ceil($page/$max_page)-1)*$max_page)+1;
@@ -248,6 +248,9 @@ include_once("_head.php");
 		}
 	}
 </script>
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

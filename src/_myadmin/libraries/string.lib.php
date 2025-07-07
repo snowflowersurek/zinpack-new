@@ -99,3 +99,7 @@ function PMA_STR_isSqlIdentifier($c, $dot_is_valid = false)
 } // end of the "PMA_STR_isSqlIdentifier()" function
 
 ?>
+
+
+
+

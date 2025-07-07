@@ -80,3 +80,6 @@ mysqli_stmt_close($stmt_del_total);
 
 alert(national_language($iw['language'],"a0181","글이 삭제되었습니다."),"{$iw['m_path']}/all_data_list.php?type={$iw['type']}&ep={$iw['store']}&gp={$iw['group']}&menu={$hm_code}");
 ?>
+
+
+

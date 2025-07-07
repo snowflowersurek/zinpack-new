@@ -1246,3 +1246,7 @@ function PMA_buildSQL($db_name, &$tables, &$analyses = null,
 }
 
 ?>
+
+
+
+

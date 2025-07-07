@@ -27,7 +27,7 @@ if ($iw[type] != "book" || ($iw[level] != "seller" && $iw[level] != "member")) a
 		<div class="row">
 			<div class="col-xs-12">
 			<i class='fa fa-spinner fa-spin'></i> PDF 최적화 진행중..
-			<?
+			<?php
 				$p = new ProgressBar();
 				echo '<div style="width: 300px;">';
 				$p->render();
@@ -37,11 +37,9 @@ if ($iw[type] != "book" || ($iw[level] != "seller" && $iw[level] != "member")) a
 		</div>
 	</div>
 </div>
-<?
+<?php
 include_once($iw['admin_path']."/_tail.php");
-?>
 
-<?
 	class ProgressBar {
 			var $percentDone = 0;
 			var $pbid;
@@ -149,12 +147,12 @@ include_once($iw['admin_path']."/_tail.php");
 	}
 
 	$upload_path = $_POST[upload_path];
-	$bd_code = trim(mysql_real_escape_string($_POST[bd_code]));
-	$upload_type = trim(mysql_real_escape_string($_POST[upload_type]));
-	$pdf_quality = trim(mysql_real_escape_string($_POST[pdf_quality]));
-	$pdf_size = trim(mysql_real_escape_string($_POST[pdf_size]));
-	$zip_page = trim(mysql_real_escape_string($_POST[zip_page]));
-	$read_direction = trim(mysql_real_escape_string($_POST[read_direction]));
+	$bd_code = trim(mysqli_real_escape_string($iw['connect'], $_POST['bd_code']));
+	$upload_type = trim(mysqli_real_escape_string($iw['connect'], $_POST['upload_type']));
+	$pdf_quality = trim(mysqli_real_escape_string($iw['connect'], $_POST['pdf_quality']));
+	$pdf_size = trim(mysqli_real_escape_string($iw['connect'], $_POST['pdf_size']));
+	$zip_page = trim(mysqli_real_escape_string($iw['connect'], $_POST['zip_page']));
+	$read_direction = trim(mysqli_real_escape_string($iw['connect'], $_POST['read_direction']));
 	
 	$abs_dir = $iw[path].$upload_path;
 	
@@ -275,3 +273,6 @@ include_once($iw['admin_path']."/_tail.php");
 
 	alert("PDF 원본이 등록되었습니다.","$iw[admin_path]/pdf/pdf_data_edit.php?type=$iw[type]&ep=$iw[store]&gp=$iw[group]&idx=$bd_code");
 ?>
+
+
+

@@ -875,6 +875,9 @@ $page_back_color_over = hex2RGB($ts_page_back_color_over);
 	}
 </script>
  
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

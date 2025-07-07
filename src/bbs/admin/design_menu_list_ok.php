@@ -4,7 +4,7 @@ if (($iw[group] == "all" && $iw[level] != "admin") || ($iw[group] != "all" && $i
 ?>
 <meta http-equiv="content-type" content="text/html; charset=<?=$iw['charset']?>" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-<?
+<?php
 $menu_output = str_replace("\\", "", $_POST[menu_output]);
 $json = json_decode($menu_output, true);
 
@@ -79,3 +79,6 @@ foreach($json as $key => $value)
 echo "<script>window.parent.location.href='$iw[admin_path]/design_menu_list.php?type=$iw[type]&ep=$iw[store]&gp=$iw[group]';</script>";
 
 ?>
+
+
+

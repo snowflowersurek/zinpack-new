@@ -160,3 +160,7 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #f22;}
 }
 
 <?php echo $_SESSION['PMA_Theme']->getCssCodeMirror(); ?>
+
+
+
+

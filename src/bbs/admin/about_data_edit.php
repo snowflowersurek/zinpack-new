@@ -33,7 +33,8 @@ $ad_navigation = $row["ad_navigation"];
 $ad_navigation = str_replace("\'", '&#039;', $ad_navigation);
 $ad_navigation = str_replace('\"', '&quot;', $ad_navigation);
 ?>
-<script language="Javascript" src="/include/ckeditor/ckeditor.js"></script>
+<script src="/include/ckeditor/ckeditor5.js"></script>
+<script src="/include/ckeditor/ckeditor5-adapter.js"></script>
 
 <div class="breadcrumbs" id="breadcrumbs">
 	<ul class="breadcrumb">
@@ -126,6 +127,9 @@ $ad_navigation = str_replace('\"', '&quot;', $ad_navigation);
 	}
 </script>
  
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

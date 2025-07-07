@@ -4,12 +4,12 @@ if (($iw[group] == "all" && $iw[level] != "admin") || ($iw[group] != "all" && $i
 ?>
 <meta http-equiv="content-type" content="text/html; charset=<?=$iw['charset']?>" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-<?
+<?php
 for ($i=0; $i<10; $i++) {
-	$gl_no = trim(mysql_real_escape_string($_POST[gl_no][$i]));
-	$gl_level = trim(mysql_real_escape_string($_POST[gl_level][$i]));
-	$gl_name = trim(mysql_real_escape_string($_POST[gl_name][$i]));
-	$gl_content = trim(mysql_real_escape_string($_POST[gl_content][$i]));
+	$gl_no = trim(mysqli_real_escape_string($iw['connect'], $_POST['gl_no'][$i]));
+	$gl_level = trim(mysqli_real_escape_string($iw['connect'], $_POST['gl_level'][$i]));
+	$gl_name = trim(mysqli_real_escape_string($iw['connect'], $_POST['gl_name'][$i]));
+	$gl_content = trim(mysqli_real_escape_string($iw['connect'], $_POST['gl_content'][$i]));
 
 	$sql = "update $iw[group_level_table] set
 			gl_name = '$gl_name',
@@ -20,3 +20,6 @@ for ($i=0; $i<10; $i++) {
 }
 alert("회원등급 설정이 저장되었습니다.","$iw[admin_path]/group_level_edit.php?type=$iw[type]&ep=$iw[store]&gp=$iw[group]");
 ?>
+
+
+

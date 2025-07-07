@@ -100,7 +100,7 @@ $rowm = sql_fetch($sqlm);
 						<label class="col-sm-1 control-label">카테고리</label>
 						<div class="col-sm-11">
 							<p class="col-xs-12 col-sm-8 form-control-static">
-								<?
+								<?php
 									$cg_code = $row["cg_code"];
 
 									$sql2 = " select * from $iw[home_menu_table] where ep_code = '$iw[store]' and gp_code = '$iw[group]' and state_sort = '$iw[type]' and cg_code = '$cg_code'";
@@ -170,7 +170,7 @@ $rowm = sql_fetch($sqlm);
 						<label class="col-sm-1 control-label">배송코드</label>
 						<div class="col-sm-11">
 							<p class="col-xs-12 col-sm-8 form-control-static">
-							<?
+							<?php
 								$row2 = sql_fetch(" select * from $iw[shop_delivery_table] where ep_code = '$iw[store]' and mb_code = '$row[mb_code]' and sy_code='$row[sy_code]' ");
 								$sy_code = $row2["sy_code"];
 								$sy_price = $row2["sy_price"];
@@ -178,11 +178,11 @@ $rowm = sql_fetch($sqlm);
 								$sy_display = $row2["sy_display"];
 							?>
 								[<?=$sy_code?>] <?=national_money($iw[language], $sy_price);?> (
-								<?if($sy_display == 1){?>
+								<?php if($sy_display == 1){?>
 									<?=national_money($iw[language], $sy_max);?> 이상 무료배송
-								<?}else{?>
+								<?php }else{?>
 									<?=$sy_max?> <?=national_language($iw[language],"a0215","개");?> 이하 묶음배송
-								<?}?>)
+								<?php }?>)
 							</p>
 						</div>
 					</div>
@@ -215,14 +215,14 @@ $rowm = sql_fetch($sqlm);
 								<div style="max-width:700px;">
 								<table class="table table-striped table-bordered table-hover dataTable">
 									<tr><td align="center">No</td><td align="center">옵션명</td><td align="center">수량</td><td align="center">가격</td><td align="center">과세</td></tr>
-							<?
+							<?php
 								$sql2 = "select * from $iw[shop_option_table] where ep_code = '$iw[store]' and gp_code = '$iw[group]' and sd_code = '$sd_code' order by so_no asc";
 								$result2 = sql_query($sql2);
 								$i=0;
 								while($row2 = @sql_fetch_array($result2)){
 							?>
-								 <tr><td><?=$i+1?></td><td><?=$row2["so_name"]?></td><td align="right"><?=number_format($row2["so_amount"])?> 개</td><td align="right"><?=national_money($iw[language], $row2["so_price"]);?></td><td align="center"><?if($row2["so_taxfree"]==1){?>면세상품<?}else{?>부가세포함<?}?></td></tr>
-							<?		
+								 <tr><td><?=$i+1?></td><td><?=$row2["so_name"]?></td><td align="right"><?=number_format($row2["so_amount"])?> 개</td><td align="right"><?=national_money($iw[language], $row2["so_price"]);?></td><td align="center"><?php if{?>면세상품<?php }else{?>부가세포함<?php }?></td></tr>
+							<?php
 									$i++;
 								}
 							?>
@@ -259,6 +259,9 @@ $rowm = sql_fetch($sqlm);
 	}
 </script>
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

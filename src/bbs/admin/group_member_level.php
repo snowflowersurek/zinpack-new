@@ -4,15 +4,14 @@ if ($iw[type] != "group" || $iw[gp_level] != "gp_admin" || $iw[group] == "all") 
 ?>
 <meta http-equiv="content-type" content="text/html; charset=<?=$iw['charset']?>" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-<?
-
-$gm_level = trim(mysql_real_escape_string($_POST[gm_level]));
-$gm_count = trim(mysql_real_escape_string($_POST[gm_count]));
+<?php
+$gm_level = trim(mysqli_real_escape_string($iw['connect'], $_POST['gm_level']));
+$gm_count = trim(mysqli_real_escape_string($iw['connect'], $_POST['gm_count']));
 
 for ($i=0; $i<$gm_count; $i++) {
-	$ct_chk = trim(mysql_real_escape_string($_POST[ct_chk][$i]));
+	$ct_chk = trim(mysqli_real_escape_string($iw['connect'], $_POST['ct_chk'][$i]));
 	if ($ct_chk == 1){
-		$gm_no = trim(mysql_real_escape_string($_POST[gm_no][$i]));
+		$gm_no = trim(mysqli_real_escape_string($iw['connect'], $_POST['gm_no'][$i]));
 
 		$sql = "update $iw[group_member_table] set
 				gm_level = '$gm_level'
@@ -24,3 +23,6 @@ for ($i=0; $i<$gm_count; $i++) {
 
 goto_url("$iw[admin_path]/group_member_list.php?type=$iw[type]&ep=$iw[store]&gp=$iw[group]");
 ?>
+
+
+

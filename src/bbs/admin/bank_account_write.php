@@ -75,12 +75,12 @@ $ac_display = $row["ac_display"];
 						<div class="col-sm-11">
 							<select name="ac_bank">
 								<option value="">은행선택</option>
-								<?
+								<?php
 									$category_arr = array ("기업은행", "국민은행", "우리은행", "신한은행", "하나은행", "농협", "단위농협", "SC제일은행", "외환은행", "한국씨티은행", "우체국", "경남은행", "광주은행", "대구은행", "도이치", "부산은행", "산림조합", "산업은행", "상호저축은행", "새마을금고", "수협", "신협중앙회", "전북은행", "제주은행", "BOA", "HSBC");
 									for ($i=0; $i<count($category_arr); $i++) {
 								?>
-									<option value="<?=$category_arr[$i]?>" <?if($ac_bank == $category_arr[$i]){?>selected<?}?>><?=$category_arr[$i]?></option>
-								<?}?>
+									<option value="<?=$category_arr[$i]?>" <?php if($ac_bank == $category_arr[$i]){?>selected<?php }?>><?=$category_arr[$i]?></option>
+								<?php }?>
 							</select>
 						</div>
 					</div>
@@ -141,6 +141,9 @@ $ac_display = $row["ac_display"];
 	}
 </script>
  
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

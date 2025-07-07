@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 $iw_path = "."; // common.php 의 상대 경로
 include_once("{$iw['path']}/include/common_index.php");
 ?>
@@ -15,3 +15,6 @@ include_once("{$iw['path']}/include/common_index.php");
 <body>
 </body>
 </html>
+
+
+

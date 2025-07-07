@@ -41,11 +41,11 @@ include_once("_head.php");
 					<div class="form-group">
 						<label class="col-sm-1 control-label">배송가격</label>
 						<div class="col-sm-11">
-							<?if($iw[language]=="ko"){?>
+							<?php if($iw[language]=="ko"){?>
 								<input type="text" placeholder="입력" name="sy_price" maxlength="10"> 원
-							<?}else if($iw[language]=="en"){?>
+							<?php }else if($iw[language]=="en"){?>
 								US$ <input type="text" placeholder="입력" name="sy_price" maxlength="8" style="text-align:right"> . <input type="text" placeholder="입력" name="sy_price_2" maxlength="2" size='2'>
-							<?}?>
+							<?php }?>
 						</div>
 					</div>
 					<div class="space-4"></div>
@@ -57,11 +57,11 @@ include_once("_head.php");
 								<label>
 									<input type="radio" name="type" value="1" onclick="javascript:radio_check(this.value);" checked>
 									<span class="lbl"> 무료배송</span>
-									<?if($iw[language]=="ko"){?>
+									<?php if($iw[language]=="ko"){?>
 										<input type="text" placeholder="입력" name="sy_max" maxlength="10"> 원
-									<?}else if($iw[language]=="en"){?>
+									<?php }else if($iw[language]=="en"){?>
 										US$ <input type="text" placeholder="입력" name="sy_max" maxlength="8" style="text-align:right"> . <input type="text" placeholder="입력" name="sy_max_2" maxlength="2" size='2'>
-									<?}?> 이상
+									<?php }?> 이상
 								</label>
 							</div>
 							<div class="radio">
@@ -122,7 +122,7 @@ include_once("_head.php");
 			e1.focus();
 			return;
 		}
-	<?if($iw[language]=="en"){?>
+	<?php if($iw[language]=="en"){?>
 		if (sy_form.sy_price_2.value.length < 2) {
 			alert('소수점이하는 2글자를 입력하여 주십시오.');
 			sy_form.sy_price_2.focus();
@@ -138,7 +138,7 @@ include_once("_head.php");
 			e1.focus();
 			return;
 		}
-	<?}?>
+	<?php }?>
 		if (sy_form.sy_display.value == "1") {
 			if (sy_form.sy_max.value == "") {
 				alert('배송비무료 가격을 입력하여 주십시오.');
@@ -155,7 +155,7 @@ include_once("_head.php");
 				e1.focus();
 				return;
 			}
-			<?if($iw[language]=="en"){?>
+			<?php if($iw[language]=="en"){?>
 				if (sy_form.sy_max_2.value.length < 2) {
 					alert('소수점이하는 2글자를 입력하여 주십시오.');
 					sy_form.sy_max_2.focus();
@@ -171,7 +171,7 @@ include_once("_head.php");
 					e1.focus();
 					return;
 				}
-			<?}?>
+			<?php }?>
 		}
 		if (sy_form.sy_display.value == "2") {
 			if (sy_form.sy_max_3.value == "") {
@@ -198,6 +198,9 @@ include_once("_head.php");
 	}
 </script>
  
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

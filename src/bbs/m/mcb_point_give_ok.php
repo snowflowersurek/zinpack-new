@@ -81,3 +81,6 @@ alert(national_language($iw[language],"a0208","성공적으로 선물하였습�
 ?>
 <meta http-equiv="content-type" content="text/html; charset=<?=$iw['charset']?>" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+
+
+

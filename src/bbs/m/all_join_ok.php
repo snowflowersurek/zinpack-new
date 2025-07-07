@@ -9,7 +9,7 @@ if (!$db_conn) {
 ?>
 <meta http-equiv="content-type" content="text/html; charset=<?=$iw['charset']?>" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-<?
+<?php
 $mb_mail = trim($_POST['mb_mail']);
 $mb_password = trim($_POST['mb_password']);
 $mb_name = trim($_POST['mb_name']);
@@ -173,3 +173,6 @@ if ($ep_jointype == 1 || $ep_jointype == 2 || $ep_jointype == 4 || $ep_jointype 
 	}
 }
 ?>
+
+
+

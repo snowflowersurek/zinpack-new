@@ -14,3 +14,6 @@ PRIMARY KEY (so_no)
 ) DEFAULT CHARSET=utf8";
 
 ?>
+
+
+

@@ -61,22 +61,22 @@ if($_POST['start_date']){
 							<div class="table-set-mobile dataTable-wrapper">
 								<div class="row">
 									<div class="col-sm-6">
-									<?if($iw[group] == "all"){?>
+									<?php if($iw[group] == "all"){?>
 										<div class="dataTable-option">
 											<label>그룹<select size="1" onchange="javascript:select_search('<?=$PHP_SELF?>?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&start_date=<?=$start_date?>&end_date=<?=$end_date?>&search=',this.value)">
 												<option value="">전체</option>
-												<?
+												<?php
 													$sql = "select * from $iw[group_table] where ep_code = '$iw[store]' order by gp_no asc";
 													$result = sql_query($sql);
 
 													$i=0;
 													while($row = @sql_fetch_array($result)){
 												?>
-													<option value="<?=$row["gp_code"]?>" <?if($search == $row["gp_code"]){?>selected="selected"<?}?>><?=$row["gp_subject"]?></option>
-												<?}?>
+													<option value="<?=$row["gp_code"]?>" <?php if{?>selected="selected"<?php }?>><?=$row["gp_subject"]?></option>
+												<?php }?>
 											</select></label>
 										</div>
-									<?}?>
+									<?php }?>
 									</div>
 									<div class="col-sm-6">
 										<div class="dataTable-option-right">
@@ -97,7 +97,7 @@ if($_POST['start_date']){
 										</tr>
 									</thead>
 									<tbody>
-									<?
+									<?php
 										$row = sql_fetch("select sum(ac_page_count) as page_c,sum(ac_ip_count) as ip_c from $iw[access_count_table] where ep_code = '$iw[store]' $search_sql");
 										$ac_page_count = $row["page_c"];
 										$ac_ip_count = $row["ip_c"];
@@ -107,7 +107,7 @@ if($_POST['start_date']){
 											<td data-title="페이지뷰"><b><?=number_format($ac_page_count)?></b></td>
 											<td data-title="방문자"><b><?=number_format($ac_ip_count)?></b></td>
 										</tr>
-									<?
+									<?php
 										$date_count = round(abs(strtotime($end_date)-strtotime($start_date))/86400);
 										for($i=0; $i<=$date_count; $i++){
 											$now_date = date("Y-m-d H:i:s", strtotime(date($start_date).' + '.$i.' days'));
@@ -126,7 +126,7 @@ if($_POST['start_date']){
 											<td data-title="페이지뷰"><?=number_format($ac_page_count)?></td>
 											<td data-title="방문자"><?=number_format($ac_ip_count)?></td>
 										</tr>
-									<?
+									<?php
 										}
 										$chart_title = date("Y-m-d", strtotime(date($start_date)))." ~ ".date("Y-m-d", strtotime(date($end_date)))." ( 페이지뷰 : ".number_format($all_page_count).", 방문자 : ".number_format($all_ip_count)." )";
 									?>
@@ -202,6 +202,9 @@ if($_POST['start_date']){
 		chart.draw(data, options);
 	}
 </script>
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

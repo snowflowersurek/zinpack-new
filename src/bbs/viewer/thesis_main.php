@@ -41,7 +41,7 @@ $bn_font = $row["bn_font"];
 		</div>
 		<div class="book_list_wrap">
 			<ul>
-			<?
+			<?php
 				$sql = "select * from $iw[book_thesis_table] where ep_code = '$iw[store]' and gp_code = '$iw[group]' and bd_code = '$bd_code' order by bt_order asc";
 				$result = sql_query($sql);
 
@@ -56,15 +56,11 @@ $bn_font = $row["bn_font"];
 			?>
 				<li>
 					<a href="javascript:bookPage('<?=$iw[type]?>','<?=$iw[store]?>','<?=$iw[group]?>','<?=$bd_code?>','<?=$bt_no?>');" style="color:<?=$bn_font?>;text-decoration:none;">
-						<?if($bt_title_kr){?><p class="title_kr"><?=$i+1?>. <?=$bt_title_kr?></p><?}?>
-						<?if($bt_sub_kr){?><p class="title_kr">- <?=$bt_sub_kr?></p><?}?>
-						<?if($bt_title_us){?><p class="title_us"><?=$bt_title_us?></p><?}?>
-						<?if($bt_sub_us){?><p class="title_us">- <?=$bt_sub_us?></p><?}?>
-						<?if($bt_person){?><p class="person"><?=$bt_person?></p><?}?>
+						<?php if($bt_title_kr){?><p class="title_kr"><?=$i+1?>. <?=$bt_title_kr?></p><?php } ?><?php if($bt_sub_kr){?><p class="title_kr">- <?=$bt_sub_kr?></p><?php } ?><?php if($bt_title_us){?><p class="title_us"><?=$bt_title_us?></p><?php } ?><?php if($bt_sub_us){?><p class="title_us">- <?=$bt_sub_us?></p><?php } ?><?php if($bt_person){?><p class="person"><?=$bt_person?></p><?php }?>
 					</a>
 				</li>
 
-			<?
+			<?php
 				}
 			?>
 			</ul>
@@ -77,6 +73,9 @@ $bn_font = $row["bn_font"];
 		location.href="thesis_view.php?type="+type+"&ep="+ep+"&gp="+gp+"&idx="+idx+"&no="+no;
 	}
 </script>
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

@@ -4,19 +4,19 @@ if ($iw[type] != "doc" || ($iw[level] != "seller" && $iw[level] != "member")) al
 ?>
 <meta http-equiv="content-type" content="text/html; charset=<?=$iw['charset']?>" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-<?
+<?php
 $upload_path = $_POST[upload_path];
-$dd_code = trim(mysql_real_escape_string($_POST[dd_code]));
-$cg_code = trim(mysql_real_escape_string($_POST[cg_code]));
-$dd_subject = trim(mysql_real_escape_string($_POST[dd_subject]));
-$dd_amount = trim(mysql_real_escape_string($_POST[dd_amount]));
-$dd_type = trim(mysql_real_escape_string($_POST[dd_type]));
-$dd_price = trim(mysql_real_escape_string($_POST[dd_price]));
-$dd_download = trim(mysql_real_escape_string($_POST[dd_download]));
-$dd_tag = trim(mysql_real_escape_string($_POST[dd_tag]));
-$dd_content = mysql_real_escape_string($_POST[contents1]);
-$dd_file_old = mysql_real_escape_string($_POST[dd_file_old]);
-$dd_image_old = trim(mysql_real_escape_string($_POST[dd_image_old]));
+$dd_code = trim(mysqli_real_escape_string($iw['connect'], $_POST['dd_code']));
+$cg_code = trim(mysqli_real_escape_string($iw['connect'], $_POST['cg_code']));
+$dd_subject = trim(mysqli_real_escape_string($iw['connect'], $_POST['dd_subject']));
+$dd_amount = trim(mysqli_real_escape_string($iw['connect'], $_POST['dd_amount']));
+$dd_type = trim(mysqli_real_escape_string($iw['connect'], $_POST['dd_type']));
+$dd_price = trim(mysqli_real_escape_string($iw['connect'], $_POST['dd_price']));
+$dd_download = trim(mysqli_real_escape_string($iw['connect'], $_POST['dd_download']));
+$dd_tag = trim(mysqli_real_escape_string($iw['connect'], $_POST['dd_tag']));
+$dd_content = mysqli_real_escape_string($iw['connect'], $_POST['contents1']);
+$dd_file_old = mysqli_real_escape_string($iw['connect'], $_POST['dd_file_old']);
+$dd_image_old = trim(mysqli_real_escape_string($iw['connect'], $_POST['dd_image_old']));
 
 $row = sql_fetch(" select * from $iw[category_table] where ep_code = '$iw[store]' and gp_code = '$iw[group]' and state_sort = '$iw[type]' and cg_code = '$cg_code' ");
 if (!$row[cg_code]) {
@@ -96,3 +96,6 @@ if (!$row[cg_code]) {
 	alert("컨텐츠정보가 변경되었습니다.","$iw[admin_path]/doc_data_view.php?type=$iw[type]&ep=$iw[store]&gp=$iw[group]&idx=$dd_code");
 }
 ?>
+
+
+

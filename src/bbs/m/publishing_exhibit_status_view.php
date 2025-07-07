@@ -121,15 +121,15 @@ include_once("_head_share.php");
 						<tr>
 							<th>신청현황</th>
 							<th>
-								<?if($stat == "1"){?>
+								<?php if($stat == "1"){?>
 									<span class="label label-sm label-default">대기 중</span>
-								<?}else if($stat == "2"){?>
+								<?php }else if($stat == "2"){?>
 									<span class="label label-sm label-success">전시확정</span>
-								<?}else if($stat == "3"){?>
+								<?php }else if($stat == "3"){?>
 									<span class="label label-sm label-warning">보류</span>
-								<?}else if($stat == "4"){?>
+								<?php }else if($stat == "4"){?>
 									<span class="label label-sm label-danger">전시연기</span>
-								<?}?>
+								<?php }?>
 							</th>
 						</tr>
 						<tr>
@@ -222,6 +222,9 @@ include_once("_head_share.php");
 	</div> <!-- .row -->
 </div> <!-- .content -->
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

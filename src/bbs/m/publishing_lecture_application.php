@@ -15,7 +15,7 @@ $menu = $_GET["menu"];
 			<div class="breadcrumb-box input-group">
 				<ol class="breadcrumb ">
 					<li>
-					<?
+					<?php
 						$hm_code = $_GET["menu"];
 						$hm_row = sql_fetch("select * from $iw[home_menu_table] where ep_code = '$iw[store]' and gp_code='$iw[group]' and hm_code = '$hm_code'");
 						echo stripslashes($hm_row[hm_name])
@@ -579,6 +579,9 @@ function check_form() {
 	}
 </script>
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

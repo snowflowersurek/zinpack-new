@@ -83,14 +83,14 @@ if ($row["ss_no"]) $ss_confirm = "true";
 
 					<div class="clearfix form-actions">
 						<div class="col-md-offset-3 col-md-9">
-							<?if($ss_confirm == "true"){?>
+							<?php if($ss_confirm == "true"){?>
 								등록 신청이 승인대기중입니다.
-							<?}else{?>
+							<?php }else{?>
 								<button class="btn btn-primary" type="button" onclick="javascript:check_form();">
 									<i class="fa fa-check"></i>
 									등록 신청
 								</button>
-							<?}?>
+							<?php }?>
 						</div>
 					</div>
 				</form>
@@ -136,6 +136,9 @@ if ($row["ss_no"]) $ss_confirm = "true";
 	}
 </script>
  
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

@@ -1,4 +1,4 @@
-<?
+<?php
 if (!defined("_INFOWAY_")) exit; // 개별 페이지 접근 불가
 ?>
 <style type="text/css">
@@ -21,7 +21,7 @@ if (!defined("_INFOWAY_")) exit; // 개별 페이지 접근 불가
 				<?=$hs_name?>
 			</div>
 			<div class="text-right col-sm-3 col-xs-3" style="color:<?=$hs_title_color?>;">
-				<?
+				<?php
 					$hs_topic_more_link = "";
 					
 					if($hs_type=="custom"){
@@ -41,7 +41,7 @@ if (!defined("_INFOWAY_")) exit; // 개별 페이지 접근 불가
 			</div>
 		</h3>
 		<ul class="media-list">
-			<?
+			<?php
 				if($hs_topic_type == "title"){
 					$hs_limit = ($hs_size_height-1) * 3;
 					if($hs_size_height == 2){
@@ -484,3 +484,6 @@ if (!defined("_INFOWAY_")) exit; // 개별 페이지 접근 불가
 		</ul>
 	</div>
 </div>
+
+
+

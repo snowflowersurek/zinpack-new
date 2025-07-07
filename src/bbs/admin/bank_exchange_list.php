@@ -128,10 +128,10 @@ $next_month = date('m', strtotime('+1 month'));
 										</tr>
 									</thead>
 									<tbody>
-									<?
+									<?php
 										$sql = "select * from $iw[exchange_table] where ep_code = '$iw[store]' and mb_code='$iw[member]'";
 										$result = sql_query($sql);
-										$total_line = mysql_num_rows($result);
+										$total_line = mysqli_num_rows($result);
 
 										$max_line = 10;
 										$max_page = 10;
@@ -171,9 +171,9 @@ $next_month = date('m', strtotime('+1 month'));
 											<td data-title="은행"><?=$ec_bank?></td>
 											<td data-title="계좌번호"><?=$ec_number?></td>
 											<td data-title="예금주"><?=$ec_holder?></td>
-											<td data-title="지급일"><?if($ec_display==1){?><?=$ec_give_datetime?><?}?></td>
+											<td data-title="지급일"><?php if($ec_display==1){?><?=$ec_give_datetime }?></td>
 										</tr>
-									<?
+									<?php
 										$i++;
 										}
 										if($i==0) echo "<tr><td colspan='7' align='center'>환전내역이 없습니다.</td></tr>";
@@ -185,7 +185,7 @@ $next_month = date('m', strtotime('+1 month'));
 									<div class="col-sm-6">
 										<div class="dataTable-option-right">
 											<ul class="pagination">
-											<?
+											<?php
 												if($total_page!=0){
 													if($page>$total_page) { $page=$total_page; }
 													$start_page = ((ceil($page/$max_page)-1)*$max_page)+1;
@@ -232,6 +232,9 @@ $next_month = date('m', strtotime('+1 month'));
 		ec_form.submit();
 	}
 </script>
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

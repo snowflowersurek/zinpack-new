@@ -10,7 +10,7 @@ include_once("_head.php");
 	</ol>
 </div>
 <div class="content">
-<?
+<?php
 	$mb_code = $_GET['mb'];
 	
 	$row = sql_fetch(" select count(*) as cnt from $iw[member_table] where ep_code ='$iw[store]' and mb_code = '$mb_code' and mb_display = 0 ");
@@ -64,6 +64,9 @@ include_once("_head.php");
 	}
 ?>
 </div>
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

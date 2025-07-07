@@ -12,7 +12,8 @@ $sql = "select * from $iw[enterprise_table] where ep_code = '$iw[store]' and mb_
 $row = sql_fetch($sql);
 if (!$row["ep_no"]) alert("잘못된 접근입니다!","");
 ?>
-<script language="Javascript" src="/include/ckeditor/ckeditor.js"></script>
+<script src="/include/ckeditor/ckeditor5.js"></script>
+<script src="/include/ckeditor/ckeditor5-adapter.js"></script>
 
 <div class="breadcrumbs" id="breadcrumbs">
 	<ul class="breadcrumb">
@@ -107,6 +108,9 @@ if (!$row["ep_no"]) alert("잘못된 접근입니다!","");
 	}
 </script>
  
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

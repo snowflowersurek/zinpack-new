@@ -42,3 +42,7 @@ function PMA_getHtmlForDisplayIndexes()
     return $html_output;
 }
 
+
+
+
+

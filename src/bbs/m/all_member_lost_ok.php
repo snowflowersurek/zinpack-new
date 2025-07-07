@@ -9,7 +9,7 @@ if (!$db_conn) {
 ?>
 <meta http-equiv="content-type" content="text/html; charset=<?=$iw['charset']?>" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-<?
+<?php
 $mb_mail = trim($_POST['mb_mail']);
 $mb_name = trim($_POST['mb_name']);
 
@@ -90,3 +90,6 @@ if (!$rowmail['cnt']) {
 	alert(national_language($iw['language'],"a0124","이메일로 임시비밀번호를 전송하였습니다."),"{$iw['m_path']}/all_login.php?type={$iw['type']}&ep={$iw['store']}&gp={$iw['group']}");
 }
 ?>
+
+
+

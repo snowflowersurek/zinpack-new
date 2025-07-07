@@ -30,3 +30,7 @@ class PMA_StorageEngine_binlog extends PMA_StorageEngine
 }
 
 ?>
+
+
+
+

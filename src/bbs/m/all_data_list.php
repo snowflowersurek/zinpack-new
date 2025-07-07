@@ -97,31 +97,31 @@ if (!$row_menu['hm_no']){
 			<ol class="breadcrumb ">
 				<li><a href="<?=$iw[m_path]?>/all_data_list.php?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&menu=<?=$hm_code?>"><?=$hm_name?></a></li>
 			</ol>
-			<?if($state_sort=="mcb"){?>
+			<?php if($state_sort=="mcb"){?>
 			<span class="input-group-btn">
 				<a class="btn btn-theme" href="javascript:rss_feed('<?=$iw[cookie_domain]?>','<?=$iw[store]?>','<?=$iw[group]?>','<?=$hm_code?>');" title="RSS Feed"><i class="fa fa-rss fa-lg"></i></a>
 				<a class="btn btn-theme" href="<?=$iw['m_path']?>/mcb_data_write.php?type=mcb&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&menu=<?=$hm_code?>" title="<?=national_language($iw[language],"a0198","글쓰기");?>"><i class="fa fa-pencil fa-lg"></i></a>
 			</span>
-			<?}else if($state_sort=="book"){?>
+			<?php }else if($state_sort=="book"){?>
 			<span class="input-group-btn">
 				<a class="btn btn-theme" href="<?=$iw[m_path]?>/all_point_list.php?type=book&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>" title="<?=national_language($iw[language],"a0292","포인트");?>"><i class="fa fa-money fa-lg"></i></a>
 				<a class="btn btn-theme" href="<?=$iw[m_path]?>/book_buy_list.php?type=book&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>" title="<?=national_language($iw[language],"a0005","구매자료");?>"><i class="fa fa-book fa-lg"></i></a>
 			</span>
-			<?}else if($state_sort=="doc"){?>
+			<?php }else if($state_sort=="doc"){?>
 			<span class="input-group-btn">
 				<a class="btn btn-theme" href="<?=$iw[m_path]?>/all_point_list.php?type=doc&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>" title="<?=national_language($iw[language],"a0292","포인트");?>"><i class="fa fa-money fa-lg"></i></a>
 				<a class="btn btn-theme" href="<?=$iw[m_path]?>/doc_buy_list.php?type=doc&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>" title="<?=national_language($iw[language],"a0005","구매자료");?>"><i class="fa fa-cloud-download fa-lg"></i></a>
 			</span>
-			<?}else if($state_sort=="shop"){?>
+			<?php }else if($state_sort=="shop"){?>
 			<span class="input-group-btn">
 				<a class="btn btn-theme" href="<?=$iw[m_path]?>/shop_cart_form.php?type=shop&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>" title="<?=national_language($iw[language],"a0009","장바구니");?>"><i class="fa fa-shopping-cart fa-lg"></i></a>
 				<a class="btn btn-theme" href="<?=$iw[m_path]?>/shop_buy_list.php?type=shop&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>" title="<?=national_language($iw[language],"a0008","구매내역");?>"><i class="fa fa-truck fa-lg"></i></a>
 			</span>
-			<?}?>
+			<?php }?>
 		</div>
 		<div class="masonry js-masonry" data-masonry-options='{ "columnWidth": ".grid-sizer", "itemSelector": ".masonry-item"}'>
 		<div class="grid-sizer"></div>
-		<?
+		<?php
 			if($hm_list_scrap==1){
 				$scrap_type = "list";
 				include_once("all_home_scrap.php");
@@ -129,9 +129,7 @@ if (!$row_menu['hm_no']){
 		?>
 		</div> <!-- /.masonry -->
 		
-		<?if($hm_list_style==1){?>
-		
-			<?if($iw[type] == "mcb"){ //게시판?>
+		<?php if($hm_list_style==1){ if($iw[type] == "mcb"){ //게시판?>
 		<form class="row" style="padding:10px 20px 0px;" action="<?=$PHP_SELF?>" method="get">
 			<input type="hidden" name="type" value="<?=$iw[type]?>" />
 			<input type="hidden" name="ep" value="<?=$iw[store]?>" />
@@ -147,7 +145,7 @@ if (!$row_menu['hm_no']){
 				</div>
 			</div>
 		</form>
-			<?}?>
+			<?php }?>
 		
 		<div class="box br-theme">
 			<table class="table responsive-table">
@@ -156,7 +154,7 @@ if (!$row_menu['hm_no']){
 				</colgroup>
 				<thead>
 				
-				<?if($state_sort == "publishing"){ //출판도서?>
+				<?php if($state_sort == "publishing"){ //출판도서?>
 					<tr>
 						<th>번호</th>
 						<th>도서명</th>
@@ -164,7 +162,7 @@ if (!$row_menu['hm_no']){
 						<th>출판일</th>
 						<th>조회</th>
 					</tr>
-				<?}else if($state_sort == "author"){ //저자?>
+				<?php }else if($state_sort == "author"){ //저자?>
 					<tr>
 						<th>번호</th>
 						<th>작가명</th>
@@ -172,7 +170,7 @@ if (!$row_menu['hm_no']){
 						<th>날짜</th>
 						<th>조회</th>
 					</tr>
-				<?}else if($state_sort == "publishing_contest"){ //공모전?>
+				<?php }else if($state_sort == "publishing_contest"){ //공모전?>
 					<tr>
 						<th>번호</th>
 						<th>제목</th>
@@ -180,7 +178,7 @@ if (!$row_menu['hm_no']){
 						<th>공모상태</th>
 						<th>등록일</th>
 					</tr>
-				<?}else if($state_sort == "exhibit"){ //그림전시?>
+				<?php }else if($state_sort == "exhibit"){ //그림전시?>
 					<tr>
 						<th>번호</th>
 						<th>그림전시명</th>
@@ -188,7 +186,7 @@ if (!$row_menu['hm_no']){
 						<th>액자크기</th>
 						<th>도서정보</th>
 					</tr>
-				<?}else{ //게시판, 이북몰, 컨텐츠몰, 쇼핑몰?>
+				<?php }else{ //게시판, 이북몰, 컨텐츠몰, 쇼핑몰?>
 					<tr>
 						<th>번호</th>
 						<th>제목</th>
@@ -196,14 +194,13 @@ if (!$row_menu['hm_no']){
 						<th>날짜</th>
 						<th>조회</th>
 					</tr>
-				<?}?>
+				<?php }?>
 				</thead>
 				<tbody>
-		<?}else if($hm_list_style==4 || $hm_list_style==7){?>
+		<?php }else if($hm_list_style==4 || $hm_list_style==7){?>
 		<div class="masonry">
 			<div class="grid-sizer"></div>
-		<?}?>
-			<?
+		<?php }
 				$search_sql = "";
                 $keyword = "";
 				if (!empty($_GET['keyword'])) {
@@ -601,40 +598,39 @@ if (!$row_menu['hm_no']){
 						}else{
 							$mb_nick = cut_str($row2_nick["mb_nick"],4,"")."*****";
 						}
-			?>
-			<?if($hm_list_style==1){?>
+			 if($hm_list_style==1){?>
 				<tr>
-					<?if($check_state_sort == "mcb"){ //게시판?>
+					<?php if($check_state_sort == "mcb"){ //게시판?>
 						<td data-th="번호"><?=($total_line - $start_line - $i)?></td>
 						<td data-th="제목">
 							<a href="<?=$iw['m_path']?>/<?=$check_state_sort?>_data_view.php?type=<?=$check_state_sort?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&item=<?=$td_code?>">
-								<?=$md_subject?><?if($reply_count>0){?> [<?=$reply_count?>]<?}?> <?if($md_attach){?><i class="fa fa-file"></i><?}?>
+								<?=$md_subject if{?> [<?=$reply_count?>]<?php } if{?><i class="fa fa-file"></i><?php }?>
 							</a>
 						</td>
 						<td data-th="작성자"><?=$mb_nick?></td>
 						<td data-th="날짜"><?=$md_datetime?></td>
 						<td data-th="조회"><?=$md_hit?></td>
-					<?}else if($check_state_sort == "publishing"){ //출판도서?>
+					<?php }else if($check_state_sort == "publishing"){ //출판도서?>
 						<td data-th="번호"><?=($total_line - $start_line - $i)?></td>
 						<td data-th="도서명">
 							<a href="<?=$iw['m_path']?>/<?=$check_state_sort?>_data_view.php?type=<?=$check_state_sort?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&item=<?=$td_code?>">
-								<?=$BookName?><?if($reply_count>0){?> [<?=$reply_count?>]<?}?>
+								<?=$BookName if{?> [<?=$reply_count?>]<?php }?>
 							</a>
 						</td>
 						<td data-th="저자"><?=$authorName?></td>
 						<td data-th="출판일"><?=$PubDate?></td>
 						<td data-th="조회"><?=$Hit?></td>
-					<?}else if($check_state_sort == "author"){ //저자?>
+					<?php }else if($check_state_sort == "author"){ //저자?>
 						<td data-th="번호"><?=($total_line - $start_line - $i)?></td>
 						<td data-th="작가명">
 							<a href="<?=$iw['m_path']?>/publishing_<?=$check_state_sort?>_data_view.php?type=<?=$check_state_sort?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&item=<?=$td_code?>">
-								<?=$Author?><?if($reply_count>0){?> [<?=$reply_count?>]<?}?>
+								<?=$Author if{?> [<?=$reply_count?>]<?php }?>
 							</a>
 						</td>
 						<td>&nbsp;</td>
 						<td data-th="날짜"><?=$RegDate[0]?></td>
 						<td data-th="조회"><?=$Hit?></td>
-					<?}else if($check_state_sort == "publishing_contest"){ //공모전?>
+					<?php }else if($check_state_sort == "publishing_contest"){ //공모전?>
 						<td data-th="번호"><?=($total_line - $start_line - $i)?></td>
 						<td data-th="제목">
 							<a href="<?=$iw['m_path']?>/publishing_contest_data_view.php?type=<?=$check_state_sort?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&item=<?=$td_code?>">
@@ -643,14 +639,14 @@ if (!$row_menu['hm_no']){
 						</td>
 						<td data-th="공모기간"><?=$start_date." ~ ".$end_date?></td>
 						<td data-th="공모상태">
-							<?if(strtotime($end_date) - strtotime(date("Y-m-d")) > -1){?>
+							<?php if(strtotime($end_date) - strtotime(date("Y-m-d")) > -1){?>
 								<span class="label label-sm label-success">진행 중</span>
-							<?}else{?>
+							<?php }else{?>
 								<span class="label label-sm label-default">마감</span>
-							<?}?>
+							<?php }?>
 						</td>
 						<td data-th="등록일"><?=$reg_date?></td>
-					<?}else if($check_state_sort == "exhibit"){ //그림전시?>
+					<?php }else if($check_state_sort == "exhibit"){ //그림전시?>
 						<td data-th="번호"><?=($total_line - $start_line - $i)?></td>
 						<td data-th="그림전시명">
 							<a href="<?=$iw['m_path']?>/publishing_<?=$check_state_sort?>_data_view.php?type=<?=$check_state_sort?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&menu=<?=$menu?>&item=<?=$td_code?>">
@@ -659,71 +655,66 @@ if (!$row_menu['hm_no']){
 						</td>
 						<td data-th="액자수(점)"><?=$how_many?></td>
 						<td data-th="액자크기"><?=$picture_size?></td>
-						<td data-th="도서정보"><?if($book_id != ""){?><a href="<?=$iw['m_path']?>/publishing_data_view.php?type=publishing&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&item=<?=$book_id?>" target="_blank">바로가기</a><?}?></td>
-					<?}else if($check_state_sort == "book"){ //이북몰?>
+						<td data-th="도서정보"><?php if{?><a href="<?=$iw['m_path']?>/publishing_data_view.php?type=publishing&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&item=<?=$book_id?>" target="_blank">바로가기</a><?php }?></td>
+					<?php }else if($check_state_sort == "book"){ //이북몰?>
 						<td data-th="번호"><?=($total_line - $start_line - $i)?></td>
 						<td data-th="제목">
 							<a href="<?=$iw['m_path']?>/<?=$check_state_sort?>_data_view.php?type=<?=$check_state_sort?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&item=<?=$td_code?>">
-								<?=$bd_subject?><?if($reply_count>0){?> [<?=$reply_count?>]<?}?>
+								<?=$bd_subject if{?> [<?=$reply_count?>]<?php }?>
 							</a>
 						</td>
 						<td data-th="작성자"><?=$mb_nick?></td>
 						<td data-th="날짜"><?=$bd_datetime?></td>
 						<td data-th="조회"><?=$bd_hit?></td>
-					<?}else if($check_state_sort == "doc"){ //컨텐츠몰?>
+					<?php }else if($check_state_sort == "doc"){ //컨텐츠몰?>
 						<td data-th="번호"><?=($total_line - $start_line - $i)?></td>
 						<td data-th="제목">
 							<a href="<?=$iw['m_path']?>/<?=$check_state_sort?>_data_view.php?type=<?=$check_state_sort?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&item=<?=$td_code?>">
-								<?=$dd_subject?><?if($reply_count>0){?> [<?=$reply_count?>]<?}?>
+								<?=$dd_subject if{?> [<?=$reply_count?>]<?php }?>
 							</a>
 						</td>
 						<td data-th="작성자"><?=$mb_nick?></td>
 						<td data-th="날짜"><?=$dd_datetime?></td>
 						<td data-th="조회"><?=$dd_hit?></td>
-					<?}else if($check_state_sort == "shop"){ //쇼핑몰?>
+					<?php }else if($check_state_sort == "shop"){ //쇼핑몰?>
 						<td data-th="번호"><?=($total_line - $start_line - $i)?></td>
 						<td data-th="제목">
 							<a href="<?=$iw['m_path']?>/<?=$check_state_sort?>_data_view.php?type=<?=$check_state_sort?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&item=<?=$td_code?>">
-								<?=$sd_subject?><?if($reply_count>0){?> [<?=$reply_count?>]<?}?>
+								<?=$sd_subject if{?> [<?=$reply_count?>]<?php }?>
 							</a>
 						</td>
 						<td data-th="작성자"><?=$mb_nick?></td>
 						<td data-th="날짜"><?=$sd_datetime?></td>
 						<td data-th="조회"><?=$sd_hit?></td>
-					<?}?>
+					<?php }?>
 
 				</tr>
-			<?}else if($hm_list_style==2){?>
+			<?php }else if($hm_list_style==2){?>
 				<div class="masonry-item w-6 h-2">
 					<div class="box br-theme box-media">
 						<div class="media">
-							<?if($check_state_sort == "mcb"){ //게시판?>
+							<?php if($check_state_sort == "mcb"){ //게시판?>
 							<a href="<?=$iw['m_path']?>/<?=$check_state_sort?>_data_view.php?type=<?=$check_state_sort?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&item=<?=$td_code?>">
 								<div class="img-frame pull-left <?=$no_image?>">
-								<?if($no_image !="no-img"){?><table style="height:100%;width:100%;background-color:#000000;"><tr><td><?}?>
-								<?if($md_file_1){?>
+								<?php if($no_image !="no-img"){?><table style="height:100%;width:100%;background-color:#000000;"><tr><td><?php } ?><?php if($md_file_1){?>
 									<img src="<?=$iw[path]."/mcb".$upload_path."/".$md_code."/".$md_file_1?>" class="media-object img-responsive" alt=""/>
-								<?}else if($md_youtube){?>
+								<?php }else if($md_youtube){?>
 									<img src="//img.youtube.com/vi/<?=$youtube_code?>/0.jpg" class="media-object img-responsive" alt=""/>
-								<?}else if($md_type == 2 && $md_images[1][0]){?>
+								<?php }else if($md_type == 2 && $md_images[1][0]){?>
 									<img src="<?=htmlspecialchars($md_images[1][0]);?>" class="media-object img-responsive" alt=""/>
-								<?}?>
-								<?if($no_image !="no-img"){?></td></tr></table><?}?>
+								<?php } ?><?php if($no_image !="no-img"){?></td></tr></table><?php }?>
 								</div>
 								<div class="media-body">
 									<h4 class="media-heading box-title"><?=$md_subject?></h4>
 									<ul class="list-inline">
-										<?if($cg_hit==1){?><li><i class="fa fa-eye"></i> <?=$md_hit?></li><?}?>
-										<?if($cg_comment==1){?><li><i class="fa fa-comment"></i> <?=$reply_count?></li><?}?>
-										<?if($cg_recommend==1){?><li><i class="fa fa-thumbs-up"></i> <?=$md_recommend?></li><?}?>
-										<?if($md_attach){?>
+										<?php if($cg_hit==1){?><li><i class="fa fa-eye"></i> <?=$md_hit?></li><?php } ?><?php if($cg_comment==1){?><li><i class="fa fa-comment"></i> <?=$reply_count?></li><?php } ?><?php if($cg_recommend==1){?><li><i class="fa fa-thumbs-up"></i> <?=$md_recommend?></li><?php } ?><?php if($md_attach){?>
 										<li><i class="fa fa-file"></i> <?=$md_attach?></li>
-										<?}?>
+										<?php }?>
 									</ul>
 									<p><?=cut_str($md_content,$content_size)?></p>
 								</div>
 							</a>
-							<?}else if($check_state_sort == "publishing"){ //출판도서?>
+							<?php }else if($check_state_sort == "publishing"){ //출판도서?>
 							<a href="<?=$iw['m_path']?>/<?=$check_state_sort?>_data_view.php?type=<?=$check_state_sort?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&item=<?=$td_code?>">
 								<div class="img-frame pull-left">
 									<table style="height:100%;width:100%;background-color:#fff;"><tr><td>
@@ -737,13 +728,11 @@ if (!$row_menu['hm_no']){
 									<p><?=$authorName?></p>
 									<p><?=$PubDate?></p>
 									<ul class="list-inline">
-										<?if($cg_hit==1){?><li><i class="fa fa-eye"></i> <?=$Hit?></li><?}?>
-										<?if($cg_comment==1){?><li><i class="fa fa-comment"></i> <?=$reply_count?></li><?}?>
-										<?if($cg_recommend==1){?><li><i class="fa fa-thumbs-up"></i> <?=$book_recommend?></li><?}?>
+										<?php if($cg_hit==1){?><li><i class="fa fa-eye"></i> <?=$Hit?></li><?php } ?><?php if($cg_comment==1){?><li><i class="fa fa-comment"></i> <?=$reply_count?></li><?php } ?><?php if($cg_recommend==1){?><li><i class="fa fa-thumbs-up"></i> <?=$book_recommend?></li><?php }?>
 									</ul>
 								</div>
 							</a>
-							<?}else if($check_state_sort == "author"){ //저자?>
+							<?php }else if($check_state_sort == "author"){ //저자?>
 							<a href="<?=$iw['m_path']?>/publishing_<?=$check_state_sort?>_data_view.php?type=<?=$check_state_sort?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&item=<?=$td_code?>">
 								<div class="img-frame pull-left">
 									<table style="height:100%;width:100%;background-color:#fff;"><tr><td>
@@ -755,13 +744,11 @@ if (!$row_menu['hm_no']){
 								<div class="media-body">
 									<h4 class="media-heading box-title"><?=$Author?></h4>
 									<ul class="list-inline">
-										<?if($cg_hit==1){?><li><i class="fa fa-eye"></i> <?=$Hit?></li><?}?>
-										<?if($cg_comment==1){?><li><i class="fa fa-comment"></i> <?=$reply_count?></li><?}?>
-										<?if($cg_recommend==1){?><li><i class="fa fa-thumbs-up"></i> <?=$author_recommend?></li><?}?>
+										<?php if($cg_hit==1){?><li><i class="fa fa-eye"></i> <?=$Hit?></li><?php } ?><?php if($cg_comment==1){?><li><i class="fa fa-comment"></i> <?=$reply_count?></li><?php } ?><?php if($cg_recommend==1){?><li><i class="fa fa-thumbs-up"></i> <?=$author_recommend?></li><?php }?>
 									</ul>
 								</div>
 							</a>
-							<?}else if($check_state_sort == "publishing_contest"){ //공모전?>
+							<?php }else if($check_state_sort == "publishing_contest"){ //공모전?>
 							<a href="<?=$iw['m_path']?>/publishing_contest_data_view.php?type=<?=$check_state_sort?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&item=<?=$td_code?>">
 								<div class="img-frame pull-left">
 									<table style="height:100%;width:100%;background-color:#fff;">
@@ -779,7 +766,7 @@ if (!$row_menu['hm_no']){
 									</ul>
 								</div>
 							</a>
-							<?}else if($check_state_sort == "exhibit"){ //그림전시?>
+							<?php }else if($check_state_sort == "exhibit"){ //그림전시?>
 							<a href="<?=$iw['m_path']?>/publishing_<?=$check_state_sort?>_data_view.php?type=<?=$check_state_sort?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&menu=<?=$menu?>&item=<?=$td_code?>">
 								<div class="img-frame pull-left">
 									<table style="height:100%;width:100%;background-color:#fff;"><tr><td>
@@ -794,7 +781,7 @@ if (!$row_menu['hm_no']){
 									<h4 class="media-heading"><?=$picture_name?></h4>
 								</div>
 							</a>
-							<?}else if($check_state_sort == "book"){ //이북몰?>
+							<?php }else if($check_state_sort == "book"){ //이북몰?>
 							<a href="<?=$iw['m_path']?>/<?=$check_state_sort?>_data_view.php?type=<?=$check_state_sort?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&item=<?=$td_code?>">
 								<div>
 									<img class="media-object img-responsive" src="<?=$iw[path]."/book".$upload_path."/".$bd_code."/".$bd_image?>" alt="">
@@ -804,92 +791,82 @@ if (!$row_menu['hm_no']){
 									<ul class="list-inline">
 										<li><i class="fa fa-pencil"></i> <?=$bd_author?></li>
 										<li><i class="fa fa-info-circle"></i> <?=$bd_publisher?></li>
-										<?if($cg_hit==1){?><li><i class="fa fa-eye"></i> <?=$bd_hit?></li><?}?>
-										<?if($cg_comment==1){?><li><i class="fa fa-comment"></i> <?=$reply_count?></li><?}?>
-										<?if($cg_recommend==1){?><li><i class="fa fa-thumbs-up"></i> <?=$bd_recommend?></li><?}?>
+										<?php if($cg_hit==1){?><li><i class="fa fa-eye"></i> <?=$bd_hit?></li><?php } ?><?php if($cg_comment==1){?><li><i class="fa fa-comment"></i> <?=$reply_count?></li><?php } ?><?php if($cg_recommend==1){?><li><i class="fa fa-thumbs-up"></i> <?=$bd_recommend?></li><?php }?>
 									</ul>
-									<p><?if($bd_price=="0"){?><?=national_language($iw[language],"a0265","무료");?><?}else{?><?=$bd_price?> Point<?}?></p>
+									<p><?php if{?><?=national_language($iw[language],"a0265","무료");?><?php }else{?><?=$bd_price?> Point<?php }?></p>
 								</div>
 							</a>
-							<?}else if($check_state_sort == "doc"){ //컨텐츠몰?>
+							<?php }else if($check_state_sort == "doc"){ //컨텐츠몰?>
 							<a href="<?=$iw['m_path']?>/<?=$check_state_sort?>_data_view.php?type=<?=$check_state_sort?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&item=<?=$td_code?>">
 								<div>
-									<?if($dd_image){?>
+									<?php if($dd_image){?>
 										<img class="media-object img-responsive" src="<?=$iw[path]."/doc".$upload_path."/".$dd_code."/".$dd_image?>" alt="">
-									<?}?>
+									<?php }?>
 								</div>
 								<div class="media-body">
 									<h4 class="media-heading"><?=$dd_subject?></h4>
 									<ul class="list-inline">
-										<li><i class="fa fa-info-circle"></i> <?=$dd_amount?> <?if($dd_type==1){?><?=national_language($iw[language],"a0167","쪽");?><?}else if($dd_type==2){?><?=national_language($iw[language],"a0168","분");?><?}?></li>
+										<li><i class="fa fa-info-circle"></i> <?=$dd_amount if{?><?=national_language($iw[language],"a0167","쪽"); }else if($dd_type==2){?><?=national_language($iw[language],"a0168","분"); }?></li>
 										<li><i class="fa fa-file"></i> <?=$dd_file;?>(<?=$dd_file_size?> MB)</li>
-										<?if($cg_hit==1){?><li><i class="fa fa-eye"></i> <?=$dd_hit?></li><?}?>
-										<?if($cg_comment==1){?><li><i class="fa fa-comment"></i> <?=$reply_count?></li><?}?>
-										<?if($cg_recommend==1){?><li><i class="fa fa-thumbs-up"></i> <?=$dd_recommend?></li><?}?>
+										<?php if($cg_hit==1){?><li><i class="fa fa-eye"></i> <?=$dd_hit?></li><?php } ?><?php if($cg_comment==1){?><li><i class="fa fa-comment"></i> <?=$reply_count?></li><?php } ?><?php if($cg_recommend==1){?><li><i class="fa fa-thumbs-up"></i> <?=$dd_recommend?></li><?php }?>
 									</ul>
-									<span class="label label-info"><?if($dd_price=="0"){?><?=national_language($iw[language],"a0265","무료");?><?}else{?><?=$dd_price?> Point<?}?></span>
+									<span class="label label-info"><?php if{?><?=national_language($iw[language],"a0265","무료");?><?php }else{?><?=$dd_price?> Point<?php }?></span>
 								</div>
 							</a>
-							<?}else if($check_state_sort == "shop"){ //쇼핑몰?>
+							<?php }else if($check_state_sort == "shop"){ //쇼핑몰?>
 							<a href="<?=$iw['m_path']?>/<?=$check_state_sort?>_data_view.php?type=<?=$check_state_sort?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&item=<?=$td_code?>">
 								<div>
-									<?if($sd_price != $sd_sale){?>
+									<?php if($sd_price != $sd_sale){?>
 									<span class="sale-tag">
 										<i class="fa fa-certificate fa-5x"></i>
 										<i class="text-icon"><?=$sd_percent?>%</i>
 									</span>
-									<?}?>
+									<?php }?>
 									<img class="media-object img-responsive" src="<?=$iw[path]."/shop".$upload_path."/".$sd_code."/".$sd_image?>" alt="">
 								</div>
 								<div class="media-body">
 									<h4 class="media-heading"><?=$sd_subject?></h4>
 									<ul class="list-inline">
-										<?if($cg_hit==1){?><li><i class="fa fa-eye"></i> <?=$sd_hit?></li><?}?>
-										<?if($cg_comment==1){?><li><i class="fa fa-comment"></i> <?=$reply_count?></li><?}?>
-										<?if($cg_recommend==1){?><li><i class="fa fa-thumbs-up"></i> <?=$sd_recommend?></li><?}?>
+										<?php if($cg_hit==1){?><li><i class="fa fa-eye"></i> <?=$sd_hit?></li><?php } ?><?php if($cg_comment==1){?><li><i class="fa fa-comment"></i> <?=$reply_count?></li><?php } ?><?php if($cg_recommend==1){?><li><i class="fa fa-thumbs-up"></i> <?=$sd_recommend?></li><?php }?>
 									</ul>
-									<?if($sd_price != $sd_sale){?><p class="line-through"><small><?=national_money($iw[language], $sd_price);?></small></p><?}?>
+									<?php if($sd_price != $sd_sale){?><p class="line-through"><small><?=national_money($iw[language], $sd_price);?></small></p><?php }?>
 									<p><?=national_money($iw[language], $sd_sale);?></p>
 								</div>
 							</a>
-							<?}?>
+							<?php }?>
 						</div>
 					</div> <!-- /.box -->
 				</div> <!-- /.masonry-item -->
-			<?}else if($hm_list_style>=3 && $hm_list_style<=8){?>
-				<?if($hm_list_style>=3 && $hm_list_style<=5){?>
-				<div class="<?if($i%3==0){?> clearfix-6<?}?><?if($i%2==0){?> clearfix-4<?}?><?if($i%3!=0&&$i%2!=0&&$i%1==0){?> clearfix-2<?}?>"></div>
-				<?}else if($hm_list_style>=6 && $hm_list_style<=8){?>
-				<div class="<?if($i%6==0){?> clearfix-6<?}?><?if($i%4==0){?> clearfix-4<?}?><?if($i%6!=0&&$i%4!=0&&$i%2==0){?> clearfix-2<?}?>"></div>
-				<?}?>
-				<div class="masonry-item <?if($hm_list_style==5 || $hm_list_style==8){?>h-4<?}else{?>h-full<?}?>  <?if($hm_list_style>=3 && $hm_list_style<=5){?>w-4<?}else{?>w-2<?}?>">
+			<?php }else if($hm_list_style>=3 && $hm_list_style<=8){ if($hm_list_style>=3 && $hm_list_style<=5){?>
+				<div class="<?php if{?> clearfix-6<?php } if{?> clearfix-4<?php } if{?> clearfix-2<?php }?>"></div>
+				<?php }else if($hm_list_style>=6 && $hm_list_style<=8){?>
+				<div class="<?php if{?> clearfix-6<?php } if{?> clearfix-4<?php } if{?> clearfix-2<?php }?>"></div>
+				<?php }?>
+				<div class="masonry-item <?php if{?>h-4<?php }else{?>h-full<?php } if{?>w-4<?php }else{?>w-2<?php }?>">
 					<div class="box br-theme box-media">
 						<div class="media">
-							<?if($check_state_sort == "mcb"){ //게시판?>
+							<?php if($check_state_sort == "mcb"){ //게시판?>
 							<a href="<?=$iw['m_path']?>/<?=$check_state_sort?>_data_view.php?type=<?=$check_state_sort?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&item=<?=$td_code?>">
 								<div>
-									<?if($md_file_1){?>
+									<?php if($md_file_1){?>
 										<img src="<?=$iw[path]."/mcb".$upload_path."/".$md_code."/".$md_file_1?>" class="media-object img-responsive" alt=""/>
-									<?}else if($md_youtube){?>
+									<?php }else if($md_youtube){?>
 										<img src="//img.youtube.com/vi/<?=$youtube_code?>/0.jpg" class="media-object img-responsive" alt=""/>
-									<?}else if($md_type == 2 && $md_images[1][0]){?>
+									<?php }else if($md_type == 2 && $md_images[1][0]){?>
 										<img src="<?=htmlspecialchars($md_images[1][0]);?>" class="media-object img-responsive" alt=""/>
-									<?}?>
+									<?php }?>
 								</div>
 								<div class="media-body">
 									<h4 class="media-heading"><?=$md_subject?></h4>
 									<ul class="list-inline">
-										<?if($cg_hit==1){?><li><i class="fa fa-eye"></i> <?=$md_hit?></li><?}?>
-										<?if($cg_comment==1){?><li><i class="fa fa-comment"></i> <?=$reply_count?></li><?}?>
-										<?if($cg_recommend==1){?><li><i class="fa fa-thumbs-up"></i> <?=$md_recommend?></li><?}?>
-										<?if($md_attach){?>
+										<?php if($cg_hit==1){?><li><i class="fa fa-eye"></i> <?=$md_hit?></li><?php } ?><?php if($cg_comment==1){?><li><i class="fa fa-comment"></i> <?=$reply_count?></li><?php } ?><?php if($cg_recommend==1){?><li><i class="fa fa-thumbs-up"></i> <?=$md_recommend?></li><?php } ?><?php if($md_attach){?>
 										<li><i class="fa fa-file"></i> <?=$md_attach?></li>
-										<?}?>
+										<?php }?>
 									</ul>
 									<p><?=cut_str($md_content,$content_size)?></p>
 								</div>
 							</a>
-							<?}else if($check_state_sort == "publishing"){ //출판도서?>
+							<?php }else if($check_state_sort == "publishing"){ //출판도서?>
 							<a href="<?=$iw['m_path']?>/<?=$check_state_sort?>_data_view.php?type=<?=$check_state_sort?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&item=<?=$td_code?>">
 								<div>
 									<?php if ($BookImage) {?>
@@ -900,13 +877,11 @@ if (!$row_menu['hm_no']){
 									<h4 class="media-heading"><?=$BookName?></h4>
 									<p><?=$authorName?></p>
 									<ul class="list-inline">
-										<?if($cg_hit==1){?><li><i class="fa fa-eye"></i> <?=$Hit?></li><?}?>
-										<?if($cg_comment==1){?><li><i class="fa fa-comment"></i> <?=$reply_count?></li><?}?>
-										<?if($cg_recommend==1){?><li><i class="fa fa-thumbs-up"></i> <?=$book_recommend?></li><?}?>
+										<?php if($cg_hit==1){?><li><i class="fa fa-eye"></i> <?=$Hit?></li><?php } ?><?php if($cg_comment==1){?><li><i class="fa fa-comment"></i> <?=$reply_count?></li><?php } ?><?php if($cg_recommend==1){?><li><i class="fa fa-thumbs-up"></i> <?=$book_recommend?></li><?php }?>
 									</ul>
 								</div>
 							</a>
-							<?}else if($check_state_sort == "author"){ //저자?>
+							<?php }else if($check_state_sort == "author"){ //저자?>
 							<a href="<?=$iw['m_path']?>/publishing_<?=$check_state_sort?>_data_view.php?type=<?=$check_state_sort?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&item=<?=$td_code?>">
 								<div class="img-frame pull-left">
 									<table style="height:100%;width:100%;background-color:#fff;"><tr><td>
@@ -918,13 +893,11 @@ if (!$row_menu['hm_no']){
 								<div class="media-body">
 									<h4 class="media-heading"><?=$Author?></h4>
 									<ul class="list-inline">
-										<?if($cg_hit==1){?><li><i class="fa fa-eye"></i> <?=$Hit?></li><?}?>
-										<?if($cg_comment==1){?><li><i class="fa fa-comment"></i> <?=$reply_count?></li><?}?>
-										<?if($cg_recommend==1){?><li><i class="fa fa-thumbs-up"></i> <?=$author_recommend?></li><?}?>
+										<?php if($cg_hit==1){?><li><i class="fa fa-eye"></i> <?=$Hit?></li><?php } ?><?php if($cg_comment==1){?><li><i class="fa fa-comment"></i> <?=$reply_count?></li><?php } ?><?php if($cg_recommend==1){?><li><i class="fa fa-thumbs-up"></i> <?=$author_recommend?></li><?php }?>
 									</ul>
 								</div>
 							</a>
-							<?}else if($check_state_sort == "publishing_contest"){ //공모전?>
+							<?php }else if($check_state_sort == "publishing_contest"){ //공모전?>
 							<a href="<?=$iw['m_path']?>/publishing_contest_data_view.php?type=<?=$check_state_sort?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&item=<?=$td_code?>">
 								<div class="img-frame pull-left">
 									<table style="height:100%;width:100%;background-color:#fff;">
@@ -942,7 +915,7 @@ if (!$row_menu['hm_no']){
 									</ul>
 								</div>
 							</a>
-							<?}else if($check_state_sort == "exhibit"){ //그림전시?>
+							<?php }else if($check_state_sort == "exhibit"){ //그림전시?>
 							<a href="<?=$iw['m_path']?>/publishing_<?=$check_state_sort?>_data_view.php?type=<?=$check_state_sort?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&menu=<?=$menu?>&item=<?=$td_code?>">
 								<div class="img-frame pull-left">
 									<table style="height:100%;width:100%;background-color:#fff;"><tr><td>
@@ -957,7 +930,7 @@ if (!$row_menu['hm_no']){
 									<h4 class="media-heading"><?=$picture_name?></h4>
 								</div>
 							</a>
-							<?}else if($check_state_sort == "book"){ //이북몰?>
+							<?php }else if($check_state_sort == "book"){ //이북몰?>
 							<a href="<?=$iw['m_path']?>/<?=$check_state_sort?>_data_view.php?type=<?=$check_state_sort?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&item=<?=$td_code?>">
 								<div>
 									<img class="media-object img-responsive" src="<?=$iw[path]."/book".$upload_path."/".$bd_code."/".$bd_image?>" alt="">
@@ -967,76 +940,67 @@ if (!$row_menu['hm_no']){
 									<ul class="list-inline">
 										<li><i class="fa fa-pencil"></i> <?=$bd_author?></li>
 										<li><i class="fa fa-info-circle"></i> <?=$bd_publisher?></li>
-										<?if($cg_hit==1){?><li><i class="fa fa-eye"></i> <?=$bd_hit?></li><?}?>
-										<?if($cg_comment==1){?><li><i class="fa fa-comment"></i> <?=$reply_count?></li><?}?>
-										<?if($cg_recommend==1){?><li><i class="fa fa-thumbs-up"></i> <?=$bd_recommend?></li><?}?>
+										<?php if($cg_hit==1){?><li><i class="fa fa-eye"></i> <?=$bd_hit?></li><?php } ?><?php if($cg_comment==1){?><li><i class="fa fa-comment"></i> <?=$reply_count?></li><?php } ?><?php if($cg_recommend==1){?><li><i class="fa fa-thumbs-up"></i> <?=$bd_recommend?></li><?php }?>
 									</ul>
-									<p><?if($bd_price=="0"){?><?=national_language($iw[language],"a0265","무료");?><?}else{?><?=$bd_price?> Point<?}?></p>
+									<p><?php if{?><?=national_language($iw[language],"a0265","무료");?><?php }else{?><?=$bd_price?> Point<?php }?></p>
 								</div>
 							</a>
-							<?}else if($check_state_sort == "doc"){ //컨텐츠몰?>
+							<?php }else if($check_state_sort == "doc"){ //컨텐츠몰?>
 							<a href="<?=$iw['m_path']?>/<?=$check_state_sort?>_data_view.php?type=<?=$check_state_sort?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&item=<?=$td_code?>">
 								<div>
-									<?if($dd_image){?>
+									<?php if($dd_image){?>
 										<img class="media-object img-responsive" src="<?=$iw[path]."/doc".$upload_path."/".$dd_code."/".$dd_image?>" alt="">
-									<?}?>
+									<?php }?>
 								</div>
 								<div class="media-body">
 									<h4 class="media-heading"><?=$dd_subject?></h4>
 									<ul class="list-inline">
-										<li><i class="fa fa-info-circle"></i> <?=$dd_amount?> <?if($dd_type==1){?><?=national_language($iw[language],"a0167","쪽");?><?}else if($dd_type==2){?><?=national_language($iw[language],"a0168","분");?><?}?></li>
+										<li><i class="fa fa-info-circle"></i> <?=$dd_amount if{?><?=national_language($iw[language],"a0167","쪽"); }else if($dd_type==2){?><?=national_language($iw[language],"a0168","분"); }?></li>
 										<li><i class="fa fa-file"></i> <?=$dd_file;?>(<?=$dd_file_size?> MB)</li>
-										<?if($cg_hit==1){?><li><i class="fa fa-eye"></i> <?=$dd_hit?></li><?}?>
-										<?if($cg_comment==1){?><li><i class="fa fa-comment"></i> <?=$reply_count?></li><?}?>
-										<?if($cg_recommend==1){?><li><i class="fa fa-thumbs-up"></i> <?=$dd_recommend?></li><?}?>
+										<?php if($cg_hit==1){?><li><i class="fa fa-eye"></i> <?=$dd_hit?></li><?php } ?><?php if($cg_comment==1){?><li><i class="fa fa-comment"></i> <?=$reply_count?></li><?php } ?><?php if($cg_recommend==1){?><li><i class="fa fa-thumbs-up"></i> <?=$dd_recommend?></li><?php }?>
 									</ul>
-									<span class="label label-info"><?if($dd_price=="0"){?><?=national_language($iw[language],"a0265","무료");?><?}else{?><?=$dd_price?> Point<?}?></span>
+									<span class="label label-info"><?php if{?><?=national_language($iw[language],"a0265","무료");?><?php }else{?><?=$dd_price?> Point<?php }?></span>
 								</div>
 							</a>
-							<?}else if($check_state_sort == "shop"){ //쇼핑몰?>
+							<?php }else if($check_state_sort == "shop"){ //쇼핑몰?>
 							<a href="<?=$iw['m_path']?>/<?=$check_state_sort?>_data_view.php?type=<?=$check_state_sort?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&item=<?=$td_code?>">
 								<div>
-									<?if($sd_price != $sd_sale){?>
+									<?php if($sd_price != $sd_sale){?>
 									<span class="sale-tag">
 										<i class="fa fa-certificate fa-5x"></i>
 										<i class="text-icon"><?=$sd_percent?>%</i>
 									</span>
-									<?}?>
+									<?php }?>
 									<img class="media-object img-responsive" src="<?=$iw[path]."/shop".$upload_path."/".$sd_code."/".$sd_image?>" alt="">
 								</div>
 								<div class="media-body">
 									<h4 class="media-heading"><?=$sd_subject?></h4>
 									<ul class="list-inline">
-										<?if($cg_hit==1){?><li><i class="fa fa-eye"></i> <?=$sd_hit?></li><?}?>
-										<?if($cg_comment==1){?><li><i class="fa fa-comment"></i> <?=$reply_count?></li><?}?>
-										<?if($cg_recommend==1){?><li><i class="fa fa-thumbs-up"></i> <?=$sd_recommend?></li><?}?>
+										<?php if($cg_hit==1){?><li><i class="fa fa-eye"></i> <?=$sd_hit?></li><?php } ?><?php if($cg_comment==1){?><li><i class="fa fa-comment"></i> <?=$reply_count?></li><?php } ?><?php if($cg_recommend==1){?><li><i class="fa fa-thumbs-up"></i> <?=$sd_recommend?></li><?php }?>
 									</ul>
-									<?if($sd_price != $sd_sale){?><p class="line-through"><small><?=national_money($iw[language], $sd_price);?></small></p><?}?>
+									<?php if($sd_price != $sd_sale){?><p class="line-through"><small><?=national_money($iw[language], $sd_price);?></small></p><?php }?>
 									<p><?=national_money($iw[language], $sd_sale);?></p>
 								</div>
 							</a>
-							<?}?>
+							<?php }?>
 						</div>
 					</div> <!-- /.box -->
 				</div> <!-- /.masonry-item -->
-			<?}?>
-
-			<?		
+			<?php }
 					$i++;
 					}
 				}
-			?>
-		<?if($hm_list_style==1){?>
+			 if($hm_list_style==1){?>
 				</tbody>
 			</table>
 		</div> <!-- /.box -->
-		<?}else if($hm_list_style==4 || $hm_list_style==7){?>
+		<?php }else if($hm_list_style==4 || $hm_list_style==7){?>
 		</div> <!-- /#grid -->
-		<?}?>
+		<?php }?>
 		<div class="clearfix"></div>
 		<div class="pagContainer text-center">
 			<ul class="pagination">
-				<?
+				<?php
 					if($total_page!=0){
 						if($page>$total_page) { $page=$total_page; }
 						$start_page = ((ceil($page/$max_page)-1)*$max_page)+1;
@@ -1069,6 +1033,9 @@ if (!$row_menu['hm_no']){
 	</div> <!-- /.row -->
 </div> <!-- /.content -->
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

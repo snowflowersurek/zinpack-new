@@ -23,7 +23,7 @@ include_once("$iw[admin_path]/_head_sub.php");
 								<div class="row">
 									<div class="col-sm-12">
 										<div class="dataTable-option-right">
-											<?
+											<?php
 												if($_POST['searchby']){
 													$searchby = $_POST['searchby'];
 													$keyword = $_POST['keyword'];
@@ -39,8 +39,8 @@ include_once("$iw[admin_path]/_head_sub.php");
 											?>
 											<form name="search_form" id="search_form" action="<?=$PHP_SELF?>?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>" method="post">
 											<label>검색: <select name="searchby">
-												<option value="bookname" <?if($searchby == "bookname"){?>selected="selected"<?}?>>도서명</option>
-												<option value="author" <?if($searchby == "author"){?>selected="selected"<?}?>>작가명</option>
+												<option value="bookname" <?php if{?>selected="selected"<?php }?>>도서명</option>
+												<option value="author" <?php if{?>selected="selected"<?php }?>>작가명</option>
 											</select></label><input type="text" name="keyword" value="<?=$keyword?>">
 											</form>
 										</div>
@@ -54,7 +54,7 @@ include_once("$iw[admin_path]/_head_sub.php");
 										</tr>
 									</thead>
 									<tbody>
-									<?
+									<?php
 										$sql = "
 											SELECT 
 												B.BookID, B.BookName, T.AuthorID, T.Author 
@@ -122,7 +122,7 @@ include_once("$iw[admin_path]/_head_sub.php");
 											<td data-title="도서명"><a href="javascript:selectBook('<?=$BookID?>','<?=$BookName?>');"><?=$BookName?></a></td>
 											<td data-title="작가명"><?=$Author?></td>
 										</tr>
-									<?
+									<?php
 										$i++;
 										}
 										if($i==0) echo "<tr><td colspan='2' align='center'>검색된 도서가 없습니다.</td></tr>";
@@ -133,7 +133,7 @@ include_once("$iw[admin_path]/_head_sub.php");
 									<div class="col-sm-12">
 										<div class="dataTable-option-right" style="text-align: center;">
 											<ul class="pagination">
-											<?
+											<?php
 												if($total_page!=0){
 													if($page>$total_page) { $page=$total_page; }
 													$start_page = ((ceil($page/$max_page)-1)*$max_page)+1;
@@ -187,3 +187,6 @@ include_once("$iw[admin_path]/_head_sub.php");
 
 </body>
 </html>
+
+
+

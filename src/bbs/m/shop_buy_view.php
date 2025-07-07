@@ -99,7 +99,7 @@ if($sr_pay == "lguplus"){
             </div>
 			<div class="masonry">
 				<div class="grid-sizer"></div>
-				<?
+				<?php
 					$total_price = 0;
 					$total_delivery = 0;
 					$sd_code_check = "";
@@ -172,14 +172,13 @@ if($sr_pay == "lguplus"){
 						}
 
 						$total_price += $srs_price*$srs_amount;
-				?>
-				<?if($i == 0){?>
+				 if($i == 0){?>
 					<div class="masonry-item w-full h-full">
 						<div class="box br-theme">
 							<h4><a href="<?=$iw['m_path']?>/shop_data_view.php?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&item=<?=$sd_code?>"><?=$srs_subject?> 
 									<small>
 										[<?=national_language($iw[language],"a0293","배송비");?>]
-										<?
+										<?php
 											$total_delivery += $srs_delivery_price;
 											echo $sy_name." ".national_money($pay_county, $srs_delivery_price);
 										?>
@@ -200,28 +199,27 @@ if($sr_pay == "lguplus"){
 									</tr>
 								</thead>
 								<tbody>
-							<?}?>
+							<?php }?>
 									<tr>
 										<td data-th="<?=national_language($iw[language],"a0286","상품명");?>"><?=$srs_name?></td>
 										<td data-th="<?=national_language($iw[language],"a0288","갯수");?>"><?=$srs_amount?>개</td>
 										<td data-th="가격"><?=national_money($pay_county, $srs_price*$srs_amount);?></td>
 										<td data-th="<?=national_language($iw[language],"a0289","상태");?>">
-											<span class="label <?if($srs_display==7){?>label-danger<?}else if($srs_display==5){?>label-warning<?}else{?>label-success<?}?>"><?=$qa_display?></span>
-											<?if($srs_delivery_num != "" && ($srs_display==3 || $srs_display==4)){?>
+											<span class="label <?php if{?>label-danger<?php }else if($srs_display==5){?>label-warning<?php }else{?>label-success<?php }?>"><?=$qa_display?></span>
+											<?php if($srs_delivery_num != "" && ($srs_display==3 || $srs_display==4)){?>
 												<a href="javascript:delivery_check('<?=$srs_delivery_num?>','<?=$de_url?>');" title="<?=national_language($iw[language],"a0290","등기번호");?>:<?=$srs_delivery_num?>">
 													<?=national_language($iw[language],"a0290","등기번호");?>
 												</a>
-											<?}?>
+											<?php }?>
 										</td>
 									</tr>
 
-							<?if($rowspan == $i+1){?>
+							<?php if($rowspan == $i+1){?>
 								</tbody>
 							</table>
 						</div> <!-- /.box -->
 					</div> <!-- /.masonry-item -->
-					<?}?>
-					<?
+					<?php }
 							$i++;
 						}
                         mysqli_stmt_close($stmt);
@@ -235,20 +233,19 @@ if($sr_pay == "lguplus"){
 									<li><?=national_language($iw[language],"a0216","구매일");?> : <?=$sr_datetime?></li>
 									<li><?=national_language($iw[language],"a0218","주문금액");?> : <?=national_money($pay_county, $sr_sum);?> (<?=national_language($iw[language],"a0292","포인트");?> : <?=$sr_point?>Point)</li>
 									<li>
-										<?=national_language($iw[language],"a0219","결제금액");?> : <?=national_money($pay_county, $lgd_amount);?> 
-										<?if($lgd_paytype=="SC0010"){?>
-											/ 신용카드 ( <?=$lgd_financename?> / <?if($lgd_cardnointyn == 0){?>일시불<?}else{?><?=$lgd_cardinstallmonth?>개월<?}?> )
-										<?}else if($lgd_paytype=="SC0030"){?>
+										<?=national_language($iw[language],"a0219","결제금액");?> : <?=national_money($pay_county, $lgd_amount); if($lgd_paytype=="SC0010"){?>
+											/ 신용카드 ( <?=$lgd_financename?> / <?php if{?>일시불<?php }else{?><?=$lgd_cardinstallmonth?>개월<?php }?> )
+										<?php }else if($lgd_paytype=="SC0030"){?>
 											/ 계좌이체 ( <?=$lgd_financename?> / 계좌주 : <?=$lgd_accountowner?> )
-										<?}else if($lgd_paytype=="SC0060"){?>
+										<?php }else if($lgd_paytype=="SC0060"){?>
 											/ 휴대폰 ( <?=$lgd_financename?> )
-										<?}else if($lgd_paytype=="SC0040"){?>
+										<?php }else if($lgd_paytype=="SC0040"){?>
 											/ 가상계좌 ( <?=$lgd_financename?> <?=$lgd_accountnum?> / 입금자명 : <?=$lgd_payer?> )
-										<?}else if($sr_pay == "paypal"){?>
+										<?php }else if($sr_pay == "paypal"){?>
 											/ PAYPAL
-										<?}else if($sr_pay == "alipay"){?>
+										<?php }else if($sr_pay == "alipay"){?>
 											/ ALIPAY
-										<?}?>
+										<?php }?>
 									</li>
 								</ul>
 							</div>
@@ -257,14 +254,14 @@ if($sr_pay == "lguplus"){
 									<li><?=national_language($iw[language],"a0070","이름");?> : <?=$sr_name?></li>
 									<li><?=national_language($iw[language],"a0217","배송주소");?> : <?=$address?></li>
 									<li><?=national_language($iw[language],"a0076","휴대폰 번호");?> : <?=$sr_phone?> / <?=$sr_phone_sub?></li>
-									<?if($sr_pay == "lguplus" && $lgd_display=='1'){
+									<?php if($sr_pay == "lguplus" && $lgd_display=='1'){
 												$receipt = get_receipt($sr_code, $ptype);
 												if($receipt[url]){
 									?>
 									<li>
 										<a href="javascript:win_open('<?=$receipt[url]?>', '<?=$receipt[txt]?>', 'width=500,height=800')">[ 영수증 출력 ]</a>
 									</li>
-									<? } } ?>
+									<?php } } ?>
 								</ul>
 							</div>
 						</div>
@@ -293,6 +290,9 @@ if($sr_pay == "lguplus"){
 	}
 </script>
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

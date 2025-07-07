@@ -92,4 +92,6 @@ function mailer($fromName, $from, $to, $subject, $content, $isHtml) {
 	
 	return $result;
 }
-?>
+
+
+

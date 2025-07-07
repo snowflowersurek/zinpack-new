@@ -347,3 +347,7 @@ if (isset($GLOBALS['sl_configure'])) {
     PMA_replication_gui_changemaster("slave_changemaster");
 }
 ?>
+
+
+
+

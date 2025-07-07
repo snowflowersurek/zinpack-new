@@ -4,7 +4,7 @@ if ($iw[type] != "shop" || !($iw[level] == "seller" || $iw[level] == "admin")) a
 ?>
 <meta http-equiv="content-type" content="text/html; charset=<?=$iw['charset']?>" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-<?
+<?php
 $sy_no = trim(mysql_real_escape_string($_POST[sy_no]));
 $sy_price = trim(mysql_real_escape_string($_POST[sy_price]));
 $sy_name = trim(mysql_real_escape_string($_POST[sy_name]));
@@ -36,3 +36,6 @@ sql_query($sql);
 alert("배송코드 정보가 변경되었습니다.","$iw[admin_path]/shop_delivery_list.php?type=$iw[type]&ep=$iw[store]&gp=$iw[group]");
 
 ?>
+
+
+

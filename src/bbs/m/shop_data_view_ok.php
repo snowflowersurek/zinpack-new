@@ -9,7 +9,7 @@ if (!$db_conn) {
 ?>
 <meta http-equiv="content-type" content="text/html; charset=<?=$iw['charset']?>" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-<?
+<?php
 	$sd_code = trim($_POST['sd_code']);
 	$sd_mb_code = trim($_POST['sd_mb_code']);
 	$sy_group = trim($_POST['sy_group']);
@@ -59,3 +59,6 @@ if (!$db_conn) {
 
 	goto_url("{$iw['m_path']}/shop_cart_form.php?type={$iw['type']}&ep={$iw['store']}&gp={$iw['group']}");
 ?>
+
+
+

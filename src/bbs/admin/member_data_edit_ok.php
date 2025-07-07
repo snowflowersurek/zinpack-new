@@ -4,27 +4,27 @@ if ($iw['level'] != "admin") alert("잘못된 접근입니다!","");
 ?>
 <meta http-equiv="content-type" content="text/html; charset=<?=$iw['charset']?>" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-<?
-$mb_password = trim(mysql_real_escape_string($_POST[mb_password]));
-$mb_code = trim(mysql_real_escape_string($_POST[mb_code]));
-$mb_name = trim(mysql_real_escape_string($_POST[mb_name]));
-$mb_nick = trim(mysql_real_escape_string($_POST[mb_nick]));
-$mb_address = trim(mysql_real_escape_string($_POST[mb_address]));
-$mb_address_sub = trim(mysql_real_escape_string($_POST[mb_address_sub]));
-$mb_sub_mail = trim(mysql_real_escape_string($_POST[mb_sub_mail]));
+<?php
+$mb_password = trim(mysqli_real_escape_string($iw['connect'], $_POST['mb_password']));
+$mb_code = trim(mysqli_real_escape_string($iw['connect'], $_POST['mb_code']));
+$mb_name = trim(mysqli_real_escape_string($iw['connect'], $_POST['mb_name']));
+$mb_nick = trim(mysqli_real_escape_string($iw['connect'], $_POST['mb_nick']));
+$mb_address = trim(mysqli_real_escape_string($iw['connect'], $_POST['mb_address']));
+$mb_address_sub = trim(mysqli_real_escape_string($iw['connect'], $_POST['mb_address_sub']));
+$mb_sub_mail = trim(mysqli_real_escape_string($iw['connect'], $_POST['mb_sub_mail']));
 
 if($iw[language]=="ko"){
-	$mb_tel_1 = trim(mysql_real_escape_string($_POST[mb_tel_1]));
-	$mb_tel_2 = trim(mysql_real_escape_string($_POST[mb_tel_2]));
-	$mb_tel_3 = trim(mysql_real_escape_string($_POST[mb_tel_3]));
+	$mb_tel_1 = trim(mysqli_real_escape_string($iw['connect'], $_POST['mb_tel_1']));
+	$mb_tel_2 = trim(mysqli_real_escape_string($iw['connect'], $_POST['mb_tel_2']));
+	$mb_tel_3 = trim(mysqli_real_escape_string($iw['connect'], $_POST['mb_tel_3']));
 	$mb_tel = $mb_tel_1."-".$mb_tel_2."-".$mb_tel_3;
-	$mb_zip_code = trim(mysql_real_escape_string($_POST[mb_zip_code]));
+	$mb_zip_code = trim(mysqli_real_escape_string($iw['connect'], $_POST['mb_zip_code']));
 }else if($iw[language]=="en"){
-	$mb_tel = trim(mysql_real_escape_string($_POST[mb_tel]));
-	$mb_zip_code = trim(mysql_real_escape_string($_POST[mb_zip_code]));
-	$mb_address_city = trim(mysql_real_escape_string($_POST[mb_address_city]));
-	$mb_address_state = trim(mysql_real_escape_string($_POST[mb_address_state]));
-	$mb_address_country = trim(mysql_real_escape_string($_POST[mb_address_country]));
+	$mb_tel = trim(mysqli_real_escape_string($iw['connect'], $_POST['mb_tel']));
+	$mb_zip_code = trim(mysqli_real_escape_string($iw['connect'], $_POST['mb_zip_code']));
+	$mb_address_city = trim(mysqli_real_escape_string($iw['connect'], $_POST['mb_address_city']));
+	$mb_address_state = trim(mysqli_real_escape_string($iw['connect'], $_POST['mb_address_state']));
+	$mb_address_country = trim(mysqli_real_escape_string($iw['connect'], $_POST['mb_address_country']));
 }
 
 if ($mb_password != ""){
@@ -55,3 +55,6 @@ if ($rownick[cnt]) {
 	alert("회원정보가 수정되었습니다.","$iw[admin_path]/member_data_view.php?type=$iw[type]&ep=$iw[store]&gp=$iw[group]&idx=$mb_code");
 }
 ?>
+
+
+

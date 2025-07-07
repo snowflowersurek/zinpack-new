@@ -15,3 +15,6 @@ sql_query($sql);
 
 alert(national_language($iw[language],"a0036","댓글이 삭제되었습니다"),"$iw[m_path]/$iw[type]_data_view.php?type=$iw[type]&ep=$iw[store]&gp=$iw[group]&item=$cm_code");
 ?>
+
+
+

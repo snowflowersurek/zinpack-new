@@ -47,6 +47,9 @@ $content = stripslashes($row["bmd_content"]);
 		</div>
 	</div>
 </div>
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

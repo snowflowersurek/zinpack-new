@@ -26,7 +26,7 @@ if ($iw[group] == "all"){
 
 	<div class="masonry">
 		<div class="grid-sizer"></div>
-			<?
+			<?php
 				$sql = "select * from $iw[book_buy_table] where ep_code = '$iw[store]' and mb_code = '$iw[member]'";
 				$result = sql_query($sql);
 				$total_line = mysql_num_rows($result);
@@ -34,7 +34,7 @@ if ($iw[group] == "all"){
 				$max_line = 18;
 				$max_page = 5;
 					
-				$page = $_GET["page"];
+				$page = $_GET["page"] ?? 1;
 				if(!$page) $page=1;
 				$start_line = ($page-1)*$max_line;
 				$total_page = ceil($total_line/$max_line);
@@ -71,7 +71,7 @@ if ($iw[group] == "all"){
 						</a>
 					</div>
 				</div>
-			<?
+			<?php
 				$i++;
 				}
 				if($i==0) echo "<tr><td colspan='3' align='center'>".national_language($iw[language],"a0146","구매자료 내역이 없습니다.")."</td></tr>";
@@ -80,7 +80,7 @@ if ($iw[group] == "all"){
 
 	<div class="pagContainer text-center">
 		<ul class="pagination">
-			<?
+			<?php
 				if($total_page!=0){
 					if($page>$total_page) { $page=$total_page; }
 					$start_page = ((ceil($page/$max_page)-1)*$max_page)+1;
@@ -134,6 +134,9 @@ if ($iw[group] == "all"){
     }
 </script>
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

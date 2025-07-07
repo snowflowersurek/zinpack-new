@@ -154,7 +154,7 @@ if(preg_match('/(iPod|iPhone|Mobile|UP.Browser|Android|BlackBerry|Windows CE|Nok
 						</tr>
 					</thead>
 					<tbody>
-					<?
+					<?php
 						$sql = "select * from $iw[publishing_exhibit_status_table] where ep_code = '$iw[store]' and picture_idx = '$picture_idx'";
 						$result = sql_query($sql);
 						$total_line = mysql_num_rows($result);
@@ -207,18 +207,18 @@ if(preg_match('/(iPod|iPhone|Mobile|UP.Browser|Android|BlackBerry|Windows CE|Nok
 							<td data-title="연락처"><?=$userTel?></td>
 							<td data-title="신청일"><?=$md_date?></td>
 							<td data-title="신청현황">
-								<?if($stat == "1"){?>
+								<?php if($stat == "1"){?>
 									<span class="label label-sm label-warning" style="background-color:#999;">대기 중</span>
-								<?}else if($stat == "2"){?>
+								<?php }else if($stat == "2"){?>
 									<span class="label label-sm label-success">전시확정</span>
-								<?}else if($stat == "3"){?>
+								<?php }else if($stat == "3"){?>
 									<span class="label label-sm label-warning">보류</span>
-								<?}else if($stat == "4"){?>
+								<?php }else if($stat == "4"){?>
 									<span class="label label-sm label-warning">전시연기</span>
-								<?}?>
+								<?php }?>
 							</td>
 						</tr>
-					<?
+					<?php
 						$i++;
 						}
 						if($i==0) echo "<tr><td colspan='8' align='center'>검색된 게시글이 없습니다.</td></tr>";
@@ -234,7 +234,7 @@ if(preg_match('/(iPod|iPhone|Mobile|UP.Browser|Android|BlackBerry|Windows CE|Nok
 					<div class="col-sm-8">
 						<div class="dataTable-option-right">
 							<ul class="pagination">
-							<?
+							<?php
 								if($total_page!=0){
 									if($page>$total_page) { $page=$total_page; }
 									$start_page = ((ceil($page/$max_page)-1)*$max_page)+1;
@@ -291,6 +291,9 @@ function check_form() {
 }
 </script>
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

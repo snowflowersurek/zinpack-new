@@ -111,6 +111,9 @@ $content = stripslashes($row["ad_content"]);
 	}
 </script>
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

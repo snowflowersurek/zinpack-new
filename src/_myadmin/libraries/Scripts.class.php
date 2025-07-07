@@ -250,3 +250,7 @@ class PMA_Scripts
         return $retval;
     }
 }
+
+
+
+

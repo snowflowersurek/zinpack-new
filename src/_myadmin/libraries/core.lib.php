@@ -800,3 +800,7 @@ function PMA_addJSVar($key, $value, $escape = true)
 }
 
 ?>
+
+
+
+

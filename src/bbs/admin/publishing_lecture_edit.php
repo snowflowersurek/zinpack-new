@@ -85,12 +85,12 @@ $strRegDate = substr($row["strRegDate"], 0, 10);
 						<label class="col-sm-1 control-label">신청현황 상태</label>
 						<div class="col-sm-8">
 							<select name="strConfirm">
-								<option value="N" <?if($strConfirm == "N"){?>selected="selected"<?}?>>접수대기</option>
-								<option value="A" <?if($strConfirm == "A"){?>selected="selected"<?}?>>접수완료</option>
-								<option value="D" <?if($strConfirm == "D"){?>selected="selected"<?}?>>도서관연락</option>
-								<option value="J" <?if($strConfirm == "J"){?>selected="selected"<?}?>>작가섭외</option>
-								<option value="Y" <?if($strConfirm == "Y"){?>selected="selected"<?}?>>강연확정</option>
-								<option value="C" <?if($strConfirm == "C"){?>selected="selected"<?}?>>강연취소</option>
+								<option value="N" <?php if{?>selected="selected"<?php }?>>접수대기</option>
+								<option value="A" <?php if{?>selected="selected"<?php }?>>접수완료</option>
+								<option value="D" <?php if{?>selected="selected"<?php }?>>도서관연락</option>
+								<option value="J" <?php if{?>selected="selected"<?php }?>>작가섭외</option>
+								<option value="Y" <?php if{?>selected="selected"<?php }?>>강연확정</option>
+								<option value="C" <?php if{?>selected="selected"<?php }?>>강연취소</option>
 							</select>
 						</div>
 					</div>
@@ -112,22 +112,22 @@ $strRegDate = substr($row["strRegDate"], 0, 10);
 					<div class="form-group">
 						<label class="col-sm-1 control-label">신청기관</label>
 						<div class="col-sm-8">
-							<input type="radio" name="strGubun" id="strGubun1" value="일반 도서관" <?if($strGubun == "일반 도서관"){?>checked<?}?> onclick = "setGubunTxt('N');">
+							<input type="radio" name="strGubun" id="strGubun1" value="일반 도서관" <?php if{?>checked<?php }?> onclick = "setGubunTxt('N');">
 							<label for="strGubun1">일반 도서관</label>
 							&nbsp;
-							<input type="radio" name="strGubun" id="strGubun2" value="어린이 도서관" <?if($strGubun == "어린이 도서관"){?>checked<?}?> onclick = "setGubunTxt('N');">
+							<input type="radio" name="strGubun" id="strGubun2" value="어린이 도서관" <?php if{?>checked<?php }?> onclick = "setGubunTxt('N');">
 							<label for="strGubun2">어린이 도서관</label>
 							&nbsp;
-							<input type="radio" name="strGubun" id="strGubun3" value="초등학교" <?if($strGubun == "초등학교"){?>checked<?}?> onclick = "setGubunTxt('N');">
+							<input type="radio" name="strGubun" id="strGubun3" value="초등학교" <?php if{?>checked<?php }?> onclick = "setGubunTxt('N');">
 							<label for="strGubun3">초등학교</label>
 							&nbsp;
-							<input type="radio" name="strGubun" id="strGubun4" value="중/고등학교" <?if($strGubun == "중/고등학교"){?>checked<?}?> onclick = "setGubunTxt('N');">
+							<input type="radio" name="strGubun" id="strGubun4" value="중/고등학교" <?php if{?>checked<?php }?> onclick = "setGubunTxt('N');">
 							<label for="strGubun4">중/고등학교</label>
 							&nbsp;
-							<input type="radio" name="strGubun" id="strGubun5" value="문화센터" <?if($strGubun == "문화센터"){?>checked<?}?> onclick = "setGubunTxt('N');">
+							<input type="radio" name="strGubun" id="strGubun5" value="문화센터" <?php if{?>checked<?php }?> onclick = "setGubunTxt('N');">
 							<label for="strGubun5">문화센터</label>
 							&nbsp;
-							<input type="radio" name="strGubun" id="strGubun6" value="기타" <?if($strGubun == "기타"){?>checked<?}?> onclick = "setGubunTxt('Y');">
+							<input type="radio" name="strGubun" id="strGubun6" value="기타" <?php if{?>checked<?php }?> onclick = "setGubunTxt('Y');">
 							<label for="strGubun6">기타</label>
 							<input type="text" name="strGubunTxt" id="strGubunTxt" value="<?=$strGubunTxt?>" maxlength="100" style="display:none;">
 						</div>
@@ -196,7 +196,7 @@ $strRegDate = substr($row["strRegDate"], 0, 10);
 						<label class="col-sm-1 control-label">희망작가</label>
 						<div class="col-sm-11">
 							<div <?php if ($strAuthor1 == "" && $strAuthorBook1 == "") {echo "style='display:none;'";} ?>>
-								<input type="radio" name="confirm_Author" id="confirm_Author1" <?if($confirm_Author == "1"){?>checked<?}?> value="1">
+								<input type="radio" name="confirm_Author" id="confirm_Author1" <?php if{?>checked<?php }?> value="1">
 								<label for="confirm_Author1">1지망</label>
 								<input type="text" name="strAuthor1" value="<?=$strAuthor1?>" maxlength="50" onclick="searchAuthor(1);" readonly>
 								<button type="button" onclick="searchAuthor(1);">검색</button>
@@ -204,7 +204,7 @@ $strRegDate = substr($row["strRegDate"], 0, 10);
 								<button type="button" onclick="searchBook(1);">검색</button>
 							</div>
 							<div <?php if ($strAuthor2 == "" && $strAuthorBook2 == "") {echo "style='display:none;'";} ?>>
-								<input type="radio" name="confirm_Author" id="confirm_Author2" <?if($confirm_Author == "2"){?>checked<?}?> value="2">
+								<input type="radio" name="confirm_Author" id="confirm_Author2" <?php if{?>checked<?php }?> value="2">
 								<label for="confirm_Author2">2지망</label>
 								<input type="text" name="strAuthor2" value="<?=$strAuthor2?>" maxlength="50" onclick="searchAuthor(2);" readonly>
 								<button type="button" onclick="searchAuthor(2);">검색</button>
@@ -212,7 +212,7 @@ $strRegDate = substr($row["strRegDate"], 0, 10);
 								<button type="button" onclick="searchBook(2);">검색</button>
 							</div>
 							<div <?php if ($strAuthor3 == "" && $strAuthorBook3 == "") {echo "style='display:none;'";} ?>>
-								<input type="radio" name="confirm_Author" id="confirm_Author3" <?if($confirm_Author == "3"){?>checked<?}?> value="3">
+								<input type="radio" name="confirm_Author" id="confirm_Author3" <?php if{?>checked<?php }?> value="3">
 								<label for="confirm_Author3">3지망</label>
 								<input type="text" name="strAuthor3" value="<?=$strAuthor3?>" maxlength="50" onclick="searchAuthor(3);" readonly>
 								<button type="button" onclick="searchAuthor(3);">검색</button>
@@ -234,7 +234,7 @@ $strRegDate = substr($row["strRegDate"], 0, 10);
 								$strEndMin1 = substr($strDate1, 14);
 							?>
 							<div>
-								<input type="radio" name="confirm_date" id="confirm_date1" <?if($confirm_date == "1"){?>checked<?}?> value="1">
+								<input type="radio" name="confirm_date" id="confirm_date1" <?php if{?>checked<?php }?> value="1">
 								<label for="confirm_date1">1지망</label>
 								<input type="text" name="strDateYmd1" class="strDate" value="<?=$strDateYmd1?>" maxlength="10" readonly style="width:90px;">
 								&nbsp;
@@ -244,9 +244,7 @@ $strRegDate = substr($row["strRegDate"], 0, 10);
 								<input type="text" name="strEndHour1" value="<?=$strEndHour1?>" maxlength="2" onblur="checkNumber(this)" style="width:30px;"> 시
 								<input type="text" name="strEndMin1" value="<?=$strEndMin1?>" maxlength="2" onblur="checkNumber(this)" style="width:30px;"> 분
 							</div>
-							<?php } ?>
-							<?php
-							if ($strDate2 != "") {
+							<?php } ?><?php if($strDate2 != "") {
 								$strDateYmd2 = substr($strDate2, 0, 4)."-".substr($strDate2, 4, 2)."-".substr($strDate2, 6, 2);
 								$strStartHour2 = substr($strDate2, 8, 2);
 								$strStartMin2 = substr($strDate2, 10, 2);
@@ -254,7 +252,7 @@ $strRegDate = substr($row["strRegDate"], 0, 10);
 								$strEndMin2 = substr($strDate2, 14);
 							?>
 							<div>
-								<input type="radio" name="confirm_date" id="confirm_date2" <?if($confirm_date == "2"){?>checked<?}?> value="2">
+								<input type="radio" name="confirm_date" id="confirm_date2" <?php if{?>checked<?php }?> value="2">
 								<label for="confirm_date2">2지망</label>
 								<input type="text" name="strDateYmd2" class="strDate" value="<?=$strDateYmd2?>" maxlength="10" readonly style="width:90px;">
 								&nbsp;
@@ -264,9 +262,7 @@ $strRegDate = substr($row["strRegDate"], 0, 10);
 								<input type="text" name="strEndHour2" value="<?=$strEndHour2?>" maxlength="2" onblur="checkNumber(this)" style="width:30px;"> 시
 								<input type="text" name="strEndMin2" value="<?=$strEndMin2?>" maxlength="2" onblur="checkNumber(this)" style="width:30px;"> 분
 							</div>
-							<?php } ?>
-							<?php
-							if ($strDate3 != "") {
+							<?php } ?><?php if($strDate3 != "") {
 								$strDateYmd3 = substr($strDate3, 0, 4)."-".substr($strDate3, 4, 2)."-".substr($strDate3, 6, 2);
 								$strStartHour3 = substr($strDate3, 8, 2);
 								$strStartMin3 = substr($strDate3, 10, 2);
@@ -274,7 +270,7 @@ $strRegDate = substr($row["strRegDate"], 0, 10);
 								$strEndMin3 = substr($strDate3, 14);
 							?>
 							<div>
-								<input type="radio" name="confirm_date" id="confirm_date3" <?if($confirm_date == "3"){?>checked<?}?> value="3">
+								<input type="radio" name="confirm_date" id="confirm_date3" <?php if{?>checked<?php }?> value="3">
 								<label for="confirm_date3">3지망</label>
 								<input type="text" name="strDateYmd3" class="strDate" value="<?=$strDateYmd3?>" maxlength="10" readonly style="width:90px;">
 								&nbsp;
@@ -298,10 +294,10 @@ $strRegDate = substr($row["strRegDate"], 0, 10);
 					<div class="form-group">
 						<label class="col-sm-1 control-label">사전독서여부</label>
 						<div class="col-sm-8">
-							<input type="radio" name="strPreView" id="strPreView1" value="예" <?if($strPreView == "예"){?>checked<?}?>>
+							<input type="radio" name="strPreView" id="strPreView1" value="예" <?php if{?>checked<?php }?>>
 							<label for="strPreView1">예</label>
 							&nbsp;
-							<input type="radio" name="strPreView" id="strPreView2" value="아니요" <?if($strPreView == "아니요"){?>checked<?}?>>
+							<input type="radio" name="strPreView" id="strPreView2" value="아니요" <?php if{?>checked<?php }?>>
 							<label for="strPreView2">아니요</label>
 						</div>
 					</div>
@@ -492,6 +488,9 @@ if ($strGubun == "기타") {
 ?>
 </script>
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

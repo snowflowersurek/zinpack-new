@@ -7,7 +7,7 @@ include_once("_head.php");
 <div class="breadcrumbs" id="breadcrumbs">
 	<ul class="breadcrumb">
 		<li>
-			<?
+			<?php
 				if ($iw["type"]=="mcb"){
 					$category_title = "분류관리";
 					echo "<i class='fa fa-clipboard'></i> 게시판";
@@ -63,7 +63,7 @@ include_once("_head.php");
 						<button class='btn btn-success' type='button' onclick="javascript:categoryFrameNew('<?=$iw[type]?>','<?=$iw[store]?>','<?=$iw[group]?>','new');"><i class="fa fa-plus"></i> 추가</button>
 						<div class="dd" id="sortable">
 							<ol class="dd-list">
-							<?
+							<?php
 								$sql = "select * from $iw[category_table] where ep_code = '$iw[store]' and gp_code = '$iw[group]' and state_sort = '$iw[type]' order by cg_name asc";
 								$result = sql_query($sql);
 								while($row = @sql_fetch_array($result)){
@@ -79,8 +79,7 @@ include_once("_head.php");
 									<div class="dd2-content">
 										<span><?=$cg_name?></span>
 										<div class="pull-right action-buttons">
-											<?if($cg_display==3){?><i class="fa fa-eye-slash"></i><?}?>
-											<?if($cg_display==2){?><i class="fa fa-link"></i><?}?>
+											<?php if($cg_display==3){?><i class="fa fa-eye-slash"></i><?php } ?><?php if($cg_display==2){?><i class="fa fa-link"></i><?php }?>
 											<a class="blue" href="javascript:categoryFrameEdit('<?=$iw[type]?>','<?=$iw[store]?>','<?=$iw[group]?>','<?=$cg_code?>');">
 												<i class="fa fa-cog"></i>
 											</a>
@@ -90,7 +89,7 @@ include_once("_head.php");
 										</div>
 									</div>
 								</li>
-							<?}?>
+							<?php }?>
 							</ol>
 						</div>
 					</div>
@@ -122,6 +121,9 @@ include_once("_head.php");
 	}
 </script>
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

@@ -83,13 +83,13 @@ was "INVALID".
 error_log("POINT(".$_POST['payment_status'].")".$_POST['business']."(".$_POST['custom'].")".$_POST['txn_id']."(".$_POST['mc_gross'].")");
 if ($verified) {
 	
-	$PAYPAL_business = trim(mysql_real_escape_string($_POST['business']));						//페이팔 발급 아이디
-	$PAYPAL_mc_gross = trim(mysql_real_escape_string($_POST['mc_gross']))*1000;					//결제금액
-	$PAYPAL_invoice = trim(mysql_real_escape_string($_POST['invoice']));							//주문번호
-	$PAYPAL_txn_id	= trim(mysql_real_escape_string($_POST['txn_id']));							//페이팔 거래번호
-	$PAYPAL_item_name = trim(mysql_real_escape_string($_POST['item_name']));						//상품정보
-	$PAYPAL_payment_status = trim(mysql_real_escape_string($_POST['payment_status']));			//결제결과
-	$PAYPAL_custom = trim(mysql_real_escape_string($_POST['custom']));							//구매자아이디
+	$PAYPAL_business = trim(sql_real_escape_string($_POST['business']));						//페이팔 발급 아이디
+	$PAYPAL_mc_gross = trim(sql_real_escape_string($_POST['mc_gross']))*1000;					//결제금액
+	$PAYPAL_invoice = trim(sql_real_escape_string($_POST['invoice']));							//주문번호
+	$PAYPAL_txn_id	= trim(sql_real_escape_string($_POST['txn_id']));							//페이팔 거래번호
+	$PAYPAL_item_name = trim(sql_real_escape_string($_POST['item_name']));						//상품정보
+	$PAYPAL_payment_status = trim(sql_real_escape_string($_POST['payment_status']));			//결제결과
+	$PAYPAL_custom = trim(sql_real_escape_string($_POST['custom']));							//구매자아이디
 
 	$pt_datetime = date("Y-m-d H:i:s");
 	$sql = "insert into $iw[paypal_table] set
@@ -143,3 +143,6 @@ if ($verified) {
 }
 ?>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+
+

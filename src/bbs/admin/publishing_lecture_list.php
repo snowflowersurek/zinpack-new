@@ -66,7 +66,7 @@ include_once("_head.php");
 									</div>
 									<div class="col-sm-8">
 										<div class="dataTable-option-right">
-											<?
+											<?php
 												if($_POST['search']){
 													$search = $_POST['search'];
 													$searchby1 = $_POST['searchby1'];
@@ -99,18 +99,18 @@ include_once("_head.php");
 												<label>검색:
 												<select name="searchby1" class="form-control" style="display:inline-block; margin:0; width:auto;">
 													<option value="">전체</option>
-													<option value="N" <?if($searchby1 == "N"){?>selected="selected"<?}?>>접수대기</option>
-													<option value="A" <?if($searchby1 == "A"){?>selected="selected"<?}?>>접수완료</option>
-													<option value="D" <?if($searchby1 == "D"){?>selected="selected"<?}?>>도서관연락</option>
-													<option value="J" <?if($searchby1 == "J"){?>selected="selected"<?}?>>작가섭외</option>
-													<option value="Y" <?if($searchby1 == "Y"){?>selected="selected"<?}?>>강연확정</option>
-													<option value="C" <?if($searchby1 == "C"){?>selected="selected"<?}?>>강연취소</option>
+													<option value="N" <?php if{?>selected="selected"<?php }?>>접수대기</option>
+													<option value="A" <?php if{?>selected="selected"<?php }?>>접수완료</option>
+													<option value="D" <?php if{?>selected="selected"<?php }?>>도서관연락</option>
+													<option value="J" <?php if{?>selected="selected"<?php }?>>작가섭외</option>
+													<option value="Y" <?php if{?>selected="selected"<?php }?>>강연확정</option>
+													<option value="C" <?php if{?>selected="selected"<?php }?>>강연취소</option>
 												</select>
 												<select name="searchby2" class="form-control" style="display:inline-block; margin:0; width:auto;">
-													<option value="username" <?if($searchby2 == "username"){?>selected="selected"<?}?>>신청자</option>
-													<option value="organ" <?if($searchby2 == "organ"){?>selected="selected"<?}?>>기관명</option>
-													<option value="author" <?if($searchby2 == "author"){?>selected="selected"<?}?>>희망작가</option>
-													<option value="book" <?if($searchby2 == "book"){?>selected="selected"<?}?>>도서명</option>
+													<option value="username" <?php if{?>selected="selected"<?php }?>>신청자</option>
+													<option value="organ" <?php if{?>selected="selected"<?php }?>>기관명</option>
+													<option value="author" <?php if{?>selected="selected"<?php }?>>희망작가</option>
+													<option value="book" <?php if{?>selected="selected"<?php }?>>도서명</option>
 												</select>
 												</label>
 												<input type="text" name="keyword" class="form-control" style="display:inline-block; margin:0;" value="<?=$keyword?>">
@@ -133,7 +133,7 @@ include_once("_head.php");
 										</tr>
 									</thead>
 									<tbody>
-									<?
+									<?php
 										$sql = "select * from $iw[publishing_lecture_table] where ep_code = '$iw[store]' $search_sql";
 										$result = sql_query($sql);
 										$total_line = mysql_num_rows($result);
@@ -245,22 +245,22 @@ include_once("_head.php");
 											</td>
 											<td data-title="신청일"><?=$strRegDate?></td>
 											<td data-title="신청현황">
-												<?if($strConfirm == "N"){?>
+												<?php if($strConfirm == "N"){?>
 													<span class="label label-sm label-default">접수대기</span>
-												<?}else if($strConfirm == "A"){?>
+												<?php }else if($strConfirm == "A"){?>
 													<span class="label label-sm label-primary">접수완료</span>
-												<?}else if($strConfirm == "D"){?>
+												<?php }else if($strConfirm == "D"){?>
 													<span class="label label-sm label-warning">도서관연락</span>
-												<?}else if($strConfirm == "J"){?>
+												<?php }else if($strConfirm == "J"){?>
 													<span class="label label-sm label-info">작가섭외</span>
-												<?}else if($strConfirm == "Y"){?>
+												<?php }else if($strConfirm == "Y"){?>
 													<span class="label label-sm label-success">강연확정</span>
-												<?}else if($strConfirm == "C"){?>
+												<?php }else if($strConfirm == "C"){?>
 													<span class="label label-sm label-danger">강연취소</span>
-												<?}?>
+												<?php }?>
 											</td>
 										</tr>
-									<?
+									<?php
 										$i++;
 										}
 										if($i==0) echo "<tr><td colspan='8' align='center'>검색된 게시글이 없습니다.</td></tr>";
@@ -275,7 +275,7 @@ include_once("_head.php");
 									<div class="col-sm-8">
 										<div class="dataTable-option-right">
 											<ul class="pagination">
-											<?
+											<?php
 												if($total_page!=0){
 													if($page>$total_page) { $page=$total_page; }
 													$start_page = ((ceil($page/$max_page)-1)*$max_page)+1;
@@ -323,6 +323,9 @@ function downloadExcel() {
 }
 </script>
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

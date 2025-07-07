@@ -145,6 +145,9 @@ $mb_tel = $row["mb_tel"];
 	</div><!-- /container -->
 </div><!-- /end .page-content -->
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

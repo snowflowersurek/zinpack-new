@@ -4,7 +4,7 @@ if ($iw[type] != "doc" || ($iw[level] != "seller" && $iw[level] != "member")) al
 ?>
 <meta http-equiv="content-type" content="text/html; charset=<?=$iw['charset']?>" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-<?
+<?php
 $dd_code = $_GET["idx"];
 $sql = "update $iw[doc_data_table] set
 		dd_display = 2
@@ -21,3 +21,6 @@ sql_query($sql);
 
 alert("컨텐츠 승인을 요청하였습니다.","$iw[admin_path]/doc_data_list.php?type=$iw[type]&ep=$iw[store]&gp=$iw[group]");
 ?>
+
+
+

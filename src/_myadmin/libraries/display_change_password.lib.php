@@ -96,3 +96,7 @@ function PMA_getHtmlForChangePassword($username, $hostname)
         . '</form>';
     return $html;
 }
+
+
+
+

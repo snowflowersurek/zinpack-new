@@ -101,3 +101,7 @@ if ($GLOBALS['is_ajax_request'] == true) {
 $_message = $message;
 unset($message);
 ?>
+
+
+
+

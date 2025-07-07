@@ -66,3 +66,7 @@ if ($cfgRelation['designerwork']) {
 }
 $response->addHTML($db_qbe->getSelectionForm($cfgRelation));
 ?>
+
+
+
+

@@ -19,3 +19,6 @@ PRIMARY KEY (pt_no)
 
 sql_query($sql);
 ?>
+
+
+

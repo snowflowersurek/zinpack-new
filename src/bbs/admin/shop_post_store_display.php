@@ -4,8 +4,7 @@ if ($iw[type] != "shop" || !($iw[level] == "seller" || $iw[level] == "admin")) a
 ?>
 <meta http-equiv="content-type" content="text/html; charset=<?=$iw['charset']?>" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-<?
-
+<?php
 function get_param($name){
 	global $_POST, $_GET;
 	if (!isset($_POST[$name]) || $_POST[$name] == "") {
@@ -145,3 +144,6 @@ if($srs_display == 3){
 }
 goto_url("$iw[admin_path]/shop_post_store_view.php?type=$iw[type]&ep=$iw[store]&gp=$iw[group]&idx=$sr_code");
 ?>
+
+
+

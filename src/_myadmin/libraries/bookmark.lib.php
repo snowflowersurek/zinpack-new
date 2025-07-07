@@ -207,3 +207,7 @@ function PMA_Bookmark_delete($db, $id)
 $GLOBALS['cfg']['Bookmark'] = PMA_Bookmark_getParams();
 
 ?>
+
+
+
+

@@ -57,7 +57,7 @@ include_once("_head.php");
 									</div>
 									<div class="col-sm-6">
 										<div class="dataTable-option-right">
-											<?
+											<?php
 												if($_POST['search']){
 													$search = $_POST['search'];
 													$searchs = $_POST['searchs'];
@@ -75,9 +75,9 @@ include_once("_head.php");
 											?>
 											<form name="search_form" id="search_form" action="<?=$PHP_SELF?>?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>" method="post">
 											<label>검색: <select name="search">
-												<option value="a" <?if($search == "a"){?>selected="selected"<?}?>>이북코드</option>
-												<option value="b" <?if($search == "b"){?>selected="selected"<?}?>>판매자코드</option>
-												<option value="c" <?if($search == "c"){?>selected="selected"<?}?>>제목</option>
+												<option value="a" <?php if{?>selected="selected"<?php }?>>이북코드</option>
+												<option value="b" <?php if{?>selected="selected"<?php }?>>판매자코드</option>
+												<option value="c" <?php if{?>selected="selected"<?php }?>>제목</option>
 											</select></label><input type="text" name="searchs" value="<?=$searchs?>">
 											</form>
 										</div>
@@ -97,10 +97,10 @@ include_once("_head.php");
 										</tr>
 									</thead>
 									<tbody>
-									<?
+									<?php
 										$sql = "select * from $iw[book_data_table] where ep_code = '$iw[store]' and gp_code = '$iw[group]' and bd_display <> 0 $search_sql";
 										$result = sql_query($sql);
-										$total_line = mysql_num_rows($result);
+										$total_line = mysqli_num_rows($result);
 
 										$max_line = 10;
 										$max_page = 10;
@@ -174,19 +174,19 @@ include_once("_head.php");
 											<td data-title="스타일"><?=$bd_style?></td>
 											<td data-title="가격"><?=$bd_price?> point</td>
 											<td data-title="상태">
-												<?if($bd_display==1){
+												<?php if($bd_display==1){
 													$bd_value = 2;
 												?>
 													<span class="label label-sm label-success">노출</span>
-												<?}else{
+												<?php }else{
 													$bd_value = 1;
 												?>
 													<span class="label label-sm label-warning">숨김</span>
-												<?}?>											
+												<?php }?>											
 											</td>
-											<td data-title="노출"><a href="javascript:exposure_edit('<?=$iw[type]?>','<?=$iw[store]?>','<?=$iw[group]?>','<?=$bd_code?>','<?=$bd_value?>');"><span class="label label-sm label-<?if($bd_display==1){?>warning<?}else{?>success<?}?>">변경하기</span></a></td>
+											<td data-title="노출"><a href="javascript:exposure_edit('<?=$iw[type]?>','<?=$iw[store]?>','<?=$iw[group]?>','<?=$bd_code?>','<?=$bd_value?>');"><span class="label label-sm label-<?php if{?>warning<?php }else{?>success<?php }?>">변경하기</span></a></td>
 										</tr>
-									<?
+									<?php
 										$i++;
 										}
 										if($i==0) echo "<tr><td colspan='8' align='center'>관리할 이북이 없습니다.</td></tr>";
@@ -200,7 +200,7 @@ include_once("_head.php");
 									<div class="col-sm-6">
 										<div class="dataTable-option-right">
 											<ul class="pagination">
-											<?
+											<?php
 												if($total_page!=0){
 													if($page>$total_page) { $page=$total_page; }
 													$start_page = ((ceil($page/$max_page)-1)*$max_page)+1;
@@ -254,6 +254,9 @@ include_once("_head.php");
 		}
 	}
 </script>
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

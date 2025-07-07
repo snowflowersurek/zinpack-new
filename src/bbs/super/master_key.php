@@ -2,8 +2,15 @@
 include_once("_common.php");
 include_once("_head.php");
 
-$sql = "select * from $iw[master_table] where ma_no = 1";
+$sql = "select * from {$iw['master_table']} where ma_no = 1";
 $row = sql_fetch($sql);
+
+// 마스터키가 설정되지 않았다면 기본값 생성
+if (!$row) {
+    $sql = "insert into {$iw['master_table']} (ma_no, ma_userid, ma_password, ma_buy_rate, ma_sell_rate, ma_shop_rate, ma_display) values (1, '', '', 0, 0, 0, 0)";
+    sql_query($sql);
+    $row = sql_fetch("select * from {$iw['master_table']} where ma_no = 1");
+}
 
 ?>
 <div class="breadcrumbs" id="breadcrumbs">
@@ -38,11 +45,24 @@ $row = sql_fetch($sql);
 		<div class="row">
 			<div class="col-xs-12">
 			<!-- PAGE CONTENT BEGINS -->
-				<form class="form-horizontal" id="ma_form" name="ma_form" action="<?=$iw['super_path']?>/master_key_ok.php?ep=<?=$iw[store]?>&gp=<?=$iw[group]?>" method="post">
+				<?php if($row['ma_userid']) { ?>
+				<div class="alert alert-info">
+					<strong>현재 설정된 마스터키:</strong><br>
+					아이디: <?=htmlspecialchars($row['ma_userid'])?><br>
+					비밀번호: *** (보안상 표시되지 않음)
+				</div>
+				<?php } else { ?>
+				<div class="alert alert-warning">
+					<strong>마스터키가 설정되지 않았습니다.</strong><br>
+					새로운 마스터키를 설정해주세요.
+				</div>
+				<?php } ?>
+				
+				<form class="form-horizontal" id="ma_form" name="ma_form" action="<?=$iw['super_path']?>/master_key_ok.php?ep=<?=$iw['store']?>&gp=<?=$iw['group']?>" method="post">
 					<div class="form-group">
 						<label class="col-sm-1 control-label">아이디</label>
 						<div class="col-sm-11">
-							<input type="text" placeholder="입력" class="col-xs-12 col-sm-8" name="ma_userid">
+							<input type="text" placeholder="새 아이디 입력" class="col-xs-12 col-sm-8" name="ma_userid" value="<?=htmlspecialchars($row['ma_userid'] ?? '')?>">
 						</div>
 					</div>
 					<div class="space-4"></div>
@@ -50,7 +70,8 @@ $row = sql_fetch($sql);
 					<div class="form-group">
 						<label class="col-sm-1 control-label">비밀번호</label>
 						<div class="col-sm-11">
-							<input type="password" placeholder="입력" class="col-xs-12 col-sm-8" name="ma_password">
+							<input type="password" placeholder="새 비밀번호 입력" class="col-xs-12 col-sm-8" name="ma_password">
+							<p class="help-block">보안을 위해 비밀번호는 항상 새로 입력해주세요.</p>
 						</div>
 					</div>
 
@@ -86,6 +107,8 @@ $row = sql_fetch($sql);
 
 </script>
  
-<?
+<?php
 include_once("_tail.php");
-?>
+
+
+

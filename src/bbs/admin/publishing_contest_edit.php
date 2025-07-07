@@ -103,7 +103,7 @@ if(preg_match('/(iPod|iPhone|Mobile|UP.Browser|Android|BlackBerry|Windows CE|Nok
 						<label class="col-lg-1 col-sm-2 control-label">첨부파일</label>
 						<div class="col-sm-8">
 							<input type="file" name="new_attach_file" id="new_attach_file">
-							<?
+							<?php
 								if ($attach_filename != ""){
 							?>
 							<p class="col-xs-12 col-sm-8 form-control-static">
@@ -111,7 +111,7 @@ if(preg_match('/(iPod|iPhone|Mobile|UP.Browser|Android|BlackBerry|Windows CE|Nok
 								<input type="checkbox" name="is_delfile" value="Y" /> 삭제
 								<input type="hidden" name="delete_filename" value="<?=$attach_filename?>">
 							</p>
-							<?
+							<?php
 								}
 							?>
 						</div>
@@ -127,10 +127,10 @@ if(preg_match('/(iPod|iPhone|Mobile|UP.Browser|Android|BlackBerry|Windows CE|Nok
 					<div class="form-group">
 						<label class="col-sm-1 control-label">게시상태</label>
 						<div class="col-sm-8">
-							<input type="radio" name="display" id="display1" value="1" <?if($display==1){?>checked<?}?>>
+							<input type="radio" name="display" id="display1" value="1" <?php if{?>checked<?php }?>>
 							<label for="display1"> 노출</label>
 							&nbsp;&nbsp;&nbsp;
-							<input type="radio" name="display" id="display2" value="2" <?if($display==2){?>checked<?}?>>
+							<input type="radio" name="display" id="display2" value="2" <?php if{?>checked<?php }?>>
 							<label for="display2"> 숨김</label>
 						</div>
 					</div>
@@ -204,6 +204,9 @@ function check_form() {
 }
 </script>
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

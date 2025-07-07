@@ -56,7 +56,7 @@ include_once("_head.php");
 										</tr>
 									</thead>
 									<tbody>
-									<?
+									<?php
 										$sql = "select * from $iw[popup_layer_table] where ep_code = '$iw[store]' and gp_code = '$iw[group]'";
 										$result = sql_query($sql);
 										$total_line = mysql_num_rows($result);
@@ -108,7 +108,7 @@ include_once("_head.php");
 												<a href="<?=$iw['admin_path']?>/popup_layer_delete.php?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&idx=<?=$pl_no?>"><span class="label label-sm label-danger">삭제</span></a>
 											</td>
 										</tr>
-									<?
+									<?php
 										$i++;
 										}
 										if($i==0) echo "<tr><td colspan='7' align='center'>팝업창이 없습니다.</td></tr>";
@@ -127,7 +127,7 @@ include_once("_head.php");
 									<div class="col-sm-6">
 										<div class="dataTable-option-right">
 											<ul class="pagination">
-											<?
+											<?php
 												if($total_page!=0){
 													if($page>$total_page) { $page=$total_page; }
 													$start_page = ((ceil($page/$max_page)-1)*$max_page)+1;
@@ -169,6 +169,9 @@ include_once("_head.php");
 	</div><!-- /container -->
 </div><!-- /end .page-content -->
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

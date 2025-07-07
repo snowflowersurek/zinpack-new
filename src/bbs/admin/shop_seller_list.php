@@ -56,7 +56,7 @@ if ($iw[type] != "shop" || $iw[level] != "admin" || $iw[group] != "all") alert("
 									</div>
 									<div class="col-sm-6">
 										<div class="dataTable-option-right">
-											<?
+											<?php
 												if($_POST['search']){
 													$search = $_POST['search'];
 													$searchs = $_POST['searchs'];
@@ -72,8 +72,8 @@ if ($iw[type] != "shop" || $iw[level] != "admin" || $iw[group] != "all") alert("
 											?>
 											<form name="search_form" id="search_form" action="<?=$PHP_SELF?>?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>" method="post">
 											<label>검색: <select name="search">
-												<option value="a" <?if($search == "a"){?>selected="selected"<?}?>>회원코드</option>
-												<option value="b" <?if($search == "b"){?>selected="selected"<?}?>>판매자(상호명)</option>
+												<option value="a" <?php if{?>selected="selected"<?php }?>>회원코드</option>
+												<option value="b" <?php if{?>selected="selected"<?php }?>>판매자(상호명)</option>
 											</select></label><input type="text" name="searchs" value="<?=$searchs?>">
 											</form>
 										</div>
@@ -90,7 +90,7 @@ if ($iw[type] != "shop" || $iw[level] != "admin" || $iw[group] != "all") alert("
 										</tr>
 									</thead>
 									<tbody>
-									<?
+									<?php
 										$sql = "select * from $iw[shop_seller_table] where ep_code = '$iw[store]' $search_sql";
 										$result = sql_query($sql);
 										$total_line = mysql_num_rows($result);
@@ -129,14 +129,14 @@ if ($iw[type] != "shop" || $iw[level] != "admin" || $iw[group] != "all") alert("
 											<td data-title="연락처"><?=$ss_tel?></td>
 											<td data-title="신청일"><?=$ss_datetime?></td>
 											<td data-title="상태">
-												<?if($ss_display == 0){?>
+												<?php if($ss_display == 0){?>
 												<span class="label label-sm label-warning">승인대기</span>
-												<?}else if($ss_display == 1){?>
+												<?php }else if($ss_display == 1){?>
 												<span class="label label-sm label-success">정상</span>
-												<?}?>
+												<?php }?>
 											</td>
 										</tr>
-									<?
+									<?php
 										$i++;
 										}
 										if($i==0) echo "<tr><td colspan='5' align='center'>등록된 판매자가 없습니다.</td></tr>";
@@ -150,7 +150,7 @@ if ($iw[type] != "shop" || $iw[level] != "admin" || $iw[group] != "all") alert("
 									<div class="col-sm-6">
 										<div class="dataTable-option-right">
 											<ul class="pagination">
-											<?
+											<?php
 												if($total_page!=0){
 													if($page>$total_page) { $page=$total_page; }
 													$start_page = ((ceil($page/$max_page)-1)*$max_page)+1;
@@ -192,6 +192,9 @@ if ($iw[type] != "shop" || $iw[level] != "admin" || $iw[group] != "all") alert("
 	</div><!-- /container -->
 </div><!-- /end .page-content -->
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

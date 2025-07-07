@@ -484,3 +484,7 @@ function PMA_TRI_getQueryFromRequest()
 } // end PMA_TRI_getQueryFromRequest()
 
 ?>
+
+
+
+

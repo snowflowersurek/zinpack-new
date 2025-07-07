@@ -63,3 +63,7 @@ function Image_PNG_Inline_getInfo()
     return Image_PNG_Inline::getInfo();
 }
 ?>
+
+
+
+

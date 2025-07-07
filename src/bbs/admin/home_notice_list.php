@@ -57,7 +57,7 @@ include_once("_head.php");
 									</div>
 									<div class="col-sm-6">
 										<div class="dataTable-option-right">
-											<?
+											<?php
 												if($_POST['search']){
 													$search = $_POST['search'];
 													$searchs = $_POST['searchs'];
@@ -77,10 +77,10 @@ include_once("_head.php");
 											?>
 											<form name="search_form" id="search_form" action="<?=$PHP_SELF?>?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>" method="post">
 											<label>검색: <select name="search">
-												<option value="a" <?if($search == "a"){?>selected="selected"<?}?>>제목+내용</option>
-												<option value="t" <?if($search == "b"){?>selected="selected"<?}?>>제목</option>
-												<option value="c" <?if($search == "c"){?>selected="selected"<?}?>>내용</option>
-												<option value="n" <?if($search == "d"){?>selected="selected"<?}?>>글번호</option>
+												<option value="a" <?php if{?>selected="selected"<?php }?>>제목+내용</option>
+												<option value="t" <?php if{?>selected="selected"<?php }?>>제목</option>
+												<option value="c" <?php if{?>selected="selected"<?php }?>>내용</option>
+												<option value="n" <?php if{?>selected="selected"<?php }?>>글번호</option>
 											</select></label><input type="text" name="searchs" value="<?=$searchs?>">
 											</form>
 										</div>
@@ -96,7 +96,7 @@ include_once("_head.php");
 										</tr>
 									</thead>
 									<tbody>
-									<?
+									<?php
 										$sql = "select * from $iw[notice_table] where ep_code = '$iw[store]' and gp_code = '$iw[group]' and nt_display = 1 and nt_type = 1 order by nt_no desc";
 										$result = sql_query($sql);
 
@@ -114,10 +114,9 @@ include_once("_head.php");
 											<td data-title="날짜"><?=$nt_datetime?></td>
 											<td data-title="조회수"><?=$nt_hit?></td>
 										</tr>
-									<?
+									<?php
 										}
-									?>
-									<?
+									
 										$sql = "select * from $iw[notice_table] where ep_code = '$iw[store]' and gp_code = '$iw[group]' and nt_display = 1 and $search_sql";
 										$result = sql_query($sql);
 										$total_line = mysql_num_rows($result);
@@ -155,7 +154,7 @@ include_once("_head.php");
 											<td data-title="날짜"><?=$nt_datetime?></td>
 											<td data-title="조회수"><?=$nt_hit?></td>
 										</tr>
-									<?
+									<?php
 										$i++;
 										}
 										if($i==0) echo "<tr><td colspan='4' align='center'>검색된 공지사항이 없습니다.</td></tr>";
@@ -174,7 +173,7 @@ include_once("_head.php");
 									<div class="col-sm-6">
 										<div class="dataTable-option-right">
 											<ul class="pagination">
-											<?
+											<?php
 												if($total_page!=0){
 													if($page>$total_page) { $page=$total_page; }
 													$start_page = ((ceil($page/$max_page)-1)*$max_page)+1;
@@ -216,6 +215,9 @@ include_once("_head.php");
 	</div><!-- /container -->
 </div><!-- /end .page-content -->
 	
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

@@ -77,7 +77,7 @@ $rowm = sql_fetch($sqlm);
 						<label class="col-sm-1 control-label">카테고리</label>
 						<div class="col-sm-11">
 							<p class="col-xs-12 col-sm-8 form-control-static">
-								<?
+								<?php
 									$cg_code = $row["cg_code"];
 
 									$sql2 = " select * from $iw[home_menu_table] where ep_code = '$iw[store]' and gp_code = '$iw[group]' and state_sort = '$iw[type]' and cg_code = '$cg_code'";
@@ -112,7 +112,7 @@ $rowm = sql_fetch($sqlm);
 						<label class="col-sm-1 control-label">스타일</label>
 						<div class="col-sm-11">
 							<p class="col-xs-12 col-sm-8 form-control-static">
-							<?
+							<?php
 								if($row["bd_type"] == 1){
 									echo "PDF";
 								}else if($row["bd_type"] == 2){
@@ -202,6 +202,9 @@ $rowm = sql_fetch($sqlm);
 	}
 </script>
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

@@ -2,13 +2,13 @@
 include_once("_common.php");
 include_once("_check_parameter.php");
 
-$message = $_GET['message'];
-$code = $_GET['code'];
+$message = $_GET['message'] ?? '';
+$code = $_GET['code'] ?? '';
 $back_domain = get_cookie("back_domain");
 if(trim($back_domain)==""){
-	$back_domain = $_SESSION['back_domain'];
+	$back_domain = $_SESSION['back_domain'] ?? '';
 }
-unset($_SESSION['back_domain']);
+if(isset($_SESSION['back_domain'])) unset($_SESSION['back_domain']);
 
 alert("결제승인 요청이 실패하였습니다.\n[오류코드] $code\n[오류메세지] $message",$back_domain);
 
@@ -30,3 +30,7 @@ alert("결제승인 요청이 실패하였습니다.\n[오류코드] $code\n[오
 </section>
 </body>
 </html>
+
+
+
+

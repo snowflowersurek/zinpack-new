@@ -73,7 +73,7 @@ $sd_subject = str_replace('\"', '&quot;', $sd_subject);
 						<div class="col-sm-11">
 							<select class="col-xs-12 col-sm-8" name="cg_code">
 								<option value="">선택</option>
-								<?
+								<?php
 									$sql1 = "select * from $iw[home_menu_table] where ep_code = '$iw[store]' and gp_code = '$iw[group]' and hm_deep = 1 order by hm_order asc,hm_no asc";
 									$result1 = sql_query($sql1);
 									while($row1 = @sql_fetch_array($result1)){
@@ -86,8 +86,8 @@ $sd_subject = str_replace('\"', '&quot;', $sd_subject);
 										$rows = sql_fetch("select * from $iw[category_table] where ep_code = '$iw[store]' and gp_code = '$iw[group]' and state_sort = '$iw[type]' and cg_code = '$cg_code'");
 										$cg_level_write = $rows["cg_level_write"];
 								?>
-									<option value="<?=$cg_code?>" <?if($iw[mb_level] < $cg_level_write){?>disabled<?}else if($check_cg_code == $cg_code){?>selected<?}?>><?=$hm_name1?></option>
-									<?
+									<option value="<?=$cg_code?>" <?php if{?>disabled<?php }else if($check_cg_code == $cg_code){?>selected<?php }?>><?=$hm_name1?></option>
+									<?php
 										}
 										$sql2 = "select * from $iw[home_menu_table] where hm_upper_code = '$hm_code' and hm_deep = 2 and ep_code = '$iw[store]' and gp_code = '$iw[group]' order by hm_order asc,hm_no asc";
 										$result2 = sql_query($sql2);
@@ -102,8 +102,8 @@ $sd_subject = str_replace('\"', '&quot;', $sd_subject);
 											$rows = sql_fetch("select * from $iw[category_table] where ep_code = '$iw[store]' and gp_code = '$iw[group]' and state_sort = '$iw[type]' and cg_code = '$cg_code'");
 											$cg_level_write = $rows["cg_level_write"];
 									?>
-										<option value="<?=$cg_code?>" <?if($iw[mb_level] < $cg_level_write){?>disabled<?}else if($check_cg_code == $cg_code){?>selected<?}?>><?=$hm_name1?> > <?=$hm_name2?></option>
-										<?
+										<option value="<?=$cg_code?>" <?php if{?>disabled<?php }else if($check_cg_code == $cg_code){?>selected<?php }?>><?=$hm_name1?> > <?=$hm_name2?></option>
+										<?php
 											}
 											$sql3 = "select * from $iw[home_menu_table] where hm_upper_code = '$hm_code' and hm_deep = 3 and ep_code = '$iw[store]' and gp_code = '$iw[group]' order by hm_order asc,hm_no asc";
 											$result3 = sql_query($sql3);
@@ -118,8 +118,8 @@ $sd_subject = str_replace('\"', '&quot;', $sd_subject);
 												$rows = sql_fetch("select * from $iw[category_table] where ep_code = '$iw[store]' and gp_code = '$iw[group]' and state_sort = '$iw[type]' and cg_code = '$cg_code'");
 												$cg_level_write = $rows["cg_level_write"];
 										?>
-											<option value="<?=$cg_code?>" <?if($iw[mb_level] < $cg_level_write){?>disabled<?}else if($check_cg_code == $cg_code){?>selected<?}?>><?=$hm_name1?> > <?=$hm_name2?> > <?=$hm_name3?></option>
-											<?
+											<option value="<?=$cg_code?>" <?php if{?>disabled<?php }else if($check_cg_code == $cg_code){?>selected<?php }?>><?=$hm_name1?> > <?=$hm_name2?> > <?=$hm_name3?></option>
+											<?php
 												}
 												$sql4 = "select * from $iw[home_menu_table] where hm_upper_code = '$hm_code' and hm_deep = 4 and ep_code = '$iw[store]' and gp_code = '$iw[group]' order by hm_order asc,hm_no asc";
 												$result4 = sql_query($sql4);
@@ -134,10 +134,8 @@ $sd_subject = str_replace('\"', '&quot;', $sd_subject);
 													$rows = sql_fetch("select * from $iw[category_table] where ep_code = '$iw[store]' and gp_code = '$iw[group]' and state_sort = '$iw[type]' and cg_code = '$cg_code'");
 													$cg_level_write = $rows["cg_level_write"];
 											?>
-												<option value="<?=$cg_code?>" <?if($iw[mb_level] < $cg_level_write){?>disabled<?}else if($check_cg_code == $cg_code){?>selected<?}?>><?=$hm_name1?> > <?=$hm_name2?> > <?=$hm_name3?> > <?=$hm_name4?></option>
-											<?
-													}
-												}
+												<option value="<?=$cg_code?>" <?php if{?>disabled<?php }else if($check_cg_code == $cg_code){?>selected<?php }?>><?=$hm_name1?> > <?=$hm_name2?> > <?=$hm_name3?> > <?=$hm_name4?></option>
+											<?php } ?><?php }
 											}
 										}
 									}
@@ -150,15 +148,15 @@ $sd_subject = str_replace('\"', '&quot;', $sd_subject);
 					<div class="form-group">
 						<label class="col-sm-1 control-label">소비자가</label>
 						<div class="col-sm-11">
-							<?if($iw[language]=="ko"){?>
+							<?php if($iw[language]=="ko"){?>
 								<input type="text" placeholder="입력" name="sd_price" maxlength="10" value="<?=$row["sd_price"]?>"> 원
-							<?}else if($iw[language]=="en"){
+							<?php }else if($iw[language]=="en"){
 								$price = $row["sd_price"]/1000;
 								$price = sprintf("%1.2f", $price);
 								$price = explode(".", $price);
 							?>
 								US$ <input type="text" placeholder="입력" name="sd_price" maxlength="8" style="text-align:right" value="<?=$price[0]?>"> . <input type="text" placeholder="입력" name="sd_price_2" maxlength="2" size='2' value="<?=$price[1]?>">
-							<?}?>
+							<?php }?>
 						</div>
 					</div>
 					<div class="space-4"></div>
@@ -166,15 +164,15 @@ $sd_subject = str_replace('\"', '&quot;', $sd_subject);
 					<div class="form-group">
 						<label class="col-sm-1 control-label">판매가격</label>
 						<div class="col-sm-11">
-							<?if($iw[language]=="ko"){?>
+							<?php if($iw[language]=="ko"){?>
 								<input type="text" placeholder="입력" name="sd_sale" maxlength="10" value="<?=$row["sd_sale"]?>"> 원
-							<?}else if($iw[language]=="en"){
+							<?php }else if($iw[language]=="en"){
 								$price = $row["sd_sale"]/1000;
 								$price = sprintf("%1.2f", $price);
 								$price = explode(".", $price);
 							?>
 								US$ <input type="text" placeholder="입력" name="sd_sale" maxlength="8" style="text-align:right" value="<?=$price[0]?>"> . <input type="text" placeholder="입력" name="sd_sale_2" maxlength="2" size='2' value="<?=$price[1]?>">
-							<?}?>
+							<?php }?>
 						</div>
 					</div>
 					<div class="space-4"></div>
@@ -213,7 +211,7 @@ $sd_subject = str_replace('\"', '&quot;', $sd_subject);
 						<div class="col-sm-11">
 							<select name="sy_code">
 								<option value="">선택</option>
-								<?
+								<?php
 									$sql2 = "select * from $iw[shop_delivery_table] where ep_code = '$iw[store]' and mb_code='$iw[member]' order by sy_no asc";
 									$result2 = sql_query($sql2);
 
@@ -223,14 +221,14 @@ $sd_subject = str_replace('\"', '&quot;', $sd_subject);
 										$sy_max = $row2["sy_max"];
 										$sy_display = $row2["sy_display"];
 								?>
-									<option value="<?=$sy_code?>" <?if($row["sy_code"]==$sy_code){?>selected<?}?>>[<?=$sy_code?>] <?=national_money($iw[language], $sy_price);?> (
-									<?if($sy_display == 1){?>
+									<option value="<?=$sy_code?>" <?php if{?>selected<?php }?>>[<?=$sy_code?>] <?=national_money($iw[language], $sy_price);?> (
+									<?php if($sy_display == 1){?>
 										<?=national_money($iw[language], $sy_max);?> 이상 무료배송
-									<?}else{?>
+									<?php }else{?>
 										<?=$sy_max?> <?=national_language($iw[language],"a0215","개");?> 이하 묶음배송
-									<?}?>)
+									<?php }?>)
 									</option>
-								<?
+								<?php
 									}
 								?>
 							</select>
@@ -274,7 +272,7 @@ $sd_subject = str_replace('\"', '&quot;', $sd_subject);
 						<div class="col-sm-11">
 							<div style="max-width:1000px;">
 								<table class="table table-striped table-bordered table-hover dataTable">
-								<?
+								<?php
 									$sql2 = "select * from $iw[shop_option_table] where ep_code = '$iw[store]' and gp_code = '$iw[group]' and sd_code = '$sd_code' order by so_no asc";
 									$result2 = sql_query($sql2);
 									$i=0;
@@ -284,19 +282,19 @@ $sd_subject = str_replace('\"', '&quot;', $sd_subject);
 									 <?=$i+1?>. 옵션명<input type="text" name="so_name[]" value="<?=$row2["so_name"]?>">
 									 수량<input type="text" name="so_amount[]" value="<?=$row2["so_amount"]?>">
 									 가격
-									<?if($iw[language]=="ko"){?>
+									<?php if($iw[language]=="ko"){?>
 										<input type="text" name="so_price[]" maxlength="10" value="<?=$row2["so_price"]?>">
-									<?}else if($iw[language]=="en"){
+									<?php }else if($iw[language]=="en"){
 										$price = $row2["so_price"]/1000;
 										$price = sprintf("%1.2f", $price);
 										$price = explode(".", $price);
 									?>
 										<input type="text" placeholder="입력" name="so_price[]" maxlength="8" style="text-align:right" value="<?=$price[0]?>"> . <input type="text" placeholder="입력" name="so_price_2[]" maxlength="2" size='2' value="<?=$price[1]?>">
-									<?}?>
+									<?php }?>
 
-									<select name="so_taxfree[]"><option value="0" <?if($row2["so_taxfree"]==0){?>selected<?}?>>부가세포함</option><option value="1" <?if($row2["so_taxfree"]==1){?>selected<?}?>>면세상품</option></select>
+									<select name="so_taxfree[]"><option value="0" <?php if{?>selected<?php }?>>부가세포함</option><option value="1" <?php if{?>selected<?php }?>>면세상품</option></select>
 									<input type="checkbox" name="so_delete[<?=$i?>]" value="del"> 삭제</td></tr>
-								<?		
+								<?php
 										$i++;
 									}
 								?>
@@ -352,11 +350,11 @@ $sd_subject = str_replace('\"', '&quot;', $sd_subject);
 		objCell.innerHTML = flen+1+". 옵션명<input type='text' placeholder='입력' name='so_name[]'>";
 		objCell.innerHTML += " 수량<input type='text' placeholder='입력' maxlength='10' name='so_amount[]'>";
 
-		<?if($iw[language]=="ko"){?>
+		<?php if($iw[language]=="ko"){?>
 			objCell.innerHTML += " 가격<input type='text' placeholder='입력' maxlength='10' name='so_price[]'>";
-		<?}else if($iw[language]=="en"){?>
+		<?php }else if($iw[language]=="en"){?>
 			objCell.innerHTML += " 가격<input type='text' placeholder='입력' maxlength='8' name='so_price[]' style='text-align:right'> . <input type='text' placeholder='입력' name='so_price_2[]' maxlength='2' size='2'>";
-		<?}?>
+		<?php }?>
 			
 			objCell.innerHTML += " <select name='so_taxfree[]'><option value='0'>부가세포함</option><option value='1'>면세상품</option></select>";
 
@@ -416,7 +414,7 @@ $sd_subject = str_replace('\"', '&quot;', $sd_subject);
 			sd_form.sd_sale.focus();
 			return;
 		}
-	<?if($iw[language]=="en"){?>
+	<?php if($iw[language]=="en"){?>
 		if (sd_form.sd_price_2.value.length < 2) {
 			alert('소수점이하는 2글자 이상 입력하여 주십시오.');
 			sd_form.sd_price_2.focus();
@@ -447,7 +445,7 @@ $sd_subject = str_replace('\"', '&quot;', $sd_subject);
 			e1.focus();
 			return;
 		}
-	<?}?>
+	<?php }?>
 		if (sd_form.sd_subject.value == "") {
 			alert('상품명을 입력하여 주십시오.');
 			sd_form.sd_subject.focus();
@@ -556,7 +554,7 @@ $sd_subject = str_replace('\"', '&quot;', $sd_subject);
 				e1.focus();
 				return;
 			}
-		<?if($iw[language]=="en"){?>
+		<?php if($iw[language]=="en"){?>
 			if (document.getElementsByName('so_price_2[]')[a].value.length < 2) {
 				alert('소수점이하는 2글자 입력하여 주십시오.');
 				document.getElementsByName('so_price_2[]')[a].focus();
@@ -572,12 +570,15 @@ $sd_subject = str_replace('\"', '&quot;', $sd_subject);
 				e1.focus();
 				return;
 			}
-		<?}?>
+		<?php }?>
 		}
 		sd_form.submit();
 	}
 </script>
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

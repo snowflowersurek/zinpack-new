@@ -4,7 +4,7 @@ if ($iw[type] != "book" || ($iw[level] != "seller" && $iw[level] != "member")) a
 ?>
 <meta http-equiv="content-type" content="text/html; charset=<?=$iw['charset']?>" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-<?
+<?php
 	$upload_path = $_POST[upload_path];
 	$bd_code = trim(mysql_real_escape_string($_POST[bd_code]));
 	$bn_sub_title = trim(mysql_real_escape_string($_POST[bn_sub_title]));
@@ -68,3 +68,6 @@ if ($iw[type] != "book" || ($iw[level] != "seller" && $iw[level] != "member")) a
 
 	echo "<script>window.parent.location.href='$iw[admin_path]/thesis/thesis_main_list.php?type=$iw[type]&ep=$iw[store]&gp=$iw[group]&idx=$bd_code';</script>";
 ?>
+
+
+

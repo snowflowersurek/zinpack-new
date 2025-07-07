@@ -38,7 +38,7 @@ include_once("_head.php");
 									</div>
 									<div class="col-sm-6">
 										<div class="dataTable-option-right">
-											<?
+											<?php
 												if($_POST['search']){
 													$search = $_POST['search'];
 													$searchs = $_POST['searchs'];
@@ -54,8 +54,8 @@ include_once("_head.php");
 											?>
 											<form name="search_form" id="search_form" action="<?=$PHP_SELF?>" method="post">
 											<label>검색: <select name="search">
-												<option value="a" <?if($search == "a"){?>selected="selected"<?}?>>사이트명</option>
-												<option value="b" <?if($search == "b"){?>selected="selected"<?}?>>도메인</option>
+												<option value="a" <?php if{?>selected="selected"<?php }?>>사이트명</option>
+												<option value="b" <?php if{?>selected="selected"<?php }?>>도메인</option>
 											</select></label><input type="text" name="searchs" value="<?=$searchs?>">
 											</form>
 										</div>
@@ -71,7 +71,7 @@ include_once("_head.php");
 										</tr>
 									</thead>
 									<tbody>
-									<?
+									<?php
 										$sql = "select * from $payment[site_user_table] where ps_display<>9 $search_sql";
 										$result = sql_query($sql);
 										$total_line = mysqli_num_rows($result);
@@ -108,14 +108,14 @@ include_once("_head.php");
 											<td data-title="도메인"><?=$ps_domain?></td>
 											<td data-title="가입일"><?=$ps_datetime?></td>
 											<td data-title="사용현황">
-												<?if($ps_display == 1){?>
+												<?php if($ps_display == 1){?>
 														<span class="label label-sm label-success">사용</span>
-												<?}else if($ps_display == 0){?>
+												<?php }else if($ps_display == 0){?>
 														<span class="label label-sm label-warning">정지</span>
-												<?}?>
+												<?php }?>
 											</td>
 										</tr>
-									<?
+									<?php
 										$i++;
 										}
 										if($i==0) echo "<tr><td colspan='5' align='center'>등록된 사이트가 없습니다.</td></tr>";
@@ -134,7 +134,7 @@ include_once("_head.php");
 									<div class="col-sm-6">
 										<div class="dataTable-option-right">
 											<ul class="pagination">
-											<?
+											<?php
 												if($total_page!=0){
 													if($page>$total_page) { $page=$total_page; }
 													$start_page = ((ceil($page/$max_page)-1)*$max_page)+1;
@@ -176,6 +176,9 @@ include_once("_head.php");
 	</div><!-- /container -->
 </div><!-- /end .page-content -->
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

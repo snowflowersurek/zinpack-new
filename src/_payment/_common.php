@@ -1,4 +1,4 @@
-<?
+<?php
 /*******************************************************************************
 ** 공통 변수, 상수, 코드
 *******************************************************************************/
@@ -27,76 +27,36 @@ if (isset($HTTP_POST_VARS) && !isset($_POST)) {
 }
 
 //
-// phpBB2 참고
-// php.ini 의 magic_quotes_gpc 값이 FALSE 인 경우 addslashes() 적용
-// SQL Injection 등으로 부터 보호
+// Modern PHP SQL Injection protection
+// magic_quotes_gpc가 PHP 7.4에서 제거되었으므로 현대적인 방식으로 변경
 //
-if( !get_magic_quotes_gpc() )
-{
-	if( is_array($_GET) )
-	{
-		while( list($k, $v) = each($_GET) )
-		{
-			if( is_array($_GET[$k]) )
-			{
-				while( list($k2, $v2) = each($_GET[$k]) )
-				{
-					$_GET[$k][$k2] = addslashes($v2);
-				}
-				@reset($_GET[$k]);
-			}
-			else
-			{
-				$_GET[$k] = addslashes($v);
-			}
-		}
-		@reset($_GET);
-	}
-
-	if( is_array($_POST) )
-	{
-		while( list($k, $v) = each($_POST) )
-		{
-			if( is_array($_POST[$k]) )
-			{
-				while( list($k2, $v2) = each($_POST[$k]) )
-				{
-					$_POST[$k][$k2] = addslashes($v2);
-				}
-				@reset($_POST[$k]);
-			}
-			else
-			{
-				$_POST[$k] = addslashes($v);
-			}
-		}
-		@reset($_POST);
-	}
-
-	if( is_array($_COOKIE) )
-	{
-		while( list($k, $v) = each($_COOKIE) )
-		{
-			if( is_array($_COOKIE[$k]) )
-			{
-				while( list($k2, $v2) = each($_COOKIE[$k]) )
-				{
-					$_COOKIE[$k][$k2] = addslashes($v2);
-				}
-				@reset($_COOKIE[$k]);
-			}
-			else
-			{
-				$_COOKIE[$k] = addslashes($v);
-			}
-		}
-		@reset($_COOKIE);
-	}
+function array_map_recursive($callback, $array) {
+    foreach ($array as $key => $value) {
+        if (is_array($value)) {
+            $array[$key] = array_map_recursive($callback, $value);
+        } else {
+            $array[$key] = call_user_func($callback, $value);
+        }
+    }
+    return $array;
 }
 
-if ($_GET['payment_path'] || $_POST['payment_path'] || $_COOKIE['payment_path']) {
-    unset($_GET['payment_path']);
-    unset($_POST['payment_path']);
+// addslashes 적용 (PHP 8 호환)
+if (is_array($_GET)) {
+    $_GET = array_map_recursive('addslashes', $_GET);
+}
+
+if (is_array($_POST)) {
+    $_POST = array_map_recursive('addslashes', $_POST);
+}
+
+if (is_array($_COOKIE)) {
+    $_COOKIE = array_map_recursive('addslashes', $_COOKIE);
+}
+
+if ((isset($_GET['payment_path']) && $_GET['payment_path']) || (isset($_POST['payment_path']) && $_POST['payment_path']) || (isset($_COOKIE['payment_path']) && $_COOKIE['payment_path'])) {
+	if(isset($_GET['payment_path'])) unset($_GET['payment_path']);
+	if(isset($_POST['payment_path'])) unset($_POST['payment_path']);
     unset($_COOKIE['payment_path']);
     unset($payment_path);
 }
@@ -322,7 +282,7 @@ function get_table_define($table, $crlf="\n")
     } // end while
     mysqli_free_result($result);
 
-    while (list($x, $columns) = @each($index)) {
+    foreach($index as $x => $columns) {
         $schema_create     .= ',' . $crlf;
         if ($x == 'PRIMARY') {
             $schema_create .= '    PRIMARY KEY (';
@@ -358,14 +318,15 @@ function set_cookie($cookie_name, $value, $expire)
 {
     global $payment;
 
-    setcookie(md5($cookie_name), base64_encode($value), $expire, '/', $payment[cookie_domain]);
+    setcookie(md5($cookie_name), base64_encode($value), $expire, '/', $payment['cookie_domain']);
 }
 
 
 // 쿠키변수값 얻음
 function get_cookie($cookie_name)
 {
-    return base64_decode($_COOKIE[md5($cookie_name)]);
+    $cookie_key = md5($cookie_name);
+    return isset($_COOKIE[$cookie_key]) ? base64_decode($_COOKIE[$cookie_key]) : '';
 }
 
 // 경고메세지를 경고창으로
@@ -376,16 +337,13 @@ function alert($msg='', $url='')
     if (!$msg) $msg = '올바른 방법으로 이용해 주십시오.';
 
 	//header("Content-Type: text/html; charset=$g4[charset]");
-	echo "<meta http-equiv=\"content-type\" content=\"text/html; charset=$payment[charset]\">";
-	echo "<script>";
-	echo "alert('$msg');";
-    if ($url=='') echo "history.go(-1);";
-	else echo "location.href='$url';";
+	echo "<meta http-equiv=\"content-type\" content=\"text/html; charset={$payment['charset']}\">";
+	echo "<script type='text/javascript'>alert('$msg');";
+    if (!$url)
+        echo "history.go(-1);";
     echo "</script>";
-//    if ($url)
-        // 4.06.00 : 불여우의 경우 아래의 코드를 제대로 인식하지 못함
-        //echo "<meta http-equiv='refresh' content='0;url=$url'>";
-//        goto_url($url);
+    if ($url)
+        goto_url($url);
     exit;
 }
 
@@ -417,3 +375,6 @@ unset($my); // DB 설정값을 클리어 해줍니다.
 
 $_SERVER['PHP_SELF'] = htmlentities($_SERVER['PHP_SELF']);
 ?>
+
+
+

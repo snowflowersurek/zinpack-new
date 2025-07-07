@@ -57,7 +57,7 @@ include_once("_head.php");
 									</div>
 									<div class="col-sm-6">
 										<div class="dataTable-option-right">
-											<?
+											<?php
 												if($_POST['search']){
 													$search = $_POST['search'];
 													$searchs = $_POST['searchs'];
@@ -75,9 +75,9 @@ include_once("_head.php");
 											?>
 											<form name="search_form" id="search_form" action="<?=$PHP_SELF?>?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>" method="post">
 											<label>검색: <select name="search">
-												<option value="a" <?if($search == "a"){?>selected="selected"<?}?>>주문번호</option>
-												<option value="b" <?if($search == "b"){?>selected="selected"<?}?>>승인번호</option>
-												<option value="c" <?if($search == "c"){?>selected="selected"<?}?>>결제자</option>
+												<option value="a" <?php if{?>selected="selected"<?php }?>>주문번호</option>
+												<option value="b" <?php if{?>selected="selected"<?php }?>>승인번호</option>
+												<option value="c" <?php if{?>selected="selected"<?php }?>>결제자</option>
 											</select></label><input type="text" name="searchs" value="<?=$searchs?>">
 											</form>
 										</div>
@@ -97,7 +97,7 @@ include_once("_head.php");
 										</tr>
 									</thead>
 									<tbody>
-									<?
+									<?php
 										$sql = "select * from $iw[lgd_table] where ep_code = '$iw[store]' and state_sort = '$iw[type]' $search_sql";
 										$result = sql_query($sql);
 										$total_line = mysql_num_rows($result);
@@ -135,24 +135,24 @@ include_once("_head.php");
 										<tr>
 											<td data-title="주문번호"><a href="<?=$iw['admin_path']?>/shop_post_all_view.php?type=<?=$iw[type]?>&ep=<?=$iw[store]?>&gp=<?=$iw[group]?>&idx=<?=$lgd_oid?>"><?=$lgd_oid?></a></td>
 											<td data-title="승인금액"><?=$lgd_amount?> 원</td>
-											<td data-title="입금액"><?if($lgd_paytype=="SC0040"){?><?=$lgd_castamount?> 원<?}?></td>
+											<td data-title="입금액"><?php if{?><?=$lgd_castamount?> 원<?php }?></td>
 											<td data-title="승인번호"><?=$lgd_financeauthnum?></td>
 											<td data-title="승인결과"><?=$lgd_respmsg?></td>
 											<td data-title="승인일시"><?=$lgd_paydate?></td>
 											<td data-title="결제방식">
-												<?if($lgd_paytype=="SC0010"){?>
+												<?php if($lgd_paytype=="SC0010"){?>
 													신용카드
-												<?}else if($lgd_paytype=="SC0030"){?>
+												<?php }else if($lgd_paytype=="SC0030"){?>
 													계좌이체
-												<?}else if($lgd_paytype=="SC0060"){?>
+												<?php }else if($lgd_paytype=="SC0060"){?>
 													휴대폰
-												<?}else if($lgd_paytype=="SC0040"){?>
+												<?php }else if($lgd_paytype=="SC0040"){?>
 													가상계좌
-												<?}?>
+												<?php }?>
 											</td>
 											<td data-title="결제자"><?=$lgd_buyer?></td>
 										</tr>
-									<?
+									<?php
 										$i++;
 										}
 										if($i==0) echo "<tr><td colspan='8' align='center'>LGU+결제내역이 없습니다.</td></tr>";
@@ -166,7 +166,7 @@ include_once("_head.php");
 									<div class="col-sm-6">
 										<div class="dataTable-option-right">
 											<ul class="pagination">
-											<?
+											<?php
 												if($total_page!=0){
 													if($page>$total_page) { $page=$total_page; }
 													$start_page = ((ceil($page/$max_page)-1)*$max_page)+1;
@@ -208,6 +208,9 @@ include_once("_head.php");
 	</div><!-- /container -->
 </div><!-- /end .page-content -->
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

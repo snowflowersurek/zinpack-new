@@ -39,3 +39,6 @@ $payment['cookie_domain'] = ".info-way.co.kr";
 $payment['url'] = "http://www.info-way.co.kr";
 $payment['https_url'] = "https://www.info-way.co.kr";
 ?>
+
+
+

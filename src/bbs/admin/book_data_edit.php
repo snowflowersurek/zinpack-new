@@ -30,7 +30,8 @@ $bd_subject = $row["bd_subject"];
 $bd_subject = str_replace("\'", '&#039;', $bd_subject);
 $bd_subject = str_replace('\"', '&quot;', $bd_subject);
 ?>
-<script language="Javascript" src="/include/ckeditor/ckeditor.js"></script>
+<script src="/include/ckeditor/ckeditor5.js"></script>
+<script src="/include/ckeditor/ckeditor5-adapter.js"></script>
 
 <div class="breadcrumbs" id="breadcrumbs">
 	<ul class="breadcrumb">
@@ -73,7 +74,7 @@ $bd_subject = str_replace('\"', '&quot;', $bd_subject);
 						<div class="col-sm-11">
 							<select class="col-xs-12 col-sm-8" name="cg_code">
 								<option value="">선택</option>
-								<?
+								<?php
 									$sql1 = "select * from $iw[home_menu_table] where ep_code = '$iw[store]' and gp_code = '$iw[group]' and hm_deep = 1 order by hm_order asc,hm_no asc";
 									$result1 = sql_query($sql1);
 									while($row1 = @sql_fetch_array($result1)){
@@ -86,8 +87,8 @@ $bd_subject = str_replace('\"', '&quot;', $bd_subject);
 										$rows = sql_fetch("select * from $iw[category_table] where ep_code = '$iw[store]' and gp_code = '$iw[group]' and state_sort = '$iw[type]' and cg_code = '$cg_code'");
 										$cg_level_write = $rows["cg_level_write"];
 								?>
-									<option value="<?=$cg_code?>" <?if($iw[mb_level] < $cg_level_write){?>disabled<?}else if($check_cg_code == $cg_code){?>selected<?}?>><?=$hm_name1?></option>
-									<?
+									<option value="<?=$cg_code?>" <?php if($iw[mb_level] < $cg_level_write){?>disabled<?php }else if($check_cg_code == $cg_code){?>selected<?php }?>><?=$hm_name1?></option>
+									<?php
 										}
 										$sql2 = "select * from $iw[home_menu_table] where hm_upper_code = '$hm_code' and hm_deep = 2 and ep_code = '$iw[store]' and gp_code = '$iw[group]' order by hm_order asc,hm_no asc";
 										$result2 = sql_query($sql2);
@@ -102,8 +103,8 @@ $bd_subject = str_replace('\"', '&quot;', $bd_subject);
 											$rows = sql_fetch("select * from $iw[category_table] where ep_code = '$iw[store]' and gp_code = '$iw[group]' and state_sort = '$iw[type]' and cg_code = '$cg_code'");
 											$cg_level_write = $rows["cg_level_write"];
 									?>
-										<option value="<?=$cg_code?>" <?if($iw[mb_level] < $cg_level_write){?>disabled<?}else if($check_cg_code == $cg_code){?>selected<?}?>><?=$hm_name1?> > <?=$hm_name2?></option>
-										<?
+										<option value="<?=$cg_code?>" <?php if($iw[mb_level] < $cg_level_write){?>disabled<?php }else if($check_cg_code == $cg_code){?>selected<?php }?>><?=$hm_name1?> > <?=$hm_name2?></option>
+										<?php
 											}
 											$sql3 = "select * from $iw[home_menu_table] where hm_upper_code = '$hm_code' and hm_deep = 3 and ep_code = '$iw[store]' and gp_code = '$iw[group]' order by hm_order asc,hm_no asc";
 											$result3 = sql_query($sql3);
@@ -118,8 +119,8 @@ $bd_subject = str_replace('\"', '&quot;', $bd_subject);
 												$rows = sql_fetch("select * from $iw[category_table] where ep_code = '$iw[store]' and gp_code = '$iw[group]' and state_sort = '$iw[type]' and cg_code = '$cg_code'");
 												$cg_level_write = $rows["cg_level_write"];
 										?>
-											<option value="<?=$cg_code?>" <?if($iw[mb_level] < $cg_level_write){?>disabled<?}else if($check_cg_code == $cg_code){?>selected<?}?>><?=$hm_name1?> > <?=$hm_name2?> > <?=$hm_name3?></option>
-											<?
+											<option value="<?=$cg_code?>" <?php if($iw[mb_level] < $cg_level_write){?>disabled<?php }else if($check_cg_code == $cg_code){?>selected<?php }?>><?=$hm_name1?> > <?=$hm_name2?> > <?=$hm_name3?></option>
+											<?php
 												}
 												$sql4 = "select * from $iw[home_menu_table] where hm_upper_code = '$hm_code' and hm_deep = 4 and ep_code = '$iw[store]' and gp_code = '$iw[group]' order by hm_order asc,hm_no asc";
 												$result4 = sql_query($sql4);
@@ -134,10 +135,8 @@ $bd_subject = str_replace('\"', '&quot;', $bd_subject);
 													$rows = sql_fetch("select * from $iw[category_table] where ep_code = '$iw[store]' and gp_code = '$iw[group]' and state_sort = '$iw[type]' and cg_code = '$cg_code'");
 													$cg_level_write = $rows["cg_level_write"];
 											?>
-												<option value="<?=$cg_code?>" <?if($iw[mb_level] < $cg_level_write){?>disabled<?}else if($check_cg_code == $cg_code){?>selected<?}?>><?=$hm_name1?> > <?=$hm_name2?> > <?=$hm_name3?> > <?=$hm_name4?></option>
-											<?
-													}
-												}
+												<option value="<?=$cg_code?>" <?php if($iw[mb_level] < $cg_level_write){?>disabled<?php }else if($check_cg_code == $cg_code){?>selected<?php }?>><?=$hm_name1?> > <?=$hm_name2?> > <?=$hm_name3?> > <?=$hm_name4?></option>
+											<?php } ?><?php }
 											}
 										}
 									}
@@ -150,7 +149,7 @@ $bd_subject = str_replace('\"', '&quot;', $bd_subject);
 					<div class="form-group">
 						<label class="col-sm-1 control-label">스타일</label>
 						<div class="col-sm-11">
-							<?
+							<?php
 								if($row["bd_type"] == 1){
 									echo "PDF";
 								}else if($row["bd_type"] == 2){
@@ -214,7 +213,7 @@ $bd_subject = str_replace('\"', '&quot;', $bd_subject);
 					<div class="form-group">
 						<label class="col-sm-1 control-label">이북 표지</label>
 						<div class="col-sm-11">
-							<input type="file" class="col-xs-12 col-sm-8" name="bd_image"> <?if($row["bd_image"]){?><a href="<?=$iw["path"].$upload_path."/".$row["bd_image"]?>" target="_blank">기존 이미지</a><?}?>
+							<input type="file" class="col-xs-12 col-sm-8" name="bd_image"> <?php if($row["bd_image"]){?><a href="<?=$iw["path"].$upload_path."/".$row["bd_image"]?>" target="_blank">기존 이미지</a><?php }?>
 							<span class="help-block col-xs-12">최적사이즈(pixel) 300 X 400</span>
 						</div>
 					</div>
@@ -340,6 +339,9 @@ $bd_subject = str_replace('\"', '&quot;', $bd_subject);
 
 </script>
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

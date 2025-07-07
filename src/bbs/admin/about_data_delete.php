@@ -49,3 +49,6 @@ sql_query($sql);
 
 alert("페이지가 삭제되었습니다.","$iw[admin_path]/about_data_list.php?type=$iw[type]&ep=$iw[store]&gp=$iw[group]");
 ?>
+
+
+

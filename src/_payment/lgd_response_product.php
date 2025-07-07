@@ -51,7 +51,7 @@ if ($return_domain == "www.aviation.co.kr") {
     /*
      * 2. 최종결제 요청 결과처리
      *
-     * 최종 결제요청 결과 리턴 파라미터는 연동메뉴얼을 참고하시기 바랍니다.
+     * 최종 결제요청 결과 리턴 파라미터는 연동메뉼얼을 참고하시기 바랍니다.
      */
     if ($xpay->TX()) {
         //1)결제결과 화면처리(성공,실패 결과 처리를 하시기 바랍니다.)
@@ -191,7 +191,7 @@ if ($return_domain == "www.aviation.co.kr") {
 
 </head>
 <body>
-<?if($payment_success){?>
+<?php if($payment_success){?>
 <form method="post" name ="LGD_PAYINFO" id="LGD_PAYINFO" action="<?=$protocol.$return_domain?>/bbs/m/shop_pay_res.php?type=<?=$payment[type]?>&ep=<?=$payment[store]?>&gp=<?=$payment[group]?>">
 <input type="hidden" name="LGD_RESPCODE"                id="LGD_RESPCODE"		value="<?= $LGD_RESPCODE ?>">
 <input type="hidden" name="LGD_RESPMSG"                     id="LGD_RESPMSG"			value="<?= $LGD_RESPMSG ?>">
@@ -230,6 +230,9 @@ if ($return_domain == "www.aviation.co.kr") {
 <script language = 'javascript'>
 	document.getElementById('LGD_PAYINFO').submit();
 </script>
-<?}?>
+<?php }?>
 </body>
 </html>
+
+
+

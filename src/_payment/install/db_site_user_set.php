@@ -1,16 +1,33 @@
 <?php
+include("../_config.php");
 
-$sql = "CREATE TABLE $payment[site_user_table](
-ps_no int(11) NOT NULL auto_increment,
-ps_domain varchar(100) NOT NULL default '',
-ps_corporate varchar(255) NOT NULL default '',
-ps_datetime datetime NOT NULL default '0000-00-00 00:00:00',
-ps_display tinyint(4) NOT NULL default '0',
-PRIMARY KEY (ps_no),
-UNIQUE KEY ps_domain (ps_domain)
-) DEFAULT CHARSET=utf8";
+$sql = "CREATE TABLE payment_site_user (
+	`ps_no` int(11) NOT NULL auto_increment,
+	`ps_corporate` varchar(100) NOT NULL,
+	`ps_domain` varchar(100) NOT NULL,
+	`ps_datetime` datetime NOT NULL,
+	`ps_display` int(1) NOT NULL default '1',
+	PRIMARY KEY  (`ps_no`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+";
 
-mysql_query($sql) or die(mysql_error());
+// DB 연결 설정  
+$connect_db = sql_connect($mysql_host, $mysql_user, $mysql_password, $mysql_db);
+if (!$connect_db) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+$result = mysqli_query($connect_db, $sql);
+if (!$result) {
+    die("Error creating table: " . mysqli_error($connect_db));
+}
+
+echo "payment_site_user table created successfully";
+mysqli_close($connect_db);
 ?>
+
+
+
+
 
 

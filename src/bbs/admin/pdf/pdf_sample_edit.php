@@ -76,7 +76,7 @@ $bd_file = explode(";", $row["bd_sample"]);
 					</div>
 					<div class="space-4"></div>
 
-					<?if($row["bd_file"]){?>
+					<?php if($row["bd_file"]){?>
 					<div class="form-group">
 						<label class="col-sm-3 control-label">등록된 PDF</label>
 						<div class="col-sm-9">
@@ -84,17 +84,17 @@ $bd_file = explode(";", $row["bd_sample"]);
 						</div>
 					</div>
 					<div class="space-4"></div>
-					<?}?>
+					<?php }?>
 					
 					<div class="form-group">
 						<label class="col-sm-3 control-label">읽는 방향</label>
 						<div class="col-sm-9">
 							<label class="middle">
-								<input type="radio" name="read_direction" value="1" <?if($bd_file[3]!=2){?>checked<?}?>>
+								<input type="radio" name="read_direction" value="1" <?php if{?>checked<?php }?>>
 								<span class="lbl"> 오른쪽 넘김</span>
 							</label>
 							<label class="middle">
-								<input type="radio" name="read_direction" value="2" <?if($bd_file[3]==2){?>checked<?}?>>
+								<input type="radio" name="read_direction" value="2" <?php if{?>checked<?php }?>>
 								<span class="lbl"> 왼쪽 넘김</span>
 							</label>
 						</div>
@@ -263,6 +263,9 @@ $bd_file = explode(";", $row["bd_sample"]);
 	}
 </script>
 
-<?
+<?php
 include_once($iw['admin_path']."/_tail.php");
 ?>
+
+
+

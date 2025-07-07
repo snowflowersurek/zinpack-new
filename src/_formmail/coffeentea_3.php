@@ -163,6 +163,9 @@ include_once("_head.php");
 	}
 </script>
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

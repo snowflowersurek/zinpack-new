@@ -435,3 +435,7 @@ class PMA_DrizzleResult
         unset($this->_dresult);
     }
 }
+
+
+
+

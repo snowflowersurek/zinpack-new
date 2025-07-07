@@ -45,6 +45,9 @@ $bmd_big_image = $row['bmd_big_image'];
 	</div>
 </div>
 
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+

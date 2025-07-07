@@ -42,22 +42,20 @@ $bn_font = $row["bn_font"];
 		<div class="book_thum_wrap">
 			<div class="flicking">
 				<ul>
-			<?
+			<?php
 				$sql = "select * from $iw[book_blog_table] where ep_code = '$iw[store]' and gp_code = '$iw[group]' and bd_code = '$bd_code' order by bg_order asc";
 				$result = sql_query($sql);
 
 				$i=1;
 				while($row = @sql_fetch_array($result)){
 					$bg_no = $row["bg_no"];
-			?>
-					<?if($i == 1 || $i%9 == 1){?><li><?}?>
+			 if($i == 1 || $i%9 == 1){?><li><?php }?>
 						<div class="thum_image">
 							<a href="javascript:bookPage('<?=$iw[type]?>','<?=$iw[store]?>','<?=$iw[group]?>','<?=$bd_code?>','<?=$bg_no?>');">
 								<img src="<?=$iw["path"].$upload_path."/".$row["bg_image"]?>" />
 							</a>
 						</div>
-					<?if($i%9 == 0){?></li><?}?>
-			<?
+					<?php if($i%9 == 0){?></li><?php }
 					$i++;
 				}
 				$i--;
@@ -70,22 +68,19 @@ $bn_font = $row["bn_font"];
 						$totalthum = ceil($i/9);
 					}
 					for ($a=$i; $a<$totalthum*9; $a++) {
-			?>
-					<?if($i == 1){?><li><?}?>
+			 if($i == 1){?><li><?php }?>
 						<div class="thum_image">
 							<img src="<?=$iw["path"].$upload_path."/".$bn_thum?>" />
 						</div>
-					<?if($i%9 == 0){?></li><?}?>
-			<?
-					}
+					<?php if($i%9 == 0){?></li><?php } ?><?php }
 				}
 			?>
 				</ul>
 			</div>
 			<div class="flickPaging">
-				<?for ($i=1; $i<=$totalthum; $i++) {?>
+				<?php for($i=1; $i<=$totalthum; $i++) {?>
 				<a href="#" style="color:<?=$bn_font?>;">&#8226;</a>
-				<?}?>
+				<?php }?>
 			</div>
 		</div>
 	</div>
@@ -114,6 +109,9 @@ $bn_font = $row["bn_font"];
 		location.href="blog_view.php?type="+type+"&ep="+ep+"&gp="+gp+"&idx="+idx+"&no="+no;
 	}
 </script>
-<?
+<?php
 include_once("_tail.php");
 ?>
+
+
+
