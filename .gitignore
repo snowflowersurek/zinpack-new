@@ -1,2 +1,68 @@
+# 데이터베이스 백업 파일들
 init/infoway_backup.sql
 *.sql
+
+# 이미지 파일들
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.bmp
+*.tiff
+*.ico
+*.svg
+*.webp
+
+# 백업 폴더들
+backup_*
+src_backup_*
+*_backup_*
+
+# 로그 파일들
+*.log
+logs/
+*.log.*
+
+# 임시 파일들
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# OS 관련 파일들
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE 관련 파일들
+.vscode/
+.idea/
+*.suo
+*.user
+
+# Docker 관련 (선택사항)
+docker-compose.override.yml
+
+# 압축 파일들
+*.zip
+*.tar
+*.gz
+*.rar
+*.7z
+
+# 특정 폴더들의 이미지 파일들
+book/*/all/*/page/
+about/*/all/*/page/
+mcb/*/all/*/page/
+shop/*/all/*/page/
+doc/*/all/*/page/
+publishing/*/all/*/page/
+
+# 기타 대용량 파일들
+*.mp4
+*.avi
+*.mov
+*.wmv
+*.flv
+*.pdf

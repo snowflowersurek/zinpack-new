@@ -127,9 +127,16 @@ for ($i=0; $i<$ext_cnt; $i++) {
 
 // PHP 4.1.0 부터 지원됨
 // php.ini 의 register_globals=off 일 경우
-@extract($_GET);
-@extract($_POST);
-@extract($_SERVER);
+// PHP 8 호환성: extract() 함수에 null 값 체크 추가
+if (is_array($_GET) && !empty($_GET)) {
+    @extract($_GET);
+}
+if (is_array($_POST) && !empty($_POST)) {
+    @extract($_POST);
+}
+if (is_array($_SERVER) && !empty($_SERVER)) {
+    @extract($_SERVER);
+}
 
 // --- 설정 파일 로드 ---
 if (!isset($iw_path)) {

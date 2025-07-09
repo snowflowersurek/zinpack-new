@@ -86,7 +86,4 @@ $iw['theme_setting_table']			= $iw['table_prefix'] . "theme_setting";
 
 $iw['alipay_table']				= $iw['table_prefix'] . "alipay";
 $iw['popup_layer_table']		= $iw['table_prefix'] . "popup_layer";
-$iw['delivery_info_table']		= $iw['table_prefix'] . "delivery_info"; 
-
-
-
+$iw['delivery_info_table']		= $iw['table_prefix'] . "delivery_info";

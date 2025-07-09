@@ -6,9 +6,20 @@ services:
       - "8080:80"
     volumes:
       - ./src:/var/www/html
+      - ./mcb:/var/www/html/mcb
+      - ./main:/var/www/html/main
+      - ./pdfjs-new:/var/www/html/pdfjs-new
+      - ./book:/var/www/html/book
+      - ./shop:/var/www/html/shop
+      - ./about:/var/www/html/about
+      - ./publishing:/var/www/html/publishing
+      - ./test:/var/www/html/test
+      - ./doc:/var/www/html/doc
+      - ./src/design/img:/var/www/html/design/img
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
     depends_on:
       - php
+      - db
     networks:
       - wizwin-network
 
@@ -17,6 +28,17 @@ services:
     container_name: wizwin-zinpack-f2025-php
     volumes:
       - ./src:/var/www/html
+      - ./mcb:/var/www/html/mcb
+      - ./main:/var/www/html/main
+      - ./book:/var/www/html/book
+      - ./shop:/var/www/html/shop
+      - ./about:/var/www/html/about
+      - ./publishing:/var/www/html/publishing
+      - ./test:/var/www/html/test
+      - ./doc:/var/www/html/doc
+      - ./src/design/img:/var/www/html/design/img
+    depends_on:
+      - db
     networks:
       - wizwin-network
 
@@ -28,21 +50,39 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: infoway@$$db
       MYSQL_DATABASE: infoway
+      MYSQL_USER: infoway
+      MYSQL_PASSWORD: infoway@$$db
+      # MariaDB 최적화 설정
+      MARIADB_AUTO_UPGRADE: 1
+      MARIADB_DISABLE_UPGRADE_BACKUP: 1
     volumes:
       - ./init:/docker-entrypoint-initdb.d
       - db_data:/var/lib/mysql
+    command: >
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_unicode_ci
+      --innodb-buffer-pool-size=256M
+      --innodb-log-file-size=64M
+      --max-connections=200
+      --thread-cache-size=8
+      --query-cache-size=32M
+      --tmp-table-size=64M
+      --max-heap-table-size=64M
     networks:
       - wizwin-network
 
   phpmyadmin:
-    image: phpmyadmin/phpmyadmin
+    image: phpmyadmin/phpmyadmin:latest
     container_name: wizwin-zinpack-f2025-admin
     ports:
       - "8081:80"
     environment:
       PMA_HOST: db
+      PMA_PORT: 3306
       PMA_USER: root
       PMA_PASSWORD: infoway@$$db
+      MYSQL_ROOT_PASSWORD: infoway@$$db
+      UPLOAD_LIMIT: 50M
     depends_on:
       - db
     networks:
@@ -50,6 +90,8 @@ services:
 
 volumes:
   db_data:
+    driver: local
 
 networks:
   wizwin-network:
+    driver: bridge
